@@ -1,0 +1,19 @@
+import { normalizeKeyboardQuery } from '../lib/keyboardSearch.js';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { relatedSuggestions } from '../lib/searchIntent.js';
+export default function CourseSearchBox({ query, onSearch, home = false, keywords = [], keyboardDictionary = new Set() }) {
+ const [input,setInput]=useState(query),[expanded,setExpanded]=useState(false),[active,setActive]=useState(-1);
+ const container=useRef(null);
+ const suggestions=useMemo(()=>relatedSuggestions(normalizeKeyboardQuery(input,keyboardDictionary),keywords),[input,keywords,keyboardDictionary]);
+ useEffect(()=>{setInput(query);setExpanded(false);setActive(-1);},[query]);
+ useEffect(()=>{const outside=e=>{if(!container.current?.contains(e.target))setExpanded(false);};document.addEventListener('pointerdown',outside);return()=>document.removeEventListener('pointerdown',outside);},[]);
+ const id=home?'home-query':'search-input';
+ const visible=expanded&&suggestions.length>0;
+ function choose(value){setInput(value);setExpanded(false);setActive(-1);}
+ return <div className="search-suggestion-shell" ref={container} onBlur={e=>{if(!e.currentTarget.contains(e.relatedTarget))setExpanded(false);}}><form className={`search-box ${home?'home-search':''}`} role="search" autoComplete="off" aria-label={home?'홈 여행 검색':'여행 코스 검색'} onSubmit={event=>{event.preventDefault();setExpanded(false);setActive(-1);onSearch(input.trim());}}>
+ <button type="submit" className="search-icon-submit" aria-label="검색 실행"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="M15 15L21 21"/></svg></button>
+ <label className="sr-only" htmlFor={id}>{home?'취향을 입력하세요':'검색 키워드'}</label>
+ <input id={id} name={`${id}-taste`} autoComplete="off" autoCorrect="off" spellCheck={false} autoFocus={!home} type="search" enterKeyHint="search" placeholder="취향을 입력하세요 (예시 : 맥주)" value={input} aria-autocomplete="list" aria-controls={`${id}-suggestions`} aria-expanded={Boolean(visible)} aria-activedescendant={visible&&active>=0?`${id}-suggestion-${active}`:undefined} onFocus={()=>setExpanded(true)} onChange={e=>{setInput(e.target.value);setExpanded(true);setActive(-1);}} onKeyDown={e=>{if(e.key==='Escape'){setExpanded(false);setActive(-1);}else if(e.key==='ArrowDown'&&suggestions.length){e.preventDefault();setExpanded(true);setActive(v=>(v+1)%suggestions.length);}else if(e.key==='ArrowUp'&&suggestions.length){e.preventDefault();setExpanded(true);setActive(v=>(v-1+suggestions.length)%suggestions.length);}else if(e.key==='Enter'&&!e.nativeEvent.isComposing&&visible&&active>=0){e.preventDefault();choose(suggestions[active]);}}}/>
+ {!home&&input&&<button type="button" className="icon-button" aria-label="검색어 지우기" onClick={()=>{setInput('');setExpanded(false);setActive(-1);}}>×</button>}
+ </form>{visible&&<div className="related-search-panel"><div id={`${id}-suggestions`} role="listbox" aria-label="연관검색어">{suggestions.map((word,index)=>{const pos=word.indexOf(input.trim());return <button type="button" role="option" id={`${id}-suggestion-${index}`} key={word} aria-selected={active===index} className={active===index?'active':''} onMouseDown={e=>e.preventDefault()} onClick={()=>choose(word)}><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="M15 15L21 21"/></svg><span>{pos>=0&&input.trim()?<>{word.slice(0,pos)}<strong>{word.slice(pos,pos+input.trim().length)}</strong>{word.slice(pos+input.trim().length)}</>:word}{index===0&&word===input.trim()&&<small> 검색</small>}</span></button>;})}</div><small className="related-search-hint">Enter 키 또는 돋보기를 눌러 검색하세요.</small></div>}</div>;
+}
