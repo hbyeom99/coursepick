@@ -398,7 +398,7 @@ body,input,textarea,select{color:var(--brand-ink)}
 
 .course-cover .banner-photo-placeholder{z-index:0}.library-card-open>.banner-photo-placeholder{position:static;flex:0 0 72px;width:72px;height:78px;font-size:14px;z-index:auto;border-radius:6px}
 
-.app-shell .detail-panel>.detail-schedule-divider{border:0;border-top:1px solid var(--brand-line);margin:16px 0 8px}
+.app-shell .detail-panel>.detail-schedule-divider{border:0;border-top:1px solid #AB84FC;margin:16px 0 8px}
 
 .app-shell .detail-panel>.detail-course-meta{margin-top:0;margin-bottom:12px;font-size:14px;gap:6px 12px;color:#737083}.app-shell .detail-panel>.detail-course-meta svg{width:14px;height:14px}
 
@@ -622,7 +622,7 @@ body,input,textarea,select{color:var(--brand-ink)}
 .app-shell .search-icon-submit { display:inline-flex;align-items:center;justify-content:center;flex:0 0 17px;width:17px;min-width:17px;padding:0;color:var(--brand-main);background:none; }
 .app-shell .search-icon-submit svg { width:17px;height:17px; }
 
-/* Shared vertical anchor: status bar + 54px top area + 8px gap. */
+/* Shared vertical anchor: page header and content gap; no simulated status bar. */
 .app-shell { --page-top-height:44px;--page-top-gap:10px; }
 .app-shell:is(.view-home,.view-search,.view-detail,.view-create) .main-content { padding-top:8px; }
 .app-shell.view-home .app-header { height:54px;min-height:54px;padding-top:7px;padding-bottom:7px; }
@@ -734,3 +734,161 @@ body,input,textarea,select{color:var(--brand-ink)}
 .app-shell .modal .section-title h2 .region-title-accent { color:#9554FF;font-weight:600; }
 .app-shell .travel-filter-popup section>h3,
 .app-shell .travel-filter-popup section>h4 { color:#9554FF;font-weight:400; }
+/* Shared typography and supplied status/action assets. Fonts are bundled for Colab/offline use. */
+@font-face{font-family:"Noto Sans KR";src:url("/fonts/NotoSansKR-Variable.ttf") format("truetype");font-style:normal;font-weight:100 900;font-display:swap}
+:root{font-family:"Noto Sans KR",sans-serif}
+body,button,input,textarea,select,option,svg text{font-family:"Noto Sans KR",sans-serif}
+.asset-icon{display:inline-block;flex-shrink:0;width:20px;height:20px;background-color:currentColor;vertical-align:middle;-webkit-mask:var(--asset-image) center/contain no-repeat;mask:var(--asset-image) center/contain no-repeat}
+.asset-check{--asset-image:url("/images/save-check-original.png")}
+.asset-refresh{--asset-image:url("/images/refresh-original.png")}
+.app-shell.view-success .saved-success-check{width:66px;height:66px;border-radius:50%;background:var(--brand-soft);color:var(--brand-main);margin:0 auto 8px}
+.app-shell.view-success .saved-success-check .asset-check{width:36px;height:36px}
+.saved-success-label{display:inline-flex;align-items:center;gap:4px}
+.saved-success-label .asset-check{width:14px;height:14px}
+.travel-filter-actions .text-link{display:inline-flex;align-items:center;gap:4px}
+.travel-filter-actions .filter-reset-icon{width:14px;height:14px}
+.picker-refresh .asset-refresh{width:18px;height:18px;margin-left:3px}
+
+/* Supplied course-edit artwork inherits the button foreground for contrast. */
+.asset-course-edit{--asset-image:url("/images/course-edit-original.png")}
+
+/* Reference artwork's solid lavender, sampled as RGB(214,191,242). */
+:root{--course-image-placeholder:#D6BFF2}
+.course-image-placeholder,.library-image-placeholder,.banner-photo-placeholder{background:var(--course-image-placeholder)}
+.feed-card:has(>.course-image-placeholder):after{background:none}
+.feed-card:has(>.course-image-placeholder) .feed-open{color:var(--brand-ink)}
+.app-shell .feed-card:has(>.course-image-placeholder) .feed-open .course-card-meta{color:var(--muted)}
+
+/* Rounded 36px search field; the existing 92px page anchor is preserved. */
+.app-shell .search-box,.app-shell .screen-home .home-search{height:36px;min-height:36px;max-height:36px;padding:0 10px;border-radius:999px;gap:8px;box-shadow:none;}
+.app-shell .search-box input{height:32px;min-height:0;line-height:24px;padding:0;margin:0;background:transparent;appearance:none;}
+.app-shell .search-box :is(.search-icon-submit,.search-clear,.search-back){display:flex;align-items:center;justify-content:center;flex:0 0 20px;width:20px;min-width:20px;height:28px;min-height:28px;margin:0;padding:0;background:transparent;border:0;}
+.app-shell .search-box .search-clear{font-size:24px;font-weight:300;line-height:1;color:#ADB2C0;}
+.app-shell .search-box .search-icon-submit{color:var(--brand-main);}
+.search-suggestion-shell:focus{outline:none;}
+.course-search-overlay{position:absolute;left:0;right:0;top:var(--search-overlay-top);height:var(--search-overlay-height);z-index:90;display:flex;flex-direction:column;overflow:hidden;padding-top:var(--search-anchor-top);padding-bottom:env(safe-area-inset-bottom,0px);background:white;isolation:isolate;}
+.course-search-overlay>.device-status-bar{position:absolute;left:0;right:0;top:0;}
+.app-shell .course-search-overlay .search-overlay-box{flex:0 0 36px;width:var(--search-anchor-width);margin:0 0 0 var(--search-anchor-left);}
+.app-shell .search-overlay-box .search-back{color:#9EA6B7;}
+.search-overlay-results{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;padding:8px calc(var(--search-anchor-left) + 8px) 20px;}
+.search-related-row{display:flex;align-items:center;min-height:35px;gap:8px;}
+.search-related-word{display:flex;align-items:center;gap:14px;min-width:0;flex:1;min-height:35px;padding:7px 2px;text-align:left;color:#383642;font-size:14px;line-height:21px;}
+.search-related-word>svg{color:#9DA5B5;flex-shrink:0;}
+.search-related-word>span{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.search-related-word strong,.search-related-row:first-child .search-related-word>span{font-weight:600;color:var(--brand-main);}
+.search-related-fill{display:flex;align-items:center;justify-content:center;flex:0 0 28px;width:28px;height:32px;padding:0;color:#9DA5B5;}
+.search-related-row.active{background:var(--brand-soft);border-radius:6px;}
+.search-mode-active>.bottom-nav,.search-mode-active>.device-home-indicator{visibility:hidden;}
+
+/* The status bar and course header stay above the scrolling map and itinerary. */
+.app-shell.view-detail .detail-fixed-header{position:sticky;top:0;z-index:25;flex-shrink:0;background:white;}
+.app-shell.view-detail .detail-fixed-header>.detail-top{margin:8px 16px 10px;height:var(--page-top-height);min-height:var(--page-top-height);}
+.app-shell.view-detail .main-content{padding-top:0;}
+.app-shell .detail-panel>.byline{margin:0 0 5px;min-height:24px;}
+.app-shell .detail-panel>.byline:has(.course-author-logo){height:1.5em;min-height:1.5em;}
+.app-shell .detail-panel>.byline .course-author-logo{width:72px;height:1.5em;object-fit:cover;object-position:center;border-radius:0;}
+.app-shell .detail-panel>h1{margin:3px 0 10px;}
+.asset-stay-duration{--asset-image:url('/images/stay-duration-original.png');width:14px;height:14px;}
+.itinerary-planned-time,.itinerary-stay-time{display:inline-flex;align-items:center;vertical-align:middle;white-space:nowrap;}
+.itinerary-stay-time{gap:4px;}
+
+/* Optional presentation keyboard; ordinary touch devices keep their native keyboard. */
+.presentation-keyboard{height:min(318px,50%);min-height:170px;flex-shrink:0;display:flex;flex-direction:column;background:#D4D5D8;user-select:none;-webkit-user-select:none;touch-action:manipulation;}
+.presentation-keyboard-toolbar{height:46px;flex:0 0 46px;display:flex;align-items:center;gap:8px;padding:4px 14px;background:#FBFBFC;border-radius:22px 22px 0 0;box-shadow:0 -7px 24px #20202A0A;}
+.presentation-keyboard-toolbar>button{display:flex;align-items:center;justify-content:center;min-width:32px;height:32px;padding:0;color:#8B93A2;}
+.presentation-keyboard-toolbar .keyboard-native-mode{margin-left:auto;font-size:11px;color:#9298A4;}
+.presentation-keyboard-toolbar .keyboard-done{margin-left:4px;color:#111;}
+.presentation-keyboard-body{display:flex;flex-direction:column;flex:1;min-height:0;gap:8px;padding:9px 3px 4px;}
+.presentation-keyboard-row{display:flex;flex:1;min-height:0;gap:5px;}
+.presentation-keyboard-row.keyboard-middle-row{padding:0 15px;}
+.presentation-key{display:flex;align-items:center;justify-content:center;min-width:0;min-height:0;flex:1;padding:0;background:#FCFCFD;color:#7F8186;border-radius:6px;font-size:22px;line-height:1;box-shadow:0 1px 0 #00000015;}
+.presentation-keyboard .keyboard-function{flex:0 0 40px;background:#F4F4F6;color:#585B61;font-size:15px;}
+.keyboard-third-letters{display:flex;flex:1;min-width:0;gap:5px;padding:0 8px;}
+.presentation-keyboard .keyboard-bottom-row .keyboard-mode{flex-basis:40px;font-size:15px;}
+.presentation-keyboard .keyboard-bottom-row .keyboard-emoji{flex-basis:35px;font-size:24px;}
+.presentation-keyboard .keyboard-space{flex:1;}
+.presentation-keyboard .keyboard-period{flex:0 0 35px;}
+.presentation-keyboard .keyboard-search{flex:0 0 52px;background:#087FFD;color:white;}
+.presentation-keyboard-footer{height:60px;flex:0 0 60px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;}
+.presentation-keyboard-footer>button{display:flex;align-items:center;justify-content:center;width:32px;height:28px;padding:0;color:#666A72;}
+.presentation-keyboard-toggle{display:flex;justify-content:flex-end;flex-shrink:0;padding:6px 16px 12px;}
+.presentation-keyboard-toggle button{font-size:12px;color:#8B93A2;padding:6px 8px;}
+
+/* Keyboard reference: floating accessory bar and outline controls. */
+.presentation-keyboard{position:relative;background:#FAFAFB;}
+.presentation-keyboard-toolbar{height:42px;flex-basis:42px;margin:0 12px 10px;padding:0 8px;border:1px solid #EFF0F2;border-radius:24px;gap:10px;background:#FCFCFD;box-shadow:0 -4px 24px #20202A08;}
+.presentation-keyboard-toolbar>button{min-width:40px;width:40px;height:32px;}
+.presentation-keyboard-toolbar .keyboard-done{margin-left:auto;min-width:32px;width:32px;color:#111;}
+.presentation-keyboard-body,.presentation-keyboard-footer{background:#D4D5D8;}
+.presentation-keyboard-footer{padding-right:12px;padding-left:12px;}
+.presentation-keyboard-footer>button{width:36px;height:34px;}
+.keyboard-shift-icon{width:24px;height:24px;}
+.presentation-keyboard .keyboard-microphone.is-listening{color:var(--brand-main);background:var(--brand-soft);border-radius:50%;}
+.keyboard-voice-status{position:absolute;left:12px;right:12px;bottom:100%;margin:0 0 6px;padding:5px 8px;border-radius:6px;background:white;color:#737083;font-size:12px;line-height:1.5;box-shadow:0 1px 5px #0001;}
+.presentation-keyboard-toggle button{display:flex;align-items:center;justify-content:center;width:36px;height:32px;padding:2px;}
+
+.itinerary-timing,.itinerary-description{display:block;}
+.itinerary-time-row{display:flex;align-items:center;gap:4px;margin-top:2px;white-space:nowrap;}
+
+.course-representative-image.course-image-placeholder{object-fit:contain;background:var(--course-image-placeholder);}
+.library-image-placeholder,.banner-photo-placeholder{background:var(--course-image-placeholder) url('/images/course-image-placeholder.svg') center / contain no-repeat;}
+
+.app-shell.view-home .app-header{justify-content:center;}
+
+/* Recommendation button colors sampled from the supplied design. */
+.app-shell .stop-recommend-button{color:#7D5EF8;background:#F7F2FF;border-radius:999px;}
+.app-shell .stop-recommend-button:is(:active,[aria-expanded='true']){color:#F7F2FF;background:#7D5EF8;}
+
+/* Place picker: category label and add action share the top row. */
+.picker-place-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;width:100%}
+.picker-place-heading>.overline{margin:0;min-width:0;overflow-wrap:anywhere}
+.picker-add-place{flex-shrink:0;white-space:nowrap}
+.place-picker-sheet .place-result .picker-add-place,.place-detail-heading .picker-add-place{font-size:12px;min-height:28px;padding:4px 7px;border:1px solid var(--brand-main);color:var(--brand-main);background:white;border-radius:8px}
+.picker-add-place:disabled{opacity:.45;cursor:default}
+.place-detail-heading>div{flex:1;min-width:0}
+
+/* Course detail places: name, tags, schedule and previous-stop travel. */
+.app-shell .timeline-copy .detail-stop-tags{display:flex;flex-wrap:wrap;gap:4px;margin:5px 0}
+.app-shell .detail-stop-tags>span{font-size:12px;font-weight:400;line-height:1.4;padding:2px 5px;border-radius:5px;background:var(--brand-soft);color:var(--brand-readable)}
+.app-shell .timeline-stop.active .detail-stop-tags>span{background:white}
+.app-shell .timeline-stop .detail-stop-travel{display:block;font-size:12px;line-height:1.6;margin-top:5px;color:#858597;overflow-wrap:anywhere}
+
+/* Contain each recommendation's text within its own grid column. */
+.app-shell .recommendation-place-card{min-width:0;max-width:100%;align-self:start;overflow:hidden}
+.app-shell .recommendation-replace{display:flex;flex-direction:column;align-items:stretch;gap:4px;width:100%;min-width:0;max-width:100%;text-align:left;padding:0}
+.app-shell .recommendation-replace>strong{display:block;width:100%;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.app-shell .recommendation-replace .course-card-meta{max-width:100%;flex-wrap:wrap;overflow:hidden}
+.app-shell .recommendation-text-more{display:block;max-width:100%;padding:5px 0;font-size:12px;color:var(--brand-readable);text-decoration:underline;text-underline-offset:2px}
+.app-shell .recommendation-place-card.is-expanded .recommendation-replace>strong{display:block;white-space:normal;overflow-wrap:anywhere;-webkit-line-clamp:unset}
+.app-shell .recommendation-place-card.is-expanded .recommendation-card-tags{flex-wrap:wrap;white-space:normal;overflow:visible}
+.app-shell .recommendation-place-card.is-expanded .recommendation-card-tags>span{white-space:normal;overflow-wrap:anywhere;max-width:100%;overflow:visible}
+
+.app-shell .editor-stop .stop-copy .editor-travel-time{white-space:normal;overflow-wrap:anywhere;font-size:12px;line-height:1.6;margin-top:5px;color:#858597}
+
+/* Course-wide transport beside Add Place; home icon style, matching outline. */
+.app-shell .editor-itinerary>.section-title{gap:7px;flex-wrap:wrap}
+.app-shell .editor-itinerary>.section-title>h2{margin-right:auto;flex-shrink:0}
+.app-shell .editor-transport-button{display:flex;align-items:center;justify-content:center;gap:4px;min-height:28px;padding:5px 8px;margin:0;border:1px solid var(--brand-main);border-radius:5px;background:white;color:var(--brand-main);font-size:14px;font-weight:400;line-height:1.5;flex-shrink:0}
+.editor-transport-options{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.editor-route-summary{font-size:12px;line-height:1.6;color:#858597;padding:7px 0;overflow-wrap:anywhere}
+.editor-route-summary small{display:block;font-size:12px}
+.editor-route-summary .text-link{font-size:12px;margin-top:4px}
+
+/* External results remain request/screen scoped, separate from saved places. */
+.kakao-live-search{padding:0 14px 12px;font-size:14px;flex-shrink:0}
+.kakao-search-trigger{font-size:14px;min-height:30px;padding:5px 10px;border-radius:5px}
+.kakao-live-search>h3{margin:12px 0 6px;font-size:16px}
+.kakao-live-search .muted{font-size:12px;line-height:1.6;margin:6px 0}
+.kakao-live-search .place-picker-map{margin:8px 0}
+.kakao-live-search .place-result{min-width:0;align-items:center;padding:10px 0;border:0;border-bottom:1px solid #eee}
+.kakao-live-search .place-result>div{min-width:0;flex:1}
+.kakao-live-search .place-result p{font-size:12px;overflow-wrap:anywhere}
+.kakao-live-search .place-result h3{font-size:16px;white-space:normal;overflow-wrap:anywhere}
+.kakao-live-search .picker-photo-button{width:64px;height:64px}
+.kakao-detail-backdrop{position:absolute;inset:0;z-index:40;background:#1f1b425c;display:flex;align-items:center;justify-content:center;padding:14px}
+.kakao-detail{background:white;border-radius:14px;padding:16px;width:100%;max-height:90%;overflow:auto;display:flex;flex-direction:column;gap:10px}
+.kakao-detail>img{width:100%;height:130px;object-fit:contain;border-radius:8px}
+.kakao-detail>h3,.kakao-detail>p{overflow-wrap:anywhere;white-space:normal}
+
+.app-shell .editor-place-tags{display:flex;gap:4px;min-width:0;overflow:hidden;margin:5px 0}.app-shell .editor-place-tags>span{font-size:12px;line-height:1.4;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:2px 5px;border-radius:5px;color:var(--brand-readable);background:var(--brand-soft)}
+

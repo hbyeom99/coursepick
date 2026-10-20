@@ -1,0 +1,9 @@
+{
+  "timeout_seconds": 28,
+  "request_timeout_seconds": 6,
+  "max_requests": 96,
+  "max_workers": 4,
+  "max_candidate_routes": 80,
+  "cache_ttl_seconds": 21600,
+  "cache_max_entries": 1024
+}

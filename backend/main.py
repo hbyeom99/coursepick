@@ -26,7 +26,9 @@ def health() -> dict[str, str]:
 
 
 @app.get("/api/places")
-def get_places(ids: str | None = None):
+def get_places(ids: str | None = None, offset: int = 0, limit: int | None = None):
+    if offset < 0 or (limit is not None and not 1 <= limit <= 500):
+        raise HTTPException(status_code=422, detail="잘못된 장소 페이지 범위입니다.")
     # Deployment environment variables take precedence over the local backend/.env.
     config = dotenv_values(Path(__file__).with_name(".env"), interpolate=False)
     url = (os.environ.get("SUPABASE_URL", config.get("SUPABASE_URL")) or "").strip()
@@ -42,8 +44,7 @@ def get_places(ids: str | None = None):
         )
         client = create_client(url, key, options=options)
         places = []
-        page_size = 1000
-        offset = 0
+        page_size = limit or 1000
         # Supabase limits each response; fetch all pages in a stable order.
         while True:
             request = client.table("places").select("*")
@@ -57,7 +58,7 @@ def get_places(ids: str | None = None):
             response = request.order("id").range(offset, offset + page_size - 1).execute()
             rows = response.data
             places.extend(rows)
-            if len(rows) < page_size:
+            if limit is not None or len(rows) < page_size:
                 break
             offset += len(rows)
         return places
@@ -360,7 +361,7 @@ def get_demo_course(course_id: str):
 
 @app.get("/api/transit-route")
 def transit_route(ids: str):
-    from tago_routes import TagoClient, TransitUnavailable, segment
+    from tago_routes import Settings, TagoClient, TransitUnavailable, segment
     stop_ids = ids.split(",")
     if not 2 <= len(stop_ids) <= 9 or any(not i.strip() for i in stop_ids) or any(a == b for a,b in zip(stop_ids,stop_ids[1:])):
         raise HTTPException(status_code=400, detail="이동할 장소 2~9개를 선택해 주세요.")
@@ -374,7 +375,11 @@ def transit_route(ids: str):
     for p in catalog.values():
         if any(not isinstance(p.get(k), (int,float)) or not math.isfinite(p[k]) for k in ("latitude","longitude")):
             raise HTTPException(status_code=400, detail="장소 좌표를 확인해 주세요.")
-    client = TagoClient(key)
+    try:
+        settings = Settings.load(config)
+    except (OSError, ValueError, TypeError):
+        raise HTTPException(status_code=503, detail="대중교통 조회 설정을 확인해 주세요.") from None
+    client = TagoClient(key, settings)
     try:
         segments=[segment(client,catalog[a],catalog[b]) for a,b in zip(stop_ids,stop_ids[1:])]
     except TransitUnavailable as error:
@@ -383,3 +388,7 @@ def transit_route(ids: str):
 
 from member_accounts import router as member_router
 app.include_router(member_router)
+
+# Live place search: separate from the persisted place catalogue.
+from kakao_place_search import router as kakao_place_search_router
+app.include_router(kakao_place_search_router)

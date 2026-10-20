@@ -1,0 +1,4132 @@
+{
+  "version": 1,
+  "aliases": {
+    "혼행": "혼자 여행",
+    "국내여행": "국내 여행",
+    "엑티비티": "액티비티",
+    "브루어리": "양조장",
+    "야영": "캠핑"
+  },
+  "entries": [
+    {
+      "term": "국내여행",
+      "group": "기본 검색",
+      "kind": "query"
+    },
+    {
+      "term": "국내 여행지 추천",
+      "group": "기본 검색",
+      "kind": "query"
+    },
+    {
+      "term": "당일치기 여행",
+      "group": "기본 검색",
+      "kind": "query"
+    },
+    {
+      "term": "주말 여행",
+      "group": "기본 검색",
+      "kind": "query"
+    },
+    {
+      "term": "1박 2일 여행",
+      "group": "기본 검색",
+      "kind": "query"
+    },
+    {
+      "term": "2박 3일 여행",
+      "group": "기본 검색",
+      "kind": "query"
+    },
+    {
+      "term": "서울 근교 여행",
+      "group": "기본 검색",
+      "kind": "query"
+    },
+    {
+      "term": "부산 여행",
+      "group": "기본 검색",
+      "kind": "query"
+    },
+    {
+      "term": "제주도 여행",
+      "group": "기본 검색",
+      "kind": "query"
+    },
+    {
+      "term": "강릉 여행",
+      "group": "기본 검색",
+      "kind": "query"
+    },
+    {
+      "term": "경주 여행",
+      "group": "기본 검색",
+      "kind": "query"
+    },
+    {
+      "term": "전주 여행",
+      "group": "기본 검색",
+      "kind": "query"
+    },
+    {
+      "term": "여수 여행",
+      "group": "기본 검색",
+      "kind": "query"
+    },
+    {
+      "term": "속초 여행",
+      "group": "기본 검색",
+      "kind": "query"
+    },
+    {
+      "term": "가평 여행",
+      "group": "기본 검색",
+      "kind": "query"
+    },
+    {
+      "term": "데이트 코스",
+      "group": "기본 검색",
+      "kind": "query"
+    },
+    {
+      "term": "서울 데이트 코스",
+      "group": "기본 검색",
+      "kind": "query"
+    },
+    {
+      "term": "실내 데이트",
+      "group": "기본 검색",
+      "kind": "query"
+    },
+    {
+      "term": "드라이브 코스",
+      "group": "기본 검색",
+      "kind": "query"
+    },
+    {
+      "term": "뚜벅이 여행",
+      "group": "기본 검색",
+      "kind": "query"
+    },
+    {
+      "term": "혼자 여행",
+      "group": "기본 검색",
+      "kind": "query"
+    },
+    {
+      "term": "가족 여행",
+      "group": "기본 검색",
+      "kind": "query"
+    },
+    {
+      "term": "아이와 가볼만한 곳",
+      "group": "기본 검색",
+      "kind": "query"
+    },
+    {
+      "term": "반려견 동반 여행",
+      "group": "기본 검색",
+      "kind": "query"
+    },
+    {
+      "term": "힐링 여행",
+      "group": "기본 검색",
+      "kind": "query"
+    },
+    {
+      "term": "감성 카페",
+      "group": "기본 검색",
+      "kind": "query"
+    },
+    {
+      "term": "오션뷰 카페",
+      "group": "기본 검색",
+      "kind": "query"
+    },
+    {
+      "term": "맛집 투어",
+      "group": "기본 검색",
+      "kind": "query"
+    },
+    {
+      "term": "여행 코스 추천",
+      "group": "기본 검색",
+      "kind": "query"
+    },
+    {
+      "term": "가볼만한 곳",
+      "group": "기본 검색",
+      "kind": "query"
+    },
+    {
+      "term": "힐링",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "감성",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "여유",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "휴식",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "조용한",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "한적한",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "평화로운",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "낭만",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "로맨틱",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "아늑한",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "따뜻한",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "포근한",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "차분한",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "잔잔한",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "몽환적인",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "신비로운",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "이국적인",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "빈티지",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "레트로",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "고즈넉한",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "소박한",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "자연친화적인",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "활기찬",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "신나는",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "설레는",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "특별한",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "색다른",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "이색적인",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "독특한",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "트렌디한",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "핫플",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "인생샷",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "감성적인",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "아기자기한",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "예쁜",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "아름다운",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "풍경 좋은",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "탁 트인",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "숨은 명소",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "로컬 감성",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "느린 여행",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "도심 속 휴식",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "비밀스러운",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "영화 같은",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "동화 같은",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "낭만적인 밤",
+      "group": "여행 분위기·감성",
+      "kind": "place"
+    },
+    {
+      "term": "바다",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "해변",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "해수욕장",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "파도",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "모래사장",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "갯벌",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "섬",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "무인도",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "등대",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "항구",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "어촌",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "해안도로",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "오션뷰",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "해안 산책로",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "산",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "등산",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "트레킹",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "숲",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "숲길",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "산책로",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "둘레길",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "계곡",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "폭포",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "호수",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "강",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "강변",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "하천",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "습지",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "갈대밭",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "억새밭",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "꽃밭",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "정원",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "수목원",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "식물원",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "동굴",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "절벽",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "전망대",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "일출",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "일몰",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "노을",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "별",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "별빛",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "별구경",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "은하수",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "야경",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "단풍",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "벚꽃",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "유채꽃",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "수국",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "라벤더",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "핑크뮬리",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "메타세쿼이아",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "대나무숲",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "편백숲",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "소나무숲",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "초원",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "들판",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "농촌 풍경",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "설경",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "눈꽃",
+      "group": "자연·풍경",
+      "kind": "place"
+    },
+    {
+      "term": "맛집",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "현지인 맛집",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "로컬 맛집",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "숨은 맛집",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "노포",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "가성비 맛집",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "혼밥",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "한식",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "중식",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "일식",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "양식",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "퓨전음식",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "분식",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "백반",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "국밥",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "칼국수",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "냉면",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "막국수",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "비빔밥",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "고기",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "삼겹살",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "한우",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "바비큐",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "해산물",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "회",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "조개구이",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "물회",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "해물탕",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "생선구이",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "장어",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "초밥",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "라멘",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "우동",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "돈가스",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "파스타",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "피자",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "햄버거",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "브런치",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "샌드위치",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "샐러드",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "비건",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "채식",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "디저트",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "베이커리",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "빵지순례",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "시장 먹거리",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "길거리 음식",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "포장마차",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "야식",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "전통주",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "수제맥주",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "와인바",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "칵테일바",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "루프탑바",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "오마카세",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "파인다이닝",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "미식 여행",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "먹방 여행",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "푸드투어",
+      "group": "맛집·음식",
+      "kind": "place"
+    },
+    {
+      "term": "카페",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "대형 카페",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "소형 카페",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "개인 카페",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "로스터리 카페",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "스페셜티 커피",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "핸드드립",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "디카페인",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "드립커피",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "브런치 카페",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "베이커리 카페",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "디저트 카페",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "한옥 카페",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "북카페",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "독립서점 카페",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "식물 카페",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "정원 카페",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "숲속 카페",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "산속 카페",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "계곡 카페",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "리버뷰 카페",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "레이크뷰 카페",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "루프탑 카페",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "테라스 카페",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "야외 카페",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "노을 카페",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "뷰맛집 카페",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "사진 찍기 좋은 카페",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "조용한 카페",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "작업하기 좋은 카페",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "공부하기 좋은 카페",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "반려동물 동반 카페",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "키즈 카페",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "이색 카페",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "전통찻집",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "말차",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "빙수",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "아이스크림",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "케이크",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "도넛",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "크루아상",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "소금빵",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "휘낭시에",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "마들렌",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "푸딩",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "타르트",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "수제 디저트",
+      "group": "카페·디저트",
+      "kind": "place"
+    },
+    {
+      "term": "미술관",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "박물관",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "전시회",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "기획전",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "사진전",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "미디어아트",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "갤러리",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "아트센터",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "문화센터",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "복합문화공간",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "공연",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "콘서트",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "뮤지컬",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "연극",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "독립영화관",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "영화관",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "소극장",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "재즈 공연",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "버스킹",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "책방",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "독립서점",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "헌책방",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "도서관",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "문학관",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "역사 여행",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "역사 유적지",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "문화유산",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "세계유산",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "고궁",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "궁궐",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "성곽",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "한옥마을",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "전통마을",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "민속촌",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "사찰",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "절",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "성당",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "근대 건축",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "근현대사",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "기념관",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "전통시장",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "공방",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "도자기",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "공예",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "전통문화",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "한복 체험",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "문화해설",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "건축 여행",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "골목 여행",
+      "group": "문화·예술·역사",
+      "kind": "place"
+    },
+    {
+      "term": "액티비티",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "체험",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "이색 체험",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "원데이 클래스",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "도자기 체험",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "향수 만들기",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "반지 만들기",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "캔들 만들기",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "가죽공예",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "쿠킹 클래스",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "베이킹 클래스",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "꽃꽂이",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "드로잉",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "그림 그리기",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "목공 체험",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "서핑",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "스노클링",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "스쿠버다이빙",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "카약",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "카누",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "패들보드",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "수상스키",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "웨이크보드",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "요트",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "유람선",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "낚시",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "승마",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "패러글라이딩",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "짚라인",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "번지점프",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "루지",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "카트",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "레일바이크",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "ATV",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "자전거",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "전기자전거",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "클라이밍",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "볼링",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "당구",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "방탈출",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "보드게임",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "VR 체험",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "실내 스포츠",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "테마파크",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "놀이공원",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "워터파크",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "동물원",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "아쿠아리움",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "농장 체험",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "과일 따기",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "캠핑",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "글램핑",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "차박",
+      "group": "액티비티·체험",
+      "kind": "place"
+    },
+    {
+      "term": "혼자 힐링",
+      "group": "여행 동행인",
+      "kind": "companion"
+    },
+    {
+      "term": "혼자 드라이브",
+      "group": "여행 동행인",
+      "kind": "companion"
+    },
+    {
+      "term": "혼자 카페",
+      "group": "여행 동행인",
+      "kind": "companion"
+    },
+    {
+      "term": "혼밥 여행",
+      "group": "여행 동행인",
+      "kind": "companion"
+    },
+    {
+      "term": "커플 여행",
+      "group": "여행 동행인",
+      "kind": "companion"
+    },
+    {
+      "term": "데이트",
+      "group": "여행 동행인",
+      "kind": "companion"
+    },
+    {
+      "term": "첫 데이트",
+      "group": "여행 동행인",
+      "kind": "companion"
+    },
+    {
+      "term": "기념일 데이트",
+      "group": "여행 동행인",
+      "kind": "companion"
+    },
+    {
+      "term": "이색 데이트",
+      "group": "여행 동행인",
+      "kind": "companion"
+    },
+    {
+      "term": "야외 데이트",
+      "group": "여행 동행인",
+      "kind": "companion"
+    },
+    {
+      "term": "드라이브 데이트",
+      "group": "여행 동행인",
+      "kind": "companion"
+    },
+    {
+      "term": "부부 여행",
+      "group": "여행 동행인",
+      "kind": "companion"
+    },
+    {
+      "term": "신혼여행",
+      "group": "여행 동행인",
+      "kind": "companion"
+    },
+    {
+      "term": "친구 여행",
+      "group": "여행 동행인",
+      "kind": "companion"
+    },
+    {
+      "term": "우정 여행",
+      "group": "여행 동행인",
+      "kind": "companion"
+    },
+    {
+      "term": "여자끼리 여행",
+      "group": "여행 동행인",
+      "kind": "companion"
+    },
+    {
+      "term": "남자끼리 여행",
+      "group": "여행 동행인",
+      "kind": "companion"
+    },
+    {
+      "term": "부모님 여행",
+      "group": "여행 동행인",
+      "kind": "companion"
+    },
+    {
+      "term": "효도 여행",
+      "group": "여행 동행인",
+      "kind": "companion"
+    },
+    {
+      "term": "아이와 여행",
+      "group": "여행 동행인",
+      "kind": "companion"
+    },
+    {
+      "term": "아기와 여행",
+      "group": "여행 동행인",
+      "kind": "companion"
+    },
+    {
+      "term": "유아 동반",
+      "group": "여행 동행인",
+      "kind": "companion"
+    },
+    {
+      "term": "초등학생 동반",
+      "group": "여행 동행인",
+      "kind": "companion"
+    },
+    {
+      "term": "청소년 여행",
+      "group": "여행 동행인",
+      "kind": "companion"
+    },
+    {
+      "term": "3대 가족 여행",
+      "group": "여행 동행인",
+      "kind": "companion"
+    },
+    {
+      "term": "대가족 여행",
+      "group": "여행 동행인",
+      "kind": "companion"
+    },
+    {
+      "term": "반려견 동반",
+      "group": "여행 동행인",
+      "kind": "companion"
+    },
+    {
+      "term": "반려동물 여행",
+      "group": "여행 동행인",
+      "kind": "companion"
+    },
+    {
+      "term": "직장 동료 여행",
+      "group": "여행 동행인",
+      "kind": "companion"
+    },
+    {
+      "term": "단체 여행",
+      "group": "여행 동행인",
+      "kind": "companion"
+    },
+    {
+      "term": "소규모 여행",
+      "group": "여행 동행인",
+      "kind": "companion"
+    },
+    {
+      "term": "동호회 여행",
+      "group": "여행 동행인",
+      "kind": "companion"
+    },
+    {
+      "term": "졸업 여행",
+      "group": "여행 동행인",
+      "kind": "companion"
+    },
+    {
+      "term": "생일 여행",
+      "group": "여행 동행인",
+      "kind": "companion"
+    },
+    {
+      "term": "반나절 여행",
+      "group": "여행 기간·시간대",
+      "kind": "course"
+    },
+    {
+      "term": "2시간 코스",
+      "group": "여행 기간·시간대",
+      "kind": "course"
+    },
+    {
+      "term": "3시간 코스",
+      "group": "여행 기간·시간대",
+      "kind": "course"
+    },
+    {
+      "term": "4시간 코스",
+      "group": "여행 기간·시간대",
+      "kind": "course"
+    },
+    {
+      "term": "오전 여행",
+      "group": "여행 기간·시간대",
+      "kind": "course"
+    },
+    {
+      "term": "오후 여행",
+      "group": "여행 기간·시간대",
+      "kind": "course"
+    },
+    {
+      "term": "저녁 여행",
+      "group": "여행 기간·시간대",
+      "kind": "course"
+    },
+    {
+      "term": "야간 여행",
+      "group": "여행 기간·시간대",
+      "kind": "course"
+    },
+    {
+      "term": "새벽 여행",
+      "group": "여행 기간·시간대",
+      "kind": "course"
+    },
+    {
+      "term": "당일치기",
+      "group": "여행 기간·시간대",
+      "kind": "course"
+    },
+    {
+      "term": "하루 여행",
+      "group": "여행 기간·시간대",
+      "kind": "course"
+    },
+    {
+      "term": "1박 2일",
+      "group": "여행 기간·시간대",
+      "kind": "course"
+    },
+    {
+      "term": "2박 3일",
+      "group": "여행 기간·시간대",
+      "kind": "course"
+    },
+    {
+      "term": "3박 4일",
+      "group": "여행 기간·시간대",
+      "kind": "course"
+    },
+    {
+      "term": "4박 5일",
+      "group": "여행 기간·시간대",
+      "kind": "course"
+    },
+    {
+      "term": "주중 여행",
+      "group": "여행 기간·시간대",
+      "kind": "course"
+    },
+    {
+      "term": "퇴근 후 여행",
+      "group": "여행 기간·시간대",
+      "kind": "course"
+    },
+    {
+      "term": "금요일 밤 여행",
+      "group": "여행 기간·시간대",
+      "kind": "course"
+    },
+    {
+      "term": "토요일 여행",
+      "group": "여행 기간·시간대",
+      "kind": "course"
+    },
+    {
+      "term": "일요일 여행",
+      "group": "여행 기간·시간대",
+      "kind": "course"
+    },
+    {
+      "term": "연휴 여행",
+      "group": "여행 기간·시간대",
+      "kind": "course"
+    },
+    {
+      "term": "장기 여행",
+      "group": "여행 기간·시간대",
+      "kind": "course"
+    },
+    {
+      "term": "단기 여행",
+      "group": "여행 기간·시간대",
+      "kind": "course"
+    },
+    {
+      "term": "즉흥 여행",
+      "group": "여행 기간·시간대",
+      "kind": "course"
+    },
+    {
+      "term": "번개 여행",
+      "group": "여행 기간·시간대",
+      "kind": "course"
+    },
+    {
+      "term": "일출 코스",
+      "group": "여행 기간·시간대",
+      "kind": "course"
+    },
+    {
+      "term": "일몰 코스",
+      "group": "여행 기간·시간대",
+      "kind": "course"
+    },
+    {
+      "term": "야경 코스",
+      "group": "여행 기간·시간대",
+      "kind": "course"
+    },
+    {
+      "term": "밤 산책",
+      "group": "여행 기간·시간대",
+      "kind": "course"
+    },
+    {
+      "term": "심야 데이트",
+      "group": "여행 기간·시간대",
+      "kind": "course"
+    },
+    {
+      "term": "새벽 드라이브",
+      "group": "여행 기간·시간대",
+      "kind": "course"
+    },
+    {
+      "term": "뚜벅이",
+      "group": "이동 수단·동선",
+      "kind": "transport"
+    },
+    {
+      "term": "도보 여행",
+      "group": "이동 수단·동선",
+      "kind": "transport"
+    },
+    {
+      "term": "걷기 여행",
+      "group": "이동 수단·동선",
+      "kind": "transport"
+    },
+    {
+      "term": "산책 여행",
+      "group": "이동 수단·동선",
+      "kind": "transport"
+    },
+    {
+      "term": "대중교통 여행",
+      "group": "이동 수단·동선",
+      "kind": "transport"
+    },
+    {
+      "term": "버스 여행",
+      "group": "이동 수단·동선",
+      "kind": "transport"
+    },
+    {
+      "term": "기차 여행",
+      "group": "이동 수단·동선",
+      "kind": "transport"
+    },
+    {
+      "term": "KTX 여행",
+      "group": "이동 수단·동선",
+      "kind": "transport"
+    },
+    {
+      "term": "지하철 여행",
+      "group": "이동 수단·동선",
+      "kind": "transport"
+    },
+    {
+      "term": "택시 여행",
+      "group": "이동 수단·동선",
+      "kind": "transport"
+    },
+    {
+      "term": "렌터카 여행",
+      "group": "이동 수단·동선",
+      "kind": "transport"
+    },
+    {
+      "term": "자차 여행",
+      "group": "이동 수단·동선",
+      "kind": "transport"
+    },
+    {
+      "term": "드라이브",
+      "group": "이동 수단·동선",
+      "kind": "transport"
+    },
+    {
+      "term": "해안도로 드라이브",
+      "group": "이동 수단·동선",
+      "kind": "transport"
+    },
+    {
+      "term": "산길 드라이브",
+      "group": "이동 수단·동선",
+      "kind": "transport"
+    },
+    {
+      "term": "야경 드라이브",
+      "group": "이동 수단·동선",
+      "kind": "transport"
+    },
+    {
+      "term": "자전거 여행",
+      "group": "이동 수단·동선",
+      "kind": "transport"
+    },
+    {
+      "term": "라이딩",
+      "group": "이동 수단·동선",
+      "kind": "transport"
+    },
+    {
+      "term": "오토바이 투어",
+      "group": "이동 수단·동선",
+      "kind": "transport"
+    },
+    {
+      "term": "전기자전거 여행",
+      "group": "이동 수단·동선",
+      "kind": "transport"
+    },
+    {
+      "term": "주차 편한 곳",
+      "group": "이동 수단·동선",
+      "kind": "transport"
+    },
+    {
+      "term": "무료 주차",
+      "group": "이동 수단·동선",
+      "kind": "transport"
+    },
+    {
+      "term": "역 근처",
+      "group": "이동 수단·동선",
+      "kind": "transport"
+    },
+    {
+      "term": "터미널 근처",
+      "group": "이동 수단·동선",
+      "kind": "transport"
+    },
+    {
+      "term": "공항 근처",
+      "group": "이동 수단·동선",
+      "kind": "transport"
+    },
+    {
+      "term": "도보 10분",
+      "group": "이동 수단·동선",
+      "kind": "transport"
+    },
+    {
+      "term": "도보 30분",
+      "group": "이동 수단·동선",
+      "kind": "transport"
+    },
+    {
+      "term": "이동거리 짧은 코스",
+      "group": "이동 수단·동선",
+      "kind": "transport"
+    },
+    {
+      "term": "동선 좋은 여행",
+      "group": "이동 수단·동선",
+      "kind": "transport"
+    },
+    {
+      "term": "가까운 장소",
+      "group": "이동 수단·동선",
+      "kind": "transport"
+    },
+    {
+      "term": "한 지역 집중",
+      "group": "이동 수단·동선",
+      "kind": "transport"
+    },
+    {
+      "term": "순환 코스",
+      "group": "이동 수단·동선",
+      "kind": "transport"
+    },
+    {
+      "term": "편도 코스",
+      "group": "이동 수단·동선",
+      "kind": "transport"
+    },
+    {
+      "term": "교통 편한 여행",
+      "group": "이동 수단·동선",
+      "kind": "transport"
+    },
+    {
+      "term": "환승 적은 코스",
+      "group": "이동 수단·동선",
+      "kind": "transport"
+    },
+    {
+      "term": "휴양",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "관광",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "명소 탐방",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "맛집 탐방",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "카페 투어",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "사진 여행",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "출사",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "인생샷 투어",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "풍경 감상",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "자연 감상",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "산책",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "걷기",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "쇼핑",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "시장 구경",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "문화 탐방",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "역사 탐방",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "전시 관람",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "공연 관람",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "독서 여행",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "서점 투어",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "건축 탐방",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "성지순례",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "촬영지 투어",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "드라마 촬영지",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "영화 촬영지",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "K팝 여행",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "아이돌 성지",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "스탬프 투어",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "지역 축제",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "축제 투어",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "온천 여행",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "스파",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "사우나",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "찜질방",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "명상",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "요가",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "웰니스",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "디지털 디톡스",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "기분 전환",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "스트레스 해소",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "리프레시",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "추억 만들기",
+      "group": "여행 목적·활동",
+      "kind": "place"
+    },
+    {
+      "term": "봄 여행",
+      "group": "계절·날씨",
+      "kind": "place"
+    },
+    {
+      "term": "여름 여행",
+      "group": "계절·날씨",
+      "kind": "place"
+    },
+    {
+      "term": "가을 여행",
+      "group": "계절·날씨",
+      "kind": "place"
+    },
+    {
+      "term": "겨울 여행",
+      "group": "계절·날씨",
+      "kind": "place"
+    },
+    {
+      "term": "봄꽃 여행",
+      "group": "계절·날씨",
+      "kind": "place"
+    },
+    {
+      "term": "벚꽃 여행",
+      "group": "계절·날씨",
+      "kind": "place"
+    },
+    {
+      "term": "꽃놀이",
+      "group": "계절·날씨",
+      "kind": "place"
+    },
+    {
+      "term": "피크닉",
+      "group": "계절·날씨",
+      "kind": "place"
+    },
+    {
+      "term": "여름 휴가",
+      "group": "계절·날씨",
+      "kind": "place"
+    },
+    {
+      "term": "피서",
+      "group": "계절·날씨",
+      "kind": "place"
+    },
+    {
+      "term": "물놀이",
+      "group": "계절·날씨",
+      "kind": "place"
+    },
+    {
+      "term": "가을 단풍",
+      "group": "계절·날씨",
+      "kind": "place"
+    },
+    {
+      "term": "단풍 명소",
+      "group": "계절·날씨",
+      "kind": "place"
+    },
+    {
+      "term": "억새 명소",
+      "group": "계절·날씨",
+      "kind": "place"
+    },
+    {
+      "term": "겨울 바다",
+      "group": "계절·날씨",
+      "kind": "place"
+    },
+    {
+      "term": "눈 구경",
+      "group": "계절·날씨",
+      "kind": "place"
+    },
+    {
+      "term": "설경 명소",
+      "group": "계절·날씨",
+      "kind": "place"
+    },
+    {
+      "term": "크리스마스",
+      "group": "계절·날씨",
+      "kind": "place"
+    },
+    {
+      "term": "연말 여행",
+      "group": "계절·날씨",
+      "kind": "place"
+    },
+    {
+      "term": "연초 여행",
+      "group": "계절·날씨",
+      "kind": "place"
+    },
+    {
+      "term": "비 오는 날",
+      "group": "계절·날씨",
+      "kind": "place"
+    },
+    {
+      "term": "장마철 여행",
+      "group": "계절·날씨",
+      "kind": "place"
+    },
+    {
+      "term": "우중 산책",
+      "group": "계절·날씨",
+      "kind": "place"
+    },
+    {
+      "term": "비 오는 날 데이트",
+      "group": "계절·날씨",
+      "kind": "place"
+    },
+    {
+      "term": "실내 여행",
+      "group": "계절·날씨",
+      "kind": "place"
+    },
+    {
+      "term": "눈 오는 날",
+      "group": "계절·날씨",
+      "kind": "place"
+    },
+    {
+      "term": "눈 오는 날 데이트",
+      "group": "계절·날씨",
+      "kind": "place"
+    },
+    {
+      "term": "맑은 날",
+      "group": "계절·날씨",
+      "kind": "place"
+    },
+    {
+      "term": "흐린 날",
+      "group": "계절·날씨",
+      "kind": "place"
+    },
+    {
+      "term": "더운 날",
+      "group": "계절·날씨",
+      "kind": "place"
+    },
+    {
+      "term": "추운 날",
+      "group": "계절·날씨",
+      "kind": "place"
+    },
+    {
+      "term": "미세먼지 심한 날",
+      "group": "계절·날씨",
+      "kind": "place"
+    },
+    {
+      "term": "바람 부는 날",
+      "group": "계절·날씨",
+      "kind": "place"
+    },
+    {
+      "term": "쾌적한 실내",
+      "group": "계절·날씨",
+      "kind": "place"
+    },
+    {
+      "term": "그늘 많은 곳",
+      "group": "계절·날씨",
+      "kind": "place"
+    },
+    {
+      "term": "시원한 곳",
+      "group": "계절·날씨",
+      "kind": "place"
+    },
+    {
+      "term": "따뜻한 곳",
+      "group": "계절·날씨",
+      "kind": "place"
+    },
+    {
+      "term": "무료 여행",
+      "group": "여행 예산·가격",
+      "kind": "budget"
+    },
+    {
+      "term": "무료 관광지",
+      "group": "여행 예산·가격",
+      "kind": "budget"
+    },
+    {
+      "term": "무료 전시",
+      "group": "여행 예산·가격",
+      "kind": "budget"
+    },
+    {
+      "term": "무료 체험",
+      "group": "여행 예산·가격",
+      "kind": "budget"
+    },
+    {
+      "term": "가성비 여행",
+      "group": "여행 예산·가격",
+      "kind": "budget"
+    },
+    {
+      "term": "저예산 여행",
+      "group": "여행 예산·가격",
+      "kind": "budget"
+    },
+    {
+      "term": "알뜰 여행",
+      "group": "여행 예산·가격",
+      "kind": "budget"
+    },
+    {
+      "term": "학생 여행",
+      "group": "여행 예산·가격",
+      "kind": "budget"
+    },
+    {
+      "term": "대학생 여행",
+      "group": "여행 예산·가격",
+      "kind": "budget"
+    },
+    {
+      "term": "1만원 코스",
+      "group": "여행 예산·가격",
+      "kind": "budget"
+    },
+    {
+      "term": "2만원 코스",
+      "group": "여행 예산·가격",
+      "kind": "budget"
+    },
+    {
+      "term": "3만원 코스",
+      "group": "여행 예산·가격",
+      "kind": "budget"
+    },
+    {
+      "term": "5만원 코스",
+      "group": "여행 예산·가격",
+      "kind": "budget"
+    },
+    {
+      "term": "10만원 이하 여행",
+      "group": "여행 예산·가격",
+      "kind": "budget"
+    },
+    {
+      "term": "저렴한 데이트",
+      "group": "여행 예산·가격",
+      "kind": "budget"
+    },
+    {
+      "term": "돈 안 드는 데이트",
+      "group": "여행 예산·가격",
+      "kind": "budget"
+    },
+    {
+      "term": "입장료 없는 곳",
+      "group": "여행 예산·가격",
+      "kind": "budget"
+    },
+    {
+      "term": "주차비 없는 곳",
+      "group": "여행 예산·가격",
+      "kind": "budget"
+    },
+    {
+      "term": "가성비 카페",
+      "group": "여행 예산·가격",
+      "kind": "budget"
+    },
+    {
+      "term": "럭셔리 여행",
+      "group": "여행 예산·가격",
+      "kind": "budget"
+    },
+    {
+      "term": "프리미엄 여행",
+      "group": "여행 예산·가격",
+      "kind": "budget"
+    },
+    {
+      "term": "호캉스",
+      "group": "여행 예산·가격",
+      "kind": "budget"
+    },
+    {
+      "term": "특별한 날",
+      "group": "여행 예산·가격",
+      "kind": "budget"
+    },
+    {
+      "term": "기념일 코스",
+      "group": "여행 예산·가격",
+      "kind": "budget"
+    },
+    {
+      "term": "고급 레스토랑",
+      "group": "여행 예산·가격",
+      "kind": "budget"
+    },
+    {
+      "term": "프라이빗 투어",
+      "group": "여행 예산·가격",
+      "kind": "budget"
+    },
+    {
+      "term": "서울",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "경기",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "인천",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "강원",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "강릉",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "속초",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "양양",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "춘천",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "원주",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "평창",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "동해",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "삼척",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "부산",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "해운대",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "광안리",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "기장",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "대구",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "경주",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "포항",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "울산",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "광주",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "담양",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "나주",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "화순",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "순천",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "여수",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "광양",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "목포",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "해남",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "완도",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "보성",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "구례",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "전주",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "군산",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "익산",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "남원",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "대전",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "세종",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "공주",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "부여",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "천안",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "아산",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "청주",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "충주",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "제천",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "단양",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "태안",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "보령",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "서산",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "안면도",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "제주",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "서귀포",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "애월",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "협재",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "성산",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "우도",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "서울 근교",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "수도권",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "경기도 근교",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "전라도 여행",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "경상도 여행",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "충청도 여행",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "강원도 여행",
+      "group": "지역·목적지",
+      "kind": "region"
+    },
+    {
+      "term": "공원",
+      "group": "장소 유형·시설",
+      "kind": "place"
+    },
+    {
+      "term": "도시공원",
+      "group": "장소 유형·시설",
+      "kind": "place"
+    },
+    {
+      "term": "국립공원",
+      "group": "장소 유형·시설",
+      "kind": "place"
+    },
+    {
+      "term": "자연휴양림",
+      "group": "장소 유형·시설",
+      "kind": "place"
+    },
+    {
+      "term": "광장",
+      "group": "장소 유형·시설",
+      "kind": "place"
+    },
+    {
+      "term": "전망타워",
+      "group": "장소 유형·시설",
+      "kind": "place"
+    },
+    {
+      "term": "스카이워크",
+      "group": "장소 유형·시설",
+      "kind": "place"
+    },
+    {
+      "term": "출렁다리",
+      "group": "장소 유형·시설",
+      "kind": "place"
+    },
+    {
+      "term": "케이블카",
+      "group": "장소 유형·시설",
+      "kind": "place"
+    },
+    {
+      "term": "모노레일",
+      "group": "장소 유형·시설",
+      "kind": "place"
+    },
+    {
+      "term": "유람선 선착장",
+      "group": "장소 유형·시설",
+      "kind": "place"
+    },
+    {
+      "term": "관광열차",
+      "group": "장소 유형·시설",
+      "kind": "place"
+    },
+    {
+      "term": "기차역",
+      "group": "장소 유형·시설",
+      "kind": "place"
+    },
+    {
+      "term": "야시장",
+      "group": "장소 유형·시설",
+      "kind": "place"
+    },
+    {
+      "term": "플리마켓",
+      "group": "장소 유형·시설",
+      "kind": "place"
+    },
+    {
+      "term": "쇼핑몰",
+      "group": "장소 유형·시설",
+      "kind": "place"
+    },
+    {
+      "term": "아울렛",
+      "group": "장소 유형·시설",
+      "kind": "place"
+    },
+    {
+      "term": "편집숍",
+      "group": "장소 유형·시설",
+      "kind": "place"
+    },
+    {
+      "term": "소품샵",
+      "group": "장소 유형·시설",
+      "kind": "place"
+    },
+    {
+      "term": "문구점",
+      "group": "장소 유형·시설",
+      "kind": "place"
+    },
+    {
+      "term": "빈티지숍",
+      "group": "장소 유형·시설",
+      "kind": "place"
+    },
+    {
+      "term": "서점",
+      "group": "장소 유형·시설",
+      "kind": "place"
+    },
+    {
+      "term": "전시장",
+      "group": "장소 유형·시설",
+      "kind": "place"
+    },
+    {
+      "term": "체험장",
+      "group": "장소 유형·시설",
+      "kind": "place"
+    },
+    {
+      "term": "농장",
+      "group": "장소 유형·시설",
+      "kind": "place"
+    },
+    {
+      "term": "목장",
+      "group": "장소 유형·시설",
+      "kind": "place"
+    },
+    {
+      "term": "캠핑장",
+      "group": "장소 유형·시설",
+      "kind": "place"
+    },
+    {
+      "term": "글램핑장",
+      "group": "장소 유형·시설",
+      "kind": "place"
+    },
+    {
+      "term": "펜션",
+      "group": "장소 유형·시설",
+      "kind": "place"
+    },
+    {
+      "term": "리조트",
+      "group": "장소 유형·시설",
+      "kind": "place"
+    },
+    {
+      "term": "호텔",
+      "group": "장소 유형·시설",
+      "kind": "place"
+    },
+    {
+      "term": "게스트하우스",
+      "group": "장소 유형·시설",
+      "kind": "place"
+    },
+    {
+      "term": "한옥스테이",
+      "group": "장소 유형·시설",
+      "kind": "place"
+    },
+    {
+      "term": "온천",
+      "group": "장소 유형·시설",
+      "kind": "place"
+    },
+    {
+      "term": "루프탑",
+      "group": "장소 유형·시설",
+      "kind": "place"
+    },
+    {
+      "term": "포토존",
+      "group": "장소 유형·시설",
+      "kind": "place"
+    },
+    {
+      "term": "숙소",
+      "group": "숙박·스테이",
+      "kind": "place"
+    },
+    {
+      "term": "숙박",
+      "group": "숙박·스테이",
+      "kind": "place"
+    },
+    {
+      "term": "풀빌라",
+      "group": "숙박·스테이",
+      "kind": "place"
+    },
+    {
+      "term": "독채 숙소",
+      "group": "숙박·스테이",
+      "kind": "place"
+    },
+    {
+      "term": "감성 숙소",
+      "group": "숙박·스테이",
+      "kind": "place"
+    },
+    {
+      "term": "한옥 숙소",
+      "group": "숙박·스테이",
+      "kind": "place"
+    },
+    {
+      "term": "호스텔",
+      "group": "숙박·스테이",
+      "kind": "place"
+    },
+    {
+      "term": "카라반",
+      "group": "숙박·스테이",
+      "kind": "place"
+    },
+    {
+      "term": "오션뷰 숙소",
+      "group": "숙박·스테이",
+      "kind": "place"
+    },
+    {
+      "term": "마운틴뷰 숙소",
+      "group": "숙박·스테이",
+      "kind": "place"
+    },
+    {
+      "term": "숲속 숙소",
+      "group": "숙박·스테이",
+      "kind": "place"
+    },
+    {
+      "term": "호수뷰 숙소",
+      "group": "숙박·스테이",
+      "kind": "place"
+    },
+    {
+      "term": "노천탕 숙소",
+      "group": "숙박·스테이",
+      "kind": "place"
+    },
+    {
+      "term": "자쿠지 숙소",
+      "group": "숙박·스테이",
+      "kind": "place"
+    },
+    {
+      "term": "수영장 숙소",
+      "group": "숙박·스테이",
+      "kind": "place"
+    },
+    {
+      "term": "온수풀",
+      "group": "숙박·스테이",
+      "kind": "place"
+    },
+    {
+      "term": "스파 펜션",
+      "group": "숙박·스테이",
+      "kind": "place"
+    },
+    {
+      "term": "프라이빗 숙소",
+      "group": "숙박·스테이",
+      "kind": "place"
+    },
+    {
+      "term": "커플 숙소",
+      "group": "숙박·스테이",
+      "kind": "place"
+    },
+    {
+      "term": "가족 숙소",
+      "group": "숙박·스테이",
+      "kind": "place"
+    },
+    {
+      "term": "단체 숙소",
+      "group": "숙박·스테이",
+      "kind": "place"
+    },
+    {
+      "term": "반려동물 동반 숙소",
+      "group": "숙박·스테이",
+      "kind": "place"
+    },
+    {
+      "term": "조식 맛집 숙소",
+      "group": "숙박·스테이",
+      "kind": "place"
+    },
+    {
+      "term": "역 근처 숙소",
+      "group": "숙박·스테이",
+      "kind": "place"
+    },
+    {
+      "term": "가성비 숙소",
+      "group": "숙박·스테이",
+      "kind": "place"
+    },
+    {
+      "term": "럭셔리 호텔",
+      "group": "숙박·스테이",
+      "kind": "place"
+    },
+    {
+      "term": "워케이션",
+      "group": "숙박·스테이",
+      "kind": "place"
+    },
+    {
+      "term": "사진 명소",
+      "group": "사진·SNS",
+      "kind": "place"
+    },
+    {
+      "term": "출사 명소",
+      "group": "사진·SNS",
+      "kind": "place"
+    },
+    {
+      "term": "감성 사진",
+      "group": "사진·SNS",
+      "kind": "place"
+    },
+    {
+      "term": "풍경 사진",
+      "group": "사진·SNS",
+      "kind": "place"
+    },
+    {
+      "term": "인물 사진",
+      "group": "사진·SNS",
+      "kind": "place"
+    },
+    {
+      "term": "커플 사진",
+      "group": "사진·SNS",
+      "kind": "place"
+    },
+    {
+      "term": "우정 사진",
+      "group": "사진·SNS",
+      "kind": "place"
+    },
+    {
+      "term": "필름 감성",
+      "group": "사진·SNS",
+      "kind": "place"
+    },
+    {
+      "term": "빈티지 감성",
+      "group": "사진·SNS",
+      "kind": "place"
+    },
+    {
+      "term": "레트로 감성",
+      "group": "사진·SNS",
+      "kind": "place"
+    },
+    {
+      "term": "한옥 포토존",
+      "group": "사진·SNS",
+      "kind": "place"
+    },
+    {
+      "term": "꽃밭 포토존",
+      "group": "사진·SNS",
+      "kind": "place"
+    },
+    {
+      "term": "바다 포토존",
+      "group": "사진·SNS",
+      "kind": "place"
+    },
+    {
+      "term": "숲 포토존",
+      "group": "사진·SNS",
+      "kind": "place"
+    },
+    {
+      "term": "노을 사진",
+      "group": "사진·SNS",
+      "kind": "place"
+    },
+    {
+      "term": "일출 사진",
+      "group": "사진·SNS",
+      "kind": "place"
+    },
+    {
+      "term": "야경 사진",
+      "group": "사진·SNS",
+      "kind": "place"
+    },
+    {
+      "term": "건축 사진",
+      "group": "사진·SNS",
+      "kind": "place"
+    },
+    {
+      "term": "골목 사진",
+      "group": "사진·SNS",
+      "kind": "place"
+    },
+    {
+      "term": "SNS 핫플",
+      "group": "사진·SNS",
+      "kind": "place"
+    },
+    {
+      "term": "인스타 감성",
+      "group": "사진·SNS",
+      "kind": "place"
+    },
+    {
+      "term": "인스타 핫플",
+      "group": "사진·SNS",
+      "kind": "place"
+    },
+    {
+      "term": "릴스 촬영",
+      "group": "사진·SNS",
+      "kind": "place"
+    },
+    {
+      "term": "브이로그",
+      "group": "사진·SNS",
+      "kind": "place"
+    },
+    {
+      "term": "여행 브이로그",
+      "group": "사진·SNS",
+      "kind": "place"
+    },
+    {
+      "term": "사진 찍기 좋은 거리",
+      "group": "사진·SNS",
+      "kind": "place"
+    },
+    {
+      "term": "숨은 포토존",
+      "group": "사진·SNS",
+      "kind": "place"
+    },
+    {
+      "term": "컬러풀한 장소",
+      "group": "사진·SNS",
+      "kind": "place"
+    },
+    {
+      "term": "감성 소품샵",
+      "group": "사진·SNS",
+      "kind": "place"
+    },
+    {
+      "term": "주차 가능",
+      "group": "편의·접근성",
+      "kind": "place"
+    },
+    {
+      "term": "주차장 넓은 곳",
+      "group": "편의·접근성",
+      "kind": "place"
+    },
+    {
+      "term": "대중교통 편리",
+      "group": "편의·접근성",
+      "kind": "place"
+    },
+    {
+      "term": "역세권",
+      "group": "편의·접근성",
+      "kind": "place"
+    },
+    {
+      "term": "버스 정류장 근처",
+      "group": "편의·접근성",
+      "kind": "place"
+    },
+    {
+      "term": "도보 이동 가능",
+      "group": "편의·접근성",
+      "kind": "place"
+    },
+    {
+      "term": "이동거리 짧은 곳",
+      "group": "편의·접근성",
+      "kind": "place"
+    },
+    {
+      "term": "유모차 가능",
+      "group": "편의·접근성",
+      "kind": "place"
+    },
+    {
+      "term": "휠체어 접근 가능",
+      "group": "편의·접근성",
+      "kind": "place"
+    },
+    {
+      "term": "무장애 여행",
+      "group": "편의·접근성",
+      "kind": "place"
+    },
+    {
+      "term": "엘리베이터",
+      "group": "편의·접근성",
+      "kind": "place"
+    },
+    {
+      "term": "경사 적은 코스",
+      "group": "편의·접근성",
+      "kind": "place"
+    },
+    {
+      "term": "계단 없는 곳",
+      "group": "편의·접근성",
+      "kind": "place"
+    },
+    {
+      "term": "어르신 여행",
+      "group": "편의·접근성",
+      "kind": "place"
+    },
+    {
+      "term": "아이 동반 가능",
+      "group": "편의·접근성",
+      "kind": "place"
+    },
+    {
+      "term": "수유실",
+      "group": "편의·접근성",
+      "kind": "place"
+    },
+    {
+      "term": "기저귀 교환대",
+      "group": "편의·접근성",
+      "kind": "place"
+    },
+    {
+      "term": "화장실 깨끗한 곳",
+      "group": "편의·접근성",
+      "kind": "place"
+    },
+    {
+      "term": "반려견 동반 가능",
+      "group": "편의·접근성",
+      "kind": "place"
+    },
+    {
+      "term": "실내 좌석",
+      "group": "편의·접근성",
+      "kind": "place"
+    },
+    {
+      "term": "야외 좌석",
+      "group": "편의·접근성",
+      "kind": "place"
+    },
+    {
+      "term": "예약 가능",
+      "group": "편의·접근성",
+      "kind": "place"
+    },
+    {
+      "term": "예약 필요 없는 곳",
+      "group": "편의·접근성",
+      "kind": "place"
+    },
+    {
+      "term": "웨이팅 적은 곳",
+      "group": "편의·접근성",
+      "kind": "place"
+    },
+    {
+      "term": "사람 적은 곳",
+      "group": "편의·접근성",
+      "kind": "place"
+    },
+    {
+      "term": "혼잡하지 않은 곳",
+      "group": "편의·접근성",
+      "kind": "place"
+    },
+    {
+      "term": "늦게까지 하는 곳",
+      "group": "편의·접근성",
+      "kind": "place"
+    },
+    {
+      "term": "24시간 운영",
+      "group": "편의·접근성",
+      "kind": "place"
+    },
+    {
+      "term": "비 오는 날 가능한 곳",
+      "group": "편의·접근성",
+      "kind": "place"
+    },
+    {
+      "term": "에어컨 있는 곳",
+      "group": "편의·접근성",
+      "kind": "place"
+    },
+    {
+      "term": "그늘 있는 곳",
+      "group": "편의·접근성",
+      "kind": "place"
+    },
+    {
+      "term": "스트레스 받을 때",
+      "group": "특별한 상황·니즈",
+      "kind": "intent"
+    },
+    {
+      "term": "우울할 때",
+      "group": "특별한 상황·니즈",
+      "kind": "intent"
+    },
+    {
+      "term": "생각 정리",
+      "group": "특별한 상황·니즈",
+      "kind": "intent"
+    },
+    {
+      "term": "혼자 있고 싶을 때",
+      "group": "특별한 상황·니즈",
+      "kind": "intent"
+    },
+    {
+      "term": "아무것도 하기 싫을 때",
+      "group": "특별한 상황·니즈",
+      "kind": "intent"
+    },
+    {
+      "term": "쉬고 싶을 때",
+      "group": "특별한 상황·니즈",
+      "kind": "intent"
+    },
+    {
+      "term": "바람 쐬고 싶을 때",
+      "group": "특별한 상황·니즈",
+      "kind": "intent"
+    },
+    {
+      "term": "답답할 때",
+      "group": "특별한 상황·니즈",
+      "kind": "intent"
+    },
+    {
+      "term": "기념일",
+      "group": "특별한 상황·니즈",
+      "kind": "intent"
+    },
+    {
+      "term": "생일",
+      "group": "특별한 상황·니즈",
+      "kind": "intent"
+    },
+    {
+      "term": "프로포즈",
+      "group": "특별한 상황·니즈",
+      "kind": "intent"
+    },
+    {
+      "term": "결혼기념일",
+      "group": "특별한 상황·니즈",
+      "kind": "intent"
+    },
+    {
+      "term": "소개팅",
+      "group": "특별한 상황·니즈",
+      "kind": "intent"
+    },
+    {
+      "term": "친구 생일",
+      "group": "특별한 상황·니즈",
+      "kind": "intent"
+    },
+    {
+      "term": "졸업 기념",
+      "group": "특별한 상황·니즈",
+      "kind": "intent"
+    },
+    {
+      "term": "입학 기념",
+      "group": "특별한 상황·니즈",
+      "kind": "intent"
+    },
+    {
+      "term": "취업 축하",
+      "group": "특별한 상황·니즈",
+      "kind": "intent"
+    },
+    {
+      "term": "퇴사 기념",
+      "group": "특별한 상황·니즈",
+      "kind": "intent"
+    },
+    {
+      "term": "시험 끝난 날",
+      "group": "특별한 상황·니즈",
+      "kind": "intent"
+    },
+    {
+      "term": "방학",
+      "group": "특별한 상황·니즈",
+      "kind": "intent"
+    },
+    {
+      "term": "휴가",
+      "group": "특별한 상황·니즈",
+      "kind": "intent"
+    },
+    {
+      "term": "짧은 휴식",
+      "group": "특별한 상황·니즈",
+      "kind": "intent"
+    },
+    {
+      "term": "급하게 떠나는 여행",
+      "group": "특별한 상황·니즈",
+      "kind": "intent"
+    },
+    {
+      "term": "당장 갈 곳",
+      "group": "특별한 상황·니즈",
+      "kind": "intent"
+    },
+    {
+      "term": "오늘 갈 곳",
+      "group": "특별한 상황·니즈",
+      "kind": "intent"
+    },
+    {
+      "term": "내일 갈 곳",
+      "group": "특별한 상황·니즈",
+      "kind": "intent"
+    },
+    {
+      "term": "이번 주말",
+      "group": "특별한 상황·니즈",
+      "kind": "intent"
+    },
+    {
+      "term": "혼잡 피하기",
+      "group": "특별한 상황·니즈",
+      "kind": "intent"
+    },
+    {
+      "term": "비 오는 날 갈 곳",
+      "group": "특별한 상황·니즈",
+      "kind": "intent"
+    },
+    {
+      "term": "야외 활동 어려울 때",
+      "group": "특별한 상황·니즈",
+      "kind": "intent"
+    },
+    {
+      "term": "로컬 여행",
+      "group": "지역 콘텐츠·테마",
+      "kind": "place"
+    },
+    {
+      "term": "지역 특산물",
+      "group": "지역 콘텐츠·테마",
+      "kind": "place"
+    },
+    {
+      "term": "향토 음식",
+      "group": "지역 콘텐츠·테마",
+      "kind": "place"
+    },
+    {
+      "term": "전통시장 투어",
+      "group": "지역 콘텐츠·테마",
+      "kind": "place"
+    },
+    {
+      "term": "골목 투어",
+      "group": "지역 콘텐츠·테마",
+      "kind": "place"
+    },
+    {
+      "term": "벽화마을",
+      "group": "지역 콘텐츠·테마",
+      "kind": "place"
+    },
+    {
+      "term": "마을 산책",
+      "group": "지역 콘텐츠·테마",
+      "kind": "place"
+    },
+    {
+      "term": "농촌 체험",
+      "group": "지역 콘텐츠·테마",
+      "kind": "place"
+    },
+    {
+      "term": "어촌 체험",
+      "group": "지역 콘텐츠·테마",
+      "kind": "place"
+    },
+    {
+      "term": "어촌마을",
+      "group": "지역 콘텐츠·테마",
+      "kind": "place"
+    },
+    {
+      "term": "섬마을",
+      "group": "지역 콘텐츠·테마",
+      "kind": "place"
+    },
+    {
+      "term": "항구마을",
+      "group": "지역 콘텐츠·테마",
+      "kind": "place"
+    },
+    {
+      "term": "근대문화거리",
+      "group": "지역 콘텐츠·테마",
+      "kind": "place"
+    },
+    {
+      "term": "예술마을",
+      "group": "지역 콘텐츠·테마",
+      "kind": "place"
+    },
+    {
+      "term": "문화거리",
+      "group": "지역 콘텐츠·테마",
+      "kind": "place"
+    },
+    {
+      "term": "공예마을",
+      "group": "지역 콘텐츠·테마",
+      "kind": "place"
+    },
+    {
+      "term": "계절 축제",
+      "group": "지역 콘텐츠·테마",
+      "kind": "place"
+    },
+    {
+      "term": "꽃 축제",
+      "group": "지역 콘텐츠·테마",
+      "kind": "place"
+    },
+    {
+      "term": "불꽃 축제",
+      "group": "지역 콘텐츠·테마",
+      "kind": "place"
+    },
+    {
+      "term": "빛 축제",
+      "group": "지역 콘텐츠·테마",
+      "kind": "place"
+    },
+    {
+      "term": "음악 축제",
+      "group": "지역 콘텐츠·테마",
+      "kind": "place"
+    },
+    {
+      "term": "푸드 페스티벌",
+      "group": "지역 콘텐츠·테마",
+      "kind": "place"
+    },
+    {
+      "term": "맥주 축제",
+      "group": "지역 콘텐츠·테마",
+      "kind": "place"
+    },
+    {
+      "term": "와인 축제",
+      "group": "지역 콘텐츠·테마",
+      "kind": "place"
+    },
+    {
+      "term": "지역 박람회",
+      "group": "지역 콘텐츠·테마",
+      "kind": "place"
+    },
+    {
+      "term": "지역 명소",
+      "group": "지역 콘텐츠·테마",
+      "kind": "place"
+    },
+    {
+      "term": "숨은 로컬 맛집",
+      "group": "지역 콘텐츠·테마",
+      "kind": "place"
+    },
+    {
+      "term": "관광객 적은 곳",
+      "group": "지역 콘텐츠·테마",
+      "kind": "place"
+    },
+    {
+      "term": "현지인 추천",
+      "group": "지역 콘텐츠·테마",
+      "kind": "place"
+    },
+    {
+      "term": "동네 한 바퀴",
+      "group": "지역 콘텐츠·테마",
+      "kind": "place"
+    },
+    {
+      "term": "서울 근교 당일치기",
+      "group": "복합 검색 문장",
+      "kind": "query"
+    },
+    {
+      "term": "부산 1박 2일 여행",
+      "group": "복합 검색 문장",
+      "kind": "query"
+    },
+    {
+      "term": "제주도 뚜벅이 여행",
+      "group": "복합 검색 문장",
+      "kind": "query"
+    },
+    {
+      "term": "광주 근교 힐링 여행",
+      "group": "복합 검색 문장",
+      "kind": "query"
+    },
+    {
+      "term": "담양 감성 카페",
+      "group": "복합 검색 문장",
+      "kind": "query"
+    },
+    {
+      "term": "여수 바다 드라이브",
+      "group": "복합 검색 문장",
+      "kind": "query"
+    },
+    {
+      "term": "강릉 오션뷰 카페",
+      "group": "복합 검색 문장",
+      "kind": "query"
+    },
+    {
+      "term": "경주 한옥 감성 여행",
+      "group": "복합 검색 문장",
+      "kind": "query"
+    },
+    {
+      "term": "전주 한옥마을 맛집",
+      "group": "복합 검색 문장",
+      "kind": "query"
+    },
+    {
+      "term": "순천 자연 힐링 코스",
+      "group": "복합 검색 문장",
+      "kind": "query"
+    },
+    {
+      "term": "비 오는 날 실내 데이트",
+      "group": "복합 검색 문장",
+      "kind": "query"
+    },
+    {
+      "term": "주말 커플 드라이브",
+      "group": "복합 검색 문장",
+      "kind": "query"
+    },
+    {
+      "term": "혼자 가기 좋은 조용한 카페",
+      "group": "복합 검색 문장",
+      "kind": "query"
+    },
+    {
+      "term": "부모님과 가기 좋은 여행지",
+      "group": "복합 검색 문장",
+      "kind": "query"
+    },
+    {
+      "term": "아이와 함께하는 체험 여행",
+      "group": "복합 검색 문장",
+      "kind": "query"
+    },
+    {
+      "term": "반려견과 가는 당일치기",
+      "group": "복합 검색 문장",
+      "kind": "query"
+    },
+    {
+      "term": "무료로 즐기는 서울 데이트",
+      "group": "복합 검색 문장",
+      "kind": "query"
+    },
+    {
+      "term": "차 없이 떠나는 기차 여행",
+      "group": "복합 검색 문장",
+      "kind": "query"
+    },
+    {
+      "term": "맛집과 카페를 함께 가는 코스",
+      "group": "복합 검색 문장",
+      "kind": "query"
+    },
+    {
+      "term": "걷기 좋은 바다 산책로",
+      "group": "복합 검색 문장",
+      "kind": "query"
+    },
+    {
+      "term": "노을 보기 좋은 드라이브 코스",
+      "group": "복합 검색 문장",
+      "kind": "query"
+    },
+    {
+      "term": "사진 찍기 좋은 감성 여행",
+      "group": "복합 검색 문장",
+      "kind": "query"
+    },
+    {
+      "term": "사람 없는 한적한 여행지",
+      "group": "복합 검색 문장",
+      "kind": "query"
+    },
+    {
+      "term": "3시간 안에 끝나는 데이트",
+      "group": "복합 검색 문장",
+      "kind": "query"
+    },
+    {
+      "term": "주차 편한 카페 투어",
+      "group": "복합 검색 문장",
+      "kind": "query"
+    },
+    {
+      "term": "가을 단풍과 맛집 코스",
+      "group": "복합 검색 문장",
+      "kind": "query"
+    },
+    {
+      "term": "겨울 실내 여행",
+      "group": "복합 검색 문장",
+      "kind": "query"
+    },
+    {
+      "term": "5만원 이하 커플 데이트",
+      "group": "복합 검색 문장",
+      "kind": "query"
+    },
+    {
+      "term": "조용한 숲속 힐링 코스",
+      "group": "복합 검색 문장",
+      "kind": "query"
+    }
+  ]
+}

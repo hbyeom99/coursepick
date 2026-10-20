@@ -1,3 +1,6 @@
+import {keywordConditions,keywordAlternatives} from '../lib/semanticKeywords.js';
+import { normalizeAccessibilityInfo, accessibilityTags } from '../lib/accessibility.js';
+import accessibilityPreview from '../data/accessibilityPreview.json';
 import { readCompanionMetadata } from '../lib/companionMetadata.js';
 import { getSupabaseClient } from '../lib/supabase';
 import type { Place } from '../types/place';
@@ -32,18 +35,33 @@ function toPlace(value: unknown): Place {
     const infantFacilities = info.infantFacilities && typeof info.infantFacilities === 'object' && !Array.isArray(info.infantFacilities) ? Object.fromEntries(Object.entries(info.infantFacilities).filter(([,value])=>typeof value==='string')) as Record<string,string> : undefined;
     companionInfo = { infantFacilities, infantAllowed: typeof info.infantAllowed === 'boolean' ? info.infantAllowed : undefined, petAllowed: typeof info.petAllowed === 'boolean' ? info.petAllowed : undefined, ...Object.fromEntries(['infantStatus','infantSource','infantSourceUpdatedAt','petStatus','petDedicated','petSize','petRestrictions','petExtraFee','source','sourceUpdatedAt'].filter(key=>typeof info[key]==='string').map(key=>[key,info[key]])) };
   }
-  return { id, name: text('name'), category: text('category'), region: text('region'), location: text('location'), description: companion.description, tags: tags as string[], imageUrl: text('image_url'), latitude: number('latitude', -90, 90), longitude: number('longitude', -180, 180), openingHours: text('opening_hours'), rating: number('rating', 0, 5), lodgingInfo, companionInfo };
+  const preview = import.meta.env.DEV ? (accessibilityPreview as Record<string,unknown>)[id] : undefined;
+  const accessibilityInfo = normalizeAccessibilityInfo(row.accessibility_info ?? preview);
+  const combinedTags = [...new Set([...(tags as string[]), ...accessibilityTags(accessibilityInfo)])];
+  return { id, name: text('name'), category: text('category'), region: text('region'), location: text('location'), description: companion.description, tags: combinedTags, imageUrl: text('image_url'), latitude: number('latitude', -90, 90), longitude: number('longitude', -180, 180), openingHours: text('opening_hours'), rating: number('rating', 0, 5), lodgingInfo, companionInfo, accessibilityInfo };
 }
 
 export async function getPlaces(signal?: AbortSignal): Promise<Place[]> {
-  // The backend returns the paginated catalogue in one request.
+  // Keep each response below the hosting provider's payload limit.
   const base = (import.meta.env.VITE_API_BASE_URL?.trim() || (import.meta.env.DEV ? 'http://localhost:8000' : '')).replace(/\/+$/, '');
   try {
-    const response = await fetch(`${base}/api/places`, {signal});
-    if(!response.ok) throw new Error('장소 조회 실패');
-    const data: unknown = await response.json();
-    if(!Array.isArray(data)) throw new Error('장소 목록 형식 오류');
-    return data.map(toPlace);
+    const pageSize = 500;
+    const places: Place[] = [];
+    let offset = 0;
+    while (true) {
+      const pages = await Promise.all([0, 1, 2].map(async index => {
+        const response = await fetch(`${base}/api/places?offset=${offset + index * pageSize}&limit=${pageSize}`, {signal});
+        if (!response.ok) throw new Error('장소 조회 실패');
+        const data: unknown = await response.json();
+        if (!Array.isArray(data) || data.length > pageSize) throw new Error('장소 페이지 형식 오류');
+        return data.map(toPlace);
+      }));
+      places.push(...pages.flat());
+      if (pages.some(page => page.length < pageSize)) break;
+      offset += pageSize * pages.length;
+    }
+    if (new Set(places.map(place => place.id)).size !== places.length) throw new Error('중복된 장소 id가 있습니다.');
+    return places;
   } catch(error) {
     if(signal?.aborted) throw error;
   }
@@ -100,7 +118,16 @@ export async function getLodgingPage(options: {region?: string; query?: string; 
     request = request.gte('latitude', latLow).lte('latitude', latHigh).gte('longitude', lonLow).lte('longitude', lonHigh);
   }
   const query = options.query?.trim().replace(/[%,_]/g, '');
-  if (query) request = request.ilike('name', `%${query}%`);
+  if (query) {
+    for (const term of keywordConditions(query)) {
+      const alternatives = keywordAlternatives(term).map((word: string) => word.replace(/[^가-힣a-zA-Z0-9\s]/g, '').trim()).filter(Boolean);
+      const sensitive = /무료|주차|예약|동반|유모차|휠체어|무장애|수유실|기저귀|엘리베이터|계단|24시간/.test(term);
+      const clauses = alternatives.flatMap((word: string) => sensitive
+        ? [`tags.cs.{"${word}"}`]
+        : [`name.ilike.%${word}%`, `location.ilike.%${word}%`, `category.ilike.%${word}%`, `tags.cs.{"${word}"}`]);
+      if (clauses.length) request = request.or(clauses.join(','));
+    }
+  }
   request = request.order('name').order('id').range(options.page * size, (options.page + 1) * size - 1);
   if (signal) request = request.abortSignal(signal);
   const {data, error} = await request;

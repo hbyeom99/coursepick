@@ -1,0 +1,7259 @@
+{
+  "version": 1,
+  "source": "사용자 제공 여행 키워드 텍스트",
+  "entries": [
+    {
+      "term": "10만원 이하 여행",
+      "sections": [
+        "여행 예산·가격"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "1만원 코스",
+      "sections": [
+        "여행 예산·가격"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "1박 2일",
+      "sections": [
+        "여행 기간·시간대"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "1박 2일 여행",
+      "sections": [
+        "일반 검색어"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "24시간 운영",
+      "sections": [
+        "편의·접근성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "2만원 코스",
+      "sections": [
+        "여행 예산·가격"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "2박 3일",
+      "sections": [
+        "여행 기간·시간대"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "2박 3일 여행",
+      "sections": [
+        "일반 검색어"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "2시간 코스",
+      "sections": [
+        "여행 기간·시간대"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "3대 가족 여행",
+      "sections": [
+        "여행 동행인"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "3만원 코스",
+      "sections": [
+        "여행 예산·가격"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "3박 4일",
+      "sections": [
+        "여행 기간·시간대"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "3시간 안에 끝나는 데이트",
+      "sections": [
+        "복합 검색 문장"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "3시간 코스",
+      "sections": [
+        "여행 기간·시간대"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "4박 5일",
+      "sections": [
+        "여행 기간·시간대"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "4시간 코스",
+      "sections": [
+        "여행 기간·시간대"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "5만원 이하 커플 데이트",
+      "sections": [
+        "복합 검색 문장"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "5만원 코스",
+      "sections": [
+        "여행 예산·가격"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "ATV",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "KTX 여행",
+      "sections": [
+        "이동 수단·동선"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "K팝 여행",
+      "sections": [
+        "여행 목적·활동"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "SNS 핫플",
+      "sections": [
+        "사진·SNS"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "VR 체험",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "가까운 장소",
+      "sections": [
+        "이동 수단·동선"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "가볼만한 곳",
+      "sections": [
+        "일반 검색어"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "가성비 맛집",
+      "sections": [
+        "맛집·음식",
+        "여행 예산·가격"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "가성비 숙소",
+      "sections": [
+        "숙박·스테이"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "가성비 여행",
+      "sections": [
+        "여행 예산·가격"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "가성비 카페",
+      "sections": [
+        "여행 예산·가격"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "가을 단풍",
+      "sections": [
+        "계절·날씨"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "가을 단풍과 맛집 코스",
+      "sections": [
+        "복합 검색 문장"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "가을 여행",
+      "sections": [
+        "계절·날씨"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "가족 숙소",
+      "sections": [
+        "숙박·스테이"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "가족 여행",
+      "sections": [
+        "여행 동행인",
+        "일반 검색어"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "가죽공예",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "가평 여행",
+      "sections": [
+        "일반 검색어"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "갈대밭",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "감성",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "감성 사진",
+      "sections": [
+        "사진·SNS"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "감성 소품샵",
+      "sections": [
+        "사진·SNS"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "감성 숙소",
+      "sections": [
+        "숙박·스테이"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "감성 카페",
+      "sections": [
+        "일반 검색어",
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "감성적인",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "강",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "강릉",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "강릉 여행",
+      "sections": [
+        "일반 검색어"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "강릉 오션뷰 카페",
+      "sections": [
+        "복합 검색 문장"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "강변",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "강원",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "강원도 여행",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "개인 카페",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "갤러리",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "갯벌",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "건축 사진",
+      "sections": [
+        "사진·SNS"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "건축 여행",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "건축 탐방",
+      "sections": [
+        "여행 목적·활동"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "걷기",
+      "sections": [
+        "여행 목적·활동"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "걷기 여행",
+      "sections": [
+        "이동 수단·동선"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "걷기 좋은 바다 산책로",
+      "sections": [
+        "복합 검색 문장"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "게스트하우스",
+      "sections": [
+        "숙박·스테이",
+        "장소 유형·시설"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "겨울 바다",
+      "sections": [
+        "계절·날씨"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "겨울 실내 여행",
+      "sections": [
+        "복합 검색 문장"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "겨울 여행",
+      "sections": [
+        "계절·날씨"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "결혼기념일",
+      "sections": [
+        "특별한 상황·니즈"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "경기",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "경기도 근교",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "경사 적은 코스",
+      "sections": [
+        "편의·접근성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "경상도 여행",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "경주",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "경주 여행",
+      "sections": [
+        "일반 검색어"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "경주 한옥 감성 여행",
+      "sections": [
+        "복합 검색 문장"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "계곡",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "계곡 카페",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "계단 없는 곳",
+      "sections": [
+        "편의·접근성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "계절 축제",
+      "sections": [
+        "지역 콘텐츠·테마"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "고궁",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "고급 레스토랑",
+      "sections": [
+        "여행 예산·가격"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "고기",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "고즈넉한",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "골목 사진",
+      "sections": [
+        "사진·SNS"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "골목 여행",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "골목 투어",
+      "sections": [
+        "지역 콘텐츠·테마"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "공방",
+      "sections": [
+        "문화·예술·역사",
+        "장소 유형·시설"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "공부하기 좋은 카페",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "공연",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "공연 관람",
+      "sections": [
+        "여행 목적·활동"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "공예",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "공예마을",
+      "sections": [
+        "지역 콘텐츠·테마"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "공원",
+      "sections": [
+        "장소 유형·시설"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "공주",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "공항 근처",
+      "sections": [
+        "이동 수단·동선"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "과일 따기",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "관광",
+      "sections": [
+        "여행 목적·활동"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "관광객 적은 곳",
+      "sections": [
+        "지역 콘텐츠·테마"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "관광열차",
+      "sections": [
+        "장소 유형·시설"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "광안리",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "광양",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "광장",
+      "sections": [
+        "장소 유형·시설"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "광주",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "광주 근교 힐링 여행",
+      "sections": [
+        "복합 검색 문장"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "교통 편한 여행",
+      "sections": [
+        "이동 수단·동선"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "구례",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "국내 여행",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "국내 여행지 추천",
+      "sections": [
+        "일반 검색어"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "국내여행",
+      "sections": [
+        "일반 검색어"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "국립공원",
+      "sections": [
+        "장소 유형·시설"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "국밥",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "군산",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "궁궐",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "그늘 많은 곳",
+      "sections": [
+        "계절·날씨"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "그늘 있는 곳",
+      "sections": [
+        "편의·접근성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "그림 그리기",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "근대 건축",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "근대문화거리",
+      "sections": [
+        "지역 콘텐츠·테마"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "근현대사",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "글램핑",
+      "sections": [
+        "숙박·스테이",
+        "액티비티·체험"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "글램핑장",
+      "sections": [
+        "장소 유형·시설"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 105
+    },
+    {
+      "term": "금요일 밤 여행",
+      "sections": [
+        "여행 기간·시간대"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "급하게 떠나는 여행",
+      "sections": [
+        "특별한 상황·니즈"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "기념관",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "기념일",
+      "sections": [
+        "특별한 상황·니즈"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "기념일 데이트",
+      "sections": [
+        "여행 동행인"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "기념일 코스",
+      "sections": [
+        "여행 예산·가격"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "기분 전환",
+      "sections": [
+        "여행 목적·활동",
+        "특별한 상황·니즈"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "기장",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "기저귀 교환대",
+      "sections": [
+        "편의·접근성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "기차 여행",
+      "sections": [
+        "이동 수단·동선"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "기차역",
+      "sections": [
+        "장소 유형·시설"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "기획전",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "길거리 음식",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "꽃 축제",
+      "sections": [
+        "지역 콘텐츠·테마"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "꽃꽂이",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "꽃놀이",
+      "sections": [
+        "계절·날씨"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "꽃밭",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "꽃밭 포토존",
+      "sections": [
+        "사진·SNS"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "나주",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "낚시",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "남원",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "남자끼리 여행",
+      "sections": [
+        "여행 동행인"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "낭만",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "낭만적인 밤",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "내일 갈 곳",
+      "sections": [
+        "특별한 상황·니즈"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "냉면",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "노을",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "노을 보기 좋은 드라이브 코스",
+      "sections": [
+        "복합 검색 문장"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "노을 사진",
+      "sections": [
+        "사진·SNS"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "노을 카페",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "노천탕 숙소",
+      "sections": [
+        "숙박·스테이"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "노포",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "놀이공원",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "농장",
+      "sections": [
+        "장소 유형·시설"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "농장 체험",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "농촌 체험",
+      "sections": [
+        "지역 콘텐츠·테마"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "농촌 풍경",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "눈 구경",
+      "sections": [
+        "계절·날씨"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "눈 오는 날",
+      "sections": [
+        "계절·날씨"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "눈 오는 날 데이트",
+      "sections": [
+        "계절·날씨"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "눈꽃",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "느린 여행",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "늦게까지 하는 곳",
+      "sections": [
+        "편의·접근성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "단기 여행",
+      "sections": [
+        "여행 기간·시간대"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "단양",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "단체 숙소",
+      "sections": [
+        "숙박·스테이"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "단체 여행",
+      "sections": [
+        "여행 동행인"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "단풍",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "단풍 명소",
+      "sections": [
+        "계절·날씨"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "담양",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "담양 감성 카페",
+      "sections": [
+        "복합 검색 문장"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "답답할 때",
+      "sections": [
+        "특별한 상황·니즈"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "당구",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "당일치기",
+      "sections": [
+        "여행 기간·시간대"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "당일치기 여행",
+      "sections": [
+        "일반 검색어"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "당장 갈 곳",
+      "sections": [
+        "특별한 상황·니즈"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "대가족 여행",
+      "sections": [
+        "여행 동행인"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "대구",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "대나무숲",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "대전",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "대중교통 여행",
+      "sections": [
+        "이동 수단·동선"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "대중교통 편리",
+      "sections": [
+        "편의·접근성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "대학생 여행",
+      "sections": [
+        "여행 예산·가격"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "대형 카페",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "더운 날",
+      "sections": [
+        "계절·날씨"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "데이트",
+      "sections": [
+        "여행 동행인"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "데이트 코스",
+      "sections": [
+        "일반 검색어"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "도넛",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "도보 10분",
+      "sections": [
+        "이동 수단·동선"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "도보 30분",
+      "sections": [
+        "이동 수단·동선"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "도보 여행",
+      "sections": [
+        "이동 수단·동선"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "도보 이동 가능",
+      "sections": [
+        "편의·접근성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "도서관",
+      "sections": [
+        "문화·예술·역사",
+        "장소 유형·시설"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "도시공원",
+      "sections": [
+        "장소 유형·시설"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "도심 속 휴식",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "도자기",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "도자기 체험",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "독립서점",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "독립서점 카페",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "독립영화관",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "독서 여행",
+      "sections": [
+        "여행 목적·활동"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "독채 숙소",
+      "sections": [
+        "숙박·스테이"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "독특한",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "돈 안 드는 데이트",
+      "sections": [
+        "여행 예산·가격"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "돈가스",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "동굴",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "동네 한 바퀴",
+      "sections": [
+        "지역 콘텐츠·테마"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "동물원",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "동선 좋은 여행",
+      "sections": [
+        "이동 수단·동선"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "동해",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "동호회 여행",
+      "sections": [
+        "여행 동행인"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "동화 같은",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "둘레길",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "드라마 촬영지",
+      "sections": [
+        "여행 목적·활동"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "드라이브",
+      "sections": [
+        "이동 수단·동선"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "드라이브 데이트",
+      "sections": [
+        "여행 동행인"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "드라이브 코스",
+      "sections": [
+        "이동 수단·동선",
+        "일반 검색어"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "드로잉",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "드립커피",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "들판",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "등대",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "등산",
+      "sections": [
+        "여행 목적·활동",
+        "자연·풍경"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "디저트",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "디저트 카페",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "디지털 디톡스",
+      "sections": [
+        "여행 목적·활동"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "디카페인",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "따뜻한",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "따뜻한 곳",
+      "sections": [
+        "계절·날씨"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "뚜벅이",
+      "sections": [
+        "이동 수단·동선"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "뚜벅이 여행",
+      "sections": [
+        "일반 검색어"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "라멘",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "라벤더",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "라이딩",
+      "sections": [
+        "이동 수단·동선"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "럭셔리 여행",
+      "sections": [
+        "여행 예산·가격"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "럭셔리 호텔",
+      "sections": [
+        "숙박·스테이"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "레이크뷰 카페",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "레일바이크",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "레트로",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "레트로 감성",
+      "sections": [
+        "사진·SNS"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "렌터카 여행",
+      "sections": [
+        "이동 수단·동선"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "로맨틱",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "로스터리 카페",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "로컬 감성",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "로컬 맛집",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "로컬 여행",
+      "sections": [
+        "지역 콘텐츠·테마"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "루지",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "루프탑",
+      "sections": [
+        "장소 유형·시설"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "루프탑 카페",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "루프탑바",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "리버뷰 카페",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "리조트",
+      "sections": [
+        "숙박·스테이",
+        "장소 유형·시설"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "리프레시",
+      "sections": [
+        "여행 목적·활동"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "릴스 촬영",
+      "sections": [
+        "사진·SNS"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "마들렌",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "마운틴뷰 숙소",
+      "sections": [
+        "숙박·스테이"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "마을 산책",
+      "sections": [
+        "지역 콘텐츠·테마"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "막국수",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "말차",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "맑은 날",
+      "sections": [
+        "계절·날씨"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "맛집",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "맛집 탐방",
+      "sections": [
+        "여행 목적·활동"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "맛집 투어",
+      "sections": [
+        "일반 검색어"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "맛집과 카페를 함께 가는 코스",
+      "sections": [
+        "복합 검색 문장"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "맥주 축제",
+      "sections": [
+        "지역 콘텐츠·테마"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "먹방 여행",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "메타세쿼이아",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "명상",
+      "sections": [
+        "여행 목적·활동"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "명소 탐방",
+      "sections": [
+        "여행 목적·활동"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "모노레일",
+      "sections": [
+        "장소 유형·시설"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "모래사장",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "목공 체험",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "목장",
+      "sections": [
+        "장소 유형·시설"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "목포",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "몽환적인",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "무료 관광지",
+      "sections": [
+        "여행 예산·가격"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "무료 여행",
+      "sections": [
+        "여행 예산·가격"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "무료 전시",
+      "sections": [
+        "여행 예산·가격"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "무료 주차",
+      "sections": [
+        "여행 예산·가격",
+        "이동 수단·동선",
+        "편의·접근성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "무료 체험",
+      "sections": [
+        "여행 예산·가격"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "무료로 즐기는 서울 데이트",
+      "sections": [
+        "복합 검색 문장"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "무인도",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "무장애 여행",
+      "sections": [
+        "편의·접근성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "문구점",
+      "sections": [
+        "장소 유형·시설"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "문학관",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "문화 탐방",
+      "sections": [
+        "여행 목적·활동"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "문화거리",
+      "sections": [
+        "지역 콘텐츠·테마"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "문화센터",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "문화유산",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "문화해설",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "물놀이",
+      "sections": [
+        "계절·날씨"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "물회",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "뮤지컬",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "미디어아트",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "미세먼지 심한 날",
+      "sections": [
+        "계절·날씨"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "미술관",
+      "sections": [
+        "문화·예술·역사",
+        "장소 유형·시설"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "미식 여행",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "민속촌",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "바다",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "바다 포토존",
+      "sections": [
+        "사진·SNS"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "바람 부는 날",
+      "sections": [
+        "계절·날씨"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "바람 쐬고 싶을 때",
+      "sections": [
+        "특별한 상황·니즈"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "바비큐",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "박물관",
+      "sections": [
+        "문화·예술·역사",
+        "장소 유형·시설"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "반나절 여행",
+      "sections": [
+        "여행 기간·시간대"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "반려견 동반",
+      "sections": [
+        "여행 동행인"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "반려견 동반 가능",
+      "sections": [
+        "편의·접근성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "반려견 동반 여행",
+      "sections": [
+        "일반 검색어"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "반려견과 가는 당일치기",
+      "sections": [
+        "복합 검색 문장"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "반려동물 동반 숙소",
+      "sections": [
+        "숙박·스테이"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "반려동물 동반 카페",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "반려동물 여행",
+      "sections": [
+        "여행 동행인"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "반지 만들기",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "밤 산책",
+      "sections": [
+        "여행 기간·시간대"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "방탈출",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "방학",
+      "sections": [
+        "특별한 상황·니즈"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "백반",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "버스 여행",
+      "sections": [
+        "이동 수단·동선"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "버스 정류장 근처",
+      "sections": [
+        "편의·접근성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "버스킹",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "번개 여행",
+      "sections": [
+        "여행 기간·시간대"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "번지점프",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "벚꽃",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "벚꽃 여행",
+      "sections": [
+        "계절·날씨"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "베이커리",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "베이커리 카페",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 1
+    },
+    {
+      "term": "베이킹 클래스",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "벽화마을",
+      "sections": [
+        "지역 콘텐츠·테마"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "별",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "별구경",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "별빛",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "보드게임",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "보령",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "보성",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "복합문화공간",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "볼링",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "봄 여행",
+      "sections": [
+        "계절·날씨"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "봄꽃 여행",
+      "sections": [
+        "계절·날씨"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "부모님 여행",
+      "sections": [
+        "여행 동행인"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "부모님과 가기 좋은 여행지",
+      "sections": [
+        "복합 검색 문장"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "부부 여행",
+      "sections": [
+        "여행 동행인"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "부산",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "부산 1박 2일 여행",
+      "sections": [
+        "복합 검색 문장"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "부산 여행",
+      "sections": [
+        "일반 검색어"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "부여",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "북카페",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "분식",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "불꽃 축제",
+      "sections": [
+        "지역 콘텐츠·테마"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "뷰맛집 카페",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "브런치",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "브런치 카페",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "브이로그",
+      "sections": [
+        "사진·SNS"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "비 오는 날",
+      "sections": [
+        "계절·날씨"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "비 오는 날 가능한 곳",
+      "sections": [
+        "편의·접근성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "비 오는 날 갈 곳",
+      "sections": [
+        "특별한 상황·니즈"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "비 오는 날 데이트",
+      "sections": [
+        "계절·날씨"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "비 오는 날 실내 데이트",
+      "sections": [
+        "복합 검색 문장"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "비건",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "비밀스러운",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "비빔밥",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "빈티지",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "빈티지 감성",
+      "sections": [
+        "사진·SNS"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "빈티지숍",
+      "sections": [
+        "장소 유형·시설"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "빙수",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "빛 축제",
+      "sections": [
+        "지역 콘텐츠·테마"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "빵지순례",
+      "sections": [
+        "맛집·음식",
+        "여행 목적·활동"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "사람 없는 한적한 여행지",
+      "sections": [
+        "복합 검색 문장"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "사람 적은 곳",
+      "sections": [
+        "편의·접근성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "사우나",
+      "sections": [
+        "여행 목적·활동"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "사진 명소",
+      "sections": [
+        "사진·SNS"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "사진 여행",
+      "sections": [
+        "여행 목적·활동"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "사진 찍기 좋은 감성 여행",
+      "sections": [
+        "복합 검색 문장"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "사진 찍기 좋은 거리",
+      "sections": [
+        "사진·SNS"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "사진 찍기 좋은 카페",
+      "sections": [
+        "사진·SNS",
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "사진전",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "사찰",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "산",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "산길 드라이브",
+      "sections": [
+        "이동 수단·동선"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "산속 카페",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "산책",
+      "sections": [
+        "여행 목적·활동"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "산책 여행",
+      "sections": [
+        "이동 수단·동선"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "산책로",
+      "sections": [
+        "자연·풍경",
+        "장소 유형·시설"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "삼겹살",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "삼척",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "새벽 드라이브",
+      "sections": [
+        "여행 기간·시간대"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "새벽 여행",
+      "sections": [
+        "여행 기간·시간대"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "색다른",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "샌드위치",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "샐러드",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "생각 정리",
+      "sections": [
+        "특별한 상황·니즈"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "생선구이",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "생일",
+      "sections": [
+        "특별한 상황·니즈"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "생일 여행",
+      "sections": [
+        "여행 동행인"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "서귀포",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "서산",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "서울",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "서울 근교",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "서울 근교 당일치기",
+      "sections": [
+        "복합 검색 문장"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "서울 근교 여행",
+      "sections": [
+        "일반 검색어"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "서울 데이트 코스",
+      "sections": [
+        "일반 검색어"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "서점",
+      "sections": [
+        "장소 유형·시설"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "서점 투어",
+      "sections": [
+        "여행 목적·활동"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "서핑",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "설경",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "설경 명소",
+      "sections": [
+        "계절·날씨"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "설레는",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "섬",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "섬마을",
+      "sections": [
+        "지역 콘텐츠·테마"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "성곽",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "성당",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "성산",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "성지순례",
+      "sections": [
+        "여행 목적·활동"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "세계유산",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "세종",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "소개팅",
+      "sections": [
+        "특별한 상황·니즈"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "소규모 여행",
+      "sections": [
+        "여행 동행인"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "소극장",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "소금빵",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "소나무숲",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "소박한",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "소품샵",
+      "sections": [
+        "장소 유형·시설"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "소형 카페",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "속초",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "속초 여행",
+      "sections": [
+        "일반 검색어"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "쇼핑",
+      "sections": [
+        "여행 목적·활동"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "쇼핑몰",
+      "sections": [
+        "장소 유형·시설"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "수국",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "수도권",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "수목원",
+      "sections": [
+        "자연·풍경",
+        "장소 유형·시설"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "수상스키",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "수영장 숙소",
+      "sections": [
+        "숙박·스테이"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "수유실",
+      "sections": [
+        "편의·접근성"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "수제 디저트",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "수제맥주",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "숙박",
+      "sections": [
+        "숙박·스테이"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "숙소",
+      "sections": [
+        "숙박·스테이"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "순천",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "순천 자연 힐링 코스",
+      "sections": [
+        "복합 검색 문장"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "순환 코스",
+      "sections": [
+        "이동 수단·동선"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "숨은 로컬 맛집",
+      "sections": [
+        "지역 콘텐츠·테마"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "숨은 맛집",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "숨은 명소",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "숨은 포토존",
+      "sections": [
+        "사진·SNS"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "숲",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "숲 포토존",
+      "sections": [
+        "사진·SNS"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "숲길",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "숲속 숙소",
+      "sections": [
+        "숙박·스테이"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "숲속 카페",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "쉬고 싶을 때",
+      "sections": [
+        "특별한 상황·니즈"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "스노클링",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "스카이워크",
+      "sections": [
+        "장소 유형·시설"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "스쿠버다이빙",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "스탬프 투어",
+      "sections": [
+        "여행 목적·활동"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "스트레스 받을 때",
+      "sections": [
+        "특별한 상황·니즈"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "스트레스 해소",
+      "sections": [
+        "여행 목적·활동"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "스파",
+      "sections": [
+        "여행 목적·활동",
+        "장소 유형·시설"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "스파 펜션",
+      "sections": [
+        "숙박·스테이"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "스페셜티 커피",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "습지",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "승마",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "시원한 곳",
+      "sections": [
+        "계절·날씨"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "시장 구경",
+      "sections": [
+        "여행 목적·활동"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 5
+    },
+    {
+      "term": "시장 먹거리",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "시험 끝난 날",
+      "sections": [
+        "특별한 상황·니즈"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "식물 카페",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "식물원",
+      "sections": [
+        "자연·풍경",
+        "장소 유형·시설"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "신나는",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "신비로운",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "신혼여행",
+      "sections": [
+        "여행 동행인"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "실내 데이트",
+      "sections": [
+        "여행 동행인",
+        "일반 검색어"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "실내 스포츠",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "실내 여행",
+      "sections": [
+        "계절·날씨"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "실내 좌석",
+      "sections": [
+        "편의·접근성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "심야 데이트",
+      "sections": [
+        "여행 기간·시간대"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "아기와 여행",
+      "sections": [
+        "여행 동행인"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "아기자기한",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "아늑한",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "아름다운",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "아무것도 하기 싫을 때",
+      "sections": [
+        "특별한 상황·니즈"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "아산",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "아울렛",
+      "sections": [
+        "장소 유형·시설"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "아이 동반 가능",
+      "sections": [
+        "편의·접근성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "아이돌 성지",
+      "sections": [
+        "여행 목적·활동"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "아이스크림",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "아이와 가볼만한 곳",
+      "sections": [
+        "일반 검색어"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "아이와 여행",
+      "sections": [
+        "여행 동행인"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "아이와 함께하는 체험 여행",
+      "sections": [
+        "복합 검색 문장"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "아쿠아리움",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "아트센터",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "안면도",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "알뜰 여행",
+      "sections": [
+        "여행 예산·가격"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "애월",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "액티비티",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "야간 여행",
+      "sections": [
+        "여행 기간·시간대"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "야경",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "야경 드라이브",
+      "sections": [
+        "이동 수단·동선"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "야경 사진",
+      "sections": [
+        "사진·SNS"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "야경 코스",
+      "sections": [
+        "여행 기간·시간대"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "야시장",
+      "sections": [
+        "장소 유형·시설",
+        "지역 콘텐츠·테마"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "야식",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "야외 데이트",
+      "sections": [
+        "여행 동행인"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "야외 좌석",
+      "sections": [
+        "편의·접근성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "야외 카페",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "야외 활동 어려울 때",
+      "sections": [
+        "특별한 상황·니즈"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "양식",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "양양",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "어르신 여행",
+      "sections": [
+        "편의·접근성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "어촌",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "어촌 체험",
+      "sections": [
+        "지역 콘텐츠·테마"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "어촌마을",
+      "sections": [
+        "지역 콘텐츠·테마"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "억새 명소",
+      "sections": [
+        "계절·날씨"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "억새밭",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "에어컨 있는 곳",
+      "sections": [
+        "편의·접근성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "엘리베이터",
+      "sections": [
+        "편의·접근성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "여름 여행",
+      "sections": [
+        "계절·날씨"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "여름 휴가",
+      "sections": [
+        "계절·날씨"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "여수",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "여수 바다 드라이브",
+      "sections": [
+        "복합 검색 문장"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "여수 여행",
+      "sections": [
+        "일반 검색어"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "여유",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "여자끼리 여행",
+      "sections": [
+        "여행 동행인"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "여행 브이로그",
+      "sections": [
+        "사진·SNS"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "여행 코스 추천",
+      "sections": [
+        "일반 검색어"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "역 근처",
+      "sections": [
+        "이동 수단·동선"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "역 근처 숙소",
+      "sections": [
+        "숙박·스테이"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "역사 여행",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "역사 유적지",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "역사 탐방",
+      "sections": [
+        "여행 목적·활동"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "역세권",
+      "sections": [
+        "편의·접근성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "연극",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "연말 여행",
+      "sections": [
+        "계절·날씨"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "연초 여행",
+      "sections": [
+        "계절·날씨"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "연휴 여행",
+      "sections": [
+        "여행 기간·시간대"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "영화 같은",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "영화 촬영지",
+      "sections": [
+        "여행 목적·활동"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "영화관",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "예쁜",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "예술마을",
+      "sections": [
+        "지역 콘텐츠·테마"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "예약 가능",
+      "sections": [
+        "편의·접근성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "예약 필요 없는 곳",
+      "sections": [
+        "편의·접근성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "오늘 갈 곳",
+      "sections": [
+        "특별한 상황·니즈"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "오마카세",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "오션뷰",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "오션뷰 숙소",
+      "sections": [
+        "숙박·스테이"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "오션뷰 카페",
+      "sections": [
+        "일반 검색어",
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "오전 여행",
+      "sections": [
+        "여행 기간·시간대"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "오토바이 투어",
+      "sections": [
+        "이동 수단·동선"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "오후 여행",
+      "sections": [
+        "여행 기간·시간대"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "온수풀",
+      "sections": [
+        "숙박·스테이"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "온천",
+      "sections": [
+        "장소 유형·시설"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "온천 여행",
+      "sections": [
+        "여행 목적·활동"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "와인 축제",
+      "sections": [
+        "지역 콘텐츠·테마"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "와인바",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "완도",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "요가",
+      "sections": [
+        "여행 목적·활동"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "요트",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "우도",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "우동",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "우울할 때",
+      "sections": [
+        "특별한 상황·니즈"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "우정 사진",
+      "sections": [
+        "사진·SNS"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "우정 여행",
+      "sections": [
+        "여행 동행인"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "우중 산책",
+      "sections": [
+        "계절·날씨"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "울산",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "워케이션",
+      "sections": [
+        "숙박·스테이"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "워터파크",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "원데이 클래스",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "원주",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "웨이크보드",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "웨이팅 적은 곳",
+      "sections": [
+        "편의·접근성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "웰니스",
+      "sections": [
+        "여행 목적·활동"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "유람선",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "유람선 선착장",
+      "sections": [
+        "장소 유형·시설"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "유모차 가능",
+      "sections": [
+        "편의·접근성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "유아 동반",
+      "sections": [
+        "여행 동행인"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "유채꽃",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "은하수",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "음악 축제",
+      "sections": [
+        "지역 콘텐츠·테마"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "이국적인",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "이동거리 짧은 곳",
+      "sections": [
+        "편의·접근성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "이동거리 짧은 코스",
+      "sections": [
+        "이동 수단·동선"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "이번 주말",
+      "sections": [
+        "특별한 상황·니즈"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "이색 데이트",
+      "sections": [
+        "여행 동행인"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "이색 체험",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "이색 카페",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "이색적인",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "익산",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "인물 사진",
+      "sections": [
+        "사진·SNS"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "인생샷",
+      "sections": [
+        "사진·SNS",
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "인생샷 투어",
+      "sections": [
+        "여행 목적·활동"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "인스타 감성",
+      "sections": [
+        "사진·SNS"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "인스타 핫플",
+      "sections": [
+        "사진·SNS"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "인천",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "일몰",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "일몰 코스",
+      "sections": [
+        "여행 기간·시간대"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "일식",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "일요일 여행",
+      "sections": [
+        "여행 기간·시간대"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "일출",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "일출 사진",
+      "sections": [
+        "사진·SNS"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "일출 코스",
+      "sections": [
+        "여행 기간·시간대"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "입장료 없는 곳",
+      "sections": [
+        "여행 예산·가격"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "입학 기념",
+      "sections": [
+        "특별한 상황·니즈"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "자연 감상",
+      "sections": [
+        "여행 목적·활동"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "자연친화적인",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "자연휴양림",
+      "sections": [
+        "장소 유형·시설"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "자전거",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "자전거 여행",
+      "sections": [
+        "이동 수단·동선"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "자차 여행",
+      "sections": [
+        "이동 수단·동선"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "자쿠지 숙소",
+      "sections": [
+        "숙박·스테이"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "작업하기 좋은 카페",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "잔잔한",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "장기 여행",
+      "sections": [
+        "여행 기간·시간대"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "장마철 여행",
+      "sections": [
+        "계절·날씨"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "장어",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "재즈 공연",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "저녁 여행",
+      "sections": [
+        "여행 기간·시간대"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "저렴한 데이트",
+      "sections": [
+        "여행 예산·가격"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "저예산 여행",
+      "sections": [
+        "여행 예산·가격"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "전기자전거",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "전기자전거 여행",
+      "sections": [
+        "이동 수단·동선"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "전라도 여행",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "전망대",
+      "sections": [
+        "자연·풍경",
+        "장소 유형·시설"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "전망타워",
+      "sections": [
+        "장소 유형·시설"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "전시 관람",
+      "sections": [
+        "여행 목적·활동"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "전시장",
+      "sections": [
+        "장소 유형·시설"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "전시회",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 14
+    },
+    {
+      "term": "전주",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "전주 여행",
+      "sections": [
+        "일반 검색어"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "전주 한옥마을 맛집",
+      "sections": [
+        "복합 검색 문장"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "전통마을",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "전통문화",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "전통시장",
+      "sections": [
+        "문화·예술·역사",
+        "장소 유형·시설"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "전통시장 투어",
+      "sections": [
+        "지역 콘텐츠·테마"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "전통주",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "전통찻집",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "절",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "절벽",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "정원",
+      "sections": [
+        "자연·풍경",
+        "장소 유형·시설"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "정원 카페",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "제주",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "제주도 뚜벅이 여행",
+      "sections": [
+        "복합 검색 문장"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "제주도 여행",
+      "sections": [
+        "일반 검색어",
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "제천",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "조개구이",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "조식 맛집 숙소",
+      "sections": [
+        "숙박·스테이"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "조용한",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "조용한 숲속 힐링 코스",
+      "sections": [
+        "복합 검색 문장"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "조용한 카페",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "졸업 기념",
+      "sections": [
+        "특별한 상황·니즈"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "졸업 여행",
+      "sections": [
+        "여행 동행인"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "주말 여행",
+      "sections": [
+        "여행 기간·시간대",
+        "일반 검색어"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "주말 커플 드라이브",
+      "sections": [
+        "복합 검색 문장"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "주중 여행",
+      "sections": [
+        "여행 기간·시간대"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "주차 가능",
+      "sections": [
+        "편의·접근성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "주차 편한 곳",
+      "sections": [
+        "이동 수단·동선"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "주차 편한 카페 투어",
+      "sections": [
+        "복합 검색 문장"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "주차비 없는 곳",
+      "sections": [
+        "여행 예산·가격"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "주차장 넓은 곳",
+      "sections": [
+        "편의·접근성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "중식",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "즉흥 여행",
+      "sections": [
+        "여행 기간·시간대",
+        "특별한 상황·니즈"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "지역 명소",
+      "sections": [
+        "지역 콘텐츠·테마"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "지역 박람회",
+      "sections": [
+        "지역 콘텐츠·테마"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "지역 축제",
+      "sections": [
+        "여행 목적·활동",
+        "지역 콘텐츠·테마"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "지역 특산물",
+      "sections": [
+        "지역 콘텐츠·테마"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "지하철 여행",
+      "sections": [
+        "이동 수단·동선"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "직장 동료 여행",
+      "sections": [
+        "여행 동행인"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "짚라인",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "짧은 휴식",
+      "sections": [
+        "특별한 상황·니즈"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "찜질방",
+      "sections": [
+        "여행 목적·활동",
+        "장소 유형·시설"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "차 없이 떠나는 기차 여행",
+      "sections": [
+        "복합 검색 문장"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "차박",
+      "sections": [
+        "숙박·스테이",
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "차분한",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "채식",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "책방",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "천안",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "첫 데이트",
+      "sections": [
+        "여행 동행인",
+        "특별한 상황·니즈"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "청소년 여행",
+      "sections": [
+        "여행 동행인"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "청주",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "체험",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "체험장",
+      "sections": [
+        "장소 유형·시설"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "초등학생 동반",
+      "sections": [
+        "여행 동행인"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "초밥",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "초원",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "촬영지 투어",
+      "sections": [
+        "여행 목적·활동"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "추억 만들기",
+      "sections": [
+        "여행 목적·활동"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "추운 날",
+      "sections": [
+        "계절·날씨"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "축제 투어",
+      "sections": [
+        "여행 목적·활동"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "춘천",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "출렁다리",
+      "sections": [
+        "장소 유형·시설"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "출사",
+      "sections": [
+        "여행 목적·활동"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "출사 명소",
+      "sections": [
+        "사진·SNS"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "충주",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "충청도 여행",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "취업 축하",
+      "sections": [
+        "특별한 상황·니즈"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "친구 생일",
+      "sections": [
+        "특별한 상황·니즈"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "친구 여행",
+      "sections": [
+        "여행 동행인"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "카누",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "카라반",
+      "sections": [
+        "숙박·스테이"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "카약",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "카트",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "카페",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "카페 투어",
+      "sections": [
+        "여행 목적·활동"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "칵테일바",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "칼국수",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "캔들 만들기",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "캠핑",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "캠핑장",
+      "sections": [
+        "숙박·스테이",
+        "장소 유형·시설"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "커플 사진",
+      "sections": [
+        "사진·SNS"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "커플 숙소",
+      "sections": [
+        "숙박·스테이"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "커플 여행",
+      "sections": [
+        "여행 동행인"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "컬러풀한 장소",
+      "sections": [
+        "사진·SNS"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "케이블카",
+      "sections": [
+        "장소 유형·시설"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "케이크",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "콘서트",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "쾌적한 실내",
+      "sections": [
+        "계절·날씨"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "쿠킹 클래스",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "크루아상",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "크리스마스",
+      "sections": [
+        "계절·날씨"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "클라이밍",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "키즈 카페",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "타르트",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "탁 트인",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "태안",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "택시 여행",
+      "sections": [
+        "이동 수단·동선"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "터미널 근처",
+      "sections": [
+        "이동 수단·동선"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "테라스 카페",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "테마파크",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "토요일 여행",
+      "sections": [
+        "여행 기간·시간대"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "퇴근 후 여행",
+      "sections": [
+        "여행 기간·시간대"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "퇴사 기념",
+      "sections": [
+        "특별한 상황·니즈"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "트레킹",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "트렌디한",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "특별한",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "특별한 날",
+      "sections": [
+        "여행 예산·가격"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "파도",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "파스타",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "파인다이닝",
+      "sections": [
+        "맛집·음식",
+        "여행 예산·가격"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "패들보드",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "패러글라이딩",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "펜션",
+      "sections": [
+        "숙박·스테이",
+        "장소 유형·시설"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "편도 코스",
+      "sections": [
+        "이동 수단·동선"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "편백숲",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "편집숍",
+      "sections": [
+        "장소 유형·시설"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "평창",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "평화로운",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "포근한",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "포장마차",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "포토존",
+      "sections": [
+        "사진·SNS",
+        "장소 유형·시설"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "포항",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "폭포",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "푸드 페스티벌",
+      "sections": [
+        "지역 콘텐츠·테마"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "푸드투어",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "푸딩",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "풀빌라",
+      "sections": [
+        "숙박·스테이"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "풍경 감상",
+      "sections": [
+        "여행 목적·활동"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "풍경 사진",
+      "sections": [
+        "사진·SNS"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "풍경 좋은",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "퓨전음식",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "프라이빗 숙소",
+      "sections": [
+        "숙박·스테이"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "프라이빗 투어",
+      "sections": [
+        "여행 예산·가격"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "프로포즈",
+      "sections": [
+        "특별한 상황·니즈"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "프리미엄 여행",
+      "sections": [
+        "여행 예산·가격"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "플리마켓",
+      "sections": [
+        "장소 유형·시설",
+        "지역 콘텐츠·테마"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "피서",
+      "sections": [
+        "계절·날씨"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "피자",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "피크닉",
+      "sections": [
+        "계절·날씨"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "필름 감성",
+      "sections": [
+        "사진·SNS"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "핑크뮬리",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "하루 여행",
+      "sections": [
+        "여행 기간·시간대"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "하천",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "학생 여행",
+      "sections": [
+        "여행 예산·가격"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "한 지역 집중",
+      "sections": [
+        "이동 수단·동선"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "한복 체험",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "한식",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "한옥 숙소",
+      "sections": [
+        "숙박·스테이"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "한옥 카페",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 1
+    },
+    {
+      "term": "한옥 포토존",
+      "sections": [
+        "사진·SNS"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "한옥마을",
+      "sections": [
+        "문화·예술·역사",
+        "지역 콘텐츠·테마"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "한옥스테이",
+      "sections": [
+        "숙박·스테이",
+        "장소 유형·시설"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 10
+    },
+    {
+      "term": "한우",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "한적한",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "핫플",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "항구",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "항구마을",
+      "sections": [
+        "지역 콘텐츠·테마"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "해남",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "해물탕",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "해변",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 91
+    },
+    {
+      "term": "해산물",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "해수욕장",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "해안 산책로",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "해안도로",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "해안도로 드라이브",
+      "sections": [
+        "이동 수단·동선"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "해운대",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "핸드드립",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "햄버거",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "향수 만들기",
+      "sections": [
+        "액티비티·체험"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "향토 음식",
+      "sections": [
+        "지역 콘텐츠·테마"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "헌책방",
+      "sections": [
+        "문화·예술·역사"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "현지인 맛집",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "현지인 추천",
+      "sections": [
+        "지역 콘텐츠·테마"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "협재",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "호수",
+      "sections": [
+        "자연·풍경"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "호수뷰 숙소",
+      "sections": [
+        "숙박·스테이"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "호스텔",
+      "sections": [
+        "숙박·스테이"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "호캉스",
+      "sections": [
+        "숙박·스테이",
+        "여행 예산·가격"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "호텔",
+      "sections": [
+        "숙박·스테이",
+        "장소 유형·시설"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "혼밥",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "혼밥 여행",
+      "sections": [
+        "여행 동행인"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "혼자 가기 좋은 조용한 카페",
+      "sections": [
+        "복합 검색 문장"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "혼자 드라이브",
+      "sections": [
+        "여행 동행인"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "혼자 여행",
+      "sections": [
+        "여행 동행인",
+        "일반 검색어"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "혼자 있고 싶을 때",
+      "sections": [
+        "특별한 상황·니즈"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "혼자 카페",
+      "sections": [
+        "여행 동행인"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "혼자 힐링",
+      "sections": [
+        "여행 동행인"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "혼잡 피하기",
+      "sections": [
+        "특별한 상황·니즈"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "혼잡하지 않은 곳",
+      "sections": [
+        "편의·접근성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "혼행",
+      "sections": [
+        "여행 동행인"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "화순",
+      "sections": [
+        "지역·목적지"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "화장실 깨끗한 곳",
+      "sections": [
+        "편의·접근성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "환승 적은 코스",
+      "sections": [
+        "이동 수단·동선"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "활기찬",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "회",
+      "sections": [
+        "맛집·음식"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "효도 여행",
+      "sections": [
+        "여행 동행인"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "휘낭시에",
+      "sections": [
+        "카페·디저트"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "휠체어 접근 가능",
+      "sections": [
+        "편의·접근성"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "휴가",
+      "sections": [
+        "특별한 상황·니즈"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "휴식",
+      "sections": [
+        "여행 목적·활동",
+        "여행 분위기·감성"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "휴양",
+      "sections": [
+        "여행 목적·활동"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "흐린 날",
+      "sections": [
+        "계절·날씨"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    },
+    {
+      "term": "힐링",
+      "sections": [
+        "여행 분위기·감성"
+      ],
+      "status": "기존 저장 또는 이번 추가 근거 확인",
+      "new_assignments": 0
+    },
+    {
+      "term": "힐링 여행",
+      "sections": [
+        "여행 목적·활동",
+        "일반 검색어"
+      ],
+      "status": "근거 확인 또는 검색·코스 조건 처리 대기",
+      "new_assignments": 0
+    }
+  ],
+  "synonyms": [
+    [
+      "혼자 여행",
+      "혼행"
+    ],
+    [
+      "한옥 숙소",
+      "한옥숙소",
+      "한옥스테이"
+    ],
+    [
+      "글램핑",
+      "글램핑장"
+    ],
+    [
+      "캠핑",
+      "야영"
+    ],
+    [
+      "카페",
+      "커피"
+    ],
+    [
+      "양조장",
+      "브루어리",
+      "brewery"
+    ],
+    [
+      "맥주",
+      "비어",
+      "beer"
+    ],
+    [
+      "수제맥주",
+      "크래프트비어"
+    ],
+    [
+      "액티비티",
+      "엑티비티"
+    ],
+    [
+      "사진",
+      "포토"
+    ],
+    [
+      "포토존",
+      "포토스팟"
+    ],
+    [
+      "휴식",
+      "힐링"
+    ],
+    [
+      "감성",
+      "감성적인"
+    ],
+    [
+      "오션뷰",
+      "바다뷰",
+      "바다 조망"
+    ],
+    [
+      "노을",
+      "일몰"
+    ],
+    [
+      "별구경",
+      "별 관측"
+    ],
+    [
+      "책방",
+      "서점"
+    ],
+    [
+      "전시",
+      "전시회"
+    ],
+    [
+      "드로잉",
+      "그림 그리기"
+    ],
+    [
+      "원데이 클래스",
+      "원데이클래스"
+    ],
+    [
+      "반려견 동반",
+      "반려견 동반 가능"
+    ],
+    [
+      "유아 동반",
+      "영유아동반"
+    ],
+    [
+      "무료 주차",
+      "주차비 없는 곳"
+    ],
+    [
+      "무료 관광지",
+      "입장료 없는 곳"
+    ],
+    [
+      "도보 여행",
+      "걷기 여행"
+    ],
+    [
+      "해안 산책로",
+      "해안산책로"
+    ]
+  ],
+  "related": [
+    [
+      "사진",
+      "포토존",
+      "인생샷",
+      "출사"
+    ],
+    [
+      "카페",
+      "디저트",
+      "베이커리 카페"
+    ],
+    [
+      "바다",
+      "해변",
+      "해수욕장",
+      "오션뷰"
+    ],
+    [
+      "캠핑",
+      "글램핑"
+    ],
+    [
+      "맥주",
+      "수제맥주",
+      "양조장",
+      "펍"
+    ]
+  ],
+  "placeTerms": [
+    "24시간 운영",
+    "ATV",
+    "VR 체험",
+    "가성비 맛집",
+    "가성비 숙소",
+    "가족 숙소",
+    "가죽공예",
+    "갈대밭",
+    "감성 숙소",
+    "감성 카페",
+    "강",
+    "강변",
+    "개인 카페",
+    "갤러리",
+    "갯벌",
+    "건축 여행",
+    "게스트하우스",
+    "경사 적은 코스",
+    "계곡",
+    "계곡 카페",
+    "계단 없는 곳",
+    "고궁",
+    "고기",
+    "골목 여행",
+    "공방",
+    "공부하기 좋은 카페",
+    "공연",
+    "공예",
+    "공원",
+    "과일 따기",
+    "관광열차",
+    "광장",
+    "국립공원",
+    "국밥",
+    "궁궐",
+    "그늘 있는 곳",
+    "그림 그리기",
+    "근대 건축",
+    "근현대사",
+    "글램핑",
+    "글램핑장",
+    "기념관",
+    "기저귀 교환대",
+    "기차역",
+    "기획전",
+    "길거리 음식",
+    "꽃꽂이",
+    "꽃밭",
+    "낚시",
+    "냉면",
+    "노을",
+    "노을 카페",
+    "노천탕 숙소",
+    "노포",
+    "놀이공원",
+    "농장",
+    "농장 체험",
+    "농촌 풍경",
+    "눈꽃",
+    "늦게까지 하는 곳",
+    "단체 숙소",
+    "단풍",
+    "당구",
+    "대나무숲",
+    "대중교통 편리",
+    "대형 카페",
+    "도넛",
+    "도보 이동 가능",
+    "도서관",
+    "도시공원",
+    "도자기",
+    "도자기 체험",
+    "독립서점",
+    "독립서점 카페",
+    "독립영화관",
+    "독채 숙소",
+    "돈가스",
+    "동굴",
+    "동물원",
+    "둘레길",
+    "드로잉",
+    "드립커피",
+    "들판",
+    "등대",
+    "등산",
+    "디저트",
+    "디저트 카페",
+    "디카페인",
+    "라멘",
+    "라벤더",
+    "럭셔리 호텔",
+    "레이크뷰 카페",
+    "레일바이크",
+    "로스터리 카페",
+    "로컬 맛집",
+    "루지",
+    "루프탑",
+    "루프탑 카페",
+    "루프탑바",
+    "리버뷰 카페",
+    "리조트",
+    "마들렌",
+    "마운틴뷰 숙소",
+    "막국수",
+    "말차",
+    "맛집",
+    "먹방 여행",
+    "메타세쿼이아",
+    "모노레일",
+    "모래사장",
+    "목공 체험",
+    "목장",
+    "무료 주차",
+    "무인도",
+    "무장애 여행",
+    "문구점",
+    "문학관",
+    "문화센터",
+    "문화유산",
+    "문화해설",
+    "물회",
+    "뮤지컬",
+    "미디어아트",
+    "미술관",
+    "미식 여행",
+    "민속촌",
+    "바다",
+    "바비큐",
+    "박물관",
+    "반려견 동반 가능",
+    "반려동물 동반 숙소",
+    "반려동물 동반 카페",
+    "반지 만들기",
+    "방탈출",
+    "백반",
+    "버스 정류장 근처",
+    "버스킹",
+    "번지점프",
+    "벚꽃",
+    "베이커리",
+    "베이커리 카페",
+    "베이킹 클래스",
+    "별",
+    "별구경",
+    "별빛",
+    "보드게임",
+    "복합문화공간",
+    "볼링",
+    "북카페",
+    "분식",
+    "뷰맛집 카페",
+    "브런치",
+    "브런치 카페",
+    "비 오는 날 가능한 곳",
+    "비건",
+    "비빔밥",
+    "빈티지숍",
+    "빙수",
+    "빵지순례",
+    "사람 적은 곳",
+    "사진 찍기 좋은 카페",
+    "사진전",
+    "사찰",
+    "산",
+    "산속 카페",
+    "산책로",
+    "삼겹살",
+    "샌드위치",
+    "샐러드",
+    "생선구이",
+    "서점",
+    "서핑",
+    "설경",
+    "섬",
+    "성곽",
+    "성당",
+    "세계유산",
+    "소극장",
+    "소금빵",
+    "소나무숲",
+    "소품샵",
+    "소형 카페",
+    "쇼핑몰",
+    "수국",
+    "수목원",
+    "수상스키",
+    "수영장 숙소",
+    "수유실",
+    "수제 디저트",
+    "수제맥주",
+    "숙박",
+    "숙소",
+    "숨은 맛집",
+    "숲",
+    "숲길",
+    "숲속 숙소",
+    "숲속 카페",
+    "스노클링",
+    "스카이워크",
+    "스쿠버다이빙",
+    "스파",
+    "스파 펜션",
+    "스페셜티 커피",
+    "습지",
+    "승마",
+    "시장 먹거리",
+    "식물 카페",
+    "식물원",
+    "실내 스포츠",
+    "실내 좌석",
+    "아울렛",
+    "아이 동반 가능",
+    "아이스크림",
+    "아쿠아리움",
+    "아트센터",
+    "액티비티",
+    "야경",
+    "야시장",
+    "야식",
+    "야외 좌석",
+    "야외 카페",
+    "양식",
+    "어르신 여행",
+    "어촌",
+    "억새밭",
+    "에어컨 있는 곳",
+    "엘리베이터",
+    "역 근처 숙소",
+    "역사 여행",
+    "역사 유적지",
+    "역세권",
+    "연극",
+    "영화관",
+    "예약 가능",
+    "예약 필요 없는 곳",
+    "오마카세",
+    "오션뷰",
+    "오션뷰 숙소",
+    "오션뷰 카페",
+    "온수풀",
+    "온천",
+    "와인바",
+    "요트",
+    "우동",
+    "워케이션",
+    "워터파크",
+    "원데이 클래스",
+    "웨이크보드",
+    "웨이팅 적은 곳",
+    "유람선",
+    "유람선 선착장",
+    "유모차 가능",
+    "유채꽃",
+    "은하수",
+    "이동거리 짧은 곳",
+    "이색 체험",
+    "이색 카페",
+    "일몰",
+    "일식",
+    "일출",
+    "자연휴양림",
+    "자전거",
+    "자쿠지 숙소",
+    "작업하기 좋은 카페",
+    "장어",
+    "재즈 공연",
+    "전기자전거",
+    "전망대",
+    "전망타워",
+    "전시장",
+    "전시회",
+    "전통마을",
+    "전통문화",
+    "전통시장",
+    "전통주",
+    "전통찻집",
+    "절",
+    "절벽",
+    "정원",
+    "정원 카페",
+    "조개구이",
+    "조식 맛집 숙소",
+    "조용한 카페",
+    "주차 가능",
+    "주차장 넓은 곳",
+    "중식",
+    "짚라인",
+    "찜질방",
+    "차박",
+    "채식",
+    "책방",
+    "체험",
+    "체험장",
+    "초밥",
+    "초원",
+    "출렁다리",
+    "카누",
+    "카라반",
+    "카약",
+    "카트",
+    "카페",
+    "칵테일바",
+    "칼국수",
+    "캔들 만들기",
+    "캠핑",
+    "캠핑장",
+    "커플 숙소",
+    "케이블카",
+    "케이크",
+    "콘서트",
+    "쿠킹 클래스",
+    "크루아상",
+    "클라이밍",
+    "키즈 카페",
+    "타르트",
+    "테라스 카페",
+    "테마파크",
+    "트레킹",
+    "파도",
+    "파스타",
+    "파인다이닝",
+    "패들보드",
+    "패러글라이딩",
+    "펜션",
+    "편백숲",
+    "편집숍",
+    "포장마차",
+    "포토존",
+    "폭포",
+    "푸드투어",
+    "푸딩",
+    "풀빌라",
+    "퓨전음식",
+    "프라이빗 숙소",
+    "플리마켓",
+    "피자",
+    "핑크뮬리",
+    "하천",
+    "한복 체험",
+    "한식",
+    "한옥 숙소",
+    "한옥 카페",
+    "한옥마을",
+    "한옥스테이",
+    "한우",
+    "항구",
+    "해물탕",
+    "해변",
+    "해산물",
+    "해수욕장",
+    "해안 산책로",
+    "해안도로",
+    "핸드드립",
+    "햄버거",
+    "향수 만들기",
+    "헌책방",
+    "현지인 맛집",
+    "호수",
+    "호수뷰 숙소",
+    "호스텔",
+    "호캉스",
+    "호텔",
+    "혼밥",
+    "혼잡하지 않은 곳",
+    "화장실 깨끗한 곳",
+    "회",
+    "휘낭시에",
+    "휠체어 접근 가능"
+  ],
+  "regions": [
+    "강릉",
+    "강원",
+    "경기",
+    "경주",
+    "공주",
+    "광안리",
+    "광양",
+    "광주",
+    "구례",
+    "군산",
+    "기장",
+    "나주",
+    "남원",
+    "단양",
+    "담양",
+    "대구",
+    "대전",
+    "동해",
+    "목포",
+    "보령",
+    "보성",
+    "부산",
+    "부여",
+    "삼척",
+    "서귀포",
+    "서산",
+    "서울",
+    "성산",
+    "세종",
+    "속초",
+    "수도권",
+    "순천",
+    "아산",
+    "안면도",
+    "애월",
+    "양양",
+    "여수",
+    "완도",
+    "우도",
+    "울산",
+    "원주",
+    "익산",
+    "인천",
+    "전주",
+    "제주",
+    "제천",
+    "천안",
+    "청주",
+    "춘천",
+    "충주",
+    "태안",
+    "평창",
+    "포항",
+    "해남",
+    "해운대",
+    "협재",
+    "화순"
+  ],
+  "compounds": {
+    "오션뷰 카페": [
+      "오션뷰",
+      "카페"
+    ],
+    "감성 카페": [
+      "감성",
+      "카페"
+    ],
+    "오션뷰 숙소": [
+      "오션뷰",
+      "숙소"
+    ],
+    "반려동물 동반 카페": [
+      "반려동물 동반",
+      "카페"
+    ],
+    "반려동물 동반 숙소": [
+      "반려동물 동반",
+      "숙소"
+    ],
+    "조용한 카페": [
+      "조용한",
+      "카페"
+    ],
+    "무료 전시": [
+      "무료",
+      "전시"
+    ]
+  }
+}

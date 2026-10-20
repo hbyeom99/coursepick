@@ -36,7 +36,7 @@ export function companionsMatch(place, filters) {
 export function courseConditionsMatch(course, stops, filters) {
   if (filters.period && filters.period !== '전체' && coursePeriod(course) !== filters.period) return false;
   if (filters.transport && filters.transport !== '전체' && course.transport !== filters.transport) return false;
-  if ((filters.infant || filters.pet) && (stops.length !== course.stopIds.length || !stops.every(p => companionsMatch(p, filters)))) return false;
+  if ((filters.infant || filters.pet) && (stops.length !== course.stopIds.length || stops.filter(p => companionsMatch(p, filters)).length <= course.stopIds.length / 2)) return false;
   return true;
 }
 export function needsCourseForPlace(filters) {

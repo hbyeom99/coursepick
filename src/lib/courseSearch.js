@@ -1,10 +1,17 @@
-import { parseSearchIntent, placesSatisfyIntent } from './searchIntent.js';
+import {keywordTextMatches,isStrictKeyword,relatedKeywordBonus} from './semanticKeywords.js';
+import { accessibilityKeywordMatch } from './accessibility.js';
+import { parseSearchIntent, placesSatisfyIntent, placeMatchesGroup } from './searchIntent.js';
 import { normalizeTag } from './exploreTags.js';
 
 // A fixed relevance tier prevents repeated words/tags from inflating the rank.
 function singleSearchMatch(course, places, keyword) {
   if (!keyword) return { matched: true, rank: 0, label: '' };
-  const includes = value => typeof value === 'string' && normalizeTag(value).toLowerCase().includes(keyword);
+  if(accessibilityKeywordMatch(null,keyword)!==null){
+    const matched=places.some(place=>accessibilityKeywordMatch(place,keyword)===true);
+    return {matched,rank:matched?1:3,label:matched?'시설 원문에서 확인된 접근성 조건':''};
+  }
+  if(isStrictKeyword(keyword)){const matched=places.some(p=>placeMatchesGroup(p,[keyword]));return {matched,rank:matched?1:3,label:matched?'확인된 장소 조건':''};}
+  const includes = value => typeof value === 'string' && keywordTextMatches(normalizeTag(value),keyword);
   const descriptionIncludes = value => includes(keyword === '자연' ? (value || '').replace(/자연산/g, '') : value);
   const tag = course.tags.find(includes);
   if (tag) return { matched: true, rank: 0, label: `일치하는 코스 태그: #${tag}` };
@@ -22,7 +29,7 @@ function singleSearchMatch(course, places, keyword) {
   return { matched: false, rank: 3, label: '' };
 }
 
-export function courseSearchMatch(course,places,keyword) {
+function matchCourse(course,places,keyword) {
  const intent=parseSearchIntent(keyword);
  if(!keyword)return singleSearchMatch(course,places,keyword);
  if(intent.groups.length>1||intent.regions.length) {
@@ -30,6 +37,12 @@ export function courseSearchMatch(course,places,keyword) {
   const ranks=intent.groups.map(g=>Math.min(...g.map(term=>singleSearchMatch(course,places,term).rank)));
   return {matched:true,rank:ranks.length?Math.max(...ranks):0,label:'조건 일치: '+[...intent.regions,...intent.conditions].join(' + ')};
  }
- const matches=intent.groups[0]?.map(term=>singleSearchMatch(course,places,term))||[];
+  const matches=intent.groups[0]?.map(term=>singleSearchMatch(course,places,term))||[];
  return matches.filter(x=>x.matched).sort((a,b)=>a.rank-b.rank)[0]||singleSearchMatch(course,places,keyword);
+}
+
+
+export function courseSearchMatch(course,places,keyword){
+ const result=matchCourse(course,places,keyword);
+ return {...result,related:result.matched?relatedKeywordBonus(places,parseSearchIntent(keyword).conditions):0};
 }

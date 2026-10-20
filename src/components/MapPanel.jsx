@@ -73,7 +73,7 @@ export default function MapPanel({ place, places: suppliedPlaces, routePlaces, s
     const bounds = new maps.LatLngBounds();
     for (const [id, p] of next) {
       const position = new maps.LatLng(p.latitude, p.longitude);
-      if (!routePlaces || routePlaces.some(stop=>stop.id===id) || id===selectedId) bounds.extend(position);
+      bounds.extend(position);
       const existing = entries.get(id);
       if (existing) { existing.marker.setPosition(position); existing.marker.setTitle(p.name); continue; }
       const marker = new maps.Marker({ map, position, title: p.name });
@@ -82,7 +82,7 @@ export default function MapPanel({ place, places: suppliedPlaces, routePlaces, s
       entries.set(id, { marker, click });
     }
     setMarkerCount(entries.size);
-    if ((routePlaces ? routePlaces.length : next.size) > 1) map.setBounds(bounds);
+    if (next.size > 1) map.setBounds(bounds);
     else if (next.size === 1) map.setCenter(entries.values().next().value.marker.getPosition());
   }, [places, status, mapRevision]);
   useEffect(() => {
@@ -95,7 +95,7 @@ export default function MapPanel({ place, places: suppliedPlaces, routePlaces, s
       const number = id === accommodationId ? '숙' : showRoute && routeIndex >= 0 ? routeIndex + 1 : null;
       const isLodging = id === accommodationId || places.find(place=>place.id===id)?.category === '숙소';
       const fill = candidate ? (selected ? '#075EAA' : '#258BE8') : isLodging ? '#4285F4' : selected ? '#5736C4' : '#7554F7';
-      const center = isLodging ? '<path d="M9 17L18 9L27 17M11 16V27H25V16M16 27V20H20V27" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' : candidate && places.find(p=>p.id===id)?.category==='카페' ? '<text x="18" y="24" text-anchor="middle" font-size="19">☕</text>' : number === null ? '<circle cx="18" cy="18" r="7" fill="white"/>' : '<text x="18" y="24" text-anchor="middle" font-family="sans-serif" font-size="17" font-weight="700" fill="white">' + number + '</text>';
+      const center = isLodging ? '<path d="M9 17L18 9L27 17M11 16V27H25V16M16 27V20H20V27" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' : candidate && places.find(p=>p.id===id)?.category==='카페' ? '<text x="18" y="24" text-anchor="middle" font-size="19">☕</text>' : number === null ? '<circle cx="18" cy="18" r="7" fill="white"/>' : '<text x="18" y="24" text-anchor="middle" font-family="Noto Sans KR, sans-serif" font-size="17" font-weight="700" fill="white">' + number + '</text>';
       const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="36" height="46" viewBox="0 0 36 46"><path fill="' + fill + '" stroke="white" stroke-width="2" d="M18 45C14 36 1 27 1 18a17 17 0 1 1 34 0c0 9-13 18-17 27Z"/>' + center + '</svg>';
       const image = new maps.MarkerImage('data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg), new maps.Size(36, 46), { offset: new maps.Point(18, 46) });
       marker.setImage(showRoute || selected || isLodging ? image : null); marker.setZIndex(selected ? 1 : 0);
@@ -114,7 +114,7 @@ export default function MapPanel({ place, places: suppliedPlaces, routePlaces, s
     const maps = window.kakao.maps;
     if (route.some(place => !Number.isFinite(place.latitude) || !Number.isFinite(place.longitude) || Math.abs(place.latitude) > 90 || Math.abs(place.longitude) > 180)) return;
     const paths = roadPaths?.length ? roadPaths : [route];
-    const lines = paths.map(points => new maps.Polyline({ map: mapRef.current, path: points.map(place => new maps.LatLng(place.latitude, place.longitude)), strokeWeight: 4, strokeColor: '#7554F7', strokeOpacity: 0.85, strokeStyle: 'solid' }));
+    const lines = paths.map(points => new maps.Polyline({ map: mapRef.current, path: points.map(place => new maps.LatLng(place.latitude, place.longitude)), strokeWeight: 4, strokeColor: '#7554F7', strokeOpacity: 0.85, strokeStyle: roadPaths?.length ? 'solid' : 'dash' }));
     return () => lines.forEach(line => line.setMap(null));
   }, [route, status, mapRevision, showRoute, roadPaths]);
   function moveToCurrentLocation() {
