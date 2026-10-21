@@ -1,14 +1,9 @@
+import {evaluateCourseTraits,courseTraitAffinity} from './courseTraitsV2.js';
 import { distanceKm } from './courseRoute.js';
 import { scoreTags } from './exploreTags.js';
 
 const aliases = { '서울특별시': '서울', '경기도': '경기', '인천광역시': '인천', '부산광역시': '부산', '대전광역시': '대전', '대구광역시': '대구', '울산광역시': '울산', '강원특별자치도': '강원', '전북특별자치도': '전북', '제주특별자치도': '제주' };
 const regionName = value => aliases[value] || value;
-const axes = [
-  ['activity', ['휴식', '여유', '힐링'], ['활동', '등산', '레저', '액티비티']],
-  ['space', ['실내', '전시', '박물관'], ['야외', '공원', '숲']],
-  ['environment', ['도시', '도심', '골목', '건축'], ['자연', '숲', '바다']],
-  ['content', ['관람', '역사문화', '전시'], ['체험', '공방', '양조체험']],
-];
 const located = p => p && Number.isFinite(p.latitude) && Number.isFinite(p.longitude) && Math.abs(p.latitude) <= 90 && Math.abs(p.longitude) <= 180;
 export function courseRegion(stops) {
   const counts = new Map();
@@ -20,7 +15,8 @@ export function insertPlace(ids, id, afterId = 'end') {
   const index = afterId === 'end' || !ids.includes(afterId) ? ids.length : ids.indexOf(afterId) + 1;
   return [...ids.slice(0, index), id, ...ids.slice(index)];
 }
-export function recommendAdditions({ candidates, stops, region, afterId = 'end', accommodation, interests = [], taste = {}, replaceId }) {
+export function recommendAdditions({ candidates, stops, region, afterId = 'end', accommodation, interests = [], taste = {}, replaceId,courseContext={},traitContext={} }) {
+  const traitIndex=new Map([...stops,...candidates].map(p=>[p.id,p]));
   const replacing = stops.find(p => p.id === replaceId);
   const remaining = replacing ? stops.filter(p => p.id !== replaceId) : stops;
   const index = replacing ? stops.indexOf(replacing) : afterId === 'end' || !stops.some(p => p.id === afterId) ? stops.length : stops.findIndex(p => p.id === afterId) + 1;
@@ -31,19 +27,18 @@ export function recommendAdditions({ candidates, stops, region, afterId = 'end',
   const courseTags = new Set(scoreTags(remaining.flatMap(p => p.tags)));
   const excluded = new Set(stops.map(p => p.id));
   if (accommodation) excluded.add(accommodation.id);
+  const hasTaste=["planning","experience","exploration","spending"].some(k=>Number.isFinite(taste?.[k]));
   const ranked = [...new Map(candidates.map(p => [p.id, p])).values()]
     .filter(p => p.category !== '숙소' && !excluded.has(p.id) && (region === '전체' || regionName(p.region) === regionName(region)))
+    .sort((a,b)=>{if(!hasTaste)return 0;const score=p=>scoreTags(p.tags).filter(t=>wanted.has(t)).length*3-(anchor&&located(p)?distanceKm(anchor,p):0);return score(b)-score(a)||a.id.localeCompare(b.id);})
+    .slice(0,hasTaste?200:Infinity)
     .map(place => {
       const keywords = scoreTags(place.tags);
       const matches = keywords.filter(tag => wanted.has(tag));
       const affinity = keywords.reduce((sum, tag) => sum + (wanted.has(tag) ? 3 : courseTags.has(tag) ? 1 : 0), 0);
-      let fit = 0;
-      // Conflicting tags stay neutral; every axis contributes at most once.
-      axes.forEach(([id, low, high]) => {
-        const left = scoreTags(low).some(t => keywords.includes(t));
-        const right = scoreTags(high).some(t => keywords.includes(t));
-        if (left !== right) fit += (right ? 1 : -1) * ((taste[id] ?? 50) - 50) / 50;
-      });
+      const nextStops=[...remaining.slice(0,index),place,...remaining.slice(index)];
+      const assessment=hasTaste?evaluateCourseTraits({...courseContext,stopIds:nextStops.map(p=>p.id)},traitIndex,traitContext):null;
+      const fit=assessment?courseTraitAffinity(assessment,taste):0;
       const distance = anchor && located(place) ? distanceKm(anchor, place) : null;
       const delta = replacing && located(replacing) && located(place) && [before, after].filter(Boolean).every(located) && (before || after)
         ? (before ? distanceKm(before, place) - distanceKm(before, replacing) : 0) + (after ? distanceKm(place, after) - distanceKm(replacing, after) : 0) : null;
@@ -57,10 +52,10 @@ export function recommendAdditions({ candidates, stops, region, afterId = 'end',
       if (replacing && delta !== null) reasons.push(Math.abs(delta) < 0.05 ? '교체 시 직선 동선 거의 동일' : `교체 시 직선 동선 약 ${Math.abs(delta).toFixed(1)}km ${delta < 0 ? '감소' : '증가'}`);
       if (!replacing && located(before) && located(after) && detour !== null) reasons.push(`직선 동선 약 ${detour.toFixed(1)}km 추가`);
       if (matches.length) reasons.push(`${place.tags.filter(t => scoreTags([t]).some(k => wanted.has(k))).slice(0, 2).join('·')} 취향과 일치`);
-      if (fit > 0) reasons.push('마이의 여행 성향과 일치');
+      if (fit > 0) reasons.push('이 장소를 넣은 코스 전체의 4축 성향을 비교했어요');
       if (balance && !replacing) reasons.push(missingCafe ? '일정에 쉬어갈 카페를 더해요' : '일정에 식사 장소를 더해요');
       if (!reasons.length) reasons.push(replacing ? '같은 지역의 교체 후보' : '현재 지역에서 추가할 수 있는 장소');
-      return { place, distance, detour, reasons, score: affinity + fit * 2 + balance - (detour ?? 0) * ((taste.pace ?? 50) < 50 ? 3 : 2) };
+      return { place, distance, detour, reasons, courseAssessment:assessment, score: affinity + fit * 2 + balance - (detour ?? 0) * 2 };
     }).sort((a, b) => (anchor && a.distance === null ? 1 : 0) - (anchor && b.distance === null ? 1 : 0) || b.score - a.score || (a.distance ?? 0) - (b.distance ?? 0) || a.place.id.localeCompare(b.place.id));
   let radius = null;
   let nearby = ranked;

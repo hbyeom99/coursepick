@@ -37,8 +37,15 @@ function toPlace(value: unknown): Place {
   }
   const preview = import.meta.env.DEV ? (accessibilityPreview as Record<string,unknown>)[id] : undefined;
   const accessibilityInfo = normalizeAccessibilityInfo(row.accessibility_info ?? preview);
+  const rawFacts=row.trait_facts&&typeof row.trait_facts==='object'&&!Array.isArray(row.trait_facts)?row.trait_facts as Record<string,unknown>:{};
+  const traitFacts:Place['traitFacts']={};
+  if(typeof rawFacts.activityIntensity==='number'&&Number.isFinite(rawFacts.activityIntensity)&&rawFacts.activityIntensity>=0&&rawFacts.activityIntensity<=1)traitFacts.activityIntensity=rawFacts.activityIntensity;
+  if(typeof rawFacts.costPerPerson==='number'&&Number.isFinite(rawFacts.costPerPerson)&&rawFacts.costPerPerson>=0)traitFacts.costPerPerson=rawFacts.costPerPerson;
+  if(typeof rawFacts.reservationRequired==='boolean')traitFacts.reservationRequired=rawFacts.reservationRequired;
+  if(typeof rawFacts.participatory==='boolean')traitFacts.participatory=rawFacts.participatory;
+  if(typeof rawFacts.source==='string')traitFacts.source=rawFacts.source;
   const combinedTags = [...new Set([...(tags as string[]), ...accessibilityTags(accessibilityInfo)])];
-  return { id, name: text('name'), category: text('category'), region: text('region'), location: text('location'), description: companion.description, tags: combinedTags, imageUrl: text('image_url'), latitude: number('latitude', -90, 90), longitude: number('longitude', -180, 180), openingHours: text('opening_hours'), rating: number('rating', 0, 5), lodgingInfo, companionInfo, accessibilityInfo };
+  return { id, name: text('name'), category: text('category'), region: text('region'), location: text('location'), description: companion.description, tags: combinedTags, imageUrl: text('image_url'), latitude: number('latitude', -90, 90), longitude: number('longitude', -180, 180), openingHours: text('opening_hours'), rating: number('rating', 0, 5), lodgingInfo, companionInfo, accessibilityInfo,traitFacts };
 }
 
 export async function getPlaces(signal?: AbortSignal): Promise<Place[]> {

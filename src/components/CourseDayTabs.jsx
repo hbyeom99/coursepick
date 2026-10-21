@@ -1,0 +1,3 @@
+import React from 'react';
+import {courseDayCount} from '../lib/courseDays.js';
+export default function CourseDayTabs({course,day,onChange,onAdd}){const count=courseDayCount(course);return <div className="zip-day-tabs personal-day-tabs" role="tablist" aria-label="코스 일차">{Array.from({length:count},(_,i)=><button type="button" role="tab" aria-selected={day===i+1} className={day===i+1?'active':''} key={i} onClick={()=>onChange(i+1)}><strong>{i+1}일차</strong></button>)}{onAdd&&<button type="button" className="zip-day-add" aria-label="코스 일차 추가" disabled={count>=31} onClick={()=>onAdd(count+1)}>+</button>}</div>}

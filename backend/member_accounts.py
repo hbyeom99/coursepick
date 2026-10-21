@@ -9,8 +9,11 @@ from dotenv import dotenv_values
 from fastapi import APIRouter,Header,HTTPException
 from pydantic import BaseModel,Field
 from supabase import create_client
+from travel_journal_validation import validate_journals, validate_travel_taste
+from member_course_validation import normalize_course, known_places, place_ids
+from member_course_repository import public_course_cache, public_snapshot
 router=APIRouter(prefix='/api/member')
-KEYS={'coursepick.testTaste.v1','course-favorites','coursepick.savedPlaces.v1','coursepick.myCourses.v1','coursepick.likedCourses.v1','coursepick.draft.v1','coursepick.profile.v1','coursepick.accommodations.v1'}
+KEYS={'coursepick.travelJournals.v1','coursepick.travelTaste.v1','coursepick.testTaste.v1','course-favorites','coursepick.savedPlaces.v1','coursepick.myCourses.v1','coursepick.likedCourses.v1','coursepick.draft.v1','coursepick.profile.v1','coursepick.accommodations.v1'}
 def config():
  c=dotenv_values(Path(__file__).with_name('.env'),interpolate=False)
  return (os.environ.get('SUPABASE_URL') or c['SUPABASE_URL'],os.environ.get('SUPABASE_SERVICE_KEY') or c['SUPABASE_SERVICE_KEY'])
@@ -93,22 +96,59 @@ def save(body: Value, authorization: str | None = Header(None)):
             detail='저장할 데이터가 너무 큽니다.'
         )
 
-    # 회원 코스 목록을 저장할 때만 제목을 검사합니다.
+    if body.key == 'coursepick.travelJournals.v1':
+        try: body.value = validate_journals(body.value)
+        except ValueError: raise HTTPException(422, '여행기의 제목·방문일·장소·내용을 확인해 주세요.') from None
+    if body.key == 'coursepick.travelTaste.v1':
+        try: body.value = validate_travel_taste(body.value)
+        except ValueError: raise HTTPException(422, '성향은 각 축에 0~100 정수로 입력해 주세요.') from None
+
     if body.key == 'coursepick.myCourses.v1':
-        if not isinstance(body.value, list):
-            raise HTTPException(
-                status_code=422,
-                detail='코스 목록 형식을 확인해 주세요.'
-            )
-
-        for course in body.value:
-            if not isinstance(course, dict):
-                raise HTTPException(
-                    status_code=422,
-                    detail='코스 데이터 형식을 확인해 주세요.'
-                )
-
-            validate_course_title(course.get('name'))
+        if not isinstance(body.value, list) or len(body.value) > 500:
+            raise HTTPException(422, '코스 목록 형식을 확인해 주세요.')
+        try:
+            courses = [normalize_course(c) for c in body.value]
+            if len({c['id'] for c in courses}) != len(courses):
+                raise ValueError('중복 코스 ID')
+        except ValueError:
+            raise HTTPException(422, '코스의 장소·태그·일정·이동수단·시간을 확인해 주세요.') from None
+        for course in courses:
+            validate_course_title(course['name'])
+        try:
+            ids = place_ids(courses)
+            existing = known_places(db(), ids)
+        except Exception:
+            raise HTTPException(503, '장소 정보를 확인하지 못했습니다. 다시 시도해 주세요.') from None
+        if not set(ids).issubset(existing):
+            # Preserve unchanged legacy records without allowing new invalid references
+            # or publishing/editing an unresolved record.
+            try:
+                rows = db().table('member_data').select('value').eq('user_id', str(user.id)).eq('data_key', body.key).limit(1).execute().data
+                previous = rows[0].get('value', []) if rows else []
+                saved = {}
+                if isinstance(previous, list):
+                    for value in previous:
+                        try:
+                            old = normalize_course(value)
+                            saved[old['id']] = old
+                        except ValueError:
+                            continue
+                def comparable(value):
+                    return {k:v for k,v in value.items() if k not in ('author','authorId')}
+                for course in courses:
+                    if not set(place_ids([course])).issubset(existing):
+                        old = saved.get(course['id'])
+                        if old is None or comparable(old) != comparable(course):
+                            raise HTTPException(422, '등록되지 않은 장소가 포함되어 있습니다. 해당 코스의 장소를 다시 선택해 주세요.')
+            except HTTPException:
+                raise
+            except Exception:
+                raise HTTPException(503, '기존 코스를 확인하지 못했습니다. 다시 시도해 주세요.') from None
+        nickname = (user.user_metadata or {}).get('nickname')
+        author = nickname.strip()[:20] if isinstance(nickname, str) and nickname.strip() else '여행자'
+        for course in courses:
+            course['author'], course['authorId'] = author, str(user.id)
+        body.value = courses
 
     # 모든 제목이 검사를 통과한 뒤 DB에 저장합니다.
     try:
@@ -127,6 +167,15 @@ def save(body: Value, authorization: str | None = Header(None)):
             detail='회원 정보를 저장하지 못했습니다. 다시 시도해 주세요.'
         ) from None
 
+    if body.key == 'coursepick.travelJournals.v1':
+        try: body.value = validate_journals(body.value)
+        except ValueError: raise HTTPException(422, '여행기의 제목·방문일·장소·내용을 확인해 주세요.') from None
+    if body.key == 'coursepick.travelTaste.v1':
+        try: body.value = validate_travel_taste(body.value)
+        except ValueError: raise HTTPException(422, '성향은 각 축에 0~100 정수로 입력해 주세요.') from None
+
+    if body.key == 'coursepick.myCourses.v1':
+        public_course_cache.clear()
     return {'ok': True}
 class Photo(BaseModel):
  data:str=Field(max_length=3000000)
@@ -148,22 +197,15 @@ def photo(body:Photo,authorization:str|None=Header(None)):
  except Exception:raise HTTPException(503,'프로필 사진 저장소 설정을 확인해 주세요.') from None
 
 @router.get('/public-courses')
-def public_courses():
- allowed={'id','name','description','region','stopIds','imagePlaceId','tags','representativeTags','schedule','hours','transport','maxPeople','durationDays','accommodationId','originalAuthor','createdAt'}
- result=[];offset=0;client=db()
- while True:
-  rows=client.table('member_data').select('value').eq('data_key','coursepick.myCourses.v1').range(offset,offset+499).execute().data
-  for row in rows:
-   if not isinstance(row['value'],list):continue
-   for course in row['value']:
-    if not isinstance(course,dict) or course.get('isPublic') is not True:continue
-    if not isinstance(course.get('stopIds'),list) or len(course['stopIds'])<2:continue
-    item={key:course[key] for key in allowed if key in course}
-    item.update(author=str(course.get('author','여행자'))[:20],isPublic=True,source='member-public',isDemo=False,theme='사용자 코스')
-    result.append(item)
-  if len(rows)<500:break
-  offset+=500
- return {'courses':result}
+def public_courses(offset: int = 0, limit: int = 100):
+ if offset < 0 or not 1 <= limit <= 100:
+  raise HTTPException(422, '공개 코스 페이지 범위를 확인해 주세요.')
+ try:
+  courses = public_course_cache.read('public', lambda: public_snapshot(db()))
+ except Exception:
+  raise HTTPException(503, '공개 코스를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.') from None
+ end = offset + limit
+ return {'courses': courses[offset:end], 'more': end < len(courses), 'nextOffset': end if end < len(courses) else None}
 
 class RecoveryEmail(BaseModel):
  email:str=Field(min_length=3,max_length=254)

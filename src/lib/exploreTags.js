@@ -7,12 +7,15 @@ const groups = {
   사진: '사진촬영', 포토: '사진촬영',
   캠핑: '캠핑', 야영: '캠핑', 글램핑: '캠핑',
 };
-export const scoreTags = tags => [...new Set(tags.map(tag => groups[normalizeTag(tag)] || normalizeTag(tag)))];
+export const scoreTags = tags => [...new Set((Array.isArray(tags) ? tags.filter(tag=>typeof tag==='string') : []).map(tag => groups[normalizeTag(tag)] || normalizeTag(tag)))];
 
-export function classifyCourse(course, catalog) {
-  const stops = course.stopIds.map(id => catalog.find(place => place.id === id)).filter(Boolean);
-  const found = explorationTags.filter(tag => stops.some(place => place.tags.includes(tag)));
+export function classifyCourse(course, catalog, index) {
+  course = course && typeof course === 'object' ? course : {};
+  const ids = Array.isArray(course.stopIds) ? course.stopIds : [];
+  const tags = Array.isArray(course.tags) ? course.tags.filter(tag=>typeof tag==='string') : [];
+  const stops = ids.map(id => index ? index.get(id) : catalog.find(place => place.id === id)).filter(Boolean);
+  const found = explorationTags.filter(tag => stops.some(place => Array.isArray(place.tags) && place.tags.includes(tag)));
   // Two meal stops constitute food exploration; a single ordinary restaurant does not.
   if (stops.filter(place => place.category === '음식점').length >= 2) found.push('먹방');
-  return { ...course, tags: [...new Set([...course.tags.map(normalizeTag), ...found])] };
+  return { ...course, tags: [...new Set([...tags.map(normalizeTag), ...found])] };
 }

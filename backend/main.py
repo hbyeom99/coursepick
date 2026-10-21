@@ -1,3 +1,4 @@
+from course_traits import evaluate_course_traits,course_trait_affinity
 import os
 import json
 import math
@@ -9,13 +10,14 @@ from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from supabase import create_client
 from supabase.client import ClientOptions
+from place_queries import place_client, recommendation_candidates, recommendation_cache, region_place_cache
 
 app = FastAPI(title="coursepick Backend")
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[origin.strip().rstrip("/") for origin in os.environ.get("CORS_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173").split(",") if origin.strip()],
-    allow_methods=["GET", "POST", "PUT"],
+    allow_methods=["GET", "POST", "PUT", "DELETE"],
     allow_headers=["Authorization", "Content-Type"],
 )
 
@@ -26,7 +28,7 @@ def health() -> dict[str, str]:
 
 
 @app.get("/api/places")
-def get_places(ids: str | None = None, offset: int = 0, limit: int | None = None):
+def get_places(ids: str | None = None, offset: int = 0, limit: int | None = None, region: str | None = None, category: str | None = None):
     if offset < 0 or (limit is not None and not 1 <= limit <= 500):
         raise HTTPException(status_code=422, detail="잘못된 장소 페이지 범위입니다.")
     # Deployment environment variables take precedence over the local backend/.env.
@@ -55,6 +57,10 @@ def get_places(ids: str | None = None, offset: int = 0, limit: int | None = None
                 request = request.in_("id", selected_ids)
             else:
                 request = request.not_.like("id", "lodgingcsv_%")
+            if region:
+                request = request.eq('region', region)
+            if category:
+                request = request.eq('category', category)
             response = request.order("id").range(offset, offset + page_size - 1).execute()
             rows = response.data
             places.extend(rows)
@@ -100,7 +106,11 @@ def get_recommendations(
     region = (region or "").strip()
     category = (category or "").strip()
     tag = (tag or "").strip()
-    places = get_places()
+    try:
+        places = recommendation_cache.read((region, category, tag),
+            lambda: recommendation_candidates(place_client(), region, category, tag))
+    except Exception:
+        raise HTTPException(502, '추천 장소를 조회하지 못했습니다.') from None
 
     def ranking(place):
         raw_rating = place.get("rating")
@@ -179,14 +189,16 @@ def generate_course(region: str, tags: str = "", accommodation_id: str | None = 
                     activity: int = Query(50, ge=0, le=100), space: int = Query(50, ge=0, le=100),
                     environment: int = Query(50, ge=0, le=100), content: int = Query(50, ge=0, le=100),
                     pace: int = Query(50, ge=0, le=100), saved_ids: str = Query("", max_length=10000),
-                    include_cafe: bool = False):
+                    include_cafe: bool = False, planning: int | None = Query(None,ge=0,le=100),
+                    experience: int | None = Query(None,ge=0,le=100), exploration: int | None = Query(None,ge=0,le=100),
+                    spending: int | None = Query(None,ge=0,le=100), known_tags: str = Query("",max_length=2000), known_categories: str = Query("",max_length=500)):
     import math
     import uuid
     region = region.strip()
     interests = set(tag.strip() for tag in tags.split(",") if tag.strip())
     if not region or len(region) > 30 or len(tags) > 300:
         raise HTTPException(status_code=400, detail="지역과 관심 키워드를 확인해 주세요.")
-    places = [p for p in get_places() if p.get("region") == region and isinstance(p.get("latitude"), (int, float)) and isinstance(p.get("longitude"), (int, float)) and math.isfinite(p["latitude"]) and math.isfinite(p["longitude"])]
+    places = [p for p in region_place_cache.read(region, lambda: get_places(region=region)) if p.get("region") == region and isinstance(p.get("latitude"), (int, float)) and isinstance(p.get("longitude"), (int, float)) and math.isfinite(p["latitude"]) and math.isfinite(p["longitude"])]
     # Count synonymous themes once, consistent with frontend preference scoring.
     groups = {"미식": "음식탐방", "맛집": "음식탐방", "먹방": "음식탐방",
               "등산": "활동", "레저": "활동", "액티비티": "활동", "엑티비티": "활동",
@@ -195,19 +207,16 @@ def generate_course(region: str, tags: str = "", accommodation_id: str | None = 
               "캠핑": "캠핑", "야영": "캠핑", "글램핑": "캠핑"}
     interest_groups = {groups.get(tag, tag) for tag in interests}
     saved = set(saved_ids.split(","))
-    axes = [(activity, {"휴식", "여유", "힐링"}, {"등산", "레저", "액티비티"}),
-            (space, {"실내", "전시", "박물관"}, {"야외", "공원", "숲"}),
-            (environment, {"도시", "도심", "골목", "건축"}, {"자연", "숲", "바다"}),
-            (content, {"관람", "역사문화", "전시"}, {"체험", "공방", "양조체험"})]
+    # Legacy five-axis query parameters remain accepted for old clients, but no longer affect scoring.
+    targets=dict(planning=planning,experience=experience,exploration=exploration,spending=spending)
+    context={'knownPlaceIds':list(saved),'knownTags':[v for v in known_tags.split(',') if v],'knownCategories':[v for v in known_categories.split(',') if v]}
+    place_index={p['id']:p for p in places}
     def affinity(p):
-        place_tags = set(p.get("tags") or [])
-        matched = interest_groups.intersection(groups.get(tag, tag) for tag in place_tags)
-        preference = 0
-        for value, low, high in axes:
-            direction = (value - 50) / 50
-            # Each axis contributes at most once, regardless of synonym count.
-            preference += direction * (bool(place_tags & high) - bool(place_tags & low))
-        return min(4, len(matched)) + preference + (2 if p["id"] in saved else 0)
+        matched=interest_groups.intersection(groups.get(tag,tag) for tag in (p.get('tags') or []))
+        return min(4,len(matched))+(2 if p['id'] in saved else 0)
+    def candidate_schedule(stops):
+        roles=[('오전 일정','10:00',90),('점심 식사','12:00',60),('오후 일정','14:00',120)]+([('카페·디저트','16:30',60)] if include_cafe else [])+[('저녁 식사','18:00',60)]
+        return [{'placeId':p['id'],'label':label,'time':time,'minutes':minutes,'duration':str(minutes)+'분 예상','durationEstimated':True,'timeFlexible':True} for p,(label,time,minutes) in zip(stops,roles)]
     def distance(a, b):
         la, lb = map(math.radians, [a["latitude"], b["latitude"]])
         value = math.sin((lb-la)/2)**2 + math.cos(la)*math.cos(lb)*math.sin(math.radians(a["longitude"]-b["longitude"])/2)**2
@@ -242,21 +251,16 @@ def generate_course(region: str, tags: str = "", accommodation_id: str | None = 
                 stops.insert(3, cafe)
             length = sum(distance(x, y) for x, y in zip(stops, stops[1:]))
             anchor_km = distance(accommodation, a) + distance(dinner, accommodation) if accommodation else 0
-            score = sum(affinity(p) for p in stops)*2-length*(1.8 if pace < 40 else 1)-anchor_km
+            trial={'stopIds':[p['id'] for p in stops],'schedule':candidate_schedule(stops),'transport':'자동차','durationDays':1}
+            assessment=evaluate_course_traits(trial,place_index,context)
+            score = sum(affinity(p) for p in stops)*2-length-anchor_km+course_trait_affinity(assessment,targets)*3
             if best is None or score > best[0]: best = (score, stops, length)
     if best is None:
         raise HTTPException(status_code=404, detail="선택한 조건에서 가까운 관광지·식당 조합을 찾지 못했습니다. 카페 포함을 해제하거나 다른 지역을 선택해 주세요.")
     _, stops, length = best
-    schedule = [{"label": label, "time": time, "duration": duration} for label, time, duration in [("오전 일정", "10:00", "90분"), ("점심식사", "12:00", "60분"), ("오후 일정", "14:00", "120분"), ("저녁식사", "18:00", "60분")]]
-    if pace < 40:
-        schedule[0]["duration"] = "120분"
-        schedule[2]["duration"] = "150분"
-    elif pace > 60:
-        schedule[0]["duration"] = "60분"
-        schedule[2]["duration"] = "90분"
-    if include_cafe:
-        schedule.insert(3, {"label": "카페·디저트", "time": "16:30", "duration": "60분"})
+    schedule = candidate_schedule(stops)
     course = {"id": "generated-"+str(uuid.uuid4()), "name": region+" · 나의 맞춤 하루", "region": region, "stopIds": [p["id"] for p in stops], "imagePlaceId": stops[0]["id"], "tags": list(dict.fromkeys(tag for p in stops for tag in (p.get("tags") or []))), "hours": 9, "transport": "자동차", "maxPeople": 6, "author": "coursepick", "theme": "취향과 동선으로 만든 코스", "isSample": True, "source": "tourapi", "straightLineKm": round(length, 2), "schedule": schedule, "description": "관심 키워드·여행 성향·저장한 장소와 가까운 동선을 반영한 당일치기 계획 예시입니다. 영업시간과 휴무일은 확인이 필요합니다."}
+    course['traitAssessment']=evaluate_course_traits(course,place_index,context)
     if accommodation:
         course["accommodationId"] = accommodation["id"]
         course["description"] += " 숙소 출발·저녁 이후 복귀를 연결한 하루 일정입니다. 첫날 체크인은 숙소 안내를 확인하세요."
@@ -392,3 +396,6 @@ app.include_router(member_router)
 # Live place search: separate from the persisted place catalogue.
 from kakao_place_search import router as kakao_place_search_router
 app.include_router(kakao_place_search_router)
+
+from zip_rooms import router as zip_router
+app.include_router(zip_router)

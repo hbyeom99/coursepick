@@ -6,6 +6,7 @@ export interface AccessibilityInfo {
   features: Record<string, { status: string; evidence: { raw: string; contentId: string; retrievedAt: string }[] }>;
 }
 export interface Place {
+  traitFacts?: { activityIntensity?: number; participatory?: boolean; reservationRequired?: boolean; costPerPerson?: number; source?: string };
   id: string;
   name: string;
   category: string;

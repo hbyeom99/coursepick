@@ -37,7 +37,7 @@ export default function PlacePicker({freeMode,stops,afterId,onAfter,flow,flowRan
  const mapPlaces=mapPool.slice(0,30).map(item=>item.place);
  if(selectedPlace&&!mapPlaces.some(p=>p.id===selectedPlace.id))mapPlaces.push(selectedPlace);
  const items=tab==='내 장소'?pool.filter(x=>savedIds.includes(x.place.id)):tab==='최근'?pool.filter(x=>recent.includes(x.place.id)).sort((a,b)=>recent.indexOf(a.place.id)-recent.indexOf(b.place.id)):tab==='지도'?pool.filter(x=>x.place.id===selected):pool;
- const tastePool=rankTasteFirst(mapPool.map(item=>({...item,tasteScore:scorePickerTaste(item.place,interests,taste)})));
+ const tastePool=rankTasteFirst(mapPool.map(item=>({...item,tasteScore:scorePickerTaste(item.place,interests,taste,item.courseAssessment)})));
  const batchContext=JSON.stringify([recommendationContext,category,query,wideMap,afterId,stops.map(p=>p.id)]);
  const batch=recommendationBatch(tastePool,batchState,batchContext);
  const shown=tab==='추천'?batch.selected.map(id=>tastePool.find(item=>item.place.id===id)).filter(Boolean):items.slice(0,count);
