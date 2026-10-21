@@ -991,3 +991,26 @@ body,button,input,textarea,select,option,svg text{font-family:"Noto Sans KR",san
 .google-itinerary .stop-detail-button>.course-image-placeholder{object-fit:contain}
 
 .google-itinerary-source{margin:4px 0 12px 73px}
+
+/* Day controls, shared Zip picker and readable archive names. */
+.zip-day-remove{flex:0 0 40px;width:40px;height:40px;min-height:40px;align-self:center;border:1px solid #ddd1ff;border-radius:50%;background:#f4efff;color:#7950f7;font-size:25px;line-height:1;cursor:pointer}
+.zip-day-remove:disabled{opacity:.35;cursor:default}
+.zip-create-page>.zip-header{display:grid;grid-template-columns:40px minmax(0,1fr) 40px;align-items:center}
+.zip-create-page>.zip-header h1{position:static;transform:none;text-align:center;justify-self:center;width:100%;margin:0}
+.zip-schedule-actions{display:flex;align-items:center;justify-content:flex-end;gap:6px;flex-wrap:wrap}
+.zip-schedule-actions select{max-width:88px;min-height:34px;border:1px solid #c5b2ff;border-radius:7px;background:#fff;color:#7950f7;padding:4px}
+.zip-final-page>.zip-section-heading{flex-wrap:wrap;gap:8px}
+.zip-final-page>.zip-section-heading h2{flex:1 1 130px}
+.zip-final-page>.zip-section-heading .zip-schedule-actions{flex:1 1 220px}
+.zip-dialog.zip-shared-picker{display:flex;flex-direction:column;width:100%;max-width:480px;height:calc(100dvh - 110px);max-height:calc(100dvh - 110px);padding:0;overflow:hidden}
+.zip-shared-picker>header{flex:0 0 auto;padding:14px 16px;background:white}
+.zip-shared-picker>.place-picker-page{min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:0 14px 24px}
+.zip-final-page .google-itinerary .place-picker-map{margin-bottom:16px}
+.visit-region-labels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:12px 0}
+.visit-region-labels button{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0;min-height:48px;padding:8px 4px;border:1px solid #d9d2e6;border-radius:8px;color:#40364f;white-space:normal;overflow:visible;text-overflow:clip;word-break:keep-all;overflow-wrap:anywhere;font-size:12px;line-height:1.5}
+.visit-region-labels button span{display:block;max-width:100%}
+.visit-region-labels button small{font-size:10px;color:#5f526d}
+.visit-region-labels button.active{outline:2px solid #7950f7;outline-offset:1px}
+.visit-map{overflow:visible}
+.visit-map path[role="button"]{cursor:pointer}
+.journal-map-selection{font-size:12px;color:#71549a;line-height:1.6}

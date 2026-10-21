@@ -1,0 +1,15 @@
+import React,{useState} from 'react';
+import PlacePicker from '../PlacePicker.jsx';
+import MapPanel from '../MapPanel.jsx';
+import CourseRepresentativePhoto from '../CourseRepresentativePhoto.jsx';
+import KakaoPlaceDetails from '../KakaoPlaceDetails.jsx';
+import {ZipModal} from './ZipPrimitives.jsx';
+import {roomCommonKeywords,roomTasteTotals} from '../../lib/zipRooms.js';
+import {groupSearchContext} from '../../lib/searchSubmission.js';
+export default function ZipPlacePicker({places,stops,kakaoPlaceRefs,savedPlaceIds,region,members,onAdd,onAddKakao,onClose}){
+ const [query,setQuery]=useState(''),[detail,setDetail]=useState(null);
+ const common=roomCommonKeywords(members),profile=groupSearchContext({region},roomTasteTotals(members),common,'');
+ const ranked=places.filter(p=>!stops.some(s=>s.id===p.id)).map(place=>({place}));
+ function open(id){const p=places.find(p=>p.id===id);if(p)setDetail({place:p});}
+ return <><ZipModal title="장소 추가" className="place-picker-modal zip-shared-picker" suspended={Boolean(detail)} onClose={onClose}><PlacePicker freeMode={false} stops={stops} distanceStops={stops} afterId="end" onAfter={()=>{}} flow={{stage:'free',label:'원하는 장소 추가',actions:[]}} flowRanked={ranked} ranked={ranked} onFlow={()=>{}} onFinish={onClose} query={query} onQuery={setQuery} recommendationContext={JSON.stringify([region,common,stops.map(p=>p.id)])} interests={common} taste={profile.taste} savedIds={savedPlaceIds} catalog={places} kakaoPlaceRefs={kakaoPlaceRefs} onAddKakao={onAddKakao} onOpenKakao={place=>setDetail({place,kakao:true})} onOpenPlace={open} lodgingRegion={region} lodgingPlaces={places.filter(p=>p.category==='숙소')} renderMap={(rows,id,onSelect)=><MapPanel place={rows[0]||stops[0]} places={rows} selectedId={id} onSelectPlace={onSelect}/>} renderRow={p=><article key={p.id} className="place-result"><button type="button" className="picker-photo-button" aria-label={p.name+' 상세보기'} onClick={()=>open(p.id)}><CourseRepresentativePhoto src={p.imageUrl} alt={p.name}/></button><div><div className="picker-place-heading"><p className="overline">{p.region} · {p.category}</p><button type="button" className="pill secondary picker-add-place" onClick={()=>onAdd(p.id)}>+ 장소 추가</button></div><button type="button" className="google-place-title" onClick={()=>open(p.id)}><h3>{p.name}</h3></button><div className="tags">{(p.tags||[]).slice(0,3).map(tag=><span key={tag}>#{tag}</span>)}</div></div></article>}/></ZipModal>{detail&&<ZipModal title={detail.place.name} className="place-detail-modal" onClose={()=>setDetail(null)}>{detail.kakao?<KakaoPlaceDetails place={detail.place} onAdd={onAddKakao} added={kakaoPlaceRefs.some(r=>r.placeId===detail.place.id)}/>:<><div className="place-detail-photo"><CourseRepresentativePhoto src={detail.place.imageUrl} alt={detail.place.name}/></div><h3>{detail.place.name}</h3><p>{detail.place.description}</p><p>{detail.place.location}</p><button type="button" className="pill secondary" onClick={()=>onAdd(detail.place.id)}>+ 장소 추가</button></>}</ZipModal>}</>;
+}
