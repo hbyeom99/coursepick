@@ -8,7 +8,7 @@ const groupByKey=new Map(Object.entries(groups).flatMap(([group,words])=>words.m
 export const allowedHomeQuery=value=>allowed.has(searchKey(value));
 export function homeSearchSuggestions(input){const key=searchKey(input);return HOME_SEARCH_KEYWORDS.filter(word=>!key||searchKey(word).includes(key)).slice(0,8);}
 const cities={강릉:'강원',속초:'강원',양양:'강원',원주:'강원',평창:'강원',동해:'강원',해운대:'부산',광안리:'부산',기장:'부산',경주:'경북',포항:'경북',담양:'전남',나주:'전남',화순:'전남',순천:'전남',여수:'전남',광양:'전남',해남:'전남',보성:'전남',전주:'전북',군산:'전북',익산:'전북',공주:'충남',부여:'충남',천안:'충남',아산:'충남',충주:'충북',단양:'충북',서산:'충남',애월:'제주',성산:'제주',우도:'제주',울릉도:'경북',계룡산:'충남'};
-const provinces=['서울','경기','인천','강원','부산','대구','울산','광주','대전','세종','제주'];
+const provinces=['서울','경기','인천','강원','부산','대구','울산','광주','대전','세종','제주','충북','충남','전북','전남','경북','경남'];
 const regionOf=value=>{let key=searchKey(value).replace(/여행$/,'');if(key==='제주도')key='제주';if(key==='강원도')key='강원';if(provinces.includes(key))return {province:key,label:key};if(cities[key])return {province:cities[key],city:key,label:key};if(['수도권','서울근교'].includes(key))return {provinces:['서울','경기','인천'],label:key};return null;};
 const termAliases={
  '맛집투어':['음식점'],'푸드투어':['음식점'],'빵지순례':['베이커리','제과','빵'],'커피':['카페','커피'],'카페투어':['카페'],

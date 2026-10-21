@@ -8,7 +8,8 @@ from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
 from dotenv import dotenv_values
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Request as IncomingRequest
+from kakao_rate_limit import admit_request
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 from typing import Literal
@@ -100,19 +101,21 @@ def lookup_places(body: PlaceSearch):
     return result
 
 @router.post('/api/kakao/places/search')
-def search_places(body: PlaceSearch):
+def search_places(body: PlaceSearch,request: IncomingRequest=None):
+    admit_request(request)
     return JSONResponse(lookup_places(body), headers=NO_STORE)
 
 class PlaceReferences(BaseModel):
     refs: list = Field(max_length=20)
 
 @router.post('/api/kakao/places/references')
-def resolve_references(body: PlaceReferences):
+def resolve_references(body: PlaceReferences,request: IncomingRequest=None):
     try:refs=validate_kakao_refs(body.refs)
     except ValueError:raise HTTPException(422,'장소 ID와 검색 조건을 확인해 주세요.',headers=NO_STORE) from None
     # Per-request deduplication only; search results are never persisted.
     groups={}
     for ref in refs:groups.setdefault((ref['query'],ref['category'],ref['page']),[]).append(ref)
+    admit_request(request,len(groups))
     found={};errors=[]
     for (query,category,page), group in groups.items():
         try:
