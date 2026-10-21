@@ -898,3 +898,96 @@ body,button,input,textarea,select,option,svg text{font-family:"Noto Sans KR",san
 .zip-carousel-next:disabled{opacity:.35}.zip-carousel .zip-course-row{scroll-padding-inline:0}
 
 .zip-carousel-previous{left:-12px;right:auto}.zip-carousel-previous svg{transform:rotate(180deg)}
+
+.google-info-page{max-width:540px;margin:0 auto;padding:24px 18px 48px;color:#43364e;background:#fff;min-height:100vh}.google-info-page h1{font-size:22px;margin:24px 0 16px}.google-info-page h2{font-size:18px}.google-info-page p{font-size:13px;line-height:1.8;overflow-wrap:anywhere}.google-info-page article{margin:20px 0;padding:18px;border:1px solid #e8ddf5;border-radius:14px}.google-info-page footer{margin-top:24px;font-size:11px;line-height:1.8}.google-info-page [role=alert]{color:#a52e50}.google-attribution{display:flex;gap:10px;flex-wrap:wrap;border-top:1px solid #eee;padding-top:14px;color:#444}.google-attribution strong{font-family:Arial,sans-serif;font-size:14px;font-weight:500}
+
+/* Eleven-question travel taste test. Stickers occupy reserved whitespace. */
+.taste-test-eleven{position:relative;padding-top:29px;isolation:isolate}.taste-test-eleven h1{margin:42px 0 0;font-size:18px}.taste-test-eleven h2{margin:10px 0 0;min-height:100px;font-size:18px;line-height:1.5;padding:0 6px;flex-shrink:0}.taste-sticker-band{position:relative;height:64px;min-height:64px;pointer-events:none;overflow:hidden;margin:9px 0 0;flex-shrink:0}.taste-sticker-band img{position:absolute;height:40px;object-fit:contain;filter:drop-shadow(0 2px 1px #b7a4d226);opacity:.85}.taste-test-eleven .taste-test-options{margin-top:24px;margin-bottom:12px;gap:14px}.taste-test-eleven .taste-test-options button{display:flex;align-items:center;gap:8px;min-height:49px;padding:8px 9px 8px 34px;font-size:12px;text-align:left}.taste-test-eleven .taste-test-options button>.asset-check{left:11px;width:15px;height:15px}.taste-test-eleven .taste-test-options button>.taste-answer-text{position:static;transform:none;width:auto;height:auto;flex:1;background:none!important;color:inherit;border-radius:0;font-size:inherit;line-height:1.55}.taste-test-eleven .taste-test-options button>img{position:static;width:28px;height:28px;object-fit:contain;flex-shrink:0}.taste-test-bottom{margin-top:auto;padding-top:14px;flex-shrink:0}.taste-test-bottom .taste-test-next{margin:0;width:100%}.taste-test-bottom>small{display:block;text-align:center;margin-top:10px;font-size:8px;line-height:1.6;color:#9a91a8}.taste-test-bottom>small a{color:inherit}.taste-test-eleven .welcome-notice{font-size:12px;margin:4px 0}
+@media(max-height:700px){.taste-test-eleven h1{margin-top:25px}.taste-test-eleven h2{min-height:86px;font-size:16px}.taste-test-eleven .taste-test-options{margin-top:16px}.taste-sticker-band{height:49px;min-height:49px}.taste-sticker-band img{height:33px}.taste-test-eleven{padding-bottom:35px}}
+
+.editorial-feed-card{position:relative}.editorial-feed-card>img{width:100%;height:245px;object-fit:cover}.editorial-course-label{position:absolute;top:12px;left:12px;background:#fffE;color:#7e43d5;border-radius:20px;padding:5px 10px;font-size:10px;font-weight:650}.editorial-course-modal{position:relative;max-width:540px;max-height:85dvh;overflow:auto;padding:24px 18px}.editorial-course-modal>h2{padding-right:28px;font-size:21px;line-height:1.5}.editorial-course-modal p{font-size:13px;line-height:1.8}.editorial-close{position:absolute;right:12px;top:10px;font-size:26px}.editorial-day-tabs{display:flex;gap:8px;margin:20px 0}.editorial-day-tabs button{border:0;border-radius:8px;padding:9px 18px;background:#f0e7ff;color:#7a49bd}.editorial-day-tabs [aria-selected=true]{background:#9455ff;color:white}.editorial-visits{list-style:none;padding:0;margin:0}.editorial-visits>li{display:flex;gap:12px;border-top:1px solid #eee5fa;padding:14px 0}.editorial-visits time{font-size:12px;color:#9361ca;padding-top:4px;flex:0 0 44px}.editorial-visits h3{font-size:14px;margin:0}.editorial-visits p{margin:4px 0}.editorial-visits small{font-size:10px;color:#92849d}.editorial-visits img{width:120px;height:85px;object-fit:cover;border-radius:8px;margin:8px 0}.editorial-course-modal aside{padding:14px;background:#faf6ff;border-radius:10px;font-size:12px;line-height:1.8}.editorial-course-modal aside h3{font-size:13px;margin:0 0 6px}.editorial-course-modal aside ul{padding-left:18px;margin:0}
+
+/* Google search is isolated from the native map and recommendations. */
+.google-picker-search .place-picker-search input{min-width:0;flex:1}
+.google-picker-search .place-picker-search button{border:0;background:transparent;color:#7145df;white-space:nowrap;padding:8px;font:inherit;cursor:pointer}
+.google-picker-search .place-picker-search button:disabled{opacity:.45;cursor:default}
+.google-picker-results{padding:12px 16px;min-height:240px;background:white}
+.google-picker-results article{padding:16px 0;border-bottom:1px solid #eee8f6}
+.google-picker-results article p{margin:8px 0;color:#635d70;font-size:13px;line-height:1.6}
+.google-picker-results article small{display:block;margin-top:8px}
+.google-picker-results article a{color:#6441be}
+
+.google-picker-results .google-place-card{display:grid;grid-template-columns:88px minmax(0,1fr);gap:12px;padding:16px 0}
+.google-place-placeholder{min-height:100px;border-radius:12px;background:#f4f0ff;color:#997bc8;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+.google-place-placeholder>span{font-size:30px}.google-place-placeholder small{font-size:10px}
+.google-place-card h3{font-size:16px;line-height:1.45;margin:8px 0}.google-place-card .picker-place-heading{flex-wrap:wrap;gap:6px}.google-place-card .overline{margin:0;font-size:10px}
+.google-place-address{font-size:12px;color:#756d85;line-height:1.6;margin:6px 0}.google-place-card a{font-size:12px}.google-place-credit{display:block;margin-top:5px}
+.google-course-places{padding:16px;background:#fff;border:1px solid #eee7ff;border-radius:16px;margin:16px 0}.google-course-places>.muted{font-size:12px;line-height:1.6}
+.google-course-places .google-place-card{display:grid;grid-template-columns:72px minmax(0,1fr);gap:12px;padding:14px 0;border-top:1px solid #eee8f6}
+.google-ref-controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px}.google-ref-controls label{font-size:12px}.google-ref-controls select{margin-left:6px}.google-ref-controls button{min-height:32px}
+.editor-map[hidden]{display:none!important}
+.app-shell:has(.google-picker-results) .editor-map{display:none!important}
+.detail-layout:has(.google-course-places){display:block}
+
+/* Uploaded course card reference: two portrait photos, centered keywords and bottom metadata. */
+.app-shell .screen-home>.home-feed,.app-shell .screen-search .course-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.course-visual-card{position:relative;isolation:isolate;aspect-ratio:0.70;min-width:0;border:0;border-radius:7px;overflow:hidden;background:#514958}
+.course-visual-photo,.course-visual-photo>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.course-visual-card:after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,#10151c18,#10151c35 40%,#10151c80 78%,#10151cbf)}
+.course-visual-card:has(.course-image-placeholder):after{background:linear-gradient(180deg,#30244025,#30244070)}
+.course-visual-open{position:absolute;inset:0;z-index:2;display:block;width:100%;height:100%;padding:0;color:white;text-align:center;border:0;background:transparent}
+.course-visual-open:focus-visible{outline:3px solid #b395ff;outline-offset:-3px}
+.course-visual-title{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip-path:inset(50%);white-space:nowrap!important}
+.course-visual-tags{position:absolute;left:7px;right:7px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:0;color:white;font-weight:750;font-size:clamp(17px,5cqi,23px);line-height:1.3;text-shadow:0 1px 5px #0009;overflow-wrap:anywhere}
+.course-visual-tags>span{max-width:100%;background:none;padding:0}
+.course-visual-meta{position:absolute;left:6px;right:6px;bottom:9px;display:block}
+.app-shell .course-visual-meta .course-card-meta{display:flex;flex-wrap:nowrap;justify-content:center;gap:3px 5px;margin:0;color:white;font-size:9px;line-height:1.4;letter-spacing:-.3px}
+.app-shell .course-visual-meta .course-card-meta>span{display:inline-flex;min-width:0;gap:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.app-shell .course-visual-meta .course-card-meta>span:first-child{flex:0 1 auto}
+.app-shell .course-visual-meta .course-card-meta>span:not(:first-child){flex:0 0 auto}
+.app-shell .course-visual-meta .course-card-meta svg{width:10px;height:10px;flex-shrink:0}
+.course-visual-action{position:absolute;z-index:3;right:6px;top:6px}.course-visual-action .save-button{color:white;background:#16152b66;width:30px;height:30px}
+
+.app-shell .search-ai-slides{gap:8px}.app-shell .search-ai-slide{flex:0 0 calc((100% - 8px)/2);position:relative;min-width:0}
+.search-ai-slide .course-visual-action{inset:0;pointer-events:none}.search-ai-slide .course-visual-action button{pointer-events:auto}
+.search-ai-slide .course-visual-tags{font-size:clamp(16px,4.5cqi,22px)}
+.app-shell .course-visual-meta .course-card-meta>span:first-child{flex:1 1 0;max-width:50%;justify-content:flex-start}
+
+/* Match the supplied compact place-list and itinerary reference. */
+.app-shell .google-picker-results{padding:0 16px 14px}.google-picker-recommendations{display:flex;justify-content:flex-end;padding:8px 0 3px}.google-picker-recommendations button{font-size:13px}
+.app-shell .google-picker-results .google-place-card,.app-shell .google-course-places .google-place-card{display:grid;grid-template-columns:72px minmax(0,1fr);gap:10px;padding:13px 0;background:transparent;border:0;border-bottom:1px solid #eee8f6;border-radius:0;align-items:start;box-shadow:none}
+.google-place-thumb{position:relative;align-self:center;width:72px;height:72px}.google-place-thumb>img,.google-place-thumb .google-place-placeholder{width:72px;height:72px;min-height:0;object-fit:cover;border-radius:9px}.google-place-thumb .google-place-placeholder{gap:3px}.google-place-thumb .google-place-placeholder>span{font-size:23px}.google-place-thumb .google-place-placeholder small{font-size:9px}
+.google-place-copy{min-width:0}.app-shell .google-place-card .picker-place-heading{display:flex;flex-wrap:nowrap;align-items:center;gap:5px;min-height:25px}.app-shell .google-place-card .overline{font-size:12px;color:#9455ff;line-height:1.4;min-width:0;overflow-wrap:anywhere;font-weight:650}.app-shell .google-place-card .picker-add-place{margin-left:auto;flex-shrink:0;min-height:26px;padding:3px 7px;font-size:11px;border:1px solid #9b67ff;border-radius:7px;color:#9455ff;background:white;white-space:nowrap}
+.app-shell .google-place-card h3{font-size:16px;line-height:1.4;margin:5px 0 6px;font-weight:750}.app-shell .google-place-card .google-place-tags{display:flex;flex-wrap:wrap;gap:4px;margin:0 0 5px}.app-shell .google-place-card .google-place-tags span{font-size:12px;padding:2px 4px;background:#f0e7ff;color:#9361df;border-radius:3px}
+.app-shell .google-place-card .picker-place-distance,.app-shell .google-place-card .google-place-address{font-size:12px;line-height:1.55;color:#8b839b;margin:4px 0;overflow-wrap:anywhere}.google-card-source{display:flex;flex-wrap:wrap;gap:3px 6px;font-size:9px;color:#8b839b;margin-top:5px}.google-card-source a{font-size:9px!important;color:inherit}
+.google-place-details{font-size:11px;color:#8b839b;margin:5px 0}.google-place-details summary{cursor:pointer}.google-place-details p{font-size:11px!important;margin:4px 0!important}.google-place-details a{font-size:11px!important}
+.app-shell .google-course-places{border:0;border-radius:0;padding:0;background:transparent;margin:0}.google-itinerary-note{font-size:11px;color:#8b839b;line-height:1.6;margin:10px 0}.google-step-number{position:absolute;top:-6px;left:-5px;width:19px!important;height:19px!important;font-size:10px!important;background:#9455ff;color:white;border:2px solid white}
+.google-ref-controls{justify-content:flex-end;gap:8px;margin:6px 0 12px}.google-ref-controls label{font-size:11px}.google-ref-controls select{padding:3px;font-size:11px}.google-ref-controls button{font-size:12px;min-height:28px}.google-route-info{font-size:11px;margin:5px 0}.google-route-info small{display:block;font-size:10px;line-height:1.6;color:#8b839b}.google-route-info .text-link{font-size:11px}.google-route-info p{font-size:11px!important;margin:4px 0!important;color:#786490!important}.google-search-limit{font-size:11px;line-height:1.5;margin-top:12px}
+
+.google-place-thumb>a{display:block;width:72px;height:72px}.google-place-thumb>a>img{display:block;width:100%;height:100%;object-fit:cover;border-radius:9px}
+.google-card-source{font-size:12px;color:#5e5e5e}.google-card-source a{font-size:12px!important;color:#5e5e5e}
+.google-text-attribution,.google-attribution>strong{font-family:Arial,sans-serif;font-size:12px;font-weight:400;font-style:normal;letter-spacing:normal;white-space:nowrap;color:#5e5e5e}
+
+.google-place-photo-button{display:block;width:72px;height:72px;padding:0;border:0;background:transparent;border-radius:9px;overflow:hidden}.google-place-photo-button>img{display:block;width:100%;height:100%;object-fit:cover}.google-place-title{display:block;text-align:left;width:100%;padding:0;border:0;background:transparent;color:inherit}.google-place-title:focus-visible,.google-place-photo-button:focus-visible{outline:2px solid #9455ff;outline-offset:2px}
+.google-detail-photo>img{width:100%;height:100%;object-fit:cover}.google-detail-photo>.course-image-placeholder{object-fit:contain}.google-place-detail-modal .google-card-source{margin:12px 0}.google-place-detail-modal .place-detail-section dd{overflow-wrap:anywhere}
+.app-shell .detail-layout.editorial-standard-detail{display:block}.editorial-standard-description{color:#81798d;font-size:14px;line-height:1.8;margin:18px 0}.editorial-standard-timeline .timeline-stop{width:100%;text-align:left}.editorial-standard-timeline .timeline-stop>.course-representative-image{width:64px;height:64px;object-fit:cover;flex-shrink:0;border-radius:9px}.editorial-standard-timeline .timeline-copy small{display:block;margin-top:5px}.editorial-standard-notices{margin:20px 0;padding:14px;border-radius:10px;background:#faf7ff;color:#81758d;font-size:12px;line-height:1.8}.editorial-standard-notices summary{cursor:pointer;color:#8b58e1;font-weight:650}.editorial-standard-notices ul{padding-left:20px}
+
+.google-detail-photo{height:200px;min-height:0;overflow:hidden}.google-detail-photo>img{height:200px;width:100%;object-fit:cover}.google-detail-photo>.course-image-placeholder{object-fit:contain}
+
+/* Keep place details inside the space above the persistent navigation. */
+.modal-backdrop:has(>.place-detail-modal){bottom:calc(80px + env(safe-area-inset-bottom));min-height:0}
+.modal.place-detail-modal{min-height:0;max-height:100%}
+.place-detail-modal>.section-title{position:relative;top:auto}
+.place-detail-modal>.place-detail-body{flex:1 1 auto;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;touch-action:pan-y;padding-bottom:24px}
+.modal-backdrop:has(>.place-detail-modal){z-index:40}
+
+/* Google itinerary uses the same compact stop row and controls as native stops. */
+.google-itinerary .google-stop-meta{margin:-4px 0 16px 73px;display:flex;flex-direction:column;gap:5px;font-size:12px;color:#858597}
+.google-itinerary .google-stop-meta p{margin:0;font-size:12px;line-height:1.6}
+.google-itinerary .google-stop-day{display:flex;align-items:center;gap:6px;font-size:11px}
+.google-itinerary .google-stop-day select{font-size:11px;padding:3px 6px;min-height:24px}
+.google-itinerary .stop-controls{display:flex;align-items:center;flex-shrink:0;gap:0}
+.google-itinerary .stop-controls .icon-button{width:28px;min-width:28px;min-height:36px}
+.google-itinerary .stop-detail-button>.course-image-placeholder{object-fit:contain}
+
+.google-itinerary-source{margin:4px 0 12px 73px}

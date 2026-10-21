@@ -1,5 +1,5 @@
 export function courseDay(course,id){const index=course.stopIds?.indexOf(id)??-1;const day=course.stopDays?.[id]??course.schedule?.[index]?.day??1;return Number.isInteger(day)&&day>0?day:1;}
-export function courseDayCount(course){return Math.min(31,Math.max(1,Number.isInteger(course.durationDays)?course.durationDays:1,...(course.stopIds||[]).map(id=>courseDay(course,id))));}
+export function courseDayCount(course){return Math.min(31,Math.max(1,Number.isInteger(course.durationDays)?course.durationDays:1,...(course.stopIds||[]).map(id=>courseDay(course,id)),...(course.googlePlaceRefs||[]).map(ref=>ref.day),...(course.kakaoPlaceRefs||[]).map(ref=>ref.day)));}
 export function courseDayIds(course,day){return (course.stopIds||[]).filter(id=>courseDay(course,id)===day);}
 export function explicitStopDays(course){return Object.fromEntries((course.stopIds||[]).map(id=>[id,courseDay(course,id)]));}
 export function parseZipInvite(value){let url;try{url=new URL(value.trim(),location.origin);}catch{throw Error('공유받은 링크 주소를 확인해 주세요.');}const match=url.hash.match(/^#zip\/invite\/([A-Za-z0-9_-]{20,100})$/);if(!['http:','https:'].includes(url.protocol)||!match)throw Error('코스픽 방 초대 링크를 입력해 주세요.');return match[1];}

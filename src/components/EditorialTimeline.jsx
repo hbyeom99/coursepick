@@ -1,0 +1,5 @@
+import React from 'react';
+import CourseRepresentativePhoto from './CourseRepresentativePhoto.jsx';
+export default function EditorialTimeline({course,day,onOpenVisit}){
+ return <><div className="timeline editorial-standard-timeline">{course.editorialVisits.filter(v=>v.day===day).map((visit,index)=><button type="button" className="timeline-stop" key={visit.visit_id} aria-label={`${visit.name} 장소 상세보기`} onClick={()=>onOpenVisit(visit)}><span className="step-number">{index+1}</span><CourseRepresentativePhoto src={visit.image_url} alt={visit.name} placeholderAlt={`${visit.name} · 사진 준비 중`}/><span className="timeline-copy"><strong>{visit.name}</strong><small>{visit.time} · {visit.activity}</small>{visit.match_status==='itinerary_only'&&<small>방문 장소 선정 필요</small>}</span></button>)}</div>{course.editorialNotices.length>0&&<details className="editorial-standard-notices"><summary>방문 전 확인할 내용</summary><ul>{course.editorialNotices.map((text,index)=><li key={index}>{text}</li>)}</ul><p>표시된 시간은 계획한 방문 시각입니다. 운영일·예약·체류시간·이동시간은 방문 전에 확인해 주세요.</p></details>}</>;
+}

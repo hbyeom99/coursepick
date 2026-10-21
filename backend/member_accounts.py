@@ -10,6 +10,8 @@ from fastapi import APIRouter,Header,HTTPException
 from pydantic import BaseModel,Field
 from supabase import create_client
 from travel_journal_validation import validate_journals, validate_travel_taste
+from google_refs import validate_google_refs
+from kakao_refs import validate_kakao_refs
 from member_course_validation import normalize_course, known_places, place_ids
 from member_course_repository import public_course_cache, public_snapshot
 router=APIRouter(prefix='/api/member')
@@ -102,6 +104,14 @@ def save(body: Value, authorization: str | None = Header(None)):
     if body.key == 'coursepick.travelTaste.v1':
         try: body.value = validate_travel_taste(body.value)
         except ValueError: raise HTTPException(422, '성향은 각 축에 0~100 정수로 입력해 주세요.') from None
+
+    if body.key == 'coursepick.draft.v1' and isinstance(body.value,dict) and 'kakaoPlaceRefs' in body.value:
+        try:body.value['kakaoPlaceRefs']=validate_kakao_refs(body.value['kakaoPlaceRefs'])
+        except ValueError:raise HTTPException(422,'Kakao 장소의 ID와 검색 조건을 확인해 주세요.') from None
+
+    if body.key == 'coursepick.draft.v1' and isinstance(body.value,dict) and 'googlePlaceRefs' in body.value:
+        try:body.value['googlePlaceRefs']=validate_google_refs(body.value['googlePlaceRefs'])
+        except ValueError:raise HTTPException(422,'Google 장소의 ID와 방문 일차를 확인해 주세요.') from None
 
     if body.key == 'coursepick.myCourses.v1':
         if not isinstance(body.value, list) or len(body.value) > 500:

@@ -1,0 +1,5 @@
+export const GOOGLE_REF_LIMIT=20;
+export const validGoogleRefs=value=>value===undefined||(Array.isArray(value)&&value.length<=GOOGLE_REF_LIMIT&&new Set(value.map(v=>v?.placeId)).size===value.length&&value.every(v=>v&&Object.keys(v).every(k=>['placeId','day'].includes(k))&&typeof v.placeId==='string'&&/^[A-Za-z0-9_-]{1,255}$/.test(v.placeId)&&Number.isInteger(v.day)&&v.day>=1&&v.day<=31));
+export const coursePlaceCount=course=>(course.stopIds?.length||0)+(course.googlePlaceRefs?.length||0)+(course.kakaoPlaceRefs?.length||0);
+export function addGoogleRef(refs,id,day){if(!/^[A-Za-z0-9_-]{1,255}$/.test(id)||refs.length>=GOOGLE_REF_LIMIT||refs.some(p=>p.placeId===id))return refs;return [...refs,{placeId:id,day:Math.min(31,Math.max(1,day))}];}
+export function moveGoogleRef(refs,id,direction){const index=refs.findIndex(p=>p.placeId===id);if(index<0||![-1,1].includes(direction))return refs;let other=index+direction;while(other>=0&&other<refs.length&&refs[other].day!==refs[index].day)other+=direction;if(other<0||other>=refs.length)return refs;const next=[...refs];[next[index],next[other]]=[next[other],next[index]];return next;}

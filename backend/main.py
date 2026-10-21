@@ -399,3 +399,9 @@ app.include_router(kakao_place_search_router)
 
 from zip_rooms import router as zip_router
 app.include_router(zip_router)
+
+from google_places import router as google_places_router
+app.include_router(google_places_router)
+
+from editorial_courses import router as editorial_router
+app.include_router(editorial_router)

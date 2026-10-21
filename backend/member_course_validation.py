@@ -1,4 +1,6 @@
 """Validate member courses without rewriting stored legacy records."""
+from google_refs import validate_google_refs
+from kakao_refs import validate_kakao_refs
 from course_traits import validate_trait_facts,course_trait_basis
 import math
 import re
@@ -6,7 +8,7 @@ from copy import deepcopy
 
 TRANSPORTS = {'도보', '자동차', '대중교통'}
 PUBLIC_FIELDS = {'id', 'name', 'description', 'region', 'stopIds', 'imagePlaceId',
-                 'tags', 'representativeTags', 'schedule', 'hours', 'transport',
+                 'tags', 'representativeTags', 'googlePlaceRefs', 'kakaoPlaceRefs', 'itineraryOrder', 'schedule', 'hours', 'transport',
                  'traitFacts', 'maxPeople', 'durationDays', 'stopDays', 'accommodationId', 'createdAt'}
 
 
@@ -25,8 +27,13 @@ def normalize_course(value):
     for key, limit in [('id', 200), ('name', 200), ('region', 100)]:
         if not text(course.get(key), limit):
             raise ValueError(key)
+    kakao_refs=validate_kakao_refs(course.get('kakaoPlaceRefs'))
+    if kakao_refs:course['kakaoPlaceRefs']=kakao_refs
+    refs=validate_google_refs(course.get('googlePlaceRefs'))
+    if refs:
+        course['googlePlaceRefs']=refs
     ids = course.get('stopIds')
-    if not isinstance(ids, list) or not 2 <= len(ids) <= 100 or not all(text(v) for v in ids) or len(set(ids)) != len(ids):
+    if not isinstance(ids, list) or not 0 <= len(ids) <= 100 or len(ids)+len(refs)+len(kakao_refs)<2 or not all(text(v) for v in ids) or len(set(ids)) != len(ids):
         raise ValueError('장소 ID')
     if not number(course.get('hours')) or not isinstance(course.get('transport'), str) or course['transport'] not in TRANSPORTS:
         raise ValueError('시간 또는 이동수단')
@@ -38,7 +45,7 @@ def normalize_course(value):
         if not isinstance(tags, list) or len(tags) > 500 or not all(text(v, 100) for v in tags):
             raise ValueError('태그')
         course[key] = list(dict.fromkeys(tags))
-    if course.get('imagePlaceId') not in ids:
+    if course.get('imagePlaceId') not in ids and not (not ids and course.get('imagePlaceId') is None):
         raise ValueError('대표 장소')
     if course.get('accommodationId') is not None and not text(course['accommodationId']):
         raise ValueError('숙소')
@@ -70,6 +77,10 @@ def normalize_course(value):
             if not number(item.get('minutes')) or start < previous:
                 raise ValueError('일정 순서 또는 체류시간')
             previous = start + item['minutes']
+    if 'itineraryOrder' in course:
+        order=course['itineraryOrder']
+        if not isinstance(order,list) or len(order)>140 or any(not isinstance(key,str) or not re.fullmatch(r'[ngk]:.{1,255}',key) for key in order) or len(set(order))!=len(order):
+            raise ValueError('통합 일정 순서')
     if 'traitFacts' in course:
         course['traitFacts'] = validate_trait_facts(course['traitFacts']) or {}
         if course['traitFacts'].get('reservationRequiredCount',0)>len(ids) and (not course['traitFacts'].get('basis') or course['traitFacts']['basis']==course_trait_basis(course)):raise ValueError('예약 장소 수')
