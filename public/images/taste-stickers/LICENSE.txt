@@ -1,0 +1,6 @@
+OpenMoji graphics by OpenMoji contributors, Hochschule fuer Gestaltung Schwaebisch Gmuend.
+Source: https://github.com/hfg-gmuend/openmoji/tree/master/color/svg
+License: Creative Commons Attribution-ShareAlike 4.0 International
+https://creativecommons.org/licenses/by-sa/4.0/
+https://creativecommons.org/licenses/by-sa/4.0/legalcode.txt
+Original SVG artwork is included unchanged. CSS only scales and rotates its display.

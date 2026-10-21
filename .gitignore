@@ -1,11 +1,41 @@
 node_modules/
 .pnpm-store/
 dist/
+*.log
+
+.env*.local
+VITE_KAKAO_MAP_KEY.txt
+
+# Backend secrets and Python generated files
 .env
+__pycache__/
+.venv/
+
+# Secrets, private backups and generated review material
 .env.*
 !.env.example
-__pycache__/
-*.pyc
-.venv/
+**/.env.*
+!**/.env.example
+*key*.txt
+*KEY*.txt
+*Key*.txt
+*키*.txt
+*백업*
+*backup*
+*BACKUP*
+*.zip
+*.sql.gz
+*.dump
+*.bak
+work/
+outputs/
+private/
+.secrets/
 .vercel/
-*.log
+*.pyc
+
+# Previous source copy and local source datasets
+/coursepick/
+/146.국내 여행로그 데이터_동부권_2차년도/
+/147.국내 여행로그 데이터_서부권_2차년도/
+/여행 정보 데이터셋/

@@ -4,16 +4,7 @@ import {ZipModal} from './zip/ZipPrimitives.jsx';
 import WelcomeFlow from './WelcomeFlow.jsx';
 import {MemberProvider,memberRequest} from '../lib/memberSession.jsx';
 
-const SESSION_KEY='coursepick.memberRefresh.v1';
-function readRefresh(){
- try{return window.sessionStorage.getItem(SESSION_KEY)||'';}catch{return '';}
-}
-function rememberRefresh(token){
- try{
-  if(token)window.sessionStorage.setItem(SESSION_KEY,token);
-  else window.sessionStorage.removeItem(SESSION_KEY);
- }catch{/* Login still works when browser storage is unavailable. */}
-}
+import {readMemberRefresh as readRefresh,rememberMemberRefresh as rememberRefresh,refreshMemberSession,isExpiredMemberSession} from '../lib/memberAuthStorage.js';
 
 export default function MemberGate(){
  const [recoveryToken,setRecoveryToken]=useState(()=>{const hash=new URLSearchParams(window.location.hash.slice(1));if(hash.get('type')!=='recovery')return '';const token=hash.get('access_token')||'';window.history.replaceState(null,'',window.location.pathname+window.location.search);return token;});
@@ -23,43 +14,42 @@ export default function MemberGate(){
  const [restoreToken]=useState(()=>recoveryToken?'':readRefresh());
  const [restoring,setRestoring]=useState(Boolean(restoreToken));
  const restoreRequest=useRef(null);
+ const [restoreError,setRestoreError]=useState(''),[restoreAttempt,setRestoreAttempt]=useState(0);
 
  useEffect(()=>{
   if(!restoreToken)return;
   let active=true;
   // Reuse the request during React StrictMode effect replay to avoid rotating twice.
   if(!restoreRequest.current)restoreRequest.current=(async()=>{
-   const session=await memberRequest('refresh',{refresh_token:restoreToken});
+   const session=await refreshMemberSession(restoreToken,memberRequest);
    rememberRefresh(session.refresh_token);
    const data=await memberRequest('data',null,session.access_token);
    return {...session,...data};
   })();
   restoreRequest.current.then(next=>{if(active)setAccount(next);})
-   .catch(()=>{if(active)rememberRefresh('');})
+   .catch(error=>{if(active){if(isExpiredMemberSession(error))rememberRefresh('');else setRestoreError('연결을 확인하고 다시 시도해 주세요. 로그인 정보는 유지되어 있어요.');}})
    .finally(()=>{if(active)setRestoring(false);});
   return()=>{active=false;};
- },[restoreToken]);
+ },[restoreToken,restoreAttempt]);
 
  useEffect(()=>{
   if(!account)return;
-  let active=true;
-  const timer=setTimeout(async()=>{
-   try{
-    const next=await memberRequest('refresh',{refresh_token:account.refresh_token});
-    if(!active)return;
-    rememberRefresh(next.refresh_token);
-    setAccount(current=>current?{...current,...next}:null);
-   }catch{
-    if(active){rememberRefresh('');setAccount(null);}
-   }
-  },Math.max(10000,((account.expires_at*1000||Date.now()+3600000)-Date.now()-60000)));
-  return()=>{active=false;clearTimeout(timer);};
+  let active=true,timer,retry;
+  async function renew(){
+   try{const next=await refreshMemberSession(account.refresh_token,memberRequest);if(active)setAccount(current=>current?{...current,...next}:null);}
+   catch(error){if(!active)return;if(isExpiredMemberSession(error)){rememberRefresh('');setAccount(null);}else retry=setTimeout(renew,30000);}
+  }
+  function resume(){if(!document.hidden&&Number(account.expires_at)*1000-Date.now()<120000)renew();}
+  timer=setTimeout(renew,Math.max(1000,((Number(account.expires_at)*1000||Date.now()+3600000)-Date.now()-60000)));
+  document.addEventListener('visibilitychange',resume);window.addEventListener('pageshow',resume);window.addEventListener('online',resume);
+  return()=>{active=false;clearTimeout(timer);clearTimeout(retry);document.removeEventListener('visibilitychange',resume);window.removeEventListener('pageshow',resume);window.removeEventListener('online',resume);};
  },[account?.access_token]);
 
+ useEffect(()=>{function changed(e){if(e.key==='coursepick.memberRefresh.v1'&&!e.newValue){rememberRefresh('');setAccount(null);}}window.addEventListener('storage',changed);return()=>window.removeEventListener('storage',changed);},[]);
  async function login(email,password){
   const session=await memberRequest('login',{email,password});
-  const data=await memberRequest('data',null,session.access_token);
   rememberRefresh(session.refresh_token);
+  const data=await memberRequest('data',null,session.access_token);
   setAccount({...session,...data});setBrowsing(true);setLoginQuestion(false);
  }
  async function signup(email,password,nickname){const result=await memberRequest('signup',{email,password,nickname});await login(email,password);return result;}
@@ -67,6 +57,7 @@ export default function MemberGate(){
   try{await memberRequest('logout',{},account.access_token);}
   finally{rememberRefresh('');setAccount(null);setBrowsing(true);}
  }
+ if(restoreError&&!account)return <div className="app-shell view-welcome"><div role="alert" style={{padding:32,textAlign:'center'}}><p>{restoreError}</p><button type="button" className="welcome-primary" onClick={()=>{restoreRequest.current=null;setRestoreError('');setRestoring(true);setRestoreAttempt(v=>v+1);}}>다시 연결하기</button></div></div>;
  if(restoring)return <div className="app-shell view-welcome"><div role="status" style={{padding:32,textAlign:'center'}}>로그인 상태를 확인하고 있어요.</div></div>;
  const authVisible=!browsing;
  return <MemberProvider account={account || {userId:'guest',nickname:'방문자',values:{},isGuest:true}} onLogin={options=>{if(options?.direct)setBrowsing(false);else setLoginQuestion(true);}} onLogout={logout}>

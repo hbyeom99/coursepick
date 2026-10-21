@@ -1,6 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import App from './components/MemberGate.jsx';
+
 import '../style.css';
 
 if (import.meta.env.DEV) {
@@ -16,4 +16,7 @@ if (import.meta.env.DEV) {
     });
 }
 
-createRoot(document.getElementById('root')).render(<React.StrictMode><App /></React.StrictMode>);
+const page=new URLSearchParams(location.search).has('googlePlace')
+ ? import('./components/GooglePlaceInfo.jsx')
+ : import('./components/MemberGate.jsx');
+page.then(({default:App})=>createRoot(document.getElementById('root')).render(<React.StrictMode><App /></React.StrictMode>));

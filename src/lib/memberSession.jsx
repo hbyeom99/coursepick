@@ -4,7 +4,7 @@ const Context=createContext(null);
 const base=(import.meta.env.VITE_API_BASE_URL?.trim()||(import.meta.env.DEV?'http://localhost:8000':'')).replace(/\/+$/,'');
 export async function memberRequest(path,data,token,method) {
  const response=await fetch(base+'/api/member/'+path,{method:method||(data?'POST':'GET'),headers:{'Content-Type':'application/json',...(token?{Authorization:'Bearer '+token}:{})},...(data?{body:JSON.stringify(data)}:{})});
- const value=await response.json();if(!response.ok){const message=typeof value.detail==='string'?value.detail:Array.isArray(value.detail)?'입력 정보를 확인해 주세요.':'회원 정보를 처리하지 못했습니다.';throw Error(message);}return value;
+ const value=await response.json();if(!response.ok){const message=typeof value.detail==='string'?value.detail:Array.isArray(value.detail)?'입력 정보를 확인해 주세요.':'회원 정보를 처리하지 못했습니다.';throw Object.assign(Error(message),{status:response.status});}return value;
 }
 export function MemberProvider({account,children,onLogout,onLogin}) {
  const queues=useRef(new Map());

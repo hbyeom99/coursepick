@@ -1,3 +1,4 @@
+import {travelTasteTestResult} from './travelTasteTest.js';
 import rules from '../../backend/course_trait_rules.json';
 export const courseTraitVersion=rules.version;
 const finite=n=>typeof n==='number'&&Number.isFinite(n),clamp=n=>Math.max(0,Math.min(100,n)),round=n=>Math.floor(n+.5+1e-9);
@@ -30,5 +31,5 @@ export function evaluateCourseTraits(course,index,context={}){
  return {factsStale,version:rules.version,axes:{planning,experience,exploration,spending},dailyCost,costScope:rules.costScope,days,stopCount:n};
 }
 export function courseTraitAffinity(assessment,taste){if(!taste)return 0;return rules.axes.reduce((sum,id)=>{const a=assessment.axes[id],target=taste[id];return sum+(a.score!==null&&finite(target)?(1-Math.abs(target-a.score)/100)*a.coverage:0);},0)/4;}
-export function courseTraitsFromAnswers(answers){return Array.isArray(answers)&&answers.length===4&&answers.every(v=>v===0||v===1)?Object.fromEntries(rules.axes.map((id,i)=>[id,id==='spending'?(answers[i]?70:10):(answers[i]?70:30)])):null;}
+export function courseTraitsFromAnswers(answers){if(answers?.length===11)return travelTasteTestResult(answers);return Array.isArray(answers)&&answers.length===4&&answers.every(v=>v===0||v===1)?Object.fromEntries(rules.axes.map((id,i)=>[id,id==='spending'?(answers[i]?70:10):(answers[i]?70:30)])):null;}
 export function validateCourseTraitFacts(value){if(value===undefined)return undefined;if(!value||typeof value!=='object'||Array.isArray(value))throw Error('코스 성향 근거 형식');const out={};if(value.basis!==undefined){if(typeof value.basis!=='string'||value.basis.length>100000)throw Error('계산 근거의 코스 식별 정보를 확인해 주세요.');out.basis=value.basis;}for(const [k,lo,hi] of [['availableMinutesPerDay',1,1440],['reservationRequiredCount',0,100],['fixedOrderRatio',0,1],['estimatedDailyCost',0,999999999],['localTransportCostTotal',0,999999999]]){if(value[k]===undefined)continue;if(!finite(value[k])||value[k]<lo||value[k]>hi||(k!=='fixedOrderRatio'&&!Number.isInteger(value[k])))throw Error('코스 성향 근거 값');out[k]=value[k];}return out;}

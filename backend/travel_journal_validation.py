@@ -2,9 +2,16 @@ from datetime import date
 AXES=('planning','experience','exploration','spending')
 def validate_travel_taste(value):
     if value is None:return None
-    if not isinstance(value,dict) or set(value)!=set(AXES):raise ValueError()
+    if not isinstance(value,dict) or set(value) not in (set(AXES),set(AXES)|{'testPreferences'}):raise ValueError()
     if any(type(value[a]) is not int or not 0<=value[a]<=100 for a in AXES):raise ValueError()
-    return {a:value[a] for a in AXES}
+    result={a:value[a] for a in AXES}
+    if 'testPreferences' in value:
+        preferences=value['testPreferences']
+        allowed={'dailyPace':('few','many'),'exertion':('light','vigorous'),'setting':('indoor','outdoor'),'atmosphere':('quiet','lively')}
+        if not isinstance(preferences,dict) or set(preferences)!=set(allowed):raise ValueError()
+        if any(preferences[k] not in choices for k,choices in allowed.items()):raise ValueError()
+        result['testPreferences']={k:preferences[k] for k in allowed}
+    return result
 def validate_journals(value):
     if not isinstance(value,list) or len(value)>500:raise ValueError()
     seen=set();result=[]

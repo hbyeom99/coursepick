@@ -992,6 +992,14 @@ body,button,input,textarea,select,option,svg text{font-family:"Noto Sans KR",san
 
 .google-itinerary-source{margin:4px 0 12px 73px}
 
+/* Application status stays separate from the event region and duration. */
+.trip-event-hero .trip-event-action{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.trip-event-hero .trip-event-action>span:last-child{font-weight:650;text-decoration:underline;text-underline-offset:3px}
+.trip-event-hero .trip-application-badge,.trip-event-card>.trip-application-badge{position:absolute;top:12px;right:12px;display:inline-flex;align-items:center;gap:4px;padding:5px 9px;border-radius:999px;background:#f0e7ff;color:#7541c8;font-size:11px;font-weight:650;line-height:1.4;box-shadow:0 2px 8px #43285b12;z-index:2}
+.trip-event-card{position:relative}
+.trip-event-card>.trip-application-badge{top:18px;right:0}
+.trip-event-card.is-applied>div{padding-top:27px}
+
 /* Day controls, shared Zip picker and readable archive names. */
 .zip-day-remove{flex:0 0 40px;width:40px;height:40px;min-height:40px;align-self:center;border:1px solid #ddd1ff;border-radius:50%;background:#f4efff;color:#7950f7;font-size:25px;line-height:1;cursor:pointer}
 .zip-day-remove:disabled{opacity:.35;cursor:default}
