@@ -1,0 +1,11 @@
+# API project has backend as its root directory.
+.env
+.env.*
+__pycache__
+*.pyc
+*.log
+*.sqlite3
+*.zip
+test_*.py
+*.sql
+*.md

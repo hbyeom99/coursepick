@@ -1,3 +1,4 @@
+from allowed_place_tags import classify_allowed_tags
 """Request-scoped Kakao results: no database, disk, response cache or logging."""
 import json
 import math
@@ -57,17 +58,13 @@ def normalize_document(row):
         return text[:500] if isinstance(text, str) else ''
     category_path=value('category_name')
     code=value('category_group_code')
-    category={'FD6':'음식점','CE7':'카페','AT4':'관광지','AD5':'숙소'}.get(code,'여행 장소')
-    tags=[]
-    for word,tag in [('한식','한식'),('일식','일식'),('중식','중식'),('양식','양식'),('커피','커피'),('카페','커피'),('제과','빵'),('공방','공방'),('체험','체험'),('박물관','역사문화'),('미술관','예술'),('공원','산책'),('맥주','맥주')]:
-        if word in category_path and tag not in tags:tags.append(tag)
-    if category=='음식점':tags.insert(0,'미식')
-    if category=='숙소':tags.insert(0,'숙박')
+    category={'FD6':'음식점','CE7':'카페','AT4':'관광지','AD5':'숙소'}.get(code,category_path or '분류 확인 필요')
+    tags=[item['tag'] for item in classify_allowed_tags({'category':category,'categoryPath':category_path})]
     address=value('road_address_name') or value('address_name')
     region=address.split()[0] if address else ''
     for full,short in [('서울특별시','서울'),('부산광역시','부산'),('울산광역시','울산'),('광주광역시','광주'),('대구광역시','대구'),('대전광역시','대전'),('인천광역시','인천')]:
         if region==full:region=short
-    return dict(id=place_id, name=value('place_name'), category=category, categoryPath=category_path, tags=tags[:3],region=region,countryCode='KR',
+    return dict(id=place_id, name=value('place_name'), category=category, categoryPath=category_path, tags=tags,region=region,countryCode='KR',
                 address=value('address_name'), roadAddress=value('road_address_name'),
                 phone=value('phone'), latitude=latitude, longitude=longitude,
                 url=f'https://place.map.kakao.com/{place_id}')

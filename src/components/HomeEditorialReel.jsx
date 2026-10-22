@@ -5,7 +5,7 @@ import CourseRepresentativePhoto from './CourseRepresentativePhoto.jsx';
 import useReelPhotos from '../lib/useReelPhotos.js';
 
 const STEP=120;
-export default function HomeEditorialReel({courses=[],onOpen,Icon,error}){
+export default function HomeEditorialReel({courses=[],onOpen,Icon,error,onRetry}){
  const list=courses.slice(0,10),scroll=useRef(null),frame=useRef(0);
  const circular=list.length>1,items=circular?[...list,...list,...list]:list;
  const [height,setHeight]=useState(560),[position,setPosition]=useState(0);
@@ -57,9 +57,9 @@ export default function HomeEditorialReel({courses=[],onOpen,Icon,error}){
   const element=scroll.current;element.scrollTo({top:Math.round(element.scrollTop/STEP)*STEP,behavior:'smooth'});
   if(!current.moved&&event.type==='pointerup'&&current.course)onOpen(current.course);
  }
- const large=height*376/671,first=height*220.5/671,second=height*274.5/671,center=height*316/671;
+ const large=height*448/671,first=height*260.5/671,second=height*324.5/671,center=height*335/671;
  return <section ref={scroll} tabIndex={0} className="home-editorial-reel" style={dragging?{scrollSnapType:'none'}:undefined} aria-label="기획코스 10개 세로 배너" onScroll={moved}>
-  {error&&<p className="home-reel-notice" role="status">{error}</p>}
+  {error&&<div className="home-reel-notice" role="alert"><p>{error}</p><button type="button" onClick={onRetry}>다시 불러오기</button></div>}
   {!list.length&&!error&&<p className="home-reel-notice" role="status">기획코스를 불러오는 중입니다.</p>}
   <div className="home-reel-track" style={{height:height+Math.max(0,items.length-1)*STEP}}>
    <div className={`home-reel-stage${dragging?' is-dragging':''}`} style={{height}} onPointerDown={startDrag} onPointerMove={moveDrag} onPointerUp={finishDrag} onPointerCancel={finishDrag} onLostPointerCapture={finishDrag} onClickCapture={event=>{if(event.detail>0&&performance.now()<suppressClickUntil.current){event.preventDefault();event.stopPropagation();}}} onKeyDown={event=>{if(event.key==='ArrowUp'||event.key==='ArrowDown'){event.preventDefault();scroll.current.scrollTo({top:(Math.round(scroll.current.scrollTop/STEP)+(event.key==='ArrowDown'?1:-1))*STEP,behavior:'smooth'});}}}>
@@ -70,8 +70,8 @@ export default function HomeEditorialReel({courses=[],onOpen,Icon,error}){
      const width=d<=1?(345-52*d)/390*100:d<=2?(293-94*(d-1))/390*100:199/390*100;
      const cover=course.editorialVisits?.find(v=>v.cover_image&&v.image_url);
      const photo=photos[course.id]||{src:cover?.image_url,alt:cover?.name};
-     return <div key={`${course.id}-${index}`} data-course-index={index%list.length} className={`home-reel-card${d<.5?' is-centered':' is-preview'}`} onDragStart={event=>event.preventDefault()} style={{top:center+Math.sign(delta)*offset,height:cardHeight,width:`${width}%`,borderRadius:10+5*Math.min(1,d),zIndex:Math.round(100-d*10),opacity:d>2?Math.max(0,1-(d-2)/.65):1,'--reel-copy-opacity':Math.max(0,1-d*2)}}>
-      <CourseVisualCard name={course.name} tags={(course.representativeTags||course.tags||[]).slice(0,1)} photo={<CourseRepresentativePhoto preservePrevious src={photo.src} alt={photo.alt||'코스 대표 사진 준비 중'}/>} meta={<CourseCardMeta course={course} Icon={Icon}/>} onOpen={()=>onOpen(course)}/>
+     return <div key={`${course.id}-${index}`} data-course-index={index%list.length} data-reel-edge={d>=1.5?(delta<0?'top':'bottom'):undefined} className={`home-reel-card${d<.5?' is-centered':' is-preview'}`} onDragStart={event=>event.preventDefault()} style={{top:center+Math.sign(delta)*offset,height:cardHeight,width:`${width}%`,borderRadius:10+5*Math.min(1,d),zIndex:Math.round(100-d*10),opacity:d>2?Math.max(0,1-(d-2)/.65):1,'--reel-copy-opacity':Math.max(0,1-d*2)}}>
+      <CourseVisualCard name={course.name} tags={(course.representativeTags||course.tags||[]).slice(0,1)} photo={<CourseRepresentativePhoto preservePrevious src={photo.src} alt={photo.alt||'코스 대표 사진 준비 중'}/>} meta={<CourseCardMeta course={course} Icon={Icon}/>} onOpen={()=>{if(d>=.5){scroll.current?.scrollTo({top:index*STEP,behavior:'smooth'});}else onOpen(course);}}/>
      </div>;
     })}
 

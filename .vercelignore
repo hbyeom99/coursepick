@@ -1,0 +1,29 @@
+# Deployment inputs only; preserve originals locally.
+.git
+node_modules
+.pnpm-store
+dist
+coursepick
+work
+outputs
+private
+.secrets
+docs
+tools
+146.*
+147.*
+여행 정보 데이터셋
+.env
+.env.*
+*.log
+*.zip
+*.sqlite3
+*.dump
+*.bak
+**/__pycache__
+**/test_*.py
+backend/*.sql
+backend/*.md
+
+src/data/visitBoundaries.json
+src/data/jibunAddresses.json

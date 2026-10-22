@@ -4,6 +4,8 @@ import React, { useEffect, useRef, useState } from 'react';
 export const COURSE_IMAGE_PLACEHOLDER = '/images/course-image-placeholder.svg';
 
 export default function CourseRepresentativePhoto({ src, alt = '', title, onError, onLoad, preservePrevious = false, placeholderAlt = '코스 대표이미지 준비 중' }) {
+  // Imported CSV previews use SVG '사진 없음' tiles rather than real photos.
+  if(typeof src==='string'&&/^data:image\/svg\+xml/i.test(src))src=undefined;
   const [readySource, setReadySource] = useState('');
   const [readyAlt,setReadyAlt] = useState('');
   const callbacks = useRef({ onError, onLoad });

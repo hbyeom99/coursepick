@@ -2,6 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 
 import '../style.css';
+import './styles/search-cards.css';
 
 if (import.meta.env.DEV) {
   fetch('http://localhost:8000/api/health', { signal: AbortSignal.timeout(5000) })

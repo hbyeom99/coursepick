@@ -1,3 +1,6 @@
+import administrativeRegions from '../data/administrativeSearchRegions.json' with {type:'json'};
+import approvedRelations from '../data/approvedSearchRelations.json' with {type:'json'};
+import {travelRecommendationEligible,natureIntentEvidence,activityEvidenceMatch,confirmedConditionMatch,gentleTravelEligible,spaTravelEligible,spaAnchorEvidence} from './recommendationEvidence.js';
 import groups from '../data/homeSearchKeywords.json' with {type:'json'};
 import {placeKeywordCondition,keywordAlternatives} from './semanticKeywords.js';
 import {placeArea} from './travelFilters.js';
@@ -9,7 +12,7 @@ export const allowedHomeQuery=value=>allowed.has(searchKey(value));
 export function homeSearchSuggestions(input){const key=searchKey(input);return HOME_SEARCH_KEYWORDS.filter(word=>!key||searchKey(word).includes(key)).slice(0,8);}
 const cities={강릉:'강원',속초:'강원',양양:'강원',원주:'강원',평창:'강원',동해:'강원',해운대:'부산',광안리:'부산',기장:'부산',경주:'경북',포항:'경북',담양:'전남',나주:'전남',화순:'전남',순천:'전남',여수:'전남',광양:'전남',해남:'전남',보성:'전남',전주:'전북',군산:'전북',익산:'전북',공주:'충남',부여:'충남',천안:'충남',아산:'충남',충주:'충북',단양:'충북',서산:'충남',애월:'제주',성산:'제주',우도:'제주',울릉도:'경북',계룡산:'충남'};
 const provinces=['서울','경기','인천','강원','부산','대구','울산','광주','대전','세종','제주','충북','충남','전북','전남','경북','경남'];
-const regionOf=value=>{let key=searchKey(value).replace(/여행$/,'');if(key==='제주도')key='제주';if(key==='강원도')key='강원';if(provinces.includes(key))return {province:key,label:key};if(cities[key])return {province:cities[key],city:key,label:key};if(['수도권','서울근교'].includes(key))return {provinces:['서울','경기','인천'],label:key};return null;};
+const regionOf=value=>{const paths=administrativeRegions[value];if(paths)return {paths,label:value};let key=searchKey(value).replace(/여행$/,'');if(key==='제주도')key='제주';if(key==='강원도')key='강원';if(provinces.includes(key))return {province:key,label:key};if(cities[key])return {province:cities[key],city:key,label:key};if(['수도권','서울근교'].includes(key))return {provinces:['서울','경기','인천'],label:key};return null;};
 const termAliases={
  '맛집투어':['음식점'],'푸드투어':['음식점'],'빵지순례':['베이커리','제과','빵'],'커피':['카페','커피'],'카페투어':['카페'],
  '걷기':['산책','공원','산책로'],'역사탐방':['박물관','문화유산','역사문화','유적지','고궁'],'역사여행':['박물관','문화유산','역사문화','유적지'],'역사유적지':['유적지','문화유산'],
@@ -66,6 +69,10 @@ export function interpretHomeSearch(value,filters={}){
  rule.strict=/주차|수유실|엘리베이터|유아의자|동반|예약|웨이팅|24시간|연중무휴|실내좌석|야외좌석/.test(key);
  if(rule.priceSensitive)rule.notes.push('가격 근거가 확인된 장소를 기준으로 판단합니다.');
  if(/축제|페스티벌|팝업/.test(key))rule.notes.push('운영기간이 확인된 행사만 후보로 사용합니다.');
+ const approvedAlias=approvedRelations.aliases.find(group=>group.some(word=>searchKey(word)===key));
+ if(approvedAlias)rule.terms=[...new Set([...rule.terms,...approvedAlias])];
+ const approvedChildren=approvedRelations.children[label]||approvedRelations.children[key];
+ if(approvedChildren)rule.terms=[...new Set([...rule.terms,...approvedChildren])];
  const prefix=[region?.label||((filters.region&&filters.region!=='전체')?filters.region:''),filters.city&&filters.city!=='전체'?filters.city:''].filter(Boolean).join(' ');
  const anchor=rule.broad?'관광지':rule.gentle?'정원':rule.terms[0]||label;
  if(/일출/.test(key))rule.maxLeg=Math.min(rule.maxLeg,5000);
@@ -76,6 +83,7 @@ export function interpretHomeSearch(value,filters={}){
 const body=p=>searchKey([p.name,p.category,p.categoryPath,p.region,p.location,p.address,p.roadAddress,...(p.tags||[])].filter(Boolean).join(' '));
 export function homeRegionMatch(p,rule,filters={}){
  const area=placeArea({...p,location:p.location||p.roadAddress||p.address}),r=rule.region;
+ if(r?.paths&&!r.paths.some(path=>area.region===path[0]&&path.slice(1).every(token=>(p.location||p.roadAddress||p.address||'').split(/\s+/).includes(token))))return false;
  if(r?.provinces&&!r.provinces.includes(area.region))return false;
  if(r?.province&&area.region!==r.province)return false;
  if(r?.city&&!body(p).includes(searchKey(r.city)))return false;
@@ -86,15 +94,21 @@ export function homeRegionMatch(p,rule,filters={}){
  return true;
 }
 export function homePlaceEligible(p,rule){
+ if(!travelRecommendationEligible(p,rule.query)||!activityEvidenceMatch(p,rule.query))return false;
+ if(rule.key==='스파'&&!spaTravelEligible(p))return false;
  if(rule.companion&&p.companionInfo?.[rule.companion]!==true)return false;
  if(rule.indoor&&!['음식점','카페'].includes(p.category)&&!['실내','박물관','미술관','전시','서점','도서관'].some(v=>body(p).includes(searchKey(v))))return false;
+ if((/효도|부모님/.test(rule.key)||['맥주','수제맥주'].includes(rule.key))&&!gentleTravelEligible(p))return false;
  if(rule.gentle&&/등산|트레킹|짚라인|패러글라이딩|클라이밍|번지점프/.test(body(p)))return false;
  return true;
 }
 export function homeAnchorMatch(p,rule){
  if(!homePlaceEligible(p,rule))return false;
  if(rule.anchorCategory&&p.category!==rule.anchorCategory)return false;
- if(rule.strict&&!rule.companion)return placeKeywordCondition(p,rule.query);
+ if(rule.key==='스파')return spaAnchorEvidence(p);
+ const nature=natureIntentEvidence(p,rule.query);if(nature!==null)return nature;
+ const condition=confirmedConditionMatch(p,rule.query);if(condition!==null)return condition;
+ if(rule.strict&&!rule.companion)return (p.tags||[]).some(tag=>searchKey(tag)===searchKey(rule.query));
  const cost=p.traitFacts?.costPerPerson;
  if(rule.priceSensitive){if(typeof cost!=='number'||!Number.isFinite(cost)||cost<0)return false;if(/무료/.test(rule.key)&&cost!==0)return false;}
  if(rule.key==='무료전시'&&!/전시|박물관|미술관/.test(body(p)))return false;

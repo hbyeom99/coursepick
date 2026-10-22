@@ -1,3 +1,4 @@
+from tourapi_rate_limit import admit_tourapi_call,TourApiLimitError
 from tag_features import feature_evidence
 """Resumable TourAPI collection. No keys, invented ratings, or synthetic places in exports."""
 import argparse
@@ -51,6 +52,9 @@ class Collector:
         params['serviceKey']=self.key
         for attempt in range(4):
             time.sleep(max(0,.25-(time.monotonic()-self.last)))
+            try:admit_tourapi_call('collector')
+            except TourApiLimitError as error:
+                raise QuotaError(str(error)) from None
             self.calls+=1; self.last=time.monotonic()
             try:
                 with urllib.request.urlopen(BASE+method+'?'+urllib.parse.urlencode(params),timeout=30) as response:

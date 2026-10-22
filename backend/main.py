@@ -198,7 +198,7 @@ def generate_course(region: str, tags: str = "", accommodation_id: str | None = 
     interests = set(tag.strip() for tag in tags.split(",") if tag.strip())
     if not region or len(region) > 30 or len(tags) > 300:
         raise HTTPException(status_code=400, detail="지역과 관심 키워드를 확인해 주세요.")
-    places = [p for p in region_place_cache.read(region, lambda: get_places(region=region)) if p.get("region") == region and isinstance(p.get("latitude"), (int, float)) and isinstance(p.get("longitude"), (int, float)) and math.isfinite(p["latitude"]) and math.isfinite(p["longitude"])]
+    places = [p for p in region_place_cache.read(region, lambda: get_places(region=region)) if not re.fullmatch(r"p\d+",str(p.get("id",""))) and p.get("region") == region and isinstance(p.get("latitude"), (int, float)) and isinstance(p.get("longitude"), (int, float)) and math.isfinite(p["latitude"]) and math.isfinite(p["longitude"])]
     # Count synonymous themes once, consistent with frontend preference scoring.
     groups = {"미식": "음식탐방", "맛집": "음식탐방", "먹방": "음식탐방",
               "등산": "활동", "레저": "활동", "액티비티": "활동", "엑티비티": "활동",
