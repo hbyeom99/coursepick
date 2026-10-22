@@ -118,6 +118,13 @@ def delete_room(room_id:str,authorization:str|None=Header(None)):
  execute(client.table('zip_rooms').delete().eq('id',room['id']).eq('owner_id',str(user.id)))
  return {'ok':True}
 
+@router.delete('/rooms/{room_id}/me')
+def leave_room(room_id:str,authorization:str|None=Header(None)):
+ user=member(authorization);client=db();room=room_for(client,room_id,user)
+ if room['owner_id']==str(user.id):raise HTTPException(403,'방장은 방 삭제 메뉴를 이용해 주세요.')
+ execute(client.table('zip_room_members').delete().eq('room_id',room['id']).eq('user_id',str(user.id)))
+ return {'ok':True}
+
 class MemberInput(BaseModel):
  taste:dict|None=None
  keywords:list[str]=Field(default_factory=list,max_length=50)

@@ -70,6 +70,7 @@ export function interpretHomeSearch(value,filters={}){
  const anchor=rule.broad?'관광지':rule.gentle?'정원':rule.terms[0]||label;
  if(/일출/.test(key))rule.maxLeg=Math.min(rule.maxLeg,5000);
  rule.requests=[{query:[prefix,anchor].filter(Boolean).join(' '),category:rule.anchorCategory==='음식점'?'맛집':rule.anchorCategory==='카페'?'카페':'전체'},{query:[prefix,'한식'].filter(Boolean).join(' '),category:'맛집'},{query:[prefix,'카페'].filter(Boolean).join(' '),category:'카페'}].filter((r,i,a)=>a.findIndex(v=>v.query===r.query&&v.category===r.category)===i).slice(0,3);
+ if(/^(맥주|수제맥주|로컬맥주|브루어리|양조장|펍|바틀샵)$/.test(key))rule.requests=['맥주','브루어리','펍'].map(term=>({query:[prefix,term].filter(Boolean).join(' '),category:'전체'}));
  return rule;
 }
 const body=p=>searchKey([p.name,p.category,p.categoryPath,p.region,p.location,p.address,p.roadAddress,...(p.tags||[])].filter(Boolean).join(' '));

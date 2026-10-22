@@ -1022,3 +1022,131 @@ body,button,input,textarea,select,option,svg text{font-family:"Noto Sans KR",san
 .visit-map{overflow:visible}
 .visit-map path[role="button"]{cursor:pointer}
 .journal-map-selection{font-size:12px;color:#71549a;line-height:1.6}
+
+/* Alternative recommendations reuse in-memory candidates without another API request. */
+.recommendation-refresh{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:12px 0}.recommendation-refresh small{font-size:11px;color:#716b7d;line-height:1.5;flex:1;min-width:160px}
+
+/* Home editorial reel: layout follows the supplied mobile plan. */
+.app-shell.view-home{height:100dvh;min-height:0;display:flex;flex-direction:column;overflow:hidden;background:#fff}
+.app-shell.view-home>.app-header{position:relative;inset:auto;display:flex;align-items:center;justify-content:center;flex:0 0 74px;height:74px;min-height:74px;padding:12px 18px;background:#8c53ff;border:0;box-shadow:none;z-index:46}
+.app-shell.view-home>.app-header .brand{display:flex;align-items:center;justify-content:center;margin:0;padding:0;background:transparent;border:0}
+.app-shell.view-home>.app-header .brand-logo{width:78px;height:36px;max-width:none;object-fit:contain;filter:brightness(0) invert(1)}
+.app-shell.view-home>.app-header>.search-suggestion-shell{position:absolute;right:12px;top:50%;transform:translateY(-50%);width:40px;margin:0}
+.app-shell.view-home>.app-header .search-box{display:flex;width:40px;height:40px;min-height:40px;margin:0;padding:0;align-items:center;justify-content:center;background:transparent;border:0;border-radius:0;box-shadow:none}
+.app-shell.view-home>.app-header .search-icon-submit{display:flex;align-items:center;justify-content:center;min-width:40px;width:40px;height:40px;padding:8px;background:transparent;border:0;color:#fff}
+.app-shell.view-home>.main-content.screen-home{flex:1;min-height:0;height:auto;overflow:hidden;padding:0 0 calc(72px + env(safe-area-inset-bottom))!important;display:flex;flex-direction:column;background:#fff}
+.app-shell.view-home>.main-content.screen-home>footer{display:none}
+.home-editorial-reel{position:relative;flex:1;min-height:0;width:100%;overflow-y:auto;overflow-x:hidden;scroll-snap-type:y mandatory;overscroll-behavior-y:contain;touch-action:pan-y;overflow-anchor:none;-webkit-overflow-scrolling:touch;scrollbar-width:none;outline-offset:-3px;background:#fff}
+.home-editorial-reel::-webkit-scrollbar{display:none}
+.home-reel-track{position:relative;width:100%;isolation:isolate;overflow-anchor:none}
+.home-reel-stage{position:sticky;top:0;width:100%;overflow:hidden;pointer-events:auto;touch-action:pan-y;overflow-anchor:none;z-index:2}
+.home-reel-snap{position:absolute;left:0;width:1px;height:1px;pointer-events:none;scroll-snap-align:start;scroll-snap-stop:always}
+.home-reel-card{position:absolute;left:50%;transform:translate(-50%,-50%);pointer-events:auto;overflow:hidden;border-radius:10px;will-change:top,height,width}
+.home-reel-card .course-visual-card{position:relative;width:100%;height:100%;min-height:0;aspect-ratio:auto;margin:0;border:0;border-radius:10px;overflow:hidden}
+.home-reel-card .course-visual-photo{position:absolute;inset:0;width:100%;height:100%;min-height:0}
+.home-reel-card .course-visual-photo img{width:100%;height:100%;object-fit:cover}
+.home-reel-card .course-visual-open{opacity:var(--reel-copy-opacity);height:100%;width:100%;inset:0;justify-content:flex-end}
+.home-reel-card.is-preview .course-visual-open{background:transparent}
+.home-reel-notice{position:absolute;top:10px;left:16px;right:16px;z-index:110;font-size:12px;color:#70647f;text-align:center}
+.app-shell.view-home>.bottom-nav{min-height:70px;padding-top:10px;padding-bottom:calc(10px + env(safe-area-inset-bottom));border-top:0;background:#fff}
+
+.home-editorial-reel .home-reel-card,.home-editorial-reel .course-visual-open,.home-editorial-reel .course-visual-photo{touch-action:pan-y;overflow-anchor:none}
+.home-editorial-reel img{-webkit-user-drag:none;user-select:none}
+
+/* Home banners show editorial titles; metadata uses three equal columns. */
+.app-shell.view-home .home-reel-card .course-visual-title{position:absolute!important;left:10%;right:10%;top:50%;transform:translateY(-50%);width:auto!important;height:auto!important;max-width:80%;padding:0!important;margin:0!important;overflow:visible!important;clip-path:none!important;white-space:normal!important;display:block;color:#fff;text-align:left;font-size:clamp(20px,6.3cqi,28px);font-weight:800;line-height:1.3;letter-spacing:-.6px;word-break:keep-all;overflow-wrap:anywhere;text-shadow:0 2px 7px #000b}
+.app-shell.view-home .home-reel-card .course-visual-tags{display:none}
+.app-shell.view-home .home-reel-card .course-visual-meta{left:8px;right:8px;bottom:12px}
+.app-shell.view-home .home-reel-card .course-visual-meta .course-card-meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:center;justify-content:normal;column-gap:6px;row-gap:0;width:100%;margin:0;text-align:center;font-size:10px;line-height:1.4;letter-spacing:-.3px}
+.app-shell.view-home .home-reel-card .course-visual-meta .course-card-meta>span{display:flex;align-items:center;justify-content:center;gap:3px;width:100%;min-width:0;max-width:none;flex:none;white-space:normal;overflow:visible;text-overflow:clip;word-break:keep-all;overflow-wrap:anywhere;text-align:center}
+.app-shell.view-home .home-reel-card .course-visual-meta .course-card-meta svg{width:11px;height:11px;flex:0 0 11px}
+
+/* Updated home plan: lavender canvas and purple brand/search. */
+.app-shell.view-home{--home-plan-background:#f1ebff;background:var(--home-plan-background)}
+.app-shell.view-home>.app-header,.app-shell.view-home>.main-content.screen-home,.app-shell.view-home .home-editorial-reel{background:var(--home-plan-background)}
+.app-shell.view-home>.app-header .brand-logo{filter:none}
+.app-shell.view-home>.app-header .search-icon-submit{color:#8f5cfb}
+
+/* Drag the entire centered banner; retain native scrolling on its surroundings. */
+.home-editorial-reel .home-reel-card.is-centered,.home-editorial-reel .home-reel-card.is-centered .course-visual-open,.home-editorial-reel .home-reel-card.is-centered .course-visual-photo{touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
+.home-reel-stage.is-dragging,.home-reel-stage.is-dragging .home-reel-card,.home-reel-stage.is-dragging .course-visual-open{cursor:grabbing}
+
+.editorial-copy-days{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:16px 0}
+.editorial-copy-stop{display:flex;align-items:flex-start;gap:10px;padding:14px 0;border-bottom:1px solid #eee5ff}
+.editorial-copy-stop>img{width:64px;height:64px;object-fit:cover;border-radius:8px;flex-shrink:0}
+.editorial-copy-stop>div:not(.editorial-copy-controls){flex:1;min-width:0}
+.editorial-copy-stop label{display:flex;align-items:center;gap:8px;margin:8px 0;font-size:12px;color:#726780}
+.editorial-copy-stop input,.editorial-copy-stop select{min-width:0;max-width:100%;flex:1;border:1px solid #e0d5f2;border-radius:6px;padding:5px;background:#fff;color:#403749}
+.editorial-copy-controls{display:flex;gap:5px}.editorial-copy-controls button{min-width:28px;min-height:32px;color:#8c53ff}.editorial-copy-controls [draggable]{cursor:grab}
+
+.editorial-copy-keywords{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+
+/* Only the day labels scroll; matching add/remove controls remain at the right. */
+.app-shell .course-day-strip{display:flex;align-items:center;gap:8px;width:100%;max-width:100%;min-width:0;overflow:hidden;margin:14px 0 18px;padding:0;box-sizing:border-box}
+.app-shell .course-day-strip>.course-day-scroll{display:flex;flex:1 1 0;min-width:0;max-width:100%;gap:8px;margin:0;padding:3px 0;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;overscroll-behavior-x:contain;touch-action:pan-x pan-y;-webkit-overflow-scrolling:touch}
+.app-shell .course-day-strip>.course-day-scroll::-webkit-scrollbar{display:none}
+.app-shell .course-day-scroll>button{flex:0 0 92px;min-width:92px;max-width:120px;height:48px;min-height:48px}
+.app-shell .course-day-strip>.course-day-actions{display:flex;flex:0 0 auto;align-items:center;justify-content:flex-end;gap:6px;position:relative;z-index:1;margin-left:auto;background:inherit}
+.app-shell .course-day-actions>.course-day-action{display:flex;align-items:center;justify-content:center;flex:0 0 40px;width:40px;height:40px;min-width:40px;min-height:40px;padding:0;border:1px solid #ddd1ff;border-radius:50%;background:#f0e9ff;color:#7950f7;font-family:inherit;font-size:25px;font-weight:400;line-height:1;cursor:pointer;box-sizing:border-box}
+.app-shell .course-day-actions>.course-day-action:disabled{opacity:.35;cursor:default}
+.app-shell .course-day-actions>.course-day-action:focus-visible{outline:2px solid #7950f7;outline-offset:2px}
+/* Uploaded link address sharing artwork, shared by all Zip link actions. */
+.link-address-share-icon{display:inline-flex;position:relative;flex-shrink:0;overflow:hidden;align-items:center;justify-content:center;mix-blend-mode:multiply;vertical-align:middle}
+.link-address-share-icon>img{display:block;position:absolute;width:220%;max-width:none;height:auto;flex-shrink:0;pointer-events:none;user-select:none}
+
+.app-shell .course-day-strip>.course-day-scroll{touch-action:pan-x;cursor:grab;user-select:none}
+.app-shell .course-day-scroll>button{touch-action:pan-x;cursor:grab;user-select:none}
+.app-shell .course-day-scroll>button:active{cursor:grabbing}
+.keyword-add-plus{font-size:24px;line-height:1}
+.keyword-added{font-size:10px;white-space:nowrap}
+.search-related-fill:has(.keyword-added){width:48px;flex:0 0 48px}
+
+/* Content-sized keyword chips; each label stays on one line. */
+.app-shell .editor-course-tag-options,.app-shell .editorial-copy-keywords{display:flex;flex-wrap:wrap;grid-template-columns:none;grid-template-rows:none;gap:8px;max-height:none;height:auto}
+.app-shell .editor-course-tag-options>button,.app-shell .editorial-copy-keywords>button{flex:0 0 auto;width:auto;min-width:0;max-width:none;white-space:nowrap;word-break:normal;overflow-wrap:normal;padding-inline:14px}
+.editorial-place-photo,.zip-place-photo{display:block;border:0;background:transparent;padding:0;flex-shrink:0;border-radius:8px;overflow:hidden}
+.editorial-place-photo,.editorial-place-photo>img{width:64px;height:64px;object-fit:cover}
+.zip-place-photo,.zip-place-photo>img{width:42px;height:42px;object-fit:cover}
+.schedule-place-name{display:block;width:100%;padding:0;border:0;background:transparent;color:inherit;text-align:left;font:inherit;cursor:pointer}
+.schedule-place-name strong{font:inherit;font-weight:700}
+.schedule-place-modal p{white-space:pre-wrap;line-height:1.6}
+.trip-event-card.is-applied>div{padding-top:0}
+.trip-event-labels{display:flex;align-items:center;justify-content:space-between;gap:6px;flex-wrap:nowrap}
+.trip-event-labels>.demo-badge{white-space:nowrap;flex-shrink:0}
+.trip-event-labels>.trip-application-badge{position:static;flex-shrink:0;font-size:10px;padding:4px 6px;white-space:nowrap}
+
+/* Home design: supplied SVG, 390 × 844 reference frame. */
+.app-shell.view-home{--home-plan-background:#fff;background:#fff}
+.app-shell.view-home>.app-header{flex:0 0 11.84834%;height:11.84834%;min-height:0;padding:0;background:#fff}
+.app-shell.view-home>.app-header .brand{position:absolute;top:37%;left:50%;transform:translateX(-50%)}
+.app-shell.view-home>.app-header .brand-logo{width:23.58974cqi;height:8.20513cqi;object-fit:contain;filter:none}
+.app-shell.view-home>.app-header>.search-suggestion-shell{right:3.84615%;top:50.5%;width:40px}
+.app-shell.view-home>.app-header .search-icon-submit{color:#8f5cfb}
+.app-shell.view-home>.app-header .search-icon-submit svg{display:none}
+.app-shell.view-home>.app-header .search-icon-submit:before{content:'';width:21px;height:21px;background:url('/images/home-plan-search.svg') center/contain no-repeat}
+.app-shell.view-home>.main-content.screen-home{padding:0 0 8.64929dvh!important;background:#fff}
+.app-shell.view-home .home-editorial-reel{background:#fff}
+.app-shell.view-home .home-reel-card .course-visual-card{border-radius:inherit}
+.app-shell.view-home .home-reel-card .course-visual-open{background:rgb(0 0 0 / 35%)}
+.app-shell.view-home .home-reel-card.is-preview .course-visual-open{background:transparent}
+.app-shell.view-home .home-reel-card .course-visual-title{left:6.66667%;right:6.66667%;max-width:86.66667%;top:56%;font-size:clamp(26px,10.25641cqi,44px);font-weight:800;line-height:1.2;letter-spacing:-1px;text-shadow:0 1px 1.5px #0004}
+.app-shell.view-home .home-reel-card .course-visual-tags{display:flex;position:absolute;left:6.66667%;top:9.30851%;gap:0;margin:0;padding:0}
+.app-shell.view-home .home-reel-card .course-visual-tags>span{display:block;background:none;border:2px solid white;border-radius:999px;padding:5px 12px;color:white;font-size:clamp(14px,5.1282cqi,21px);line-height:1.2;font-weight:700}
+.app-shell.view-home .home-reel-card .course-visual-meta{left:6.66667%;right:6.66667%;top:33.8%;bottom:auto}
+.app-shell.view-home .home-reel-card .course-visual-meta .course-card-meta{display:flex;align-items:center;justify-content:flex-start;gap:10px;font-size:clamp(11px,3.58974cqi,16px);line-height:1.4;font-weight:700;text-align:left;letter-spacing:-.3px}
+.app-shell.view-home .home-reel-card .course-visual-meta .course-card-meta>span{flex:0 1 auto;width:auto;justify-content:flex-start;white-space:nowrap;gap:4px;overflow:hidden;text-overflow:ellipsis}
+.app-shell.view-home .home-reel-card .course-visual-meta .course-card-meta>span:nth-child(n+3){display:none}
+.app-shell.view-home .home-reel-card .course-visual-meta .course-card-meta svg{width:18px;height:18px;flex-basis:18px}
+.app-shell.view-home>.bottom-nav{height:8.64929dvh;min-height:62px;padding:10px 17px max(10px,env(safe-area-inset-bottom));background:#fff;box-shadow:none;border:0;color:#8690a0}
+.app-shell.view-home>.bottom-nav button,.app-shell.view-home>.bottom-nav button.active{color:#8690a0;font-size:11px;font-weight:400;gap:7px;background:transparent}
+.app-shell.view-home .home-editorial-reel{margin:0}
+.app-shell.view-home .home-reel-card .course-visual-tags{right:auto;bottom:auto;width:auto;transform:none;justify-content:flex-start;align-items:flex-start}
+.app-shell.view-home .home-reel-card .course-visual-tags>span{width:auto;min-width:0;flex:none;transform:none}
+.app-shell.view-home>.bottom-nav button svg,.app-shell.view-home>.bottom-nav button .asset-icon{color:#8690a0;filter:grayscale(1)}
+
+.home-plan-menu,.home-plan-bell{position:absolute;display:flex;align-items:center;justify-content:center;width:32px;height:32px;top:50.5%;transform:translateY(-50%);pointer-events:none}
+.home-plan-menu{left:5.1282%}.home-plan-bell{right:15.38462%}
+.home-plan-menu img{width:20px;height:24px}.home-plan-bell img{width:25px;height:26px}
+.bottom-nav .home-plan-nav-icon{display:block;width:23px;height:23px;object-fit:contain}
+.bottom-nav button.active .home-plan-nav-icon{filter:brightness(0) saturate(100%) invert(35%) sepia(84%) saturate(2600%) hue-rotate(239deg) brightness(102%)}
+.app-shell.view-home>.bottom-nav button.active .home-plan-nav-icon{filter:none}

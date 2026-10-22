@@ -1,3 +1,4 @@
+from editorial_copy_validation import validate_editorial_copies
 import json
 from title_filter import validate_course_title
 import os
@@ -15,7 +16,7 @@ from kakao_refs import validate_kakao_refs
 from member_course_validation import normalize_course, known_places, place_ids
 from member_course_repository import public_course_cache, public_snapshot
 router=APIRouter(prefix='/api/member')
-KEYS={'coursepick.travelJournals.v1','coursepick.travelTaste.v1','coursepick.testTaste.v1','course-favorites','coursepick.savedPlaces.v1','coursepick.myCourses.v1','coursepick.likedCourses.v1','coursepick.draft.v1','coursepick.profile.v1','coursepick.accommodations.v1'}
+KEYS={'coursepick.editorialCopies.v1','coursepick.travelJournals.v1','coursepick.travelTaste.v1','coursepick.testTaste.v1','course-favorites','coursepick.savedPlaces.v1','coursepick.myCourses.v1','coursepick.likedCourses.v1','coursepick.draft.v1','coursepick.profile.v1','coursepick.accommodations.v1'}
 def config():
  c=dotenv_values(Path(__file__).with_name('.env'),interpolate=False)
  return (os.environ.get('SUPABASE_URL') or c['SUPABASE_URL'],os.environ.get('SUPABASE_SERVICE_KEY') or c['SUPABASE_SERVICE_KEY'])
@@ -49,7 +50,7 @@ def signup(body:Credentials):
  email=body.email.strip().lower()
  if not re.fullmatch(r'[^\s@]+@[^\s@]+\.[^\s@]+',email):raise HTTPException(400,'이메일 주소를 확인해 주세요.')
  try:
-  db().auth.admin.create_user({'email':email,'password':body.password,'email_confirm':True,'user_metadata':{'nickname':body.nickname.strip()}})
+  db().auth.admin.create_user({'email':email,'password':body.password,'email_confirm':True,'user_metadata':{'nickname':body.nickname.strip(),'travel_taste_onboarding':1}})
  except Exception as error:
   code=getattr(error,'code','')
   message=str(error).lower()
@@ -78,7 +79,7 @@ def load(authorization:str|None=Header(None)):
  if isinstance(profile,dict) and profile.get('photoPath') and profile['photoPath'].startswith(str(user.id)+'/'):
      try:profile['photo']=db().storage.from_('member-avatars').create_signed_url(profile['photoPath'],3600)['signedURL']
      except Exception:profile.pop('photo',None)
- return {'userId':str(user.id),'values':values,'nickname':(user.user_metadata or {}).get('nickname','여행자')}
+ return {'userId':str(user.id),'values':values,'nickname':(user.user_metadata or {}).get('nickname','여행자'),'tasteOnboardingRequired':(user.user_metadata or {}).get('travel_taste_onboarding')==1}
 class Value(BaseModel):
  key:str
  value:object
@@ -97,6 +98,10 @@ def save(body: Value, authorization: str | None = Header(None)):
             status_code=413,
             detail='저장할 데이터가 너무 큽니다.'
         )
+
+    if body.key == 'coursepick.editorialCopies.v1':
+        try: body.value = validate_editorial_copies(body.value)
+        except ValueError: raise HTTPException(422, '기획코스의 제목·방문 일차·장소 정보를 확인해 주세요.') from None
 
     if body.key == 'coursepick.travelJournals.v1':
         try: body.value = validate_journals(body.value)

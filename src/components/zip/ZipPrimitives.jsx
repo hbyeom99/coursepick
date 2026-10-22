@@ -1,6 +1,7 @@
 import React,{useEffect,useRef} from 'react';
 
 export function ZipIcon({name,size=20}) {
+ if(name === 'link') return <span className="link-address-share-icon" style={{width:size,height:size}} aria-hidden="true"><img src="/images/link-address-share.png" alt="" draggable={false}/></span>;
  const paths={back:'M15 5L8 12L15 19',menu:'M12 4h.01M12 12h.01M12 20h.01',reorder:'M5 7H19M5 12H19M5 17H19',search:'M16 16L21 21M17 10A7 7 0 1 1 3 10A7 7 0 1 1 17 10',plus:'M12 4V20M4 12H20',close:'M5 5L19 19M19 5L5 19',chevron:'M9 5L16 12L9 19',upload:'M12 15V3M7 8L12 3L17 8M4 13V21H20V13',share:'M12 15V3M8 7L12 3L16 7M5 11V21H19V11',link:'M10 14L14 10M8 16L6 18A4 4 0 0 1 1 12L7 6A4 4 0 0 1 13 12M11 12A4 4 0 0 1 17 6L19 4A4 4 0 0 1 23 10L17 16',globe:'M21 12A9 9 0 1 1 3 12A9 9 0 1 1 21 12M3 12H21M12 3C6 8 6 16 12 21M12 3C18 8 18 16 12 21',pin:'M19 10C19 15 12 21 12 21S5 15 5 10A7 7 0 0 1 19 10ZM12 7V11',calendar:'M4 5H20V21H4ZM4 10H20M8 3V7M16 3V7',flag:'M5 22V3M5 4H19L16 8L19 12H5',people:'M14 8A3 3 0 1 1 8 8A3 3 0 1 1 14 8M4 20V18A7 7 0 0 1 18 18V20M17 6A3 3 0 0 1 20 11M20 15L22 20'};
  return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={name==='menu'?3:1.4} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={paths[name]||paths.plus}/></svg>;
 }

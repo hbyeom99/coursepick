@@ -1,0 +1,4 @@
+import React from 'react';
+import {ZipModal} from './zip/ZipPrimitives.jsx';
+import CourseRepresentativePhoto from './CourseRepresentativePhoto.jsx';
+export default function SchedulePlaceModal({place,onClose}){return <ZipModal className="schedule-place-modal" title={place.name} onClose={onClose}><div className="place-detail-photo"><CourseRepresentativePhoto src={place.image_url||place.imageUrl} alt={place.name}/></div><p className="overline">{[place.region,place.category].filter(Boolean).join(' · ')}</p><h3>{place.name}</h3><section className="place-detail-section"><h3>장소 소개</h3><p>{place.description||place.activity||'장소 소개 확인 필요'}</p></section><section className="place-detail-section"><h3>기본 정보</h3><dl><dt>주소</dt><dd>{place.address||place.location||'주소 확인 필요'}</dd>{place.openingHours&&<><dt>운영시간</dt><dd>{place.openingHours}</dd></>}</dl></section></ZipModal>;}
