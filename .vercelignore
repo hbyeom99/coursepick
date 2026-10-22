@@ -1,5 +1,4 @@
 # Deployment inputs only; preserve originals locally.
-.git
 node_modules
 .pnpm-store
 dist
