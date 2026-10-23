@@ -17,7 +17,7 @@ def validate_journals(value):
     seen=set();result=[]
     for j in value:
         if not isinstance(j,dict):raise ValueError()
-        cid=j.get('courseId');title=j.get('title');body=j.get('body');day=j.get('visitedAt');places=j.get('placeIds')
+        cid=j.get('courseId');title=j.get('title');body=j.get('body');day=j.get('visitedAt');places=j.get('placeIds');photos=j.get('photoIds');stop_days=j.get('stopDays')
         if not isinstance(cid,str) or not 1<=len(cid)<=200 or cid in seen:raise ValueError()
         if not isinstance(title,str) or not 1<=len(title.strip())<=80:raise ValueError()
         if not isinstance(body,str) or not 1<=len(body.strip())<=5000:raise ValueError()
@@ -26,5 +26,10 @@ def validate_journals(value):
         except (ValueError,TypeError):raise ValueError() from None
         if visited>date.today():raise ValueError()
         if not isinstance(places,list) or not 1<=len(places)<=100 or any(not isinstance(p,str) or not 1<=len(p)<=200 for p in places) or len(set(places))!=len(places):raise ValueError()
-        seen.add(cid);result.append({'courseId':cid,'title':title.strip(),'body':body.strip(),'visitedAt':day,'placeIds':places})
+        if photos is not None and (not isinstance(photos,list) or len(photos)>20 or any(not isinstance(p,str) or not 1<=len(p)<=300 for p in photos) or len(set(photos))!=len(photos)):raise ValueError()
+        if stop_days is not None and (not isinstance(stop_days,dict) or any(not isinstance(key,str) or not 1<=len(key)<=200 or type(value) is not int or not 1<=value<=31 for key,value in stop_days.items())):raise ValueError()
+        seen.add(cid);record={'courseId':cid,'title':title.strip(),'body':body.strip(),'visitedAt':day,'placeIds':places}
+        if photos is not None:record['photoIds']=photos
+        if stop_days is not None:record['stopDays']=stop_days
+        result.append(record)
     return result

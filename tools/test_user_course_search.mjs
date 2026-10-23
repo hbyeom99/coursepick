@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import {courseSearchCardTags,courseSearchFocus,userCourseSearchMatch} from '../src/lib/userCourseSearch.js';
+import {rankUserCourses} from '../src/lib/userCourseRanking.js';
+const fishing={id:'f',name:'낚시터',category:'관광지',tags:['낚시']},tennis={id:'t',name:'테니스장',category:'관광지',tags:['테니스']};
+const central={id:'central',name:'낚시 즐기는 하루',tags:['체육','낚시'],fit:1};
+const included={id:'included',name:'테니스 나들이',tags:['테니스','체육','체육시설정보','낚시'],fit:100};
+assert.equal(courseSearchCardTags(included,'낚시')[0],'낚시');
+assert.deepEqual(rankUserCourses([included,central], '낚시',c=>c.fit,c=>[fishing,tennis]).map(c=>c.id),['central','included']);
+assert.equal(courseSearchFocus(included,'낚시',[fishing,tennis]),'included');
+assert.equal(courseSearchFocus({...included,name:'가벼운 하루'},'낚시',[fishing,{name:'식당',category:'음식점'}]),'central');
+const child={id:'child',name:'수제맥주 즐기는 하루',tags:['수제맥주'],fit:100};
+assert.equal(courseSearchCardTags(child,'맥주')[0],'수제맥주');
+assert.ok(!courseSearchCardTags(child,'맥주').includes('맥주'));
+assert.equal(rankUserCourses([{id:'none',name:'테니스',tags:['테니스']}],'낚시',()=>0).length,0);
+const ties=[{...central,id:'a',fit:10},{...central,id:'b',fit:20}];assert.equal(rankUserCourses(ties,'낚시',c=>c.fit)[0].id,'b');
+console.log('User search: tag display, focus groups, approved child tags, affinity and exclusion passed');

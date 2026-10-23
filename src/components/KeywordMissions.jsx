@@ -1,11 +1,8 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {keywordMissionEligible,keywordMissions} from '../lib/keywordMissions.js';
-export default function KeywordMissions({courses,completed,onCreate,onComplete}){
- return <div className="keyword-mission-list">{keywordMissions.map(mission=>{
- const done=completed.includes(mission.id),eligible=courses.some(course=>keywordMissionEligible(course,mission));
- return <article className="keyword-mission-card" key={mission.id}>
- <img src="/images/design-20261022/mission-0.webp" alt=""/>
- <span className="keyword-mission-points">+ 300P</span><div><h2># {mission.tag}</h2><strong>{mission.title}</strong><p>#{mission.tag} 태그를 넣어 나만의 코스를 공개해 보세요.</p><div className="keyword-mission-actions"><button type="button" onClick={()=>onCreate(mission.tag)}>코스 작성</button><button type="button" disabled={done||!eligible} onClick={()=>onComplete(mission)}>{done?'미션 완료!':'미션 완료'}</button></div><small>{done?'300P 적립 완료':eligible?'공개 코스 확인 완료 · 미션을 완료해 주세요':'해당 태그를 포함한 공개 코스를 저장하면 완료할 수 있어요.'}</small></div>
- </article>;
- })}</div>;
+const asset='/images/tripmarket-20261022/';
+export default function KeywordMissions({courses,completed,onCreate,onComplete,initialTag}){
+ const [selected,setSelected]=useState(()=>keywordMissions.find(m=>m.tag===initialTag)||null);
+ const done=selected&&completed.includes(selected.id),eligible=selected&&courses.some(c=>keywordMissionEligible(c,selected));
+ return <><img className="keyword-mission-banner" src={asset+'mission-image4_459_3889.webp'} alt="아직 알려지지 않은 여행, 당신이 첫 번째로 소개해 주세요! 장소가 부족한 여행 키워드에 나만의 코스를 등록하고 생생한 방문 후기를 남기면 포인트를 드려요."/><div className="keyword-mission-list">{keywordMissions.map(mission=><button type="button" className="keyword-mission-tile" key={mission.id} onClick={()=>setSelected(mission)} aria-label={`#${mission.tag} 키워드 미션 ${mission.points.toLocaleString()}포인트`}><img src={asset+mission.image} alt=""/>{mission.showPoints&&<span className="keyword-mission-points">+ {mission.points.toLocaleString()}p</span>}<h2>#{mission.tag}</h2>{completed.includes(mission.id)&&<small>미션 완료!</small>}</button>)}</div>{selected&&<div className="journal-modal-shade"><section className="journal-dialog" role="dialog" aria-modal="true" aria-label="키워드 미션"><header><h2>#{selected.tag}</h2><button type="button" aria-label="닫기" onClick={()=>setSelected(null)}>×</button></header><h3>{selected.title}</h3><p>#{selected.tag} 태그를 포함한 공개 코스를 저장하면 완료할 수 있어요.</p><p>보상 {selected.points.toLocaleString()}P</p><div className="keyword-mission-actions"><button type="button" onClick={()=>onCreate(selected.tag)}>코스 작성</button><button type="button" disabled={done||!eligible} onClick={()=>onComplete(selected)}>{done?'미션 완료!':'미션 완료'}</button></div></section></div>}</>;
 }

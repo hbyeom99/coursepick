@@ -6,6 +6,8 @@ export interface AccessibilityInfo {
   features: Record<string, { status: string; evidence: { raw: string; contentId: string; retrievedAt: string }[] }>;
 }
 export interface Place {
+  /** Verified photo lookup reference only; external photo bodies stay transient. */
+  kakaoPhotoPlaceId?: string;
   traitFacts?: { activityIntensity?: number; participatory?: boolean; reservationRequired?: boolean; costPerPerson?: number; source?: string };
   id: string;
   name: string;

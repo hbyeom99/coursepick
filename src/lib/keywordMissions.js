@@ -1,8 +1,9 @@
 export const keywordMissions=[
- {id:'keyword-island-v1',tag:'무인도',title:'아무나 쉽게 갈 수 없는 특별한 섬 여행!'},
- {id:'keyword-sea-v1',tag:'바다',title:'파도 소리를 따라 나만의 코스'},
- {id:'keyword-cafe-v1',tag:'카페',title:'잠시 쉬어 가고 싶은 카페 여행'},
+ {id:'keyword-island-v1',tag:'무인도',title:'당신의 첫 번째로 소개해 주세요!',points:1000,image:'mission-image1_459_3889.webp',showPoints:true},
+ {id:'keyword-date-v1',tag:'이색 데이트',title:'색다른 데이트 코스를 소개해 주세요!',points:800,image:'mission-image3_459_3889.webp',showPoints:true},
+ {id:'keyword-pet-v1',tag:'반려동물동반',title:'반려동물과 함께하는 여행',points:300,image:'mission-image0_459_3889.webp'},
+ {id:'keyword-architecture-v1',tag:'건축탐방',title:'기억에 남는 건축 여행',points:300,image:'mission-image2_459_3889.webp'},
 ];
 export function keywordMissionEligible(course,mission){
- return course.isPublic===true&&!course.isVirtual&&!course.editorialVisits&&[...(course.representativeTags||[]),...(course.tags||[])].some(tag=>tag===mission.tag);
+ return course.isPublic===true&&!course.isVirtual&&!course.editorialVisits&&[...(course.representativeTags||[]),...(course.tags||[])].some(tag=>String(tag).normalize('NFKC').replace(/\s/g,'')===mission.tag.normalize('NFKC').replace(/\s/g,''));
 }

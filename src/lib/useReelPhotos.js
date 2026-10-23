@@ -1,59 +1,41 @@
 import {useEffect,useMemo,useRef,useState} from 'react';
 
-// Only editorial photo URLs already attached to the course are used here.
+// Only existing editorial images are used; scrolling never selects a new cover.
 export default function useReelPhotos(courses,position,dragging){
- const signature=JSON.stringify(courses.map(course=>[course.id,...(course.editorialVisits||[]).map(v=>[v.image_url,v.cover_image,v.name])]));
+ const signature=JSON.stringify(courses.map(c=>[c.id,c.name,...(c.editorialVisits||[]).map(v=>[v.image_url,v.cover_image,v.name])]));
  const entries=useMemo(()=>courses.map(course=>{
-  const visits=(course.editorialVisits||[]).filter(v=>v.image_url);
+  const visits=(course.editorialVisits||[]).filter(v=>v.image_url&&!/^data:image\/svg\+xml/i.test(v.image_url));
   const cover=visits.find(v=>v.cover_image)||visits[0];
-  const photos=[...new Map(visits.map(v=>[v.image_url,{src:v.image_url,alt:v.name||course.name}])).values()];
-  return {id:course.id,photos,initial:cover?{src:cover.image_url,alt:cover.name||course.name}:null};
+  return {id:course.id,photos:[...new Map(visits.map(v=>[v.image_url,{src:v.image_url,alt:v.name||course.name}])).values()],initial:cover?{src:cover.image_url,alt:cover.name||course.name}:null};
  }),[signature]);
- const [shown,setShown]=useState({});
- const model=useRef(null),mounted=useRef(false),loads=useRef(new Map());
- useEffect(()=>{mounted.current=true;return()=>{mounted.current=false;};},[]);
+ const [shown,setShown]=useState({}),[paused,setPaused]=useState(false),current=useRef({});
+ useEffect(()=>{const initial=Object.fromEntries(entries.map(e=>[e.id,e.initial]));current.current=initial;setShown(initial);},[entries]);
  useEffect(()=>{
-  model.current={seen:new Set(),last:null,round:0,choices:new Map(),applied:new Set(),shown:new Map(entries.map(e=>[e.id,e.initial]))};
-  setShown(Object.fromEntries(entries.map(e=>[e.id,e.initial])));
- },[entries]);
- function preload(photo){
-  if(!photo)return Promise.resolve(false);
-  if(loads.current.has(photo.src))return loads.current.get(photo.src);
-  const pending=new Promise(resolve=>{
-   const image=new Image();image.onload=()=>resolve(true);image.onerror=()=>{loads.current.delete(photo.src);resolve(false);};image.src=photo.src;
-  });
-  loads.current.set(photo.src,pending);return pending;
- }
+  const media=window.matchMedia('(prefers-reduced-motion: reduce)');
+  const update=()=>setPaused(document.hidden||media.matches);
+  update();document.addEventListener('visibilitychange',update);media.addEventListener('change',update);
+  return()=>{document.removeEventListener('visibilitychange',update);media.removeEventListener('change',update);};
+ },[]);
  useEffect(()=>{
-  if(dragging||!entries.length||Math.abs(position-Math.round(position))>.04)return;
-  const index=((Math.round(position)%entries.length)+entries.length)%entries.length;
-  const timer=setTimeout(()=>{
-   const current=model.current,entry=entries[index];if(!current||current.last===entry.id)return;
-   // Returning early or changing direction does not complete a round.
-   if(current.seen.size===entries.length){
-    current.round++;current.seen.clear();current.applied.clear();current.choices.clear();
-    for(const item of entries){
-     const previous=current.shown.get(item.id)?.src;
-     const alternatives=item.photos.filter(photo=>photo.src!==previous);
-     const options=alternatives.length?alternatives:item.photos;
-     current.choices.set(item.id,options[Math.floor(Math.random()*options.length)]||item.initial);
-    }
-   }
-   current.last=entry.id;current.seen.add(entry.id);
-   if(current.round>0&&!current.applied.has(entry.id)){
-    current.applied.add(entry.id);const photo=current.choices.get(entry.id),round=current.round;
-    if(photo&&photo.src!==current.shown.get(entry.id)?.src)preload(photo).then(ready=>{
-     if(!ready||!mounted.current||model.current!==current||current.round!==round)return;
-     current.shown.set(entry.id,photo);setShown(previous=>({...previous,[entry.id]:photo}));
-    });
-   }
-   // Prepare at most the neighboring two courses, not every image on scroll.
-   for(const offset of [-1,1]){
-    const neighbor=entries[(index+offset+entries.length)%entries.length];
-    preload(current.choices.get(neighbor.id)||current.shown.get(neighbor.id));
-   }
-  },180);
-  return()=>clearTimeout(timer);
- },[position,dragging,entries]);
+  if(paused||document.hidden||dragging||!entries.length||Math.abs(position-Math.round(position))>.04)return;
+  const index=((Math.round(position)%entries.length)+entries.length)%entries.length,entry=entries[index];
+  if(entry.photos.length<2)return;
+  let active=true,timer,image;
+  function advance(){
+   const old=current.current[entry.id]||entry.initial;
+   const nextIndex=(entry.photos.findIndex(p=>p.src===old?.src)+1)%entry.photos.length;
+   const photo=entry.photos[nextIndex];
+   image=new Image();
+   image.onload=()=>{
+    if(!active||document.hidden)return;
+    const next={...photo,previous:old?.src};current.current={...current.current,[entry.id]:next};
+    setShown(current.current);timer=setTimeout(advance,5000);
+   };
+   image.onerror=()=>{if(active)timer=setTimeout(advance,5000);};
+   image.src=photo.src;
+  }
+  timer=setTimeout(advance,5000);
+  return()=>{active=false;clearTimeout(timer);if(image){image.onload=null;image.onerror=null;}};
+ },[position,dragging,entries,paused]);
  return shown;
 }

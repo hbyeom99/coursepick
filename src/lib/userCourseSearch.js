@@ -13,3 +13,23 @@ export function userCourseSearchMatch(course,query){
  if(literalCourseKey(course.name).includes(key))return {matched:true,rank:2,related:0};
  return {matched:false,rank:3,related:0};
 }
+
+// Display only tags the course actually owns; approved child tags remain one-way.
+export function courseSearchCardTags(course,query){
+ const tags=[...new Map([...(course.representativeTags||[]),...(course.tags||[])].filter(t=>typeof t==='string').map(t=>[literalCourseKey(t),t])).values()];
+ return tags.map((tag,index)=>({tag,index,match:userCourseSearchMatch({tags:[tag]},query)}))
+  .sort((a,b)=>(a.match.matched?a.match.rank:3)-(b.match.matched?b.match.rank:3)||a.index-b.index).slice(0,3).map(v=>v.tag);
+}
+
+// A named/declared theme or a strict majority of known activity stops indicates focus.
+// Meal, cafe and lodging stops do not dilute the purpose of a travel activity course.
+export function courseSearchFocus(course,query,places=[]){
+ const key=literalCourseKey(query);if(!key)return 'included';
+ if(literalCourseKey(course.name).includes(key))return 'central';
+ const declared=(course.representativeTags||[]).some(tag=>userCourseSearchMatch({tags:[tag]},query).matched);
+ if(declared)return 'central';
+ const activity=places.filter(p=>!['음식점','카페','숙소','숙박'].includes(p.category));
+ const matching=activity.filter(p=>userCourseSearchMatch({name:p.name,tags:p.tags||[]},query).matched);
+ const total=activity.length+(course.googlePlaceRefs?.length||0)+(course.kakaoPlaceRefs?.length||0)+(course.editorialVisits?.filter(v=>!v.place_id).length||0);
+ return matching.length>total/2?'central':'included';
+}

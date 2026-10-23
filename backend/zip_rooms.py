@@ -1,4 +1,5 @@
 from kakao_refs import validate_kakao_refs
+from zip_schedule_details import validate_zip_stop_details
 from course_traits import validate_trait_facts
 """Authenticated Zip room collaboration. No public or cross-room access."""
 import hashlib
@@ -162,6 +163,9 @@ def edit_schedule(room_id:str,body:ScheduleInput,authorization:str|None=Header(N
   day['itineraryOrder']=[key for key in order if key in allowed]
   timings=day.get('timings',{})
   if not isinstance(timings,dict) or any(pid not in day['stopIds'] or not isinstance(t,dict) or (t.get('time','') and not re.fullmatch(r'(?:[01]\d|2[0-3]):[0-5]\d',str(t['time']))) or type(t.get('minutes',0)) not in (int,float) or not 0<=t.get('minutes',0)<=1440 for pid,t in timings.items()):raise HTTPException(422,'방문 시간과 체류 시간을 확인해 주세요.')
+  previous_day=next((d for d in (room.get('payload') or {}).get('days',[]) if d.get('date')==day['date']),{})
+  try:day['stopDetails']=validate_zip_stop_details(day.get('stopDetails',previous_day.get('stopDetails',{})),allowed)
+  except ValueError:raise HTTPException(422,'방문 시간과 메모를 확인해 주세요.') from None
   dates.append(day['date']);ids.extend(day['stopIds'])
  if not dates or dates!=sorted(set(dates)):raise HTTPException(422,'일차의 날짜 순서를 확인해 주세요.')
  if (date.fromisoformat(dates[-1])-date.fromisoformat(dates[0])).days>30:raise HTTPException(422,'여행 기간은 최대 31일입니다.')
@@ -170,7 +174,7 @@ def edit_schedule(room_id:str,body:ScheduleInput,authorization:str|None=Header(N
  try:trait_facts=validate_trait_facts(body.traitFacts) if 'traitFacts' in body.model_fields_set else (room.get('payload') or {}).get('traitFacts',{})
  except ValueError:raise HTTPException(422,'코스 성향 근거를 확인해 주세요.') from None
  if (trait_facts or {}).get('reservationRequiredCount',0)>len(ids) and trait_facts!=(room.get('payload') or {}).get('traitFacts',{}):raise HTTPException(422,'예약 장소 수는 방문 장소 수 이하여야 합니다.')
- rows=execute(client.table('zip_rooms').update({'payload':{**(room.get('payload') or {}),'traitFacts':trait_facts or {},'title':body.title,'transport':body.transport,'days':[{'date':d['date'],'stopIds':d['stopIds'],'kakaoPlaceRefs':d['kakaoPlaceRefs'],'itineraryOrder':d['itineraryOrder'],'timings':{pid:{'time':t.get('time',''),'minutes':t.get('minutes',0)} for pid,t in d.get('timings',{}).items()}} for d in body.days]},'revision':body.revision+1,'start_date':dates[0],'end_date':dates[-1]}).eq('id',room['id']).eq('revision',body.revision))
+ rows=execute(client.table('zip_rooms').update({'payload':{**(room.get('payload') or {}),'traitFacts':trait_facts or {},'title':body.title,'transport':body.transport,'days':[{'date':d['date'],'stopIds':d['stopIds'],'kakaoPlaceRefs':d['kakaoPlaceRefs'],'itineraryOrder':d['itineraryOrder'],'stopDetails':d['stopDetails'],'timings':{pid:{'time':t.get('time',''),'minutes':t.get('minutes',0)} for pid,t in d.get('timings',{}).items()}} for d in body.days]},'revision':body.revision+1,'start_date':dates[0],'end_date':dates[-1]}).eq('id',room['id']).eq('revision',body.revision))
  if not rows:raise HTTPException(409,'다른 멤버가 일정을 수정했습니다. 최신 일정으로 다시 확인해 주세요.')
  return serialize(client,rows[0],str(user.id))
 

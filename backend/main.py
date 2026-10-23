@@ -13,6 +13,8 @@ from supabase.client import ClientOptions
 from place_queries import place_client, recommendation_candidates, recommendation_cache, region_place_cache
 
 app = FastAPI(title="coursepick Backend")
+from kakao_place_photo import router as kakao_photo_router
+app.include_router(kakao_photo_router)
 
 app.add_middleware(
     CORSMiddleware,
@@ -271,16 +273,18 @@ def validate_demo_course(course, place_ids, author_ids):
     # Shared registration validation for the reviewed seed and database reads.
     if not isinstance(course, dict) or course.get("is_demo") is not True:
         raise ValueError("Only demo courses are supported before authentication")
-    for field in ["id", "title", "author_id", "region", "description", "transport", "cover_place_id"]:
+    for field in ["id", "title", "author_id", "region", "description", "transport"]:
         if not isinstance(course.get(field), str) or not course[field].strip():
             raise ValueError("Invalid course text field")
     ids = course.get("place_ids")
-    if not isinstance(ids, list) or not 2 <= len(ids) <= 7 or not all(isinstance(id, str) for id in ids):
+    if not isinstance(ids, list) or not 0 <= len(ids) <= 7 or not all(isinstance(id, str) for id in ids):
         raise ValueError("Invalid place IDs")
     if len(set(ids)) != len(ids) or not set(ids).issubset(place_ids):
         raise ValueError("Duplicate or unknown place")
-    if course["author_id"] not in author_ids or course["cover_place_id"] not in ids:
+    if course["author_id"] not in author_ids:
         raise ValueError("Unknown author or cover place")
+    from community_external_schedule import validate_external_schedule
+    validate_external_schedule(course)
     if course["transport"] not in ["도보", "대중교통", "자동차"]:
         raise ValueError("Unknown transport")
     hours = course.get("hours")
@@ -290,12 +294,12 @@ def validate_demo_course(course, place_ids, author_ids):
     if not isinstance(tags, list) or not all(isinstance(tag, str) and tag.strip() for tag in tags) or len(tags) != len(set(tags)):
         raise ValueError("Invalid tags")
     schedule = course.get("schedule")
-    if not isinstance(schedule, list) or len(schedule) != len(ids):
+    if not isinstance(schedule, list) or not 2 <= len(schedule) <= 7:
         raise ValueError("Invalid schedule length")
     last_end = 0
     last_day = 1
-    for id, item in zip(ids, schedule):
-        if not isinstance(item, dict) or item.get("place_id") != id or not isinstance(item.get("label"), str) or not item["label"].strip():
+    for item in schedule:
+        if not isinstance(item, dict) or not isinstance(item.get("label"), str) or not item["label"].strip():
             raise ValueError("Invalid schedule order")
         time = item.get("start_time")
         minutes = item.get("duration_minutes")

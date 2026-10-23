@@ -23,7 +23,7 @@ export function journalStats(journals,catalog,year=null){
 export const demoOffers=[{id:'food',name:'제휴 체험 10% 할인',cost:1000,kind:'음식점'},{id:'stay',name:'숙소 5천원 쿠폰',cost:2000,kind:'숙박'},{id:'cafe',name:'카페·맛집 쿠폰',cost:1500,kind:'카페'},{id:'view',name:'관광지 입장권 할인',cost:2500,kind:'관광지'},{id:'car',name:'렌터카 할인',cost:3000,kind:'체험'},{id:'film',name:'AI 여행 영상 템플릿',cost:2000,kind:'관광지'}];
 export const newDemoRewards=()=>({balance:3250,coupons:[],applications:[],completed:[],ledger:[{id:'welcome',label:'시연 시작 포인트',amount:3250,date:new Date().toISOString()}]});
 export function redeemDemo(state,offer){if(!offer||state.balance<offer.cost)throw Error('보유 포인트가 부족해요.');const id=crypto.randomUUID(),date=new Date().toISOString();return {...state,balance:state.balance-offer.cost,coupons:[{id,name:offer.name,code:'DEMO-'+id.slice(0,8).toUpperCase(),used:false,date},...state.coupons],ledger:[{id,label:offer.name,amount:-offer.cost,date},...state.ledger]};}
-export function completeDemo(state,id){if(state.completed.includes(id))return state;return {...state,balance:state.balance+300,completed:[...state.completed,id],ledger:[{id:'mission-'+id,label:'리뷰미션 시연 완료',amount:300,date:new Date().toISOString()},...state.ledger]};}
+export function completeDemo(state,id,points=300){if(!Number.isInteger(points)||points<=0)throw Error('미션 포인트 오류');if(state.completed.includes(id))return state;return {...state,balance:state.balance+points,completed:[...state.completed,id],ledger:[{id:'mission-'+id,label:'키워드 미션 완료',amount:points,date:new Date().toISOString()},...state.ledger]};}
 
 // Archive coverage follows the courses in My Journals as requested, without
 // changing written-visit records used by the recap or storing provider content.

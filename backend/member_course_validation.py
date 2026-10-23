@@ -1,3 +1,4 @@
+from stop_details import validate_stop_details
 """Validate member courses without rewriting stored legacy records."""
 from google_refs import validate_google_refs
 from kakao_refs import validate_kakao_refs
@@ -8,7 +9,7 @@ from copy import deepcopy
 
 TRANSPORTS = {'도보', '자동차', '대중교통'}
 PUBLIC_FIELDS = {'id', 'name', 'description', 'region', 'stopIds', 'imagePlaceId',
-                 'tags', 'representativeTags', 'googlePlaceRefs', 'kakaoPlaceRefs', 'itineraryOrder', 'schedule', 'hours', 'transport',
+                 'tags', 'representativeTags', 'googlePlaceRefs', 'kakaoPlaceRefs', 'itineraryOrder', 'stopDetails', 'schedule', 'hours', 'transport',
                  'traitFacts', 'maxPeople', 'durationDays', 'stopDays', 'accommodationId', 'createdAt'}
 
 
@@ -81,6 +82,9 @@ def normalize_course(value):
         order=course['itineraryOrder']
         if not isinstance(order,list) or len(order)>140 or any(not isinstance(key,str) or not re.fullmatch(r'[ngk]:.{1,255}',key) for key in order) or len(set(order))!=len(order):
             raise ValueError('통합 일정 순서')
+    if 'stopDetails' in course:
+        allowed = {'n:' + pid for pid in ids} | {'g:' + r['placeId'] for r in refs} | {'k:' + r['placeId'] for r in kakao_refs}
+        course['stopDetails'] = validate_stop_details(course['stopDetails'], allowed)
     if 'traitFacts' in course:
         course['traitFacts'] = validate_trait_facts(course['traitFacts']) or {}
         if course['traitFacts'].get('reservationRequiredCount',0)>len(ids) and (not course['traitFacts'].get('basis') or course['traitFacts']['basis']==course_trait_basis(course)):raise ValueError('예약 장소 수')

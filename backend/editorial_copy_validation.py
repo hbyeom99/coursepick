@@ -1,3 +1,5 @@
+from kakao_refs import validate_kakao_refs
+from stop_details import validate_stop_details
 """Private editable editorial snapshots; never create or overwrite place rows."""
 from copy import deepcopy
 from urllib.parse import urlparse
@@ -35,7 +37,16 @@ def validate_editorial_copies(value):
                     row[key]=field
             image=row.get('image_url','')
             if image and not (image.startswith('/images/') or urlparse(image).scheme in ('https','http')):raise ValueError()
+            if visit.get('kakaoRef') is not None:
+                if not isinstance(visit['kakaoRef'],dict):raise ValueError('카카오 장소 참조')
+                row['kakaoRef']=validate_kakao_refs([{**visit['kakaoRef'],'day':visit['day']}])[0]
+                if any(key in row for key in ('place_id','location')):raise ValueError('외부 장소 참조에는 장소 본문을 저장하지 않습니다.')
+                # Preserve existing uploaded editorial assets after a native
+                # source is replaced. External/provider photo URLs stay forbidden.
+                if row.get('image_url') and not re.fullmatch(r'/images/editorial/user-[0-9a-f]{20,64}\.(?:jpg|jpeg|png|webp)',row['image_url']):raise ValueError('외부 사진은 저장하지 않습니다.')
+                row['name']='카카오 장소 · 정보 확인 필요'
             row['day']=visit['day'];row['cover_image']=bool(visit.get('cover_image'));clean.append(row)
+        if sum('kakaoRef' in v for v in clean)>20:raise ValueError('카카오 장소 개수')
         tags=item.get('tags',[])
         if not isinstance(tags,list) or len(tags)>50 or any(not isinstance(t,str) or len(t)>100 for t in tags):raise ValueError()
         representative=item.get('representativeTags',tags[:3])
@@ -44,5 +55,7 @@ def validate_editorial_copies(value):
         if not isinstance(notices,list) or len(notices)>100 or any(not isinstance(t,str) or len(t)>2000 for t in notices):raise ValueError()
         copy={key:deepcopy(item[key]) for key in ('id','originalCourseId','name','region','transport','durationDays')}
         copy.update(description=item.get('description',''),tags=tags,representativeTags=representative,editorialVisits=clean,editorialNotices=notices,stopIds=list(dict.fromkeys(v['place_id'] for v in clean if v.get('place_id'))),imagePlaceId=None,isPublic=False,source='editorial-copy',author='나')
+        if 'stopDetails' in item:
+            copy['stopDetails'] = validate_stop_details(item['stopDetails'], {'v:' + v['visit_id'] for v in clean})
         result.append(copy)
     return result

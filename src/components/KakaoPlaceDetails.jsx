@@ -1,5 +1,9 @@
 import React from 'react';
 import CourseRepresentativePhoto from './CourseRepresentativePhoto.jsx';
-export default function KakaoPlaceDetails({place,onAdd,added,disabled}){
- return <><div className="place-detail-photo"><CourseRepresentativePhoto alt={place.name} placeholderAlt={`${place.name} · 사진 준비 중`}/></div><div className="place-detail-heading"><div><div className="picker-place-heading"><p className="overline">{[place.region,place.category].filter(Boolean).join(' · ')}</p>{onAdd&&<button type="button" className="pill secondary picker-add-place" disabled={added||disabled} onClick={()=>onAdd(place)}>{added?'추가됨':'+ 장소 추가'}</button>}</div><h3>{place.name}</h3></div></div><div className="tags">{(place.tags||[]).map(tag=><span key={tag}>#{tag}</span>)}</div><section className="place-detail-section"><h3>기본 정보</h3><dl><dt>주소</dt><dd>{place.roadAddress||place.address||'주소 확인 필요'}</dd>{place.phone&&<><dt>전화번호</dt><dd><a href={'tel:'+place.phone}>{place.phone}</a></dd></>}{place.categoryPath&&<><dt>장소 분류</dt><dd>{place.categoryPath}</dd></>}</dl></section><section className="place-detail-section"><a className="pill secondary wide" href={'https://place.map.kakao.com/'+encodeURIComponent(place.id)} target="_blank" rel="noopener noreferrer">카카오맵에서 확인</a></section></>;
+import PlaceDetails from './PlaceDetails.jsx';
+import {kakaoPlaceDetailUrl} from '../lib/kakaoPlaceLink.js';
+function Photo({place}){return <CourseRepresentativePhoto src={place.imageUrl} alt={place.name} placeholderAlt={`${place.name} · 사진 준비 중`}/>;}
+export default function KakaoPlaceDetails({place,onAdd,added,disabled,editorial}){
+ const p={...place,location:place.roadAddress||place.address,imageUrl:editorial?.image_url||editorial?.imageUrl||place.imageUrl,description:editorial?.description||editorial?.activity||place.description};
+ return <PlaceDetails p={p} Photo={Photo} mapUrl={kakaoPlaceDetailUrl(place)} headingAction={onAdd&&<button type="button" className="pill secondary picker-add-place" disabled={added||disabled} onClick={()=>onAdd(place)}>{added?'추가됨':'+ 장소 추가'}</button>} basicExtra={editorial?.time&&<><dt>계획한 방문 시각</dt><dd>{editorial.day?`${editorial.day}일차 · `:''}{editorial.time}</dd></>} externalInfo={editorial?.image_note&&<p className="muted">{editorial.image_note}</p>}/>;
 }

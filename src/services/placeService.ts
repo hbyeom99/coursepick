@@ -45,7 +45,9 @@ function toPlace(value: unknown): Place {
   if(typeof rawFacts.participatory==='boolean')traitFacts.participatory=rawFacts.participatory;
   if(typeof rawFacts.source==='string')traitFacts.source=rawFacts.source;
   const combinedTags = [...new Set([...(tags as string[]), ...accessibilityTags(accessibilityInfo)])];
-  return { id, name: text('name'), category: text('category'), region: text('region'), location: text('location'), description: companion.description, tags: combinedTags, imageUrl: text('image_url'), latitude: number('latitude', -90, 90), longitude: number('longitude', -180, 180), openingHours: text('opening_hours'), rating: number('rating', 0, 5), lodgingInfo, companionInfo, accessibilityInfo,traitFacts };
+  const photoId = (row.lodging_info as Record<string,unknown> | null)?.kakaoPhotoPlaceId;
+  const kakaoPhotoPlaceId = typeof photoId === 'string' && /^\d{1,20}$/.test(photoId) ? photoId : undefined;
+  return { id, name: text('name'), category: text('category'), region: text('region'), location: text('location'), description: companion.description, tags: combinedTags, imageUrl: text('image_url'), latitude: number('latitude', -90, 90), longitude: number('longitude', -180, 180), openingHours: text('opening_hours'), rating: number('rating', 0, 5), lodgingInfo, companionInfo, accessibilityInfo,traitFacts,kakaoPhotoPlaceId };
 }
 
 export async function getPlaces(signal?: AbortSignal): Promise<Place[]> {
