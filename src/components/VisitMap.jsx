@@ -1,6 +1,5 @@
 import DesignIcon from './DesignIcon.jsx';
 import React,{useEffect,useRef,useState} from 'react';
-import boundaries from '../data/visitProvinces.json';
 const loaders=import.meta.glob('../data/visitDistricts/*.json');
 const shortName=n=>n.replace('특별자치도','').replace('특별자치시','').replace('특별시','').replace('광역시','').replace('경상','경').replace('충청','충').replace('전라','전').replace('기도','기').replace(/도$/,'');
 export function VisitMap({stats}){
@@ -10,7 +9,10 @@ export function VisitMap({stats}){
  const [searching,setSearching]=useState(false),[query,setQuery]=useState('');
  const [selected,setSelected]=useState(null),[district,setDistrict]=useState(null);
  const [loaded,setLoaded]=useState({}),[error,setError]=useState('');
+ const [boundaries,setBoundaries]=useState(null);
+ useEffect(()=>{let active=true;import('../data/visitProvinces.json',{with:{type:'json'}}).then(module=>{if(active){setBoundaries(module.default);setError('');}}).catch(()=>{if(active)setError('전국 지도를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.');});return()=>{active=false;};},[]);
  useEffect(()=>{if(!selected||loaded[selected])return;let active=true;setError('');const load=loaders[`../data/visitDistricts/${selected}.json`];if(!load){setError('지도 자료가 없습니다.');return;}load().then(module=>{if(active)setLoaded(v=>({...v,[selected]:module.default}));}).catch(()=>{if(active)setError('지역 지도를 불러오지 못했습니다. 전국 지도로 돌아가 다시 선택해 주세요.');});return()=>{active=false;};},[selected,loaded]);
+ if(!boundaries)return <section className="visit-archive visit-svg-layout" aria-label="나의 여행 지도"><h2 className="visit-map-title">나의 여행 지도</h2><p role={error?'alert':'status'} className="visit-map-load-status">{error||'전국 지도를 불러오는 중…'}</p></section>;
  const shapes=selected?(loaded[selected]||[]):boundaries.provinces;
  const boxes=shapes.map(s=>s.box),x=boxes.length?Math.min(...boxes.map(b=>b[0])):0,y=boxes.length?Math.min(...boxes.map(b=>b[1])):0,right=boxes.length?Math.max(...boxes.map(b=>b[0]+b[2])):100,bottom=boxes.length?Math.max(...boxes.map(b=>b[1]+b[3])):100;
  const width=right-x+12,height=bottom-y+12;

@@ -1,13 +1,49 @@
-import administrativeRegions from '../data/administrativeSearchRegions.json' with {type:'json'};
 import approvedRelations from '../data/approvedSearchRelations.json' with {type:'json'};
 import {travelRecommendationEligible,natureIntentEvidence,activityEvidenceMatch,confirmedConditionMatch,gentleTravelEligible,spaTravelEligible,spaAnchorEvidence} from './recommendationEvidence.js';
-import groups from '../data/homeSearchKeywords.json' with {type:'json'};
 import {placeKeywordCondition,keywordAlternatives} from './semanticKeywords.js';
 import {placeArea} from './travelFilters.js';
 export const searchKey=value=>String(value||'').normalize('NFKC').toLowerCase().replace(/\s+/g,'');
-export const HOME_SEARCH_KEYWORDS=[...new Set(Object.values(groups).flat())];
-const allowed=new Map(HOME_SEARCH_KEYWORDS.map(label=>[searchKey(label),label]));
-const groupByKey=new Map(Object.entries(groups).flatMap(([group,words])=>words.map(word=>[searchKey(word),group])));
+export const HOME_SEARCH_KEYWORDS=[];
+let administrativeRegions={},groups={};
+const allowed=new Map(),groupByKey=new Map();
+let homeSearchDataPromise;
+const searchKeywordChunkLoaders=import.meta.glob('../data/searchKeywordChunks/*.json',{import:'default'});
+const regionShardLoaders=import.meta.glob('../data/searchRegionShards/*.json',{import:'default'});
+const loadedRegionShards=new Map();
+function regionShardIndex(value){let hash=2166136261;for(const character of value)hash=Math.imul(hash^character.codePointAt(0),16777619);return (hash>>>0)%32;}
+export function loadHomeSearchKeywords(){
+ if(!homeSearchDataPromise)homeSearchDataPromise=Promise.all(Object.entries(searchKeywordChunkLoaders).sort(([a],[b])=>a.localeCompare(b)).map(async([path,load])=>[path,await load()])).then(chunks=>{
+  const administrativeKeywords=[],otherGroups={};
+  for(const [,chunk] of chunks){if(Array.isArray(chunk['전국 행정구역']))administrativeKeywords.push(...chunk['전국 행정구역']);else Object.assign(otherGroups,chunk);}
+  groups={'전국 행정구역':administrativeKeywords,...otherGroups};
+  const keywords=[...new Set(Object.values(groups).flat())];
+  HOME_SEARCH_KEYWORDS.splice(0,HOME_SEARCH_KEYWORDS.length,...keywords);
+  allowed.clear();groupByKey.clear();
+  for(const label of keywords)allowed.set(searchKey(label),label);
+  for(const [group,words] of Object.entries(groups))for(const word of words)groupByKey.set(searchKey(word),group);
+  return HOME_SEARCH_KEYWORDS;
+ }).catch(error=>{homeSearchDataPromise=null;throw error;});
+ return homeSearchDataPromise;
+}
+export async function loadHomeSearchData({regions=[]}={}){
+ await loadHomeSearchKeywords();
+ const regionNames=[...new Set(regions.map(value=>{
+  const key=searchKey(value),label=allowed.get(key)||String(value||'').trim();
+  return groupByKey.get(searchKey(label))==='전국 행정구역'?label:'';
+ }).filter(Boolean))];
+ if(regionNames.some(name=>!administrativeRegions[name])){
+  const indexes=[...new Set(regionNames.map(regionShardIndex))];
+  await Promise.all(indexes.map(index=>{
+   if(!loadedRegionShards.has(index)){
+    const path=`../data/searchRegionShards/regions-${String(index).padStart(2,'0')}.json`,loader=regionShardLoaders[path];
+    const pending=loader?loader().then(data=>{Object.assign(administrativeRegions,data);}):Promise.reject(new Error('검색 지역 자료가 없습니다.'));
+    loadedRegionShards.set(index,pending.catch(error=>{loadedRegionShards.delete(index);throw error;}));
+   }
+   return loadedRegionShards.get(index);
+  }));
+ }
+ return HOME_SEARCH_KEYWORDS;
+}
 export const allowedHomeQuery=value=>allowed.has(searchKey(value));
 export function homeSearchSuggestions(input){const key=searchKey(input);return HOME_SEARCH_KEYWORDS.filter(word=>!key||searchKey(word).includes(key)).slice(0,8);}
 const cities={강릉:'강원',속초:'강원',양양:'강원',원주:'강원',평창:'강원',동해:'강원',해운대:'부산',광안리:'부산',기장:'부산',경주:'경북',포항:'경북',담양:'전남',나주:'전남',화순:'전남',순천:'전남',여수:'전남',광양:'전남',해남:'전남',보성:'전남',전주:'전북',군산:'전북',익산:'전북',공주:'충남',부여:'충남',천안:'충남',아산:'충남',충주:'충북',단양:'충북',서산:'충남',애월:'제주',성산:'제주',우도:'제주',울릉도:'경북',계룡산:'충남'};

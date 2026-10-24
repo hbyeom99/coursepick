@@ -29,7 +29,7 @@ function loadMaps(key) {
   return pending;
 }
 
-export default function MapPanel({ place, places: suppliedPlaces, routePlaces, selectedId, onSelectPlace, roadPaths, accommodationId, showRoute = false, children }) {
+export default function MapPanel({ place, places: suppliedPlaces, routePlaces, selectedId, onSelectPlace, roadPaths, accommodationId, showRoute = false, markerNumbers, children }) {
   const places = useMemo(() => routePlaces ? [...new Map([...routePlaces,...suppliedPlaces].map(p=>[p.id,p])).values()] : suppliedPlaces, [routePlaces,suppliedPlaces]);
   const route = routePlaces || places;
   const container = useRef(null), mapRef = useRef(null), markersRef = useRef(new Map());
@@ -92,7 +92,7 @@ export default function MapPanel({ place, places: suppliedPlaces, routePlaces, s
       const selected = id === selectedId;
       const routeIndex = route.filter(p=>p.id!==accommodationId).findIndex(p=>p.id===id);
       const candidate = Boolean(routePlaces) && routeIndex < 0;
-      const number = id === accommodationId ? '숙' : showRoute && routeIndex >= 0 ? routeIndex + 1 : null;
+      const number = id === accommodationId ? '숙' : showRoute && routeIndex >= 0 ? markerNumbers?.get(id) ?? routeIndex + 1 : null;
       const isLodging = id === accommodationId || places.find(place=>place.id===id)?.category === '숙소';
       const fill = candidate ? (selected ? '#075EAA' : '#258BE8') : isLodging ? '#4285F4' : selected ? '#5736C4' : '#7554F7';
       const center = isLodging ? '<path d="M9 17L18 9L27 17M11 16V27H25V16M16 27V20H20V27" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' : candidate && places.find(p=>p.id===id)?.category==='카페' ? '<text x="18" y="24" text-anchor="middle" font-size="19">☕</text>' : number === null ? '<circle cx="18" cy="18" r="7" fill="white"/>' : '<text x="18" y="24" text-anchor="middle" font-family="Noto Sans KR, sans-serif" font-size="17" font-weight="700" fill="white">' + number + '</text>';
@@ -108,7 +108,7 @@ export default function MapPanel({ place, places: suppliedPlaces, routePlaces, s
         mapRef.current.setBounds(bounds);
       } else mapRef.current.panTo(new maps.LatLng(selected.latitude, selected.longitude));
     }
-  }, [selectedId, places, status, mapRevision, showRoute, accommodationId, routePlaces]);
+  }, [selectedId, places, status, mapRevision, showRoute, accommodationId, routePlaces, markerNumbers]);
   useEffect(() => {
     if (!showRoute || status !== 'success' || !mapRef.current || route.length < 2) return;
     const maps = window.kakao.maps;

@@ -1,6 +1,6 @@
 import useCourseGeneration from '../../lib/useCourseGeneration.js';
 import {roomTasteTotals} from '../../lib/zipRooms.js';
-import {allowedHomeQuery} from '../../lib/homeSearchIntent.js';
+import {allowedHomeQuery,loadHomeSearchKeywords} from '../../lib/homeSearchIntent.js';
 import {evaluateCourseTraits} from '../../lib/courseTraitsV2.js';
 import {roomCourseTraitAffinity} from '../../lib/zipRooms.js';
 import ZipRoomSettlement from './ZipRoomSettlement.jsx';
@@ -20,9 +20,11 @@ import {RoomHeader,RoomTabs,RoomThumbnail,MemberAvatar,ZipModal,ZipIcon} from '.
 
 export default function ZipFeature({savedPlaceIds=[],onKeywordSearch,rooms,onRoomsChange,member,token,onLogin,places:inputPlaces,courses,hidden,onExit,onOpenCourse,onDepthChange,importCourse,onImported}) {
  const places=useMemo(()=>inputPlaces.filter(p=>!/^p\d+$/.test(p.id)),[inputPlaces]);
+ const [searchDataReady,setSearchDataReady]=useState(false);
  const [page,setPage]=useState('list'),[roomId,setRoomId]=useState(null),[tab,setTab]=useState('members'),[dialog,setDialog]=useState(''),[error,setError]=useState(''),[busy,setBusy]=useState(false),[invitations,setInvitations]=useState([]),[people,setPeople]=useState([]),[query,setQuery]=useState(''),[link,setLink]=useState(''),[notice,setNotice]=useState(''),[inviteToken,setInviteToken]=useState(''),[loading,setLoading]=useState(true),[joinAddress,setJoinAddress]=useState(''),[joinPreview,setJoinPreview]=useState(null),[joinChoice,setJoinChoice]=useState(null),[pendingJoin,setPendingJoin]=useState(false);
  const epoch=useRef(0),busyRef=useRef(false),room=token?rooms.find(r=>r.id===roomId):undefined,index=useMemo(()=>new Map(places.map(p=>[p.id,p])),[places]);
  const lastMember=useRef(member.id);
+ useEffect(()=>{if(hidden)return;let active=true;loadHomeSearchKeywords().then(()=>{if(active)setSearchDataReady(true);}).catch(()=>{});return()=>{active=false;};},[hidden]);
  useEffect(()=>{if(lastMember.current!==member.id){lastMember.current=member.id;onRoomsChange([]);setInvitations([]);if(!token){setPage('list');setRoomId(null);setDialog('');}}},[member.id]);
  const request=(path,data,method)=>zipRequest(path,token,data,method);
  const store=next=>onRoomsChange(current=>current.some(r=>r.id===next.id&&r.revision>next.revision)?current:[next,...current.filter(r=>r.id!==next.id)]);
@@ -44,7 +46,7 @@ export default function ZipFeature({savedPlaceIds=[],onKeywordSearch,rooms,onRoo
   const stats=roomTasteTotals(room?.members||[]),region=placeArea({region:room?.region||''}).region;
   return {catalog:places,live:[],filters:{query:region,region,city:'전체',category:'전체',theme:'전체',transport:'전체',period:'전체',people:'전체',hours:'전체'},taste:Object.fromEntries(['planning','experience','exploration','spending'].map(axis=>[axis,stats.submitted?stats.totals[axis]/stats.submitted:null])),interests:common,context:{knownPlaceIds:[],knownTags:common,knownCategories:[]}};
  },[places,room?.region,groupSignature]);
- const roomGeneration=useCourseGeneration('ai',roomGenerationPayload,Boolean(room&&!hidden&&tab==='recommendations'&&allowedHomeQuery(roomGenerationPayload.filters.query)&&recommended.filter(isAI).length<5));
+ const roomGeneration=useCourseGeneration('ai',roomGenerationPayload,Boolean(searchDataReady&&room&&!hidden&&tab==='recommendations'&&allowedHomeQuery(roomGenerationPayload.filters.query)&&recommended.filter(isAI).length<5));
  const roomAiCourses=[...new Map([...recommended.filter(isAI),...roomGeneration.courses].map(c=>[c.id,c])).values()];
 
  async function pollAction(action,extra={}){return run(async()=>{const result=await request('rooms/'+roomId+'/poll'+(action?'/'+action:''),{revision:room.revision,...(room.poll?{pollId:room.poll.id,round:room.poll.round}:{}),...extra},'POST');store(result);if(action==='apply'){setTab('schedule');setNotice('투표 1위 코스를 최종 일정에 적용했어요.');}return result;});}
