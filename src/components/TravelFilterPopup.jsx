@@ -4,12 +4,12 @@ import { citiesFor, travelRegions } from '../lib/travelFilters.js';
 function Choices({ name, values, selected, onChange }) {
   return <div className="travel-filter-choices" role="group" aria-label={name}>{values.map(value => <button type="button" key={value} className={`pill ${selected === value ? 'primary' : 'secondary'}`} aria-pressed={selected === value} onClick={() => onChange(value)}>{value}</button>)}</div>;
 }
-export function TravelFilterBar({ filters, onOpen, renderIcon }) {
+export function TravelFilterBar({ filters, onOpen, renderIcon, hideTraveler = false }) {
   const traveler = [filters.infant && '유아', filters.pet && '반려동물'].filter(Boolean).join('·');
   return <div className="home-shortcuts travel-filter-bar">
     <button type="button" className={filters.region !== '전체' || filters.city !== '전체' ? 'condition-set' : 'condition-unset'} title={[filters.region,filters.city].filter(v=>v&&v!=='전체').join(' · ')||'지역'} aria-label={`지역: ${[filters.region,filters.city].filter(v=>v&&v!=='전체').join(' · ')||'전체'}`} onClick={() => onOpen('region')}>{renderIcon('pin')}<span>{filters.city !== '전체' ? filters.city : filters.region !== '전체' ? filters.region : '지역'}</span></button>
     <button type="button" className={filters.period !== '전체' ? 'condition-set' : 'condition-unset'} onClick={() => onOpen('period')}>{renderIcon('calendar')}<span>{filters.period !== '전체' ? filters.period : '기간'}</span></button>
-    <button type="button" className={filters.infant || filters.pet ? 'condition-set' : 'condition-unset'} title={traveler || '동반 없음'} aria-label={`여행자: ${traveler || '없음'}`} onClick={() => onOpen('traveler')}><span className="traveler-filter-image" aria-hidden="true"/><span>{filters.infant && filters.pet ? '동반 2종' : filters.infant ? '유아 동반' : filters.pet ? '반려동물' : '구성원'}</span></button>
+    {!hideTraveler && <button type="button" className={filters.infant || filters.pet ? 'condition-set' : 'condition-unset'} title={traveler || '동반 없음'} aria-label={`여행자: ${traveler || '없음'}`} onClick={() => onOpen('traveler')}><span className="traveler-filter-image" aria-hidden="true"/><span>{filters.infant && filters.pet ? '동반 2종' : filters.infant ? '유아 동반' : filters.pet ? '반려동물' : '구성원'}</span></button>}
     <button type="button" className={filters.transport !== '전체' ? 'condition-set' : 'condition-unset'} onClick={() => onOpen('transport')}>{renderIcon(filters.transport==='도보'?'walk':filters.transport==='대중교통'?'bus':'car')}<span>{filters.transport === '전체' ? '이동수단' : filters.transport}</span></button>
 
   </div>;

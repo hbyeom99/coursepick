@@ -71,8 +71,10 @@ export default function HomeEditorialReel({courses=[],onOpen,Icon,error,onRetry}
      const cover=course.editorialVisits?.find(v=>v.cover_image&&v.image_url);
      const photo=photos[course.id]||{src:cover?.image_url,alt:cover?.name};
      const edgeStrength=Math.min(1,Math.max(0,(d-1.65)/.35));
-     return <div key={`${course.id}-${index}`} data-course-index={index%list.length} data-reel-edge={edgeStrength>0?(delta<0?'top':'bottom'):undefined} className={`home-reel-card${d<.5?' is-centered':' is-preview'}`} onDragStart={event=>event.preventDefault()} style={{top:center+Math.sign(delta)*offset,height:cardHeight,width:`${width}%`,borderRadius:10+5*Math.min(1,d),zIndex:Math.round(100-d*10),opacity:d>2?Math.max(0,1-(d-2)/.65):1,'--reel-edge-strength':edgeStrength,'--reel-edge-alpha':1-edgeStrength,'--reel-edge-blur':`${3*edgeStrength}px`,'--reel-copy-opacity':Math.max(0,1-d*2)}}>
+     const distanceFade=Math.min(.7,Math.max(0,(d-.35)*.34));
+     return <div key={`${course.id}-${index}`} data-course-index={index%list.length} data-reel-edge={edgeStrength>0?(delta<0?'top':'bottom'):undefined} className={`home-reel-card${d<.5?' is-centered':' is-preview'}`} onDragStart={event=>event.preventDefault()} style={{top:center+Math.sign(delta)*offset,height:cardHeight,width:`${width}%`,borderRadius:10+5*Math.min(1,d),zIndex:Math.round(100-d*10),opacity:d>2?Math.max(.3,1-(d-2)/.9):1,'--reel-distance-fade':distanceFade,'--reel-edge-strength':edgeStrength,'--reel-edge-alpha':1-edgeStrength,'--reel-edge-blur':`${3*edgeStrength}px`,'--reel-copy-opacity':Math.max(0,1-d*2)}}>
       <CourseVisualCard name={course.name} tags={(course.representativeTags||course.tags||[]).slice(0,1)} photo={<span className={`home-reel-photo${photo.previous?' is-transitioning':''}`} key={photo.src||'cover'}>{photo.previous&&<img className="home-reel-previous-photo" src={photo.previous} alt="" aria-hidden="true"/>}<CourseRepresentativePhoto preservePrevious src={photo.src} alt={photo.alt||'코스 대표 사진 준비 중'}/></span>} meta={<CourseCardMeta course={course} Icon={Icon}/>} onOpen={()=>{if(d>=.5){scroll.current?.scrollTo({top:index*STEP,behavior:'smooth'});}else onOpen(course);}}/>
+      {d>=.5&&<span className="home-reel-distance-wash" aria-hidden="true"/>}
      </div>;
     })}
 

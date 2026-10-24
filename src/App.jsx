@@ -21,6 +21,7 @@ import {validKakaoRefs,addKakaoRef,hasExternalPlaces} from './lib/kakaoPlaceRefs
 import GooglePlaceDetails from './components/GooglePlaceDetails.jsx';
 import {toEditorialCourse} from './lib/editorialCourse.js';
 import HomeEditorialReel from './components/HomeEditorialReel.jsx';
+import {tripExperiences} from './components/TripMarketExperiences.jsx';
 import {evaluateCourseTraits,courseTraitAffinity,courseTraitsFromAnswers} from './lib/courseTraitsV2.js';
 import {travelAxes} from './lib/travelAxes.js';
 import {validJournals,validTravelTaste} from './lib/travelJournalValidation.js';
@@ -40,8 +41,9 @@ import { relatedGroups } from './lib/searchIntent.js';
 import CourseFitTags from './components/CourseFitTags.jsx';
 import { useMemberStored, useMemberContext, memberRequest } from './lib/memberSession.jsx';
 
-import {HOME_SEARCH_KEYWORDS,allowedHomeQuery,interpretHomeSearch,homeCourseMatch} from './lib/homeSearchIntent.js';
+import {HOME_SEARCH_KEYWORDS,allowedHomeQuery,interpretHomeSearch,homeCourseMatch,loadHomeSearchData} from './lib/homeSearchIntent.js';
 import {homeKakaoSearch} from './services/homeKakaoSearch.js';
+import {interpretNaturalSearch} from './lib/naturalLanguageSearch.js';
 import { distanceLabel } from './lib/pickerMap.js';
 import SearchAiCarousel from './components/SearchAiCarousel.jsx';
 import { courseTagCandidates, selectedCourseTags } from './lib/courseTagSelection.js';
@@ -169,13 +171,15 @@ function Modal({ title, onClose, children, initialFocus, className = '', suspend
   }, [suspended]);
   return <div style={suspended ? {visibility:'hidden',pointerEvents:'none'} : undefined} className="modal-backdrop" onClick={e => { if (e.target === e.currentTarget) onClose(); }}><section ref={box} className={`modal ${className}`} role="dialog" aria-modal="true" aria-label={title}><div className="section-title"><h2>{className === 'region-filter-modal' ? <><span className="region-title-accent">지역</span>을 선택해주세요.</> : className.includes('compact-filter-modal') ? <><span className="region-title-accent">{className.includes('period-filter') ? '여행 기간' : className.includes('traveler-filter') ? '여행 구성원' : '이동수단'}</span>을 선택해주세요.</> : title}</h2><button className="icon-button" type="button" aria-label="닫기" onClick={onClose}><Icon name="close"/></button></div>{className.split(' ').includes('place-detail-modal') ? <div className="place-detail-body">{children}</div> : children}</section></div>;
 }
+const homePopupExperience=tripExperiences.find(experience=>experience.open)||tripExperiences[0];
+
 export default function App({onboardingRequired=false,onOnboardingComplete}={}) {
   const member = useMemberContext();
   const [editorReturnTab, setEditorReturnTab] = useState(null);
   const [saveTagCandidates,setSaveTagCandidates]=useState([]);
   const [testReturnScreen,setTestReturnScreen]=useState('home');
   const [searchResultTab,setSearchResultTab]=useState('ai'),[myLanding,setMyLanding]=useState('home'),[pendingJournalCourse,setPendingJournalCourse]=useState(null);
-  const [homePopup,setHomePopup]=useState(false),[homePopupDismissed,setHomePopupDismissed]=useState(false),[homePopupHideToday,setHomePopupHideToday]=useState(false);
+  const [homePopup,setHomePopup]=useState(false),[homePopupHideToday,setHomePopupHideToday]=useState(false);
   const [welcomePhase, setWelcomePhase] = useState('splash');
   const [pickerFlowOverride, setPickerFlowOverride] = useState(null);
   const [pendingSaveCourse, setPendingSaveCourse] = useState(null);
@@ -293,6 +297,9 @@ export default function App({onboardingRequired=false,onOnboardingComplete}={}) 
   const taste=travelTaste||emptyTraitTaste;
   const traitContext=useMemo(()=>{const knownPlaceIds=[...new Set([...savedPlaces,...myCourses.flatMap(c=>c.stopIds||[]),...travelJournals.flatMap(j=>j.placeIds||[])])].filter(id=>catalogById.has(id));return {knownPlaceIds,knownTags:profile.interests,knownCategories:[...new Set(knownPlaceIds.map(id=>catalogById.get(id)?.category).filter(Boolean))]};},[savedPlaces,myCourses,travelJournals,profile.interests,catalogById]);
   const [homeSearchRun,setHomeSearchRun]=useState(0);
+  const [searchInterpretationLoading,setSearchInterpretationLoading]=useState(false);
+  const searchInterpretationController=useRef(null);
+  const searchInterpretationSequence=useRef(0);
   const homeSubmitGate=useRef(createSearchSubmissionGate());
   const homeSubmitToken=useRef(null);
   const [groupKeywordContext,setGroupKeywordContext]=useState(null);
@@ -309,7 +316,7 @@ export default function App({onboardingRequired=false,onOnboardingComplete}={}) 
     return()=>controller.abort();
   },[homeLookupKey]);
   const homeSearchLoading=homeRule.allowed&&!homeRule.empty&&(homeLive.key!==homeLookupKey||homeLive.loading);
-  const generationPayload=useMemo(()=>({catalog,live:homeLive.key===homeLookupKey?homeLive.places:[],filters,taste:groupKeywordContext?.taste||taste,interests:groupKeywordContext?.interests||profile.interests,context:groupKeywordContext?{knownPlaceIds:[],knownTags:groupKeywordContext.interests,knownCategories:[]}:traitContext}),[catalog,homeLive.places,homeLive.key,homeLookupKey,filters,taste,profile.interests,traitContext,groupKeywordContext]);
+  const generationPayload=useMemo(()=>({catalog,live:homeLive.key===homeLookupKey?homeLive.places:[],filters,taste:groupKeywordContext?.taste||taste,interests:groupKeywordContext?.interests||profile.interests,context:{...(groupKeywordContext?{knownPlaceIds:[],knownTags:groupKeywordContext.interests,knownCategories:[]}:traitContext),resultLimit:6}}),[catalog,homeLive.places,homeLive.key,homeLookupKey,filters,taste,profile.interests,traitContext,groupKeywordContext]);
   const aiGeneration=useCourseGeneration('ai',generationPayload,homeRule.allowed&&!homeRule.empty&&!homeSearchLoading);
   const keywordGeneratedCourses=aiGeneration.courses;
   const all = useMemo(() => [...editorialCourses,...editorialCopies,...(openedGeneratedCourse?[openedGeneratedCourse]:[]),...keywordGeneratedCourses,...(generatedCourse ? [classifyCourse(generatedCourse, catalog, catalogById)] : []), ...availableMyCourses, ...availableTourCourses, ...availableCommunityCourses, ...classifiedTravelCourses], [editorialCourses,editorialCopies,openedGeneratedCourse,keywordGeneratedCourses, generatedCourse, availableMyCourses, availableTourCourses, availableCommunityCourses, classifiedTravelCourses, catalog]);
@@ -484,12 +491,12 @@ export default function App({onboardingRequired=false,onOnboardingComplete}={}) 
   const results = useMemo(() => searchCourses.filter(c => c.editorialVisits ? (homeRule.allowed&&userCourseSearchMatch(c,filters.query).matched&&areaMatches({region:c.region},filters)&&courseConditionsMatch(c,[],filters)&&filters.category==='전체'&&(filters.hours==='전체'||Number.isFinite(c.hours)&&c.hours<=Number(filters.hours))) : homeRule.allowed && courseConditionsMatch(c, c.stopIds.map(placeOf).filter(Boolean), filters) && (filters.theme === '전체' || c.tags.includes(filters.theme) || c.stopIds.some(id => placeOf(id)?.tags.includes(filters.theme))) && (c.stopIds.some(id => matches(placeOf(id), false, false)) || (!c.stopIds.length&&hasExternalPlaces(c)&&filters.category==='전체'&&areaMatches({region:c.region},filters))) && searchMatches.get(c.id).matched && (filters.people === '전체' || c.maxPeople >= Number(filters.people)) && (filters.transport === '전체' || c.transport === filters.transport) && (filters.hours === '전체' || c.hours <= Number(filters.hours))).sort((a, b) => (keyword ? searchMatches.get(a.id).rank - searchMatches.get(b.id).rank || searchMatches.get(b.id).related - searchMatches.get(a.id).related : 0) || (sort === 'short' ? a.hours - b.hours : sort === 'name' ? a.name.localeCompare(b.name, 'ko') : score(b) - score(a))), [searchCourses,searchMatches,catalogById,filters,keyword,sort,weights,taste,traitContext,courseAssessments,homeRule]);
   const recommendedSearchResults = useMemo(() => {
     if(!homeRule.allowed)return [];
-    if (!keyword) return results.filter(c => recommendedSearchIds.has(c.id)).slice(0,5);
+    if (!keyword) return results.filter(c => recommendedSearchIds.has(c.id)).slice(0,6);
     return keywordGeneratedCourses;
   }, [keyword,keywordGeneratedCourses,results,recommendedSearchIds,availableCommunityCourses,filters,catalogById,homeRule]);
   const existingUserSearchResults = useMemo(() => rankUserCourses(results.filter(c=>!recommendedSearchIds.has(c.id)),filters.query,c=>courseTraitAffinity(courseAssessments.get(c.id)||evaluateCourseTraits(c,catalogById,traitContext),taste),c=>(c.editorialVisits?c.editorialVisits.map(v=>catalogById.get(v.place_id)):c.stopIds.map(id=>catalogById.get(id))).filter(Boolean)),[results,recommendedSearchIds,filters.query,courseAssessments,catalogById,traitContext,taste]);
   const personaPayload=useMemo(()=>({catalog,filters,existing:existingUserSearchResults,ai:keywordGeneratedCourses,live:homeLive.key===homeLookupKey?homeLive.places:[]}),[catalog,filters,existingUserSearchResults,keywordGeneratedCourses,homeLive.places,homeLive.key,homeLookupKey]);
-  const personaGeneration=useCourseGeneration('persona',personaPayload,homeRule.allowed&&!homeRule.empty&&!homeSearchLoading&&!aiGeneration.busy&&!aiGeneration.error&&existingUserSearchResults.length<5);
+  const personaGeneration=useCourseGeneration('persona',personaPayload,homeRule.allowed&&!homeRule.empty&&!homeSearchLoading&&!aiGeneration.busy&&!aiGeneration.error&&existingUserSearchResults.length<6);
   // Real/existing courses always keep the first positions; examples only fill vacancies.
   const userSearchResults=useMemo(()=>appendUserExamples(existingUserSearchResults,rankUserCourses(personaGeneration.courses,filters.query,c=>courseTraitAffinity(evaluateCourseTraits(c,catalogById,traitContext),taste),c=>c.stopIds.map(id=>catalogById.get(id)).filter(Boolean))),[existingUserSearchResults,personaGeneration.courses,filters.query,catalogById,traitContext,taste]);
   const visibleAddressLocations=useMemo(()=>{
@@ -497,7 +504,7 @@ export default function App({onboardingRequired=false,onOnboardingComplete}={}) 
     return [...ids].map(id=>catalogById.get(id)?.location).filter(Boolean);
   },[detailId,baseDetail,screen,draft.stopIds,recommendedSearchResults,userSearchResults,catalogById]);
   useRegionalAddresses(visibleAddressLocations,setJibunAddresses);
-  const searchCardImages = useMemo(() => courseListImages([...recommendedSearchResults.slice(0,5),...userSearchResults],catalog,filters.query),[recommendedSearchResults,userSearchResults,catalog,filters.query]);
+  const searchCardImages = useMemo(() => courseListImages([...recommendedSearchResults.slice(0,6),...userSearchResults],catalog,filters.query),[recommendedSearchResults,userSearchResults,catalog,filters.query]);
 
   const [expandedUserCourses, setExpandedUserCourses] = useState(false);
   const userCourseSection = useRef(null);
@@ -515,7 +522,7 @@ export default function App({onboardingRequired=false,onOnboardingComplete}={}) 
   function openCourseLibrary(tab) { setSavedTab(tab); navigate('saved'); }
   function requireMember() { if (!member?.account.isGuest) return true; member.onLogin(); return false; }
   async function logout() { try { await member.onLogout(); } catch(error) { setToast(error.message); } }
-  function navigate(next) { if(next!=='create')setEditorialEditing(null); if(next!=='create'&&missionDraft!==null)setMissionDraft(null); if(next!=='zip'&&location.hash.startsWith('#zip'))history.replaceState(null,'',location.pathname+location.search);setScreen(next); setDetail(null); setModal(null); setFormError(''); document.querySelector('.main-content')?.scrollTo(0, 0); window.scrollTo(0, 0); }
+  function navigate(next) { if(next==='home')showHomePopupForHomeEntry();if(next==='zip')setZipVisited(true);if(next!=='create')setEditorialEditing(null); if(next!=='create'&&missionDraft!==null)setMissionDraft(null); if(next!=='zip'&&location.hash.startsWith('#zip'))history.replaceState(null,'',location.pathname+location.search);setScreen(next); setDetail(null); setModal(null); setFormError(''); document.querySelector('.main-content')?.scrollTo(0, 0); window.scrollTo(0, 0); }
   function explore(patch = {}) { const next = { ...emptyFilters, ...patch }; setFilters(next); setSelectedFilters(next); navigate('search'); }
   function openTravelFilters(section) {
     const area = placeArea({ region: selectedFilters.region });
@@ -524,12 +531,53 @@ export default function App({onboardingRequired=false,onOnboardingComplete}={}) 
   }
   function applyTravelFilters() { setSelectedFilters(current => applyFilterSection(current, filterDraft, filterFocus)); setModal(null); }
   function resetTravelFilterDraft() { setFilterDraft(current => resetFilterSection(current, emptyFilters, filterFocus)); }
-  function submitCourseSearch(rawQuery, keepOriginal = false,groupContext=null) { const baseFilters=groupContext?{...emptyFilters,region:groupContext.region||'전체'}:selectedFilters;const interpreted=interpretHomeSearch(rawQuery,baseFilters);const query=interpreted.allowed&&!interpreted.empty?interpreted.query:rawQuery.trim();const next={...baseFilters,query};const admission=homeSubmitGate.current.accept(searchRequestKey(query,next));if(!admission.accepted){setToast(admission.reason==='pending'?'같은 검색을 진행 중입니다.':'같은 검색은 5초 후 다시 시도해 주세요.');return false;}homeSubmitToken.current=admission.token;setGroupKeywordContext(groupContext);setOriginalKeyboardQuery('');setHomeSearchRun(v=>v+1); setFilters(next); setSelectedFilters(next); setSort('recommended'); navigate('search'); }
+  async function submitCourseSearch(rawQuery, keepOriginal = false,groupContext=null) {
+    const raw=String(rawQuery||'').trim();
+    if(!raw)return false;
+    if([...raw].length>50){setToast('검색어는 50자 이내로 입력해 주세요.');return false;}
+    try{await loadHomeSearchData({regions:[raw,selectedFilters.region,groupContext?.region]});}catch{setToast('검색 자료를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.');return false;}
+    searchInterpretationController.current?.abort();
+    setSearchInterpretationLoading(false);
+    const sequence=++searchInterpretationSequence.current;
+    const controller=new AbortController();searchInterpretationController.current=controller;
+    const baseFilters=groupContext?{...emptyFilters,region:groupContext.region||'전체'}:selectedFilters;
+    const local=interpretHomeSearch(raw,baseFilters);
+    const natural=!local.allowed&&!keepOriginal;
+    const nextBase={...baseFilters};
+    const submissionQuery=natural?raw:local.allowed&&!local.empty?local.query:raw;
+    const gateKey=searchRequestKey(submissionQuery,nextBase);
+    const admission=homeSubmitGate.current.accept(gateKey);
+    if(!admission.accepted){setToast(admission.reason==='pending'?'같은 검색을 진행 중입니다.':'같은 검색은 5초 후 다시 시도해 주세요.');return false;}
+    let query=submissionQuery,next={...nextBase,query};
+    if(natural){
+      setSearchInterpretationLoading(true);
+      try{
+        const parsed=await interpretNaturalSearch(raw,{filters:baseFilters,catalog,token:member?.account.isGuest?null:member?.account.access_token,signal:controller.signal});
+        if(sequence!==searchInterpretationSequence.current)return false;
+        await loadHomeSearchData({regions:[parsed.region]});
+        if(!allowedHomeQuery(parsed.query))throw Error('허용된 검색어로 해석되지 않았어요. 추천 키워드를 선택해 주세요.');
+        query=parsed.query;
+        next={...baseFilters,query,region:parsed.region,city:parsed.city,period:parsed.period,transport:parsed.transport,infant:parsed.infant,pet:parsed.pet};
+      }catch(error){
+        if(sequence===searchInterpretationSequence.current&&!controller.signal.aborted)setToast(error.message||'검색어를 해석하지 못했습니다. 허용 키워드로 다시 검색해 주세요.');
+        homeSubmitGate.current.finish(gateKey,admission.token);
+        return false;
+      }finally{
+        if(sequence===searchInterpretationSequence.current)setSearchInterpretationLoading(false);
+      }
+      homeSubmitGate.current.finish(gateKey,admission.token);
+      homeSubmitToken.current=null;
+    }else homeSubmitToken.current=admission.token;
+    if(sequence!==searchInterpretationSequence.current)return false;
+    setGroupKeywordContext(groupContext);setOriginalKeyboardQuery('');setHomeSearchRun(v=>v+1);setFilters(next);setSelectedFilters(next);setSort('recommended');navigate('search');
+    return true;
+  }
   function patch(key, value) { setSelectedFilters(current => ({ ...current, [key]: value })); }
   function open(c) { if(c.generationMethod==='keyword-purpose-four-traits'||c.generationMethod==='persona-search')setOpenedGeneratedCourse(c);setOpenedCourseImage({courseId:c.id,placeId:displayedCourseImages.current.get(c.id)||searchCardImages.get(c.id)||c.imagePlaceId||c.stopIds[0]}); setDetail(c.id); setStop(0); setSelectedId(c.stopIds[0]); document.querySelector('.main-content')?.scrollTo(0, 0); window.scrollTo(0, 0); }
   function openJournalForCourse(course){if(!requireMember())return;setPendingJournalCourse(course);setDetail(null);setSavedTab('taste');navigate('saved');}
-  function closeHomePopup(){if(homePopupHideToday){try{localStorage.setItem('coursepick.homeEventHiddenDate.v1',new Date().toLocaleDateString('sv-SE'));}catch{}}setHomePopup(false);setHomePopupDismissed(true);}
-  useEffect(()=>{if(screen!=='home'||!editorialCourses.length||homePopupDismissed)return;let hiddenDate='';try{hiddenDate=localStorage.getItem('coursepick.homeEventHiddenDate.v1')||'';}catch{}if(hiddenDate!==new Date().toLocaleDateString('sv-SE'))setHomePopup(true);},[screen,editorialCourses.length,homePopupDismissed]);
+  function closeHomePopup(){if(homePopupHideToday){try{localStorage.setItem('coursepick.homeEventHiddenDate.v1',new Date().toLocaleDateString('sv-SE'));}catch{}}setHomePopup(false);}
+  function showHomePopupForHomeEntry(){if(!editorialCourses.length)return;let hiddenDate='';try{hiddenDate=localStorage.getItem('coursepick.homeEventHiddenDate.v1')||'';}catch{}if(hiddenDate!==new Date().toLocaleDateString('sv-SE')){setHomePopupHideToday(false);setHomePopup(true);}else setHomePopup(false);}
+  useEffect(()=>{if(screen!=='home'||!editorialCourses.length)return;let hiddenDate='';try{hiddenDate=localStorage.getItem('coursepick.homeEventHiddenDate.v1')||'';}catch{}if(hiddenDate!==new Date().toLocaleDateString('sv-SE')){setHomePopupHideToday(false);setHomePopup(true);}else setHomePopup(false);},[screen,editorialCourses.length]);
   function openPlaceDetails(id) {
     selectPlace(id);
     setModal({ type: 'place', id });
@@ -734,8 +782,8 @@ export default function App({onboardingRequired=false,onOnboardingComplete}={}) 
     setEditorialEditing(null);navigate('saved');setSavedTab('bookmarked');setToast('수정한 기획코스를 나만의 코스로 저장했어요.');
   }
   const loadingKey=JSON.stringify([screen,detail?.id,typeof modal==='string'?modal:modal?.type,modal?.place?.id,modal?.id,modal?.visit?.visit_id,editorialRetry,placeRetry,screen==='search'?homeLookupKey:'']);
-  const loadingBusy=screen==='home'?!editorialCourses.length&&!editorialError:screen==='search'?(homeSearchLoading||aiGeneration.busy||personaGeneration.busy):screen==='create'?placeStatus==='loading':false;
-  const loadingMessage=screen==='search'?(aiGeneration.busy||personaGeneration.busy?'여행 코스를 만들고 있어요':'여행 장소를 찾고 있어요'):screen==='home'?'코스를 불러오고 있어요':screen==='create'?'장소를 불러오고 있어요':'페이지를 불러오고 있어요';
+  const loadingBusy=screen==='home'?!editorialCourses.length&&!editorialError||searchInterpretationLoading:screen==='search'?(homeSearchLoading||aiGeneration.busy||personaGeneration.busy||searchInterpretationLoading):screen==='create'?placeStatus==='loading':false;
+  const loadingMessage=searchInterpretationLoading?'검색어를 해석하고 있어요':screen==='search'?(aiGeneration.busy||personaGeneration.busy?'여행 코스를 만들고 있어요':'여행 장소를 찾고 있어요'):screen==='home'?'코스를 불러오고 있어요':screen==='create'?'장소를 불러오고 있어요':'페이지를 불러오고 있어요';
   const pageLoading=usePageLoading(loadingKey,loadingBusy);
   if (onboardingRequired || screen === 'welcome') return <div className="app-shell view-welcome"><WelcomeFlow initialPhase="test" onComplete={async answers=>{const baseline=courseTraitsFromAnswers(answers);if(!baseline)return false;if(member.account.isGuest)setTravelTaste(baseline);else {await commitTravelTaste(baseline);if(onboardingRequired){await member.save('coursepick.testTaste.v1',{completed:true,version:1});onOnboardingComplete?.();}}if(!onboardingRequired)navigate(testReturnScreen);return true;}} onHome={()=>navigate('home')} onNickname={name=>setProfile(value=>({...value,name}))}/></div>;
   return <div className={`app-shell view-${detail ? 'detail' : screen}${screen==='zip'&&zipDeep?' zip-deep':''}`}>{detail ? <div className="detail-fixed-header"><DeviceStatusBar/><div className="detail-top"><button type="button" className="icon-button" aria-label="코스 상세 닫기" onClick={() => { setDetail(null); document.querySelector('.main-content')?.scrollTo(0, 0); window.scrollTo(0, 0); }}><Icon name="back"/></button><strong>코스 상세</strong><div className="inline-actions">{screen === 'saved' && savedTab === 'bookmarked' && <button type="button" className={`editor-like-button ${likedCourseIds.includes(detail.id) ? 'is-liked' : ''}`} aria-label={likedCourseIds.includes(detail.id) ? '내 여행기에서 제외' : '내 여행기에 추가'} aria-pressed={likedCourseIds.includes(detail.id)} onClick={() => toggleLikedCourse(detail.id)}>{likedCourseIds.includes(detail.id) ? <span className="filled-heart-plus" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 19.5 4.8 12.9C1.4 9.8 2.2 4.6 6.5 4.6c2.3 0 4 1.5 5.5 3.1 1.5-1.6 3.2-3.1 5.5-3.1 3.3 0 4.6 2.8 3.7 5.4h-3.1v4.1h-3.9v3.4Z"/></svg><span className="heart-plus-outline"/></span> : <img src="/images/heart-plus-original.png" alt=""/>}</button>}<Save name={detail.name} saved={courseLibraryLists([...myCourses,...editorialCopies],favorites,all).privateCourses.some(c=>c.id===detail.id)} onClick={() => courseLibraryLists([...myCourses,...editorialCopies],favorites,all).privateCourses.some(c=>c.id===detail.id) ? removePrivateCourse(detail.id) : toggleCourse(detail.id)}/>{<button type="button" className="icon-button" aria-label="이 코스를 편집하기" onClick={() => edit(detail)}><Icon name="courseEdit"/></button>}</div></div></div> : <DeviceStatusBar/>}<div className="device-home-indicator" aria-hidden="true"/><header className="app-header">{screen==='home'&&!detail&&<><span className="home-plan-menu" aria-hidden="true"><img src="/images/home-plan-menu.svg" alt=""/></span><span className="home-plan-bell" aria-hidden="true"><img src="/images/home-plan-bell.svg" alt=""/></span></>}<button type="button" className="brand" aria-label="coursepick 홈" onClick={() => navigate('home')}><img className="brand-logo" src={screen==='home'?'/images/home-plan-logo.png':'/images/coursepick-logo.png'} alt="코스픽"/></button>{screen === 'home'&&!detail&&<TravelKeywordSearch iconOnly alignTop busy={homeSearchLoading} keyboardDictionary={searchKeyboardDictionary} keywords={searchSuggestionKeywords} query={filters.query} onSearch={submitCourseSearch} home/>}{screen==='search'&&!detail&&<button type="button" className="search-create-course" onClick={requestNewCourse}>코스 작성하기</button>}{screen !== 'home' && <button type="button" className="icon-button" aria-label="내 프로필" onClick={() => navigate('my')}><Icon name="user"/></button>}</header>
@@ -773,7 +821,7 @@ export default function App({onboardingRequired=false,onOnboardingComplete}={}) 
       {screen !== 'my' && <footer className="app-footer"><span>coursepick · 나의 여행 시나리오</span><small>보완 사진 출처: 한국관광공사 TourAPI · <a href="https://www.kogl.or.kr/info/license.do" target="_blank" rel="noreferrer">공공누리 제1유형</a></small></footer>}
     </main>
     <nav className="bottom-nav" aria-label="주요 메뉴">{[{ id: 'home', name: '홈', icon: 'home' }, { id: 'zip', name: 'Zip', icon: 'zip' }, { id: 'search', name: '검색', icon: 'search' }, { id: 'saved', name: '아카이브', icon: 'archive' }, { id: 'my', name: '마이', icon: 'my' }].map(item => <button type="button" key={item.id} className={screen === item.id ? 'active' : ''} aria-current={screen === item.id ? 'page' : undefined} onClick={() => {if(item.id==='my')setMyLanding('home');item.id === 'saved' ? openCourseLibrary('authored') : navigate(item.id);}}><img className="home-plan-nav-icon" src={`/images/home-plan-nav-${item.icon}.svg`} alt=""/><span>{item.name}</span></button>)}</nav>
-    {homePopup&&screen==='home'&&!detail&&<div className="home-event-shade" role="presentation" onClick={e=>{if(e.target===e.currentTarget)closeHomePopup();}}><section className="home-event-popup" role="dialog" aria-modal="true" aria-labelledby="home-event-title"><button type="button" className="home-event-close" aria-label="팝업 닫기" onClick={closeHomePopup}>×</button><div className="home-event-art" style={{backgroundImage:`linear-gradient(180deg,#17151a22 0%,#17151aee 100%),url("${catalog.find(p=>p.imageUrl&&!p.imageUrl.startsWith('data:image/svg'))?.imageUrl||'/images/course-image-placeholder.svg'}")`}}><span className="home-event-badge">모집중</span><small>2026 · 코스픽 이벤트</small><h2 id="home-event-title">좀비어택 야간<br/>시티투어</h2><p>서울 도심을 달리는 밤 산책 코스에서<br/>특별한 여행을 경험해 보세요.</p></div><label className="home-event-hide"><input type="checkbox" checked={homePopupHideToday} onChange={e=>setHomePopupHideToday(e.target.checked)}/>오늘 하루 보지 않기</label><button type="button" className="home-event-dismiss" onClick={closeHomePopup}>닫기</button></section></div>}
+    {homePopup&&screen==='home'&&!detail&&<div className="home-event-shade" role="presentation" onClick={e=>{if(e.target===e.currentTarget)closeHomePopup();}}><section className="home-event-popup" role="dialog" aria-modal="true" aria-labelledby="home-event-title"><div className="home-event-art" style={{backgroundImage:`linear-gradient(180deg,#17151a33 0%,#17151add 100%),url("/images/tripmarket-20261022/${homePopupExperience.image}")`}}><div className="home-event-topline"><span className="home-event-badge">{homePopupExperience.open?'모집중':'모집 완료'}</span><span className="home-event-meta">⌖ {homePopupExperience.region} · ◷ {homePopupExperience.duration}</span></div><div className="home-event-copy"><h2 id="home-event-title">{homePopupExperience.title}</h2><b>{homePopupExperience.subtitle}</b><p>{homePopupExperience.description}</p></div></div><div className="home-event-actions"><label className="home-event-hide"><input type="checkbox" checked={homePopupHideToday} onChange={e=>setHomePopupHideToday(e.target.checked)}/>오늘 하루 보지 않기</label><button type="button" className="home-event-dismiss" onClick={closeHomePopup}>닫기</button></div></section></div>}
     {toast && <div className="toast" role="status">{toast}</div>}
     {modal==='save-tags'&&pendingSaveCourse&&<Modal title="대표 태그 선택" onClose={()=>setModal(null)}><CourseSaveTags candidates={saveTagCandidates} selected={pendingSaveCourse.representativeTags||[]} onChange={tags=>setPendingSaveCourse(c=>({...c,representativeTags:tags}))} onConfirm={()=>setModal('save-choice')}/></Modal>}
     {modal === 'save-choice' && pendingSaveCourse && <Modal title="코스를 저장할까요?" className="course-save-choice-modal" onClose={() => { if(courseSaveLock.current)return;setModal(null); setPendingSaveCourse(null); }}><CourseSaveChoice course={pendingSaveCourse} onSave={saveChosenCourse} error={formError} saving={courseSaving}/></Modal>}

@@ -11,16 +11,20 @@ from fastapi.middleware.cors import CORSMiddleware
 from supabase import create_client
 from supabase.client import ClientOptions
 from place_queries import place_client, recommendation_candidates, recommendation_cache, region_place_cache
+from search_keywords import router as search_keywords_router
+from gemini_search_interpreter import router as gemini_search_router
 
 app = FastAPI(title="coursepick Backend")
 from kakao_place_photo import router as kakao_photo_router
 app.include_router(kakao_photo_router)
+app.include_router(search_keywords_router)
+app.include_router(gemini_search_router)
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[origin.strip().rstrip("/") for origin in os.environ.get("CORS_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173").split(",") if origin.strip()],
     allow_methods=["GET", "POST", "PUT", "DELETE"],
-    allow_headers=["Authorization", "Content-Type"],
+    allow_headers=["Authorization", "Content-Type", "X-Search-Session", "X-City-Options"],
 )
 
 

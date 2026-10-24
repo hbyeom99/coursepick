@@ -29,12 +29,12 @@ export default function useReelPhotos(courses,position,dragging){
    image.onload=()=>{
     if(!active||document.hidden)return;
     const next={...photo,previous:old?.src};current.current={...current.current,[entry.id]:next};
-    setShown(current.current);timer=setTimeout(advance,5000);
+    setShown(current.current);timer=setTimeout(advance,3000);
    };
-   image.onerror=()=>{if(active)timer=setTimeout(advance,5000);};
+   image.onerror=()=>{if(active)timer=setTimeout(advance,3000);};
    image.src=photo.src;
   }
-  timer=setTimeout(advance,5000);
+  timer=setTimeout(advance,3000);
   return()=>{active=false;clearTimeout(timer);if(image){image.onload=null;image.onerror=null;}};
  },[position,dragging,entries,paused]);
  return shown;
