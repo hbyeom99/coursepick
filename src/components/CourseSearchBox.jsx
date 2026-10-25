@@ -11,6 +11,7 @@ export default function CourseSearchBox({ busy=false,disabled=false,restricted=f
  const [input,setInput]=useState(query),[overlay,setOverlay]=useState(null),[active,setActive]=useState(-1);
  const [searchDataReady,setSearchDataReady]=useState(false);
  const [popular,setPopular]=useState([]),[recent,setRecent]=useState([]);
+ const [expandedKeywords,setExpandedKeywords]=useState(false);
  const container=useRef(null),overlayInput=useRef(null);
  const fallbackSuggestions=useMemo(()=>restricted?homeSearchSuggestions(input):relatedSuggestions(normalizeKeyboardQuery(input,keyboardDictionary)||'맥주',keywords),[input,keywords,keyboardDictionary,restricted,searchDataReady]);
  const suggestions=useMemo(()=>{
@@ -31,7 +32,10 @@ export default function CourseSearchBox({ busy=false,disabled=false,restricted=f
   if(overlay)return;
   const host=container.current.closest('.app-shell'),rect=container.current.querySelector('form').getBoundingClientRect(),bounds=host.getBoundingClientRect();
   const scale=bounds.width/host.offsetWidth||1;
-  flushSync(()=>setOverlay({host,anchor:iconOnly?{top:24,left:16,width:bounds.width/scale-32}:{top:(rect.top-bounds.top)/scale+overlayTopOffset,left:(rect.left-bounds.left)/scale,width:rect.width/scale}}));
+  const anchor=trackSearches&&!selectionMode
+   ?{top:24,left:host.offsetWidth*0.041,width:host.offsetWidth*0.895}
+   :iconOnly?{top:24,left:16,width:bounds.width/scale-32}:{top:(rect.top-bounds.top)/scale+overlayTopOffset,left:(rect.left-bounds.left)/scale,width:rect.width/scale};
+  flushSync(()=>setOverlay({host,anchor}));
   // Focus during the original user gesture so mobile browsers can open the native keyboard.
   overlayInput.current?.focus({preventScroll:true});
   loadHomeSearchKeywords().then(()=>setSearchDataReady(true)).catch(()=>{});
@@ -66,12 +70,12 @@ export default function CourseSearchBox({ busy=false,disabled=false,restricted=f
  function clear(){setInput('');setActive(-1);overlayInput.current?.focus({preventScroll:true});}
  function hideKeyboard(){overlayInput.current?.blur();}
 
- return <div className="search-suggestion-shell" ref={container} tabIndex={-1}>
+ return <div className={`search-suggestion-shell${trackSearches&&!selectionMode?' has-search-history':''}`} ref={container} tabIndex={-1}>
   <form className={`search-box ${home?'home-search':''}`} role="search" autoComplete="off" aria-label={home?'홈 여행 검색':'여행 코스 검색'} style={overlay?{visibility:'hidden'}:undefined} onClick={e=>{if(e.target===e.currentTarget)openSearch();}} onSubmit={e=>{e.preventDefault();execute();}}>
    {iconOnly?<button type="button" className="search-icon-submit" aria-label="여행 검색 열기" onClick={openSearch}><SearchIcon/></button>:<><button type="submit" className="search-icon-submit" disabled={blocked(input)} aria-label={blocked(input)?"검색 중":"검색 실행"}><SearchIcon/></button>{inputField(false)}
    {input&&<button type="button" className="search-clear" aria-label="검색어 지우기" onClick={()=>setInput('')}>×</button>}</>}
   </form>
-  {overlay&&<CourseSearchOverlay alignTop={alignTop} host={overlay.host} anchor={overlay.anchor} onClose={closeSearch} onBlankClick={hideKeyboard}>
+  {overlay&&<CourseSearchOverlay alignTop={alignTop||trackSearches&&!selectionMode} tagLayout={trackSearches&&!selectionMode} host={overlay.host} anchor={overlay.anchor} onClose={closeSearch} onBlankClick={hideKeyboard}>
    <div className="search-overlay-row">
    <button type="button" className="search-back search-overlay-back" aria-label="검색 닫기" onClick={closeSearch}><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M14 5 7 12 14 19"/></svg></button>
    <form className="search-box search-overlay-box" role="search" aria-label="전체 화면 여행 검색" autoComplete="off" onSubmit={e=>{e.preventDefault();execute();}}>
@@ -80,8 +84,8 @@ export default function CourseSearchBox({ busy=false,disabled=false,restricted=f
    </form>
    </div>
    <div className="search-overlay-results" onClick={e=>{if(!e.target.closest('button,[role="option"]'))hideKeyboard();}}>
-    {trackSearches&&!selectionMode&&<h2 className="search-suggestion-heading">추천 키워드</h2>}
-    <div id={`${id}-suggestions`} role="listbox" aria-label="추천 키워드">{suggestions.map((word,index)=>{const term=(restricted?input:normalizeKeyboardQuery(input,keyboardDictionary)).trim(),pos=word.indexOf(term);return <div className={`search-related-row${active===index?' active':''}`} key={word}>
+    {trackSearches&&!selectionMode&&<div className="search-keyword-heading"><h2 className="search-suggestion-heading">추천 키워드</h2>{suggestions.some(word=>Array.from(word).length>6)&&<button type="button" className="search-keyword-expand" aria-expanded={expandedKeywords} onClick={()=>setExpandedKeywords(value=>!value)}>{expandedKeywords?'접기':'더보기'}</button>}</div>}
+    <div id={`${id}-suggestions`} className={trackSearches&&!selectionMode?'search-keyword-grid':''} role="listbox" aria-label="추천 키워드">{suggestions.map((word,index)=>{const term=(restricted?input:normalizeKeyboardQuery(input,keyboardDictionary)).trim(),pos=word.indexOf(term),isLong=Array.from(word).length>6;if(trackSearches&&!selectionMode)return <button type="button" key={word} disabled={blocked(word)} role="option" id={`${id}-suggestion-${index}`} aria-selected={active===index} aria-label={`#${word} 검색`} title={`#${word}`} className={`search-keyword-tag${isLong&&!expandedKeywords?' is-truncated':''}${active===index?' active':''}`} onPointerDown={e=>e.preventDefault()} onClick={()=>execute(word)}><span>#{pos>=0&&term?<>{word.slice(0,pos)}<strong>{word.slice(pos,pos+term.length)}</strong>{word.slice(pos+term.length)}</>:word}</span></button>;return <div className={`search-related-row${active===index?' active':''}`} key={word}>
     <button type="button" disabled={blocked(word)} role="option" id={`${id}-suggestion-${index}`} aria-selected={active===index} className="search-related-word" onPointerDown={e=>e.preventDefault()} onClick={()=>selectionMode?fillSuggestion(word):execute(word)}><SearchIcon size={13}/><span>{pos>=0&&term?<>{word.slice(0,pos)}<strong>{word.slice(pos,pos+term.length)}</strong>{word.slice(pos+term.length)}</>:word}</span></button>
     <button type="button" className="search-related-fill" disabled={selectionMode&&(disabled||busy||selectedKeywords.some(value=>searchKey(value)===searchKey(word)))} aria-label={`${word} ${selectionMode?'추가':'입력'}`} onPointerDown={e=>e.preventDefault()} onClick={()=>selectionMode?execute(word):fillSuggestion(word)}>{selectionMode?(selectedKeywords.some(value=>searchKey(value)===searchKey(word))?<span className="keyword-added">추가됨</span>:<span className="keyword-add-plus">+</span>):<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M17 17L7 7M7 15V7H15"/></svg>}</button>
    </div>;})}</div>

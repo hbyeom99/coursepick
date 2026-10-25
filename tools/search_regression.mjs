@@ -3,13 +3,13 @@ import assert from 'node:assert/strict';
 const server=await createServer({server:{middlewareMode:true},appType:'custom'});
 try{
  const {userCourseSearchMatch:match}=await server.ssrLoadModule('/src/lib/userCourseSearch.js');
- const {allowedHomeQuery,interpretHomeSearch,homeAnchorMatch}=await server.ssrLoadModule('/src/lib/homeSearchIntent.js');
+ const {allowedHomeQuery,interpretHomeSearch,homeAnchorMatch,loadHomeSearchKeywords}=await server.ssrLoadModule('/src/lib/homeSearchIntent.js');await loadHomeSearchKeywords();
  assert.equal(allowedHomeQuery('맥주'),true);assert.equal(allowedHomeQuery('부산 맥주 추천해줘'),false);
  assert.equal(match({tags:['맥주']},'맥주').rank,0);assert.equal(match({tags:['수제맥주']},'맥주').rank,1);assert.equal(match({name:'맥주 한잔'},'맥주').rank,2);assert.equal(match({name:'밥집',tags:['먹방']},'맥주').matched,false);
  const {isFictionalPlace}=await server.ssrLoadModule('/src/lib/placeAuthenticity.js');assert.equal(isFictionalPlace({id:'p1'}),true);assert.equal(isFictionalPlace({id:'tourapi_1'}),false);
  const {rankUserCourses,appendUserExamples}=await server.ssrLoadModule('/src/lib/userCourseRanking.js');let calls=0;
  assert.deepEqual(rankUserCourses([{id:'b',tags:['수제맥주'],fit:1},{id:'a',tags:['맥주'],fit:0}],'맥주',c=>{calls++;return c.fit}).map(c=>c.id),['a','b']);assert.equal(calls,2);
- assert.deepEqual(appendUserExamples([{id:'real'}],[{id:'virtual'},{id:'real'}]).map(c=>c.id),['real','virtual']);assert.equal(appendUserExamples(Array.from({length:5},(_,i)=>({id:String(i)})),[{id:'virtual'}]).length,5);
+ assert.deepEqual(appendUserExamples([{id:'real'}],[{id:'virtual'},{id:'real'}]).map(c=>c.id),['real','virtual']);assert.equal(appendUserExamples(Array.from({length:5},(_,i)=>({id:String(i)})),[{id:'virtual'}]).length,6);
  const e=await server.ssrLoadModule('/src/lib/recommendationEvidence.js');
  assert.equal(e.travelRecommendationEligible({lookup:{},categoryPath:'서비스,산업 > 보관,저장'}),false);
  assert.equal(e.travelRecommendationEligible({lookup:{},categoryPath:'가정,생활 > 패션 > 의류판매'},'빈티지숍'),true);

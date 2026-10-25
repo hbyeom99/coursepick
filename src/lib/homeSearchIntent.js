@@ -1,6 +1,6 @@
 import approvedRelations from '../data/approvedSearchRelations.json' with {type:'json'};
 import {travelRecommendationEligible,natureIntentEvidence,activityEvidenceMatch,confirmedConditionMatch,gentleTravelEligible,spaTravelEligible,spaAnchorEvidence} from './recommendationEvidence.js';
-import {placeKeywordCondition,keywordAlternatives} from './semanticKeywords.js';
+import {placeKeywordCondition,keywordAlternatives,keywordConditions} from './semanticKeywords.js';
 import {placeArea} from './travelFilters.js';
 export const searchKey=value=>String(value||'').normalize('NFKC').toLowerCase().replace(/\s+/g,'');
 export const HOME_SEARCH_KEYWORDS=[];
@@ -74,9 +74,9 @@ const calm=['카페','정원','공원','박물관','미술관','온천','수목�
 const social=['카페','정원','공원','전망','전시','미술관','체험','공방','해변'];
 const active=['체험','공방','놀이공원','테마파크','레저','스포츠','방탈출','보드게임'];
 export function interpretHomeSearch(value,filters={}){
- const key=searchKey(value),label=allowed.get(key);if(!label)return {allowed:false,empty:!key,key,query:String(value||''),terms:[],notes:[],requests:[]};
+ const raw=String(value||'').trim(),key=searchKey(raw),label=allowed.get(key)||raw;if(!key)return {allowed:false,empty:true,key,query:raw,terms:[],notes:[],requests:[]};
  const group=groupByKey.get(key),region=regionOf(label),regional=Boolean(region);
- const rule={allowed:true,key,query:label,group,region,terms:normalizedAliases.get(key)||keywordAlternatives(label),days:key==='1박2일'?2:1,roles:['main','lunch','main'],maxLeg:filters.transport==='도보'?2000:10000,buffer:15,notes:[],startMinutes:540,transport:filters.transport&&filters.transport!=='전체'?filters.transport:null,anchorCategory:null};
+ const rule={allowed:true,key,query:label,group,region,terms:normalizedAliases.get(key)||(allowed.has(key)?keywordAlternatives(label):keywordConditions(label)),days:key==='1박2일'?2:1,roles:['main','lunch','main'],maxLeg:filters.transport==='도보'?2000:10000,buffer:15,notes:[],startMinutes:540,transport:filters.transport&&filters.transport!=='전체'?filters.transport:null,anchorCategory:null};
  if(regional||['여행','투어','자유여행','나들이','휴가','방학','1박2일'].includes(key)){rule.terms=['관광지','정원','공원','박물관','전망','체험'];rule.broad=true;}
  if(/효도|부모님/.test(key)){rule.terms=calm;rule.maxLeg=rule.transport==='도보'?1000:5000;rule.buffer=30;rule.gentle=true;rule.notes.push('장소 수를 줄이고 짧은 이동과 휴식 위주로 구성했습니다. 계단·경사·보행 편의는 확인이 필요합니다.');}
  else if(/힐링|휴식|휴양|여유|여행\(혼자\)|명상/.test(key)){rule.terms=calm;rule.gentle=true;rule.buffer=30;rule.notes.push('관광·식사·휴식을 여유 있게 연결했습니다.');}
@@ -86,7 +86,6 @@ export function interpretHomeSearch(value,filters={}){
  if(group==='카페'||/카페투어|빵지순례/.test(key)){rule.anchorCategory='카페';if(key==='카페'||key==='카페투어')rule.terms=['카페'];}
  if(group==='음식'||['맛집투어','푸드투어','미식','먹방'].includes(key)){rule.anchorCategory='음식점';if(['맛집투어','푸드투어','미식','맛집'].includes(key))rule.terms=['음식점'];rule.roles=['lunch','main','dinner'];}
  if(/드라이브/.test(key)){rule.transport='자동차';rule.maxLeg=20000;rule.notes.push('자동차로 연결하는 코스이며 실제 도로 이동시간은 별도 확인이 필요합니다.');}
- if(/맥주|브루어리|양조|막걸리|전통주|와인|위스키|칵테일|펍|바틀샵|술|테이스팅|시음|^ipa$|사워에일/.test(key)){rule.transport='대중교통';rule.notes.push('음주 가능성을 고려해 대중교통으로 제안합니다.');}
  if(/도보10분|가까운/.test(key)){rule.terms=key==='가까운식당'?['음식점']:['관광지','공원','카페','정원'];rule.anchorCategory=key==='가까운식당'?'음식점':rule.anchorCategory;rule.maxLeg=700;rule.notes.push('장소 간 직선거리 700m 이내로 연결합니다. 실제 도보 10분을 보장하지 않습니다.');}
  if(/야간|야경|심야|일몰|노을|별|은하수/.test(key)){rule.startMinutes=/일몰|노을/.test(key)?960:1080;rule.roles=['main','dinner','main'];rule.notes.push('저녁 방문을 제안합니다. 운영시간·일몰 시각·관측 조건은 확인이 필요합니다.');}
  if(/일출/.test(key)){rule.startMinutes=330;rule.roles=['main','lunch','main'];rule.notes.push('이른 아침 방문을 제안합니다. 실제 일출 시각과 출입 가능 시간은 확인이 필요합니다.');}

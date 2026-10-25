@@ -2,7 +2,7 @@ import React, { useLayoutEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import DeviceStatusBar from './DeviceStatusBar.jsx';
 
-export default function CourseSearchOverlay({ host, anchor, onClose, onBlankClick, children, alignTop = false }) {
+export default function CourseSearchOverlay({ host, anchor, onClose, onBlankClick, children, alignTop = false, tagLayout = false }) {
  const dialog=useRef(null),[viewport,setViewport]=useState({top:0,height:host.clientHeight});
  useLayoutEffect(()=>{
   const bodyOverflow=document.body.style.overflow;
@@ -37,5 +37,5 @@ export default function CourseSearchOverlay({ host, anchor, onClose, onBlankClic
   if(event.shiftKey&&document.activeElement===first){event.preventDefault();last?.focus();}
   else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first?.focus();}
  }
- return createPortal(<section ref={dialog} className="course-search-overlay" role="dialog" aria-modal="true" aria-label="여행 검색" onKeyDown={keyboard} onClick={event=>{if(event.target===event.currentTarget)onBlankClick?.();}} style={{'--search-overlay-top':`${viewport.top}px`,'--search-overlay-height':`${viewport.height}px`,'--search-anchor-top':alignTop?'max(24px, env(safe-area-inset-top, 0px))':`${Math.max(0,anchor.top-viewport.top)}px`,'--search-anchor-left':`${anchor.left}px`,'--search-anchor-width':`${anchor.width}px`}}><DeviceStatusBar/>{children}</section>,host);
+ return createPortal(<section ref={dialog} className={`course-search-overlay${tagLayout?' search-tag-layout':''}`} role="dialog" aria-modal="true" aria-label="여행 검색" onKeyDown={keyboard} onClick={event=>{if(event.target===event.currentTarget)onBlankClick?.();}} style={{'--search-overlay-top':`${viewport.top}px`,'--search-overlay-height':`${viewport.height}px`,'--search-anchor-top':alignTop?'max(24px, env(safe-area-inset-top, 0px))':`${Math.max(0,anchor.top-viewport.top)}px`,'--search-anchor-left':`${anchor.left}px`,'--search-anchor-width':`${anchor.width}px`}}><DeviceStatusBar/>{children}</section>,host);
 }

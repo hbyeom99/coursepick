@@ -35,7 +35,7 @@ export async function interpretNaturalSearch(query,{filters,catalog,token,signal
  const timeout=AbortSignal.timeout(7000),requestSignal=signal?AbortSignal.any([signal,timeout]):timeout;
  const response=await fetch(base+'/api/search/interpret',{method:'POST',cache:'no-store',signal:requestSignal,headers:{'Content-Type':'application/json','X-Search-Session':sessionId(),'X-City-Options':cityOptions.join(','),...(token?{Authorization:'Bearer '+token}:{})},body:JSON.stringify({query:text,region:filters?.region||'전체',city:filters?.city||'전체',period:filters?.period||'전체',transport:filters?.transport||'전체',infant:Boolean(filters?.infant),pet:Boolean(filters?.pet)})});
  let data={};try{data=await response.json();}catch{}
- if(!response.ok)throw Error(typeof data.detail==='string'?data.detail:'검색어를 해석하지 못했습니다. 허용 키워드로 다시 검색해 주세요.');
+ if(!response.ok)throw Error(typeof data.detail==='string'?data.detail:'검색어를 해석하지 못했습니다. 다시 입력해 주세요.');
  if(data.status!=='ok'||typeof data.query!=='string')throw Error('검색 의도를 확인하기 어려워요. 지역과 여행 주제를 조금 더 구체적으로 입력해 주세요.');
  if(data.region!=='전체'&&!travelRegions.includes(data.region))throw Error('해석한 지역을 검색 필터로 적용할 수 없습니다.');
  if(data.city!=='전체'&&!cityOptions.includes(data.city))throw Error('입력에 없는 세부 지역은 적용할 수 없습니다.');
