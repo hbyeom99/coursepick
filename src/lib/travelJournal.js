@@ -30,20 +30,13 @@ export const newDemoRewards=()=>({balance:3250,coupons:[],applications:[],comple
 export function redeemDemo(state,offer){if(!offer||state.balance<offer.cost)throw Error('보유 포인트가 부족해요.');const id=crypto.randomUUID(),date=new Date().toISOString();return {...state,balance:state.balance-offer.cost,coupons:[{id,name:offer.name,code:'DEMO-'+id.slice(0,8).toUpperCase(),used:false,date},...state.coupons],ledger:[{id,label:offer.name,amount:-offer.cost,date},...state.ledger]};}
 export function completeDemo(state,id,points=300){if(!Number.isInteger(points)||points<=0)throw Error('미션 포인트 오류');if(state.completed.includes(id))return state;return {...state,balance:state.balance+points,completed:[...state.completed,id],ledger:[{id:'mission-'+id,label:'키워드 미션 완료',amount:points,date:new Date().toISOString()},...state.ledger]};}
 
-// Archive coverage follows the courses in My Journals as requested, without
-// changing written-visit records used by the recap or storing provider content.
-export function archiveStats(courses,journals,catalog){
- const byId=new Map(catalog.map(p=>[p.id,p])),visits=[];
- const seenCourses=new Set();
- for(const course of courses){
-  if(seenCourses.has(course.id))continue;seenCourses.add(course.id);
-  const record=journals.find(j=>j.courseId===course.id),ids=[...new Set([...(course.stopIds||[]),...(record?.placeIds||[])])];
-  const found=ids.map(id=>byId.get(id)).filter(Boolean);visits.push(...found);
-  if(course.editorialVisits?.length)visits.push(...course.editorialVisits.filter(v=>!v.place_id||!ids.includes(v.place_id)).map(v=>({region:v.region||course.region,location:v.location||'',id:v.visit_id})));
-  if(!found.length&&!course.editorialVisits?.length&&course.region&&course.region!=='지역 미정'&&course.region!=='여러 지역')visits.push({region:course.region,id:course.id});
- }
- for(const record of journals)if(!seenCourses.has(record.courseId))visits.push(...record.placeIds.map(id=>byId.get(id)).filter(Boolean));
- const provinceCounts={},districtCounts={};let unmatched=0;
+// The visit map uses only places explicitly selected in written travel journals.
+// Count each catalog place once, even if it appears in multiple journal records.
+export function archiveStats(journals,catalog){
+ const byId=new Map(catalog.map(p=>[p.id,p]));
+ const placeIds=new Set(journals.flatMap(record=>Array.isArray(record.placeIds)?record.placeIds:[]));
+ const visits=[...placeIds].map(id=>byId.get(id)).filter(Boolean);
+ const provinceCounts={},districtCounts={};let unmatched=placeIds.size-visits.length;
  for(const place of visits){const area=placeDistrict(place);if(!area){unmatched++;continue;}provinceCounts[area.province]=(provinceCounts[area.province]||0)+1;if(area.district)districtCounts[area.district]=(districtCounts[area.district]||0)+1;}
  return {provinces:Object.keys(provinceCounts),districts:Object.keys(districtCounts),provinceCounts,districtCounts,unmatched};
 }
