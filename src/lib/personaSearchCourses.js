@@ -26,7 +26,7 @@ export function supplementPersonaCourses(catalog,filters,existing,ai=[],live=[])
   const candidate=candidates.find(c=>!used.has(signatures(c))&&c.stopIds.length+(c.kakaoPlaceRefs?.length||0)>=2);if(!candidate)continue;
   let name;for(let j=0;j<titles.length;j++){const proposal=titles[(seed+added.length+j)%titles.length](filters.query.trim());if(!names.has(proposal)){name=proposal;break;}}if(!name)continue;
   const course={...candidate,id:'persona-search-'+persona.id+'-'+candidate.id,name,author:persona.name,personaId:persona.id,isVirtual:true,isSample:true,isPublic:false,source:'persona-search',theme:'가상 사용자 코스',generationMethod:'persona-search',description:'가상 사용자 페르소나의 성향으로 구성한 예시 코스입니다. 실제 방문 후기가 아닙니다. '+candidate.description};
-  if(!userCourseSearchMatch(course,filters.query).matched)continue;
+  if(!userCourseSearchMatch(course,filters.query,filters.searchTags||[]).matched)continue;
   added.push(course);used.add(signatures(course));names.add(name);
  }
  return added;

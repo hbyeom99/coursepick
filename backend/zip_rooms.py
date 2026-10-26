@@ -36,15 +36,32 @@ def room_for(client,room_id,user):
   raise HTTPException(403,'이 방에 참여한 회원만 볼 수 있습니다.')
  return room
 
-def profile_name(client,user_id):
+def profile_summary(client,user_id):
  rows=execute(client.table('member_data').select('value').eq('user_id',user_id).eq('data_key','coursepick.profile.v1').limit(1))
  value=rows[0].get('value') if rows else None
- if isinstance(value,dict) and isinstance(value.get('name'),str) and value['name'].strip():return value['name'].strip()[:20]
- return '여행자'
+ name=value['name'].strip()[:20] if isinstance(value,dict) and isinstance(value.get('name'),str) and value['name'].strip() else '여행자'
+ if name=='여행자':
+  try:
+   account=client.auth.admin.get_user_by_id(user_id).user
+   nickname=(getattr(account,'user_metadata',None) or {}).get('nickname')
+   if isinstance(nickname,str) and nickname.strip():name=nickname.strip()[:20]
+  except Exception:pass
+ photo=None
+ path=value.get('photoPath') if isinstance(value,dict) else None
+ if isinstance(path,str) and path.startswith(user_id+'/'):
+  try:photo=client.storage.from_('member-avatars').create_signed_url(path,3600)['signedURL']
+  except Exception:pass
+ return name,photo
+
+def profile_name(client,user_id):
+ return profile_summary(client,user_id)[0]
 
 def serialize(client,room,user_id=None):
  members=execute(client.table('zip_room_members').select('user_id,taste,keywords').eq('room_id',room['id']).order('joined_at').order('user_id'))
- people=[{'id':m['user_id'],'name':profile_name(client,m['user_id']),'taste':m.get('taste'),'keywords':m.get('keywords') or []} for m in members]
+ people=[]
+ for m in members:
+  name,photo=profile_summary(client,m['user_id'])
+  people.append({'id':m['user_id'],'name':name,'photo':photo,'taste':m.get('taste'),'keywords':m.get('keywords') or []})
  image=''
  if room.get('image_path'):
   try:image=client.storage.from_('member-avatars').create_signed_url(room['image_path'],3600)['signedURL']

@@ -46,6 +46,27 @@ export async function loadHomeSearchData({regions=[]}={}){
 }
 export const allowedHomeQuery=value=>allowed.has(searchKey(value));
 export function homeSearchSuggestions(input){const key=searchKey(input);return HOME_SEARCH_KEYWORDS.filter(word=>!key||searchKey(word).includes(key)).slice(0,8);}
+const tagCandidateContexts=[
+ {pattern:/음식|식당|맛집|먹방|요리|고기|꼬치|구이|삼겹|갈비|치킨|국밥|냉면|파스타|해산물|회|탕|찌개|밥|면|떡볶이|빵|베이커리|디저트|양꼬치/i,groups:['음식','기존태그']},
+ {pattern:/카페|커피|로스터리|브런치|빵집|베이커리|디저트/i,groups:['카페','기존태그']},
+ {pattern:/바다|해변|숲|산책|등산|꽃|단풍|폭포|계곡|자연|전망|섬|호수/i,groups:['자연','시설','기존태그']},
+ {pattern:/박물관|전시|역사|문화|공연|유적|건축|서점|도서관/i,groups:['문화','시설','기존태그']},
+ {pattern:/체험|액티비티|공방|만들기|스포츠|레저|놀이|캠핑|낚시|수상|클라이밍|방탈출/i,groups:['체험','시설','기존태그']},
+];
+export function searchTagCandidates(value,limit=160){
+ const raw=String(value||'').trim(),key=searchKey(raw);if(!key||!Object.keys(groups).length)return [];
+ const candidates=[],seen=new Set(),add=word=>{const label=allowed.get(searchKey(word));if(label&&!seen.has(searchKey(label))){seen.add(searchKey(label));candidates.push(label);}};
+ const terms=[key,...keywordConditions(raw).map(searchKey)].filter(term=>term.length>=2);
+ // Prefer exact and existing dictionary matches before broader contextual candidates.
+ for(const term of terms){add(allowed.get(term)||term);for(const [group,words] of Object.entries(groups))if(group!=='전국 행정구역')for(const word of words){const candidate=searchKey(word);if(candidate.length>=2&&(term.includes(candidate)||candidate.includes(term)))add(word);}}
+ const related=[...terms];
+ for(const [alias,values] of Object.entries(termAliases))if(terms.some(term=>term.includes(searchKey(alias))||searchKey(alias).includes(term)))related.push(...values.map(searchKey));
+ for(const group of approvedRelations.aliases)if(group.some(word=>terms.some(term=>term.includes(searchKey(word))||searchKey(word).includes(term))))related.push(...group.map(searchKey));
+ for(const term of related)for(const [group,words] of Object.entries(groups))if(group!=='전국 행정구역')for(const word of words)if(searchKey(word)===term)add(word);
+ const contextGroups=new Set(tagCandidateContexts.filter(context=>context.pattern.test(raw)).flatMap(context=>context.groups));
+ for(const group of contextGroups)for(const word of groups[group]||[])add(word);
+ return candidates.slice(0,Math.max(1,Math.min(160,limit)));
+}
 const cities={강릉:'강원',속초:'강원',양양:'강원',원주:'강원',평창:'강원',동해:'강원',해운대:'부산',광안리:'부산',기장:'부산',경주:'경북',포항:'경북',담양:'전남',나주:'전남',화순:'전남',순천:'전남',여수:'전남',광양:'전남',해남:'전남',보성:'전남',전주:'전북',군산:'전북',익산:'전북',공주:'충남',부여:'충남',천안:'충남',아산:'충남',충주:'충북',단양:'충북',서산:'충남',애월:'제주',성산:'제주',우도:'제주',울릉도:'경북',계룡산:'충남'};
 const provinces=['서울','경기','인천','강원','부산','대구','울산','광주','대전','세종','제주','충북','충남','전북','전남','경북','경남'];
 const regionOf=value=>{const paths=administrativeRegions[value];if(paths)return {paths,label:value};let key=searchKey(value).replace(/여행$/,'');if(key==='제주도')key='제주';if(key==='강원도')key='강원';if(provinces.includes(key))return {province:key,label:key};if(cities[key])return {province:cities[key],city:key,label:key};if(['수도권','서울근교'].includes(key))return {provinces:['서울','경기','인천'],label:key};return null;};
@@ -73,10 +94,12 @@ const normalizedAliases=new Map(Object.entries(termAliases).map(([key,value])=>[
 const calm=['카페','정원','공원','박물관','미술관','온천','수목원','전시'];
 const social=['카페','정원','공원','전망','전시','미술관','체험','공방','해변'];
 const active=['체험','공방','놀이공원','테마파크','레저','스포츠','방탈출','보드게임'];
-export function interpretHomeSearch(value,filters={}){
+export function interpretHomeSearch(value,filters={},options={}){
  const raw=String(value||'').trim(),key=searchKey(raw),label=allowed.get(key)||raw;if(!key)return {allowed:false,empty:true,key,query:raw,terms:[],notes:[],requests:[]};
  const group=groupByKey.get(key),region=regionOf(label),regional=Boolean(region);
- const rule={allowed:true,key,query:label,group,region,terms:normalizedAliases.get(key)||(allowed.has(key)?keywordAlternatives(label):keywordConditions(label)),days:key==='1박2일'?2:1,roles:['main','lunch','main'],maxLeg:filters.transport==='도보'?2000:10000,buffer:15,notes:[],startMinutes:540,transport:filters.transport&&filters.transport!=='전체'?filters.transport:null,anchorCategory:null};
+ const deterministicTerms=normalizedAliases.get(key)||(allowed.has(key)?keywordAlternatives(label):keywordConditions(label));
+ const mappedTags=[...new Set((options.mappedTags||filters.searchTags||[]).filter(tag=>typeof tag==='string'&&allowed.has(searchKey(tag))).map(tag=>allowed.get(searchKey(tag))))];
+ const rule={allowed:true,key,query:label,group,region,terms:[...new Set([...deterministicTerms,...mappedTags])],mappedTags,days:key==='1박2일'?2:1,roles:['main','lunch','main'],maxLeg:filters.transport==='도보'?2000:10000,buffer:15,notes:[],startMinutes:540,transport:filters.transport&&filters.transport!=='전체'?filters.transport:null,anchorCategory:null};
  if(regional||['여행','투어','자유여행','나들이','휴가','방학','1박2일'].includes(key)){rule.terms=['관광지','정원','공원','박물관','전망','체험'];rule.broad=true;}
  if(/효도|부모님/.test(key)){rule.terms=calm;rule.maxLeg=rule.transport==='도보'?1000:5000;rule.buffer=30;rule.gentle=true;rule.notes.push('장소 수를 줄이고 짧은 이동과 휴식 위주로 구성했습니다. 계단·경사·보행 편의는 확인이 필요합니다.');}
  else if(/힐링|휴식|휴양|여유|여행\(혼자\)|명상/.test(key)){rule.terms=calm;rule.gentle=true;rule.buffer=30;rule.notes.push('관광·식사·휴식을 여유 있게 연결했습니다.');}
@@ -112,6 +135,7 @@ export function interpretHomeSearch(value,filters={}){
  const anchor=rule.broad?'관광지':rule.gentle?'정원':rule.terms[0]||label;
  if(/일출/.test(key))rule.maxLeg=Math.min(rule.maxLeg,5000);
  rule.requests=[{query:[prefix,anchor].filter(Boolean).join(' '),category:rule.anchorCategory==='음식점'?'맛집':rule.anchorCategory==='카페'?'카페':'전체'},{query:[prefix,'한식'].filter(Boolean).join(' '),category:'맛집'},{query:[prefix,'카페'].filter(Boolean).join(' '),category:'카페'}].filter((r,i,a)=>a.findIndex(v=>v.query===r.query&&v.category===r.category)===i).slice(0,3);
+ if(mappedTags.length){rule.requests=[{query:[prefix,label].filter(Boolean).join(' '),category:rule.anchorCategory==='음식점'?'맛집':rule.anchorCategory==='카페'?'카페':'전체'},...mappedTags.map(tag=>({query:[prefix,tag].filter(Boolean).join(' '),category:rule.anchorCategory==='음식점'?'맛집':rule.anchorCategory==='카페'?'카페':'전체'}))].filter((request,index,all)=>all.findIndex(item=>item.query===request.query&&item.category===request.category)===index).slice(0,3);}
  if(/^(맥주|수제맥주|로컬맥주|브루어리|양조장|펍|바틀샵)$/.test(key))rule.requests=['맥주','브루어리','펍'].map(term=>({query:[prefix,term].filter(Boolean).join(' '),category:'전체'}));
  return rule;
 }
@@ -152,7 +176,7 @@ export function homeAnchorMatch(p,rule){
  if(rule.companion||rule.priceSensitive)return true;
  const evidence={...p,region:'',location:p.categoryPath||''};
  if(rule.group==='분위기'&&!rule.gentle)return rule.terms.some(term=>(p.tags||[]).some(tag=>searchKey(tag).includes(searchKey(term))));
- return rule.terms.some(term=>{const key=searchKey(term);if(key.length===1){if((p.tags||[]).some(tag=>searchKey(tag)===key))return true;if(key==='산')return /산$/.test(p.name||'')||/등산/.test(p.categoryPath||'');if(key==='강')return /강$/.test(p.name||'');if(key==='절')return /사찰/.test(p.categoryPath||'');return (p.categoryPath||'').split('>').some(part=>searchKey(part)===key);}return placeKeywordCondition(evidence,term);});
+ return (p.tags||[]).some(tag=>(rule.mappedTags||[]).some(mapped=>searchKey(tag)===searchKey(mapped)))||rule.terms.some(term=>{const key=searchKey(term);if(key.length===1){if((p.tags||[]).some(tag=>searchKey(tag)===key))return true;if(key==='산')return /산$/.test(p.name||'')||/등산/.test(p.categoryPath||'');if(key==='강')return /강$/.test(p.name||'');if(key==='절')return /사찰/.test(p.categoryPath||'');return (p.categoryPath||'').split('>').some(part=>searchKey(part)===key);}return placeKeywordCondition(evidence,term);});
 }
 export function homeCourseMatch(course,places,rule){
  if(!rule.allowed)return false;if(rule.empty)return true;

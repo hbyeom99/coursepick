@@ -1328,7 +1328,7 @@ body,button,input,textarea,select,option,svg text{font-family:"Noto Sans KR",san
 .zip-members-page{padding:12px 13px 20px}
 .zip-members-page .zip-panel{border:1px solid #8f5cfb;border-radius:15px;background:#fff;margin-bottom:16px;padding:12px}
 .zip-panel h2{font-size:15px;margin:0 0 12px}
-.zip-member-list{display:flex;justify-content:space-between;gap:7px;overflow-x:auto;padding-bottom:2px}
+.zip-member-list{display:flex;justify-content:space-between;gap:7px;overflow-x:auto;padding:10px 0 2px;margin-top:-10px}
 .zip-member-list>div{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:7px}
 .zip-member-list .zip-member-avatar{width:44px;height:44px;background:#e8deff;color:#8f5cfb;border:0}
 .zip-member-list>div>span:last-child{font-size:10px}
@@ -1691,3 +1691,59 @@ body,button,input,textarea,select,option,svg text{font-family:"Noto Sans KR",san
 .my-design-page-home .my-axis>div>div:first-child{position:relative;display:flex;align-items:center;justify-content:space-between;min-height:14px}
 .my-design-page-home .my-axis>div>div:first-child>strong{position:absolute;left:50%;transform:translateX(-50%);display:inline-flex;align-items:center;justify-content:center;gap:3px;width:max-content;max-width:calc(100% - 84px);text-align:center;white-space:nowrap}
 .my-axis-title-icon{font-size:12px;line-height:1;flex:none}
+/* Match the participation dialog proportions and controls in the supplied SVG. */
+.zip-dialog.zip-join-address-modal{position:relative;width:min(357px,calc(100vw - 32px));height:245px;min-height:245px;max-height:calc(100dvh - 32px);box-sizing:border-box;padding:17px 16px 18px 24px;display:flex;flex-direction:column;overflow:hidden;border-radius:20px;background:#fafafa;box-shadow:0 12px 34px #27253124}
+.zip-dialog.zip-join-address-modal>header{position:relative;display:flex;justify-content:center;align-items:center;flex:0 0 33px;margin:0;padding:0}
+.zip-dialog.zip-join-address-modal>header h2{font-size:17px;line-height:1.4;font-weight:700;color:#25262a;text-align:center}
+.zip-dialog.zip-join-address-modal>header>.zip-icon-button{position:absolute;right:-1px;top:59px;width:18px;height:18px;padding:3px;border-radius:50%;background:#b8bbc0;color:#e5e7eb}
+.zip-dialog.zip-join-address-modal>header>.zip-icon-button svg{width:12px;height:12px;stroke-width:1.8}
+.zip-join-address-form{display:flex;flex:1;min-height:0;flex-direction:column}
+.zip-join-address-field{display:block;margin:0!important}
+.zip-join-address-field>input{display:block;box-sizing:border-box;width:100%;height:51px!important;margin:0!important;border:0!important;border-bottom:1px solid #b8bbc0!important;border-radius:0!important;padding:0 28px 1px 8px!important;background:transparent!important;color:#25262a!important;font-size:14px!important;text-align:center;outline-offset:0;box-shadow:none}
+.zip-join-address-field>input::placeholder{color:#aaa4b3;font-size:12px}
+.zip-join-address-help{height:29px;box-sizing:border-box;margin:0;padding-top:8px;text-align:center;color:#aaa4b3;font-size:9px;line-height:1.4}
+.zip-join-address-form>.zip-error{margin:0 0 4px;font-size:11px;text-align:center}
+.zip-join-address-actions{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;margin-top:auto;padding:0}
+.zip-join-address-actions>button{height:44px;min-height:44px;margin:0;border:0;border-radius:10px;font-size:12px!important;font-weight:500}
+.zip-join-address-actions>.zip-secondary{background:#f1ebff;color:#8f5cfb}
+.zip-join-address-actions>.zip-primary{background:#8f5cfb;border-color:#8f5cfb;color:#fff}
+.zip-member-list .zip-member-avatar{position:relative;overflow:visible;border-radius:50%}
+.zip-member-avatar>img{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover}
+.zip-member-crown{position:absolute;top:-9px;left:50%;z-index:1;transform:translateX(-50%);font-size:14px;line-height:1;filter:drop-shadow(0 1px 1px #7d5b1c55)}
+.zip-member-list .zip-member-item>span:last-child,.zip-member-item>span:last-child{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#25262a;font-size:10px;text-align:center}
+.zip-member-modal-row{display:flex;align-items:center;gap:12px;margin:12px 0}
+.zip-member-modal-row .zip-member-avatar{position:relative;overflow:visible}
+.zip-member-modal-row>span:last-child{font-size:13px}
+.zip-dialog.zip-room-confirm-modal{display:flex;flex-direction:column;width:min(357px,calc(100vw - 32px));height:224px;max-height:calc(100dvh - 32px);box-sizing:border-box;padding:20px 13px 18px 18px;border-radius:20px;background:#fafafa;overflow:hidden}
+.zip-dialog.zip-room-confirm-modal>header{display:flex;flex:0 0 28px;align-items:center;justify-content:space-between;margin:0 0 8px}
+.zip-dialog.zip-room-confirm-modal>header h2{font-size:17px;line-height:1.4;font-weight:700;color:#25262a}
+.zip-dialog.zip-room-confirm-modal>header>.zip-icon-button{width:26px;height:26px;padding:4px;color:#9296a0}
+.zip-dialog.zip-room-confirm-modal>p{margin:0 0 12px;color:#25262a;font-size:13px;line-height:1.35}
+.zip-dialog.zip-room-confirm-modal>.zip-primary{height:40px;min-height:40px;margin-top:auto;border-radius:8px;font-size:12px;font-weight:600}
+.zip-dialog.zip-room-action-menu .zip-menu-options{display:flex;flex-direction:column;gap:8px}
+.zip-dialog.zip-room-action-menu .zip-menu-options>button{width:100%;min-height:42px;padding:10px 12px;border:1px solid #eee9f4;border-radius:9px;background:#fff;color:#40384f;text-align:left;font-size:13px}
+.zip-dialog.zip-room-action-menu .zip-menu-options>button:last-child{color:#8f5cfb}
+.zip-members-page .zip-invite-panel{margin:16px 0 8px;padding:11px 12px 16px;border:1px solid #8f5cfb;border-radius:15px;background:#fff;text-align:center}
+.zip-members-page .zip-invite-panel h2{margin:0 0 16px;color:#8f5cfb;font-size:16px;line-height:1.4;font-weight:700}
+.zip-members-page .zip-invite-panel .zip-invite-code-label{margin:0;color:#8690a0;font-size:10px;line-height:1.4}
+.zip-members-page .zip-invite-panel .zip-invite-code{display:flex;align-items:center;justify-content:center;gap:4px;margin:2px 0 15px}
+.zip-members-page .zip-invite-panel .zip-invite-copy-status{margin:-9px 0 10px;color:#8f5cfb;font-size:10px;line-height:1.4}
+.zip-invite-code>strong{color:#080808;font-size:28px;line-height:1.15;letter-spacing:.4px}
+.zip-invite-code>button{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;padding:3px;border:0;background:transparent;color:#8690a0}
+.zip-members-page .zip-invite-panel .zip-invite-actions{display:flex;justify-content:center;gap:18px}
+.zip-invite-action{display:flex;flex-direction:column;align-items:center;gap:3px;min-width:35px;padding:0;border:0;background:transparent;color:#8690a0}
+.zip-invite-action>span{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border:1px solid #b8bbc0;border-radius:50%;background:white;color:#3e4248}
+.zip-invite-action>small{color:#8690a0;font-size:9px;line-height:1.3}
+.zip-link-masked{display:flex;align-items:center;justify-content:center;min-height:43px;margin:12px 0;border:1px solid #ded2ff;border-radius:8px;background:#fafafa;color:#a49bad;font-size:15px;letter-spacing:3px;user-select:none}
+.zip-taste-status{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 17px}
+.zip-taste-legend{display:flex;align-items:center;gap:10px;color:#8690a0;font-size:9px;line-height:1.4}
+.zip-taste-legend>span{display:inline-flex;align-items:center;gap:4px}
+.zip-taste-legend i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#8f5cfb}
+.zip-taste-legend>span:last-child i{background:#ffed9e}
+.zip-taste-count{color:#a09aaa;font-size:9px;white-space:nowrap}
+.zip-taste-axis .zip-axis-track{height:5px;background:#e5e7eb}
+.zip-taste-axis .zip-axis-track>.zip-axis-group-gauge,.zip-taste-axis .zip-axis-track>.zip-axis-my-gauge{position:absolute;display:block;top:0;bottom:auto;height:100%;border-radius:9px}
+.zip-taste-axis .zip-axis-track>.zip-axis-group-gauge{background:#8f5cfb}
+.zip-taste-axis .zip-axis-track>.zip-axis-my-gauge{background:#ffed9e}
+.zip-vote-complete>button{box-sizing:border-box;width:100%}
+.zip-vote-root .zip-dialog .zip-vote-apply-action{box-sizing:border-box;width:100%;justify-content:center;text-align:center}
