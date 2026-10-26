@@ -5,6 +5,7 @@ import { flushSync } from 'react-dom';
 import { relatedSuggestions } from '../lib/searchIntent.js';
 import { getPopularSearchKeywords, recordPopularSearchKeyword } from '../lib/searchKeywordStats.js';
 import CourseSearchOverlay from './CourseSearchOverlay.jsx';
+import { validateSearchQuery } from '../lib/searchQueryValidation.js';
 
 function SearchIcon({size=20}) { return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="M15 15L21 21"/></svg>; }
 export default function CourseSearchBox({ busy=false,disabled=false,restricted=false,selectionMode=false,selectedKeywords=[],query, onSearch, home = false, keywords = [], keyboardDictionary = new Set(), inputId, alignTop = false, overlayTopOffset=0, trackSearches=false, iconOnly = false, placeholder = '취향을 입력하세요 (예시 : 맥주)' }) {
@@ -44,20 +45,22 @@ export default function CourseSearchBox({ busy=false,disabled=false,restricted=f
  const blocked=value=>disabled||(busy&&searchKey(value)===searchKey(query));
  async function execute(value=input){
   if(blocked(value))return;
+  if(!validateSearchQuery(value).valid){if(!selectionMode)await onSearch(value.trim());return;}
   try{await loadHomeSearchKeywords();setSearchDataReady(true);}catch{}
   if(blocked(value)||selectionMode&&!homeSearchSuggestions(value).some(word=>searchKey(word)===searchKey(value))||selectionMode&&selectedKeywords.some(word=>searchKey(word)===searchKey(value)))return;
   // Dismiss the editing focus inside the submit gesture, before navigating.
   overlayInput.current?.blur();
   container.current?.querySelector('input')?.blur();
   flushSync(()=>{setInput(selectionMode?'':value);setOverlay(null);setActive(-1);});
+  // Focus a non-editable target so closing the overlay cannot reopen the keyboard.
+  container.current?.focus({preventScroll:true});
+  const accepted=await onSearch(value.trim());
+  if(accepted===false)return;
   if(trackSearches&&!selectionMode&&value.trim()){
    const next=[value.trim(),...recent.filter(word=>searchKey(word)!==searchKey(value))].slice(0,8);
    setRecent(next);try{localStorage.setItem('coursepick.recentSearches.v1',JSON.stringify(next));}catch{}
    void recordPopularSearchKeyword(value.trim()).then(()=>getPopularSearchKeywords()).then(setPopular).catch(()=>{});
   }
-  // Focus a non-editable target so closing the overlay cannot reopen the keyboard.
-  container.current?.focus({preventScroll:true});
-  onSearch(value.trim());
  }
  function fillSuggestion(value){setInput(value);setActive(-1);overlayInput.current?.focus({preventScroll:true});}
  function keys(event){

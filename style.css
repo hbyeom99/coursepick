@@ -1612,6 +1612,7 @@ body,button,input,textarea,select,option,svg text{font-family:"Noto Sans KR",san
 .app-shell.view-home.home-popup-open .home-event-shade{bottom:max(8.64929dvh,62px)}
 .app-shell.view-home.home-popup-open .home-event-popup{margin-bottom:0}
 .home-event-art{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;justify-content:space-between;gap:8px;padding:12px 16px;color:#fff;background-position:center;background-size:cover}
+.home-event-art{cursor:pointer}.home-event-art:focus-visible{outline:3px solid #8f5cfb;outline-offset:-3px}
 .home-event-topline{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;min-width:0}.home-event-meta{color:#fff;text-align:right;font-size:10px;line-height:1.4;font-weight:700;text-shadow:0 1px 4px #000b;white-space:nowrap}
 .home-event-copy{min-width:0}.home-event-art h2{margin:0;color:#fff;font-size:clamp(18px,6.15cqi,25px);line-height:1.15;letter-spacing:-.5px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;text-shadow:0 1px 4px #000b}.home-event-art>b{display:block;margin-top:4px;color:#fff;font-size:12px;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 1px 4px #000b}.home-event-art p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;margin:5px 0 0;color:#fff;font-size:10px;line-height:1.35;text-shadow:0 1px 4px #000b}
 .home-event-badge{flex-shrink:0;align-self:flex-start;border-radius:20px;background:#9257f7;padding:5px 10px;color:#fff;font-size:10px;line-height:1.2}

@@ -14,15 +14,17 @@ export const travelTasteQuestions=[
 ].map((question,questionIndex)=>({...question,options:question.options.map((answer,answerIndex)=>({...answer,
  illustrations:[1,2].map(iconIndex=>`/images/taste-test/q${questionIndex+1}-${answerIndex*2+iconIndex}.${questionIndex===7&&answerIndex===1&&iconIndex===2?'svg':'png'}`)
 }))}));
-// Scores use the existing axis directions: P, A, D and M increase toward 100.
-// First-test baseline stays within 30–70; later preference updates remain independent.
-// Average within each axis so the two spending questions carry the same axis weight.
+// Each selected answer moves its axis by 16 points from the neutral midpoint.
+// P, A, D and M increase toward 100; the result always stays in the 0–100 range.
 export function travelTasteTestResult(answers){
  if(!Array.isArray(answers)||answers.length!==travelTasteQuestions.length||!Array.from(answers).every(v=>v===0||v===1))return null;
  const result={};
  for(const axis of ['planning','experience','exploration','spending']){
-  const values=travelTasteQuestions.flatMap((q,index)=>q.axis===axis?[q.scores[answers[index]]]:[]);
-  result[axis]=Math.round(50+(values.reduce((sum,value)=>sum+value,0)/values.length-50)*0.4);
+  const score=travelTasteQuestions.reduce((total,question,index)=>{
+   if(question.axis!==axis)return total;
+   return total+(question.scores[answers[index]]>=50?16:-16);
+  },50);
+  result[axis]=Math.max(0,Math.min(100,score));
  }
  return result;
 }

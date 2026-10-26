@@ -10,8 +10,8 @@ export function travelRecommendationEligible(place,query=''){
  // External lookup metadata is also present when saved references are resolved.
  const external=Boolean(place._kakaoLookup||place.lookup||place.sourcePlaceId||String(place.id||'').startsWith('kakao-candidate:'));
  if(external){
-  const shopping=['빈티지숍','빈티지샵','편집숍','소품샵'].includes(key(query));
-  if(shopping&&/패션|의류판매|잡화점|소품|편집숍/.test(path))return true;
+  const shopping=['쇼핑','쇼핑몰','아울렛','빈티지숍','빈티지샵','편집숍','소품샵','소품샾','소품','잡화','잡화점','기념품샵','문구점'].includes(key(query));
+  if(shopping&&/패션|의류판매|잡화|소품|편집숍|기념품|문구|팬시|인테리어|셀렉트숍|라이프스타일/.test(`${path} ${place.name||''}`))return true;
   return Boolean(path&&travelPath.test(path));
  }
  return ['관광지','음식점','카페','숙소','체험'].includes(place.category)||travelPath.test(path);

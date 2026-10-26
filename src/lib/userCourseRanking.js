@@ -7,8 +7,8 @@ export function rankUserCourses(courses,query,affinity,placesOf=()=>[],relatedQu
   .map(item=>item.course);
 }
 
-export function appendUserExamples(existing,examples){
+export function appendUserExamples(existing,examples,limit=20){
  const ids=new Set(existing.map(c=>c.id));
- const additions=examples.filter(c=>{if(ids.has(c.id))return false;ids.add(c.id);return true;}).slice(0,Math.max(0,6-existing.length));
+ const additions=examples.filter(c=>{if(ids.has(c.id))return false;ids.add(c.id);return true;}).slice(0,Math.max(0,limit-existing.length));
  return [...existing,...additions];
 }

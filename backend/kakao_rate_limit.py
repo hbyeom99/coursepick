@@ -26,7 +26,7 @@ class KakaoRequestLimiter:
                 raise HTTPException(429,dict(message='검색 요청이 많습니다. 잠시 후 다시 검색해 주세요.',retryAfterSeconds=seconds),headers={'Retry-After':str(seconds),'Cache-Control':'no-store, private'})
             calls.extend([now]*cost);self.clients[client]=calls;self.global_calls.extend([now]*cost)
 
-limiter=KakaoRequestLimiter()
+limiter=KakaoRequestLimiter(per_client=120,global_limit=600,window=60)
 def admit_request(request,cost=1):
     if request is None:return # Direct trusted Python callers; HTTP always injects Request.
     host=request.client.host if request.client else 'unknown'
