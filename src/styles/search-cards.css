@@ -1,3 +1,8 @@
-.course-visual-card.shows-title .course-visual-title{position:absolute!important;left:12px;right:12px;top:50%;transform:translateY(-50%);width:auto!important;height:auto!important;margin:0!important;padding:0!important;clip-path:none!important;overflow:visible!important;white-space:normal!important;color:white;font-size:clamp(16px,4.8cqi,23px);font-weight:750;line-height:1.4;word-break:keep-all;text-align:center;text-shadow:0 1px 5px #0009}
+.course-visual-card.shows-title .course-visual-title{position:absolute!important;left:12px;right:12px;top:50%;transform:translateY(-50%);width:auto!important;height:auto!important;margin:0!important;padding:0!important;clip-path:none!important;overflow:visible!important;white-space:normal!important;color:white;font-weight:750;line-height:1.4;word-break:keep-all;text-align:center;text-shadow:0 1px 5px #0009}
 .course-visual-card.shows-title .course-visual-tags{display:none}
-.course-virtual-author{position:absolute;top:8px;left:8px;right:8px;pointer-events:none;color:white;background:#30234799;border-radius:5px;padding:3px 6px;font-size:10px;z-index:2;width:max-content;max-width:calc(100% - 16px)}
+.course-virtual-author{position:absolute;top:8px;left:8px;right:8px;pointer-events:none;color:white;background:#30234799;border-radius:5px;padding:3px 6px;z-index:2;width:max-content;max-width:calc(100% - 16px)}
+
+/* Fixed font sizes based on the 390px design; no viewport scaling. */
+.course-visual-card.shows-title .course-visual-title{font-size:18.72px}
+
+.course-virtual-author{font-size:13.33px}

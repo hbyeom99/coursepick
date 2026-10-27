@@ -1,3 +1,5 @@
+from report_saved_dates import DATE_KEY, TRACKED_KEYS, course_ids as report_course_ids, next_dates
+from datetime import datetime, timezone
 from editorial_copy_validation import validate_editorial_copies
 import json
 from title_filter import validate_course_title
@@ -165,16 +167,19 @@ def save(body: Value, authorization: str | None = Header(None)):
             course['author'], course['authorId'] = author, str(user.id)
         body.value = courses
 
-    # 모든 제목이 검사를 통과한 뒤 DB에 저장합니다.
+    # Store save dates atomically with the course list, for future annual reports.
     try:
-        db().table('member_data').upsert(
-            {
-                'user_id': str(user.id),
-                'data_key': body.key,
-                'value': body.value
-            },
-            on_conflict='user_id,data_key'
-        ).execute()
+        client=db()
+        record={'user_id':str(user.id),'data_key':body.key,'value':body.value}
+        records=[record]
+        if body.key in TRACKED_KEYS:
+            rows=client.table('member_data').select('data_key,value').eq('user_id',str(user.id)).in_('data_key',[body.key,DATE_KEY]).execute().data
+            stored={row['data_key']:row['value'] for row in rows}
+            previous=report_course_ids(body.key,stored.get(body.key,[]))
+            current=report_course_ids(body.key,body.value)
+            dates=next_dates(previous,current,stored.get(DATE_KEY,{}),datetime.now(timezone.utc).isoformat())
+            records.append({'user_id':str(user.id),'data_key':DATE_KEY,'value':dates})
+        client.table('member_data').upsert(records if len(records)>1 else record,on_conflict='user_id,data_key').execute()
 
     except Exception:
         raise HTTPException(

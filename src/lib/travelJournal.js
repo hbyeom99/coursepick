@@ -33,17 +33,25 @@ export function completeDemo(state,id,points=300){if(!Number.isInteger(points)||
 // Archive coverage follows the courses in My Journals as requested, without
 // changing written-visit records used by the recap or storing provider content.
 export function archiveStats(courses,journals,catalog){
- const byId=new Map(catalog.map(p=>[p.id,p])),visits=[];
- const seenCourses=new Set();
- for(const course of courses){
-  if(seenCourses.has(course.id))continue;seenCourses.add(course.id);
-  const record=journals.find(j=>j.courseId===course.id),ids=[...new Set([...(course.stopIds||[]),...(record?.placeIds||[])])];
-  const found=ids.map(id=>byId.get(id)).filter(Boolean);visits.push(...found);
-  if(course.editorialVisits?.length)visits.push(...course.editorialVisits.filter(v=>!v.place_id||!ids.includes(v.place_id)).map(v=>({region:v.region||course.region,location:v.location||'',id:v.visit_id})));
-  if(!found.length&&!course.editorialVisits?.length&&course.region&&course.region!=='지역 미정'&&course.region!=='여러 지역')visits.push({region:course.region,id:course.id});
+ const byId=new Map(catalog.map(place=>[place.id,place]));
+ const byCourse=new Map(courses.map(course=>[course.id,course]));
+ const visits=new Map();
+ for(const record of journals){
+  const course=byCourse.get(record.courseId),ids=[...new Set(record.placeIds||[])];
+  let matched=false;
+  for(const id of ids){
+   const visit=course?.editorialVisits?.find(v=>v.place_id===id||v.visit_id===id);
+   const place=byId.get(id)||visit;
+   if(place){const resolved={...place,region:place.region||course?.region,location:place.location||''};visits.set(id,resolved);if(placeDistrict(resolved))matched=true;}
+  }
+  if(!matched&&course?.region){
+   for(const region of course.region.split(/[·,/]/).map(value=>value.trim()).filter(Boolean)){
+    const fallback={id:'course-region:'+course.id+':'+region,region};
+    if(placeDistrict(fallback))visits.set(fallback.id,fallback);
+   }
+  }
  }
- for(const record of journals)if(!seenCourses.has(record.courseId))visits.push(...record.placeIds.map(id=>byId.get(id)).filter(Boolean));
  const provinceCounts={},districtCounts={};let unmatched=0;
- for(const place of visits){const area=placeDistrict(place);if(!area){unmatched++;continue;}provinceCounts[area.province]=(provinceCounts[area.province]||0)+1;if(area.district)districtCounts[area.district]=(districtCounts[area.district]||0)+1;}
+ for(const place of visits.values()){const area=placeDistrict(place);if(!area){unmatched++;continue;}provinceCounts[area.province]=(provinceCounts[area.province]||0)+1;if(area.district)districtCounts[area.district]=(districtCounts[area.district]||0)+1;}
  return {provinces:Object.keys(provinceCounts),districts:Object.keys(districtCounts),provinceCounts,districtCounts,unmatched};
 }

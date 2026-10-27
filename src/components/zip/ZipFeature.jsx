@@ -1,3 +1,4 @@
+import LoadingPage from '../LoadingPage.jsx';
 import useCourseGeneration from '../../lib/useCourseGeneration.js';
 import {roomTasteTotals} from '../../lib/zipRooms.js';
 import {allowedHomeQuery,loadHomeSearchKeywords} from '../../lib/homeSearchIntent.js';

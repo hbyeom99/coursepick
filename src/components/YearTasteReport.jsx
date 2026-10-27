@@ -1,0 +1,33 @@
+import React,{useEffect,useMemo,useState} from 'react';
+import LoadingPage from './LoadingPage.jsx';
+import {buildTasteReport} from '../lib/tasteReport.js';
+const api=(import.meta.env.VITE_API_BASE_URL?.trim()||(import.meta.env.DEV?'http://localhost:8000':'')).replace(/\/+$/,'');
+const fallback='/images/profile-default.svg';
+function Image({src,alt='',className,fallbackSrc=fallback}){return <img className={className} src={src||fallback} alt={alt} onError={e=>{e.currentTarget.onerror=null;e.currentTarget.src=fallbackSrc;}}/>;}
+export function TasteReportView({report,yearControl,onShare,sharing=false,shareUrl,notice,shared=false}){
+ const {year,topTags=[],companion,percentage,sameCount,rarityRank}=report;
+ return <section className="year-taste-report" aria-label={`${year} 나의 취향 리포트`}>
+  <div className="year-report-toolbar">{yearControl||<span>{year}</span>}</div>
+  <div className="year-report-hero"><img src="/images/taste-report/hero-banner.png" alt="당신의 여행 취향을 다시 만나볼까요? 올해의 코스와 키워드를 분석해 나만의 여행 취향을 리포트로 정리했어요."/><span>{year}년,</span></div>
+  <div className="year-report-peer" title="4축 성향을 각 50점 기준으로 구분한 16개 유형 중, 현재 성향을 입력한 전체 회원 대비 같은 유형의 비율입니다." role="img" aria-label={percentage==null?'성향을 입력하면 같은 성향의 여행자 비율을 확인할 수 있어요':`나와 같은 여행자 비율 ${percentage}%, ${sameCount}명. 성향 입력 사용자 ${report.totalCount}명 기준`}>
+   <img src="/images/taste-report/peer-card.png" alt=""/><strong className="year-report-percentage">{percentage==null?'—':percentage}<small>%</small></strong>
+  </div>
+  <article className="year-report-keywords"><h2>나의 최애 키워드 TOP 3</h2>{topTags.length?<div className="year-report-keyword-grid">{topTags.map((item,index)=><div className="year-report-keyword" key={item.tag}><div><Image src={item.image||'/images/course-image-placeholder.svg'} fallbackSrc="/images/course-image-placeholder.svg"/><b>{index+1}</b></div><strong>#{item.tag}</strong><span className="sr-only">{item.count}개 코스에서 사용</span></div>)}</div>:<p className="year-report-empty">선택한 연도의 코스·여행기 기록이 아직 없어요.</p>}
+   {report.undatedSaved>0&&<small className="year-report-data-note">저장 날짜가 없는 코스 {report.undatedSaved}개는 연도별 집계에서 제외했어요.</small>}
+  </article>
+  <article className="year-report-companion"><h2>가장 많이 함께한 멤버 <span title="선택한 연도의 Zip 여행 방에서 함께 참여한 횟수 기준">ⓘ</span></h2>{companion?<><div className="year-report-member"><div className="year-report-profile"><span aria-hidden="true">👑</span><Image src={companion.photo} alt={`${companion.name} 프로필`}/></div><div><strong>{companion.name}</strong><p>올해 {companion.count}번 함께 여행했어요!</p></div><span aria-hidden="true">›</span></div><div className="year-report-member-note"><p>{companion.name}님과 올해 가장 많은<br/>코스에서 함께했어요!</p></div></>:<p className="year-report-empty">선택한 연도에 함께 참여한 Zip 여행 방이 없어요.</p>}</article>
+  {!shared&&<button type="button" className="year-report-share" aria-label="나의 취향 리포트 공유하기" onClick={onShare} disabled={sharing}>{sharing?'공유 링크 생성 중…':<img src="/images/taste-report/share.svg" alt=""/>}</button>}
+  {shareUrl&&<div className="year-report-share-result"><label>공유 링크<input readOnly value={shareUrl} onFocus={e=>e.target.select()}/></label><small>링크는 30일간 유효합니다.</small></div>}
+  {notice&&<p role="status" className="year-report-data-note">{notice}</p>}
+ </section>;
+}
+export default function YearTasteReport({account,savedCourses=[],courseCatalog=[],journals=[],zipRooms=[],catalog=[],requireMember}){
+ const current=Number(new Intl.DateTimeFormat('en',{timeZone:'Asia/Seoul',year:'numeric'}).format(new Date())),[year,setYear]=useState(current),[context,setContext]=useState(null),[rooms,setRooms]=useState(zipRooms),[loading,setLoading]=useState(false),[error,setError]=useState(''),[sharing,setSharing]=useState(false),[shareUrl,setShareUrl]=useState(''),[notice,setNotice]=useState(''),[retry,setRetry]=useState(0);
+ useEffect(()=>{if(!account?.access_token){setContext(null);setRooms(zipRooms);return;}const abort=new AbortController();setLoading(true);setError('');const headers={Authorization:'Bearer '+account.access_token};const get=async path=>{const response=await fetch(api+path,{headers,signal:abort.signal});if(!response.ok)throw Error('리포트 자료를 불러오지 못했어요.');return response.json();};Promise.all([get('/api/report/context'),get('/api/zip/rooms')]).then(([stats,data])=>{setContext(stats);setRooms(data.rooms||[]);setYear(value=>Math.max(stats.joinedYear,Math.min(stats.currentYear,value)));}).catch(e=>{if(e.name!=='AbortError')setError(e.message);}).finally(()=>{if(!abort.signal.aborted)setLoading(false);});return()=>abort.abort();},[account?.access_token,retry]);
+ const report=useMemo(()=>({...buildTasteReport({year,savedCourses:savedCourses.map(course=>({...course,savedAt:context?.savedDates?.[course.id]||course.savedAt})),courseCatalog,journals,zipRooms:rooms,catalog,userId:account?.userId}),percentage:context?.percentage??null,sameCount:context?.sameCount??null,totalCount:context?.totalCount??0,rarityRank:context?.rarityRank??null}),[year,savedCourses,courseCatalog,journals,rooms,catalog,account?.userId,context]);
+ async function share(){if(!requireMember?.()||sharing)return;setSharing(true);setNotice('');try{const body={year,topTags:report.topTags,companion:report.companion?{name:report.companion.name,photo:report.companion.photo,count:report.companion.count}:null,undatedSaved:report.undatedSaved,courseCount:report.courseCount};const response=await fetch(api+'/api/report/share',{method:'POST',headers:{Authorization:'Bearer '+account.access_token,'Content-Type':'application/json'},body:JSON.stringify(body)});const result=await response.json();if(!response.ok)throw Error(typeof result.detail==='string'?result.detail:'공유 링크를 만들지 못했어요.');const url=new URL(location.origin+location.pathname);url.searchParams.set('tasteReport',result.token);setShareUrl(url.href);try{await navigator.clipboard.writeText(url.href);setNotice('공유 링크를 복사했어요.');}catch{setNotice('아래 공유 링크를 복사해 주세요.');}}catch(e){setNotice(e.message);}finally{setSharing(false);}}
+ const first=context?.joinedYear||current;const years=Array.from({length:Math.max(1,current-first+1)},(_,i)=>current-i);
+ if(loading)return <LoadingPage message="나의 여행 취향을 분석하고 있어요"/>;
+ if(error)return <section className="year-report-error"><p role="alert">{error}</p><button type="button" onClick={()=>setRetry(v=>v+1)}>다시 불러오기</button></section>;
+ return <TasteReportView report={report} yearControl={<select aria-label="리포트 연도" value={year} onChange={e=>{setYear(Number(e.target.value));setShareUrl('');setNotice('');}}>{years.map(y=><option key={y} value={y}>{y}</option>)}</select>} onShare={share} sharing={sharing} shareUrl={shareUrl} notice={notice}/>;
+}

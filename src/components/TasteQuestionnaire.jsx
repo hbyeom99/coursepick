@@ -1,22 +1,11 @@
 import React,{useState} from 'react';
 import {travelTasteQuestions as questions} from '../lib/travelTasteTest.js';
 
-function StickerBand({items,seed,className}){
- return <div className={`taste-sticker-band ${className}`} aria-hidden="true">{items.map(({question,index},slot)=>{
-  const random=seed[index],left=10+slot*19+random*4;
-  return <span key={`${index}-${question.answer}`} className="taste-sticker-choice" style={{left:`${left}%`,top:`${5+(random*19)%16}px`,transform:`translateX(-50%) rotate(${random*32-16}deg)`}}>{question.options[question.answer].illustrations.map((src,iconIndex)=><img key={`${src}-${iconIndex}`} src={src} alt="" draggable="false"/>)}</span>;
- })}</div>;
-}
-
 export default function TasteQuestionnaire({onComplete}){
  const [step,setStep]=useState(0);
  const [answers,setAnswers]=useState(Array(questions.length).fill(null));
  const [notice,setNotice]=useState(''),[saving,setSaving]=useState(false);
  const [direction,setDirection]=useState('forward');
- const [seed]=useState(()=>Array.from({length:questions.length},()=>Math.random()));
- const previous=questions.slice(0,step).map((question,index)=>({question:{...question,answer:answers[index]},index})).filter(v=>v.question.answer!==null);
- const displayedAnswers=answers[step]===null?previous:[...previous,{question:{...questions[step],answer:answers[step]},index:step}];
- const visibleStickers=displayedAnswers.slice(-10);
  async function next(){
   if(saving||answers[step]===null)return;
   setNotice('');
@@ -34,7 +23,7 @@ export default function TasteQuestionnaire({onComplete}){
     <span>{step+1} / {questions.length}</span>
    </div>
    <h1>나의 여행 취향 테스트</h1>
-   <StickerBand items={visibleStickers.slice(0,5)} seed={seed} className="taste-stickers-before"/>
+   <div className="taste-sticker-band taste-stickers-before" aria-hidden="true"/>
    <h2 key={step} aria-live="polite">{questions[step].question}</h2>
    <div key={`options-${step}`} className="taste-test-options" role="group" aria-label="답변 선택">
     {questions[step].options.map((option,index)=><button type="button" key={option.text} disabled={saving} aria-pressed={answers[step]===index} className={answers[step]===index?'selected':''} onClick={()=>setAnswers(values=>values.map((v,i)=>i===step?index:v))}>
@@ -43,7 +32,7 @@ export default function TasteQuestionnaire({onComplete}){
      <span className="taste-answer-art" aria-hidden="true">{option.illustrations.map(src=><img key={src} src={src} alt="" draggable="false"/>)}</span>
     </button>)}
    </div>
-   <StickerBand items={visibleStickers.slice(5,10)} seed={seed} className="taste-stickers-after"/>
+   <div className="taste-sticker-band taste-stickers-after" aria-hidden="true"/>
    {notice&&<p className="welcome-notice" role="alert">{notice}</p>}
    <div className="taste-test-bottom">
     <button type="button" className="welcome-primary taste-test-next" disabled={answers[step]===null||saving} onClick={next}>{saving?'저장 중…':'다음'}</button>
