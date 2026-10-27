@@ -3870,3 +3870,19 @@ svg text{font-size:13.33px}
 .modal-backdrop:has(.course-save-choice-modal),
 .journal-modal-shade:has(.course-save-choice-modal),
 .jc-save-shade{z-index:5000;bottom:0}
+
+.journal-detail{position:fixed;inset:0;z-index:2500;background:#fff;overflow-y:auto;color:#292333;text-align:left}
+.journal-detail>header{position:sticky;top:0;display:flex;align-items:center;gap:12px;padding:20px 18px;background:#fff;z-index:1;border-bottom:1px solid #eee}
+.journal-detail>header h1{flex:1;margin:0;font-size:19px}.journal-detail>header button{border:0;background:none;color:#8F5CFB;font-size:16px}
+.journal-detail-body{padding:20px 22px 40px}.journal-detail-body h2{font-size:22px;margin:18px 0 10px}.journal-detail-date,.journal-detail-empty{font-size:14px;color:#9293a0}
+.journal-detail-review{font-size:17px;line-height:1.7;white-space:pre-wrap;overflow-wrap:anywhere}
+.journal-detail-photos{display:flex;flex-wrap:wrap;gap:8px}.journal-detail-photos img{width:calc(50% - 4px);height:160px;object-fit:cover;border-radius:10px}.journal-detail-photos img:only-child{width:100%;height:auto;max-height:400px;object-fit:contain}
+.journal-detail-body article{padding:18px 0;border-top:1px solid #eee}.journal-detail-body h3{font-size:18px;display:flex;gap:8px;align-items:center}.journal-detail-body h3>span{display:inline-grid;place-items:center;min-width:24px;height:24px;border-radius:50%;background:#8F5CFB;color:#fff;font-size:14px}.journal-detail-stars{font-size:22px;color:#8F5CFB}
+.app-shell:has(.journal-detail)>.bottom-nav{visibility:hidden}
+
+/* SVG confirmation artwork must not be pushed down by the legacy flex header. */
+.zip-dialog.zip-room-confirm-modal.zip-svg-confirm{display:block;flex:none}
+.zip-dialog.zip-room-confirm-modal.zip-svg-confirm>header{height:0;min-height:0;flex:none;margin:0;padding:0}
+.zip-dialog.zip-room-confirm-modal.zip-svg-confirm>.zip-confirm-art{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;margin:0}
+
+.journal-detail-map{margin:0 0 20px;border-radius:14px;overflow:hidden}.journal-detail-map .route-map{position:relative;top:auto;width:100%;height:240px;min-height:240px}
