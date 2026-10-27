@@ -3828,3 +3828,5 @@ svg text{font-size:13.33px}
 .zip-dialog.zip-svg-confirm>header>.zip-icon-button{position:absolute;right:4%;top:12%;width:10%;height:17%;opacity:0;z-index:2}
 .zip-dialog.zip-room-confirm-modal.zip-svg-confirm>.zip-primary{position:absolute;left:3.92%;top:66.96%;width:92.44%;height:22.32%;min-height:0;margin:0;padding:0;opacity:0;z-index:2}
 .zip-svg-confirm button:focus-visible{opacity:1!important;outline:2px solid #fff;background:#8F5CFB;color:#fff}
+
+.app-shell .zip-join-confirm>button{font-size:17px}
