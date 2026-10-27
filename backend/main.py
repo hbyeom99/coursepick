@@ -413,3 +413,6 @@ app.include_router(google_places_router)
 
 from editorial_courses import router as editorial_router
 app.include_router(editorial_router)
+
+from taste_report import router as taste_report_router
+app.include_router(taste_report_router)

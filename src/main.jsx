@@ -21,7 +21,9 @@ if (import.meta.env.DEV) {
 const root=createRoot(document.getElementById('root'));
 root.render(<LoadingPage/>);
 const bootTimeout=setTimeout(()=>root.render(<div role="alert" style={{padding:32}}>페이지를 불러오지 못했어요.<button onClick={()=>location.reload()}>다시 시도</button></div>),30000);
-const page=new URLSearchParams(location.search).has('googlePlace')
+const page=new URLSearchParams(location.search).has('tasteReport')
+ ? import('./components/SharedTasteReport.jsx')
+ : new URLSearchParams(location.search).has('googlePlace')
  ? import('./components/GooglePlaceInfo.jsx')
  : import('./components/MemberGate.jsx');
 page.then(({default:App})=>{clearTimeout(bootTimeout);root.render(<React.StrictMode><App /></React.StrictMode>);}).catch(()=>{clearTimeout(bootTimeout);root.render(<div role="alert">페이지를 불러오지 못했어요. <button onClick={()=>location.reload()}>다시 시도</button></div>);});

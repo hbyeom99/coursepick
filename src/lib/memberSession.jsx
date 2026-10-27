@@ -1,3 +1,4 @@
+import {initialMemberValue} from './memberStoredValue.js';
 import React,{createContext,useContext,useEffect,useLayoutEffect,useState,useRef} from 'react';
 import {readGuestDraft,writeGuestDraft,clearGuestDraft,hasGuestWork} from './guestDraft.js';
 const Context=createContext(null);
@@ -14,7 +15,7 @@ export function MemberProvider({account,children,onLogout,onLogin}) {
 export function useMemberContext(){return useContext(Context);}
 export function useMemberStored(key,initial,valid) {
  const context=useContext(Context),userId=context?.account.userId||'guest',isDraft=key==='coursepick.draft.v1';
- const [value,set]=useState(()=>{const local=isDraft?readGuestDraft(userId):null;const stored=context?.account.values?.[key];return valid(local)?local:valid(stored)?stored:initial;});
+ const [value,set]=useState(()=>{const local=isDraft?readGuestDraft(userId):null;const stored=context?.account.values?.[key];return initialMemberValue({isDraft,local,stored,initial,valid});});
  const [failed,setFailed]=useState(false);
  const identity=useRef(userId),committed=useRef(context?.account.isGuest?null:JSON.stringify(value));
  useLayoutEffect(()=>{

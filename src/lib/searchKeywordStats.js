@@ -1,3 +1,4 @@
+import { validateSearchQuery } from './searchQueryValidation.js';
 const base=(import.meta.env.VITE_API_BASE_URL?.trim()||(import.meta.env.DEV?'http://localhost:8000':'')).replace(/\/+$/,'');
 
 export async function getPopularSearchKeywords(signal){
@@ -8,6 +9,7 @@ export async function getPopularSearchKeywords(signal){
 }
 
 export async function recordPopularSearchKeyword(keyword){
+ if(!validateSearchQuery(keyword).valid)return false;
  try{
   await fetch(`${base}/api/search-keywords/record`,{method:'POST',cache:'no-store',headers:{'Content-Type':'application/json'},body:JSON.stringify({keyword})});
  }catch{/* Search remains available while aggregate statistics are offline. */}

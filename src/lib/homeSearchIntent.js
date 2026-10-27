@@ -1,9 +1,12 @@
+import {validateSearchQuery} from './searchQueryValidation.js';
 import approvedRelations from '../data/approvedSearchRelations.json' with {type:'json'};
 import {travelRecommendationEligible,natureIntentEvidence,activityEvidenceMatch,confirmedConditionMatch,gentleTravelEligible,spaTravelEligible,spaAnchorEvidence} from './recommendationEvidence.js';
 import {placeKeywordCondition,keywordAlternatives,keywordConditions} from './semanticKeywords.js';
 import {placeArea} from './travelFilters.js';
 export const searchKey=value=>String(value||'').normalize('NFKC').toLowerCase().replace(/\s+/g,'');
 export const HOME_SEARCH_KEYWORDS=[];
+const homeQueryAliases=new Map([['소품샾','소품샵']]);
+const canonicalHomeKey=value=>homeQueryAliases.get(searchKey(value))||searchKey(value);
 let administrativeRegions={},groups={};
 const allowed=new Map(),groupByKey=new Map();
 let homeSearchDataPromise;
@@ -17,7 +20,8 @@ export function loadHomeSearchKeywords(){
   for(const [,chunk] of chunks){if(Array.isArray(chunk['전국 행정구역']))administrativeKeywords.push(...chunk['전국 행정구역']);else Object.assign(otherGroups,chunk);}
   groups={'전국 행정구역':administrativeKeywords,...otherGroups};
   const keywords=[...new Set(Object.values(groups).flat())];
-  HOME_SEARCH_KEYWORDS.splice(0,HOME_SEARCH_KEYWORDS.length,...keywords);
+  HOME_SEARCH_KEYWORDS.length=0;
+  for(const keyword of keywords)HOME_SEARCH_KEYWORDS.push(keyword);
   allowed.clear();groupByKey.clear();
   for(const label of keywords)allowed.set(searchKey(label),label);
   for(const [group,words] of Object.entries(groups))for(const word of words)groupByKey.set(searchKey(word),group);
@@ -44,8 +48,9 @@ export async function loadHomeSearchData({regions=[]}={}){
  }
  return HOME_SEARCH_KEYWORDS;
 }
-export const allowedHomeQuery=value=>allowed.has(searchKey(value));
-export function homeSearchSuggestions(input){const key=searchKey(input);return HOME_SEARCH_KEYWORDS.filter(word=>!key||searchKey(word).includes(key)).slice(0,8);}
+export const allowedHomeQuery=value=>allowed.has(searchKey(value))||allowed.has(canonicalHomeKey(value));
+export function explicitHomeSearchPeriod(value){if(/당일|하루/.test(searchKey(value)))return '당일치기';const match=searchKey(value).match(/([12])박([23])일/);if(!match||Number(match[2])!==Number(match[1])+1)return null;return `${match[1]}박 ${match[2]}일`;}
+export function homeSearchSuggestions(input){const key=canonicalHomeKey(input);return HOME_SEARCH_KEYWORDS.filter(word=>!key||searchKey(word).includes(key)).slice(0,8);}
 const tagCandidateContexts=[
  {pattern:/음식|식당|맛집|먹방|요리|고기|꼬치|구이|삼겹|갈비|치킨|국밥|냉면|파스타|해산물|회|탕|찌개|밥|면|떡볶이|빵|베이커리|디저트|양꼬치/i,groups:['음식','기존태그']},
  {pattern:/카페|커피|로스터리|브런치|빵집|베이커리|디저트/i,groups:['카페','기존태그']},
@@ -54,7 +59,7 @@ const tagCandidateContexts=[
  {pattern:/체험|액티비티|공방|만들기|스포츠|레저|놀이|캠핑|낚시|수상|클라이밍|방탈출/i,groups:['체험','시설','기존태그']},
 ];
 export function searchTagCandidates(value,limit=160){
- const raw=String(value||'').trim(),key=searchKey(raw);if(!key||!Object.keys(groups).length)return [];
+ const raw=String(value||'').trim(),key=canonicalHomeKey(raw);if(!key||!Object.keys(groups).length)return [];
  const candidates=[],seen=new Set(),add=word=>{const label=allowed.get(searchKey(word));if(label&&!seen.has(searchKey(label))){seen.add(searchKey(label));candidates.push(label);}};
  const terms=[key,...keywordConditions(raw).map(searchKey)].filter(term=>term.length>=2);
  // Prefer exact and existing dictionary matches before broader contextual candidates.
@@ -95,12 +100,14 @@ const calm=['카페','정원','공원','박물관','미술관','온천','수목�
 const social=['카페','정원','공원','전망','전시','미술관','체험','공방','해변'];
 const active=['체험','공방','놀이공원','테마파크','레저','스포츠','방탈출','보드게임'];
 export function interpretHomeSearch(value,filters={},options={}){
- const raw=String(value||'').trim(),key=searchKey(raw),label=allowed.get(key)||raw;if(!key)return {allowed:false,empty:true,key,query:raw,terms:[],notes:[],requests:[]};
+ const raw=String(value||'').trim(),key=canonicalHomeKey(raw),label=allowed.get(key)||raw;if(!key||!validateSearchQuery(raw).valid)return {allowed:false,empty:!key,key,query:raw,terms:[],notes:[],requests:[]};
  const group=groupByKey.get(key),region=regionOf(label),regional=Boolean(region);
+ const periodKey=searchKey(filters.period),queryDays=explicitHomeSearchPeriod(key),durationFromQuery=queryDays==='당일치기'?1:queryDays?Number(queryDays.match(/(\d+)일$/)?.[1]):null;
+ const durationFromFilter=periodKey==='당일치기'?1:periodKey==='1박2일'?2:periodKey==='2박3일'?3:null;
  const deterministicTerms=normalizedAliases.get(key)||(allowed.has(key)?keywordAlternatives(label):keywordConditions(label));
  const mappedTags=[...new Set((options.mappedTags||filters.searchTags||[]).filter(tag=>typeof tag==='string'&&allowed.has(searchKey(tag))).map(tag=>allowed.get(searchKey(tag))))];
- const rule={allowed:true,key,query:label,group,region,terms:[...new Set([...deterministicTerms,...mappedTags])],mappedTags,days:key==='1박2일'?2:1,roles:['main','lunch','main'],maxLeg:filters.transport==='도보'?2000:10000,buffer:15,notes:[],startMinutes:540,transport:filters.transport&&filters.transport!=='전체'?filters.transport:null,anchorCategory:null};
- if(regional||['여행','투어','자유여행','나들이','휴가','방학','1박2일'].includes(key)){rule.terms=['관광지','정원','공원','박물관','전망','체험'];rule.broad=true;}
+ const rule={allowed:true,key,query:label,group,region,terms:[...new Set([...deterministicTerms,...mappedTags])],mappedTags,days:durationFromFilter||durationFromQuery||1,roles:['main','lunch','main','dinner'],maxLeg:filters.transport==='도보'?2000:10000,buffer:15,notes:[],startMinutes:540,transport:filters.transport&&filters.transport!=='전체'?filters.transport:null,anchorCategory:null};
+ if(regional||['여행','투어','자유여행','나들이','휴가','방학','당일치기','1박2일','2박3일'].includes(key)){rule.terms=['관광지','정원','공원','박물관','전망','체험'];rule.broad=true;}
  if(/효도|부모님/.test(key)){rule.terms=calm;rule.maxLeg=rule.transport==='도보'?1000:5000;rule.buffer=30;rule.gentle=true;rule.notes.push('장소 수를 줄이고 짧은 이동과 휴식 위주로 구성했습니다. 계단·경사·보행 편의는 확인이 필요합니다.');}
  else if(/힐링|휴식|휴양|여유|여행\(혼자\)|명상/.test(key)){rule.terms=calm;rule.gentle=true;rule.buffer=30;rule.notes.push('관광·식사·휴식을 여유 있게 연결했습니다.');}
  else if(/데이트|커플|신혼|기념일|소개팅|특별한날/.test(key)){rule.terms=key.includes('이색')?active:social;rule.notes.push('함께 둘러볼 장소와 식사·카페를 연결했습니다.');}
@@ -108,6 +115,17 @@ export function interpretHomeSearch(value,filters={},options={}){
  if(['유아동반','반려동물동반'].includes(key)){rule.terms=calm;rule.companion=key==='유아동반'?'infantAllowed':'petAllowed';rule.gentle=true;rule.notes.push('동반 가능 여부가 확인된 장소만 연결합니다.');}
  if(group==='카페'||/카페투어|빵지순례/.test(key)){rule.anchorCategory='카페';if(key==='카페'||key==='카페투어')rule.terms=['카페'];}
  if(group==='음식'||['맛집투어','푸드투어','미식','먹방'].includes(key)){rule.anchorCategory='음식점';if(['맛집투어','푸드투어','미식','맛집'].includes(key))rule.terms=['음식점'];rule.roles=['lunch','main','dinner'];}
+ if(group==='체험'){rule.roles=['main','main'];rule.notes.push('체험 장소를 중심으로 주변 장소를 연결합니다.');}
+ const shoppingTerms={
+  '쇼핑':['쇼핑몰','아울렛','편집숍','백화점','상점'],
+  '소품샵':['소품샵','소품','잡화'],
+  '빈티지샵':['빈티지샵','빈티지숍','편집숍'],
+  '빈티지숍':['빈티지숍','빈티지샵','편집숍'],
+  '편집숍':['편집숍','소품샵','잡화점'],
+  '기념품샵':['기념품샵','기념품','소품샵'],
+  '문구점':['문구점','팬시','소품샵'],
+ };
+ if(shoppingTerms[key]){rule.shoppingIntent=true;rule.roles=['main','main'];rule.terms=shoppingTerms[key];rule.notes.push('쇼핑 장소를 중심으로 가까운 장소를 연결합니다.');}
  if(/드라이브/.test(key)){rule.transport='자동차';rule.maxLeg=20000;rule.notes.push('자동차로 연결하는 코스이며 실제 도로 이동시간은 별도 확인이 필요합니다.');}
  if(/도보10분|가까운/.test(key)){rule.terms=key==='가까운식당'?['음식점']:['관광지','공원','카페','정원'];rule.anchorCategory=key==='가까운식당'?'음식점':rule.anchorCategory;rule.maxLeg=700;rule.notes.push('장소 간 직선거리 700m 이내로 연결합니다. 실제 도보 10분을 보장하지 않습니다.');}
  if(/야간|야경|심야|일몰|노을|별|은하수/.test(key)){rule.startMinutes=/일몰|노을/.test(key)?960:1080;rule.roles=['main','dinner','main'];rule.notes.push('저녁 방문을 제안합니다. 운영시간·일몰 시각·관측 조건은 확인이 필요합니다.');}
@@ -137,6 +155,14 @@ export function interpretHomeSearch(value,filters={},options={}){
  rule.requests=[{query:[prefix,anchor].filter(Boolean).join(' '),category:rule.anchorCategory==='음식점'?'맛집':rule.anchorCategory==='카페'?'카페':'전체'},{query:[prefix,'한식'].filter(Boolean).join(' '),category:'맛집'},{query:[prefix,'카페'].filter(Boolean).join(' '),category:'카페'}].filter((r,i,a)=>a.findIndex(v=>v.query===r.query&&v.category===r.category)===i).slice(0,3);
  if(mappedTags.length){rule.requests=[{query:[prefix,label].filter(Boolean).join(' '),category:rule.anchorCategory==='음식점'?'맛집':rule.anchorCategory==='카페'?'카페':'전체'},...mappedTags.map(tag=>({query:[prefix,tag].filter(Boolean).join(' '),category:rule.anchorCategory==='음식점'?'맛집':rule.anchorCategory==='카페'?'카페':'전체'}))].filter((request,index,all)=>all.findIndex(item=>item.query===request.query&&item.category===request.category)===index).slice(0,3);}
  if(/^(맥주|수제맥주|로컬맥주|브루어리|양조장|펍|바틀샵)$/.test(key))rule.requests=['맥주','브루어리','펍'].map(term=>({query:[prefix,term].filter(Boolean).join(' '),category:'전체'}));
+ if(group==='체험'){
+  const activityQueries=[...new Map([rule.terms[0]||label,...mappedTags,`${label} 체험`,`${label} 레저`].map(term=>[searchKey(term),term])).values()].slice(0,3);
+  rule.requests=activityQueries.map(term=>({query:[prefix,term].filter(Boolean).join(' '),category:'전체'}));
+ }
+ if(rule.shoppingIntent){
+  const shoppingQueries=[...new Map([...rule.terms,...mappedTags].map(term=>[searchKey(term),term])).values()].slice(0,3);
+  rule.requests=shoppingQueries.map(term=>({query:[prefix,term].filter(Boolean).join(' '),category:'전체'}));
+ }
  return rule;
 }
 const body=p=>searchKey([p.name,p.category,p.categoryPath,p.region,p.location,p.address,p.roadAddress,...(p.tags||[])].filter(Boolean).join(' '));
@@ -153,7 +179,7 @@ export function homeRegionMatch(p,rule,filters={}){
  return true;
 }
 export function homePlaceEligible(p,rule){
- if(!travelRecommendationEligible(p,rule.query)||!activityEvidenceMatch(p,rule.query))return false;
+ if(!(travelRecommendationEligible(p,rule.query)||(rule.mappedTags||[]).some(tag=>travelRecommendationEligible(p,tag)))||!activityEvidenceMatch(p,rule.query))return false;
  if(rule.key==='스파'&&!spaTravelEligible(p))return false;
  if(rule.companion&&p.companionInfo?.[rule.companion]!==true)return false;
  if(rule.indoor&&!['음식점','카페'].includes(p.category)&&!['실내','박물관','미술관','전시','서점','도서관'].some(v=>body(p).includes(searchKey(v))))return false;
@@ -163,7 +189,8 @@ export function homePlaceEligible(p,rule){
 }
 export function homeAnchorMatch(p,rule){
  if(!homePlaceEligible(p,rule))return false;
- if(rule.anchorCategory&&p.category!==rule.anchorCategory)return false;
+ if(rule.anchorCategory&&p.category!==rule.anchorCategory&&!(p.tags||[]).some(tag=>rule.terms.some(term=>searchKey(tag)===searchKey(term))))return false;
+ if(rule.shoppingIntent){const evidence=searchKey([p.name,p.category,p.categoryPath,...(p.tags||[])].filter(Boolean).join(' '));return rule.terms.some(term=>evidence.includes(searchKey(term)))||/소품|잡화|팬시|기념품|편집숍|빈티지|문구|인테리어|셀렉트숍|라이프스타일/.test(evidence);}
  if(rule.key==='스파')return spaAnchorEvidence(p);
  const nature=natureIntentEvidence(p,rule.query);if(nature!==null)return nature;
  const condition=confirmedConditionMatch(p,rule.query);if(condition!==null)return condition;

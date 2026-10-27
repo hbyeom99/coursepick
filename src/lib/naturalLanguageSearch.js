@@ -1,3 +1,4 @@
+import { validateSearchQuery } from './searchQueryValidation.js';
 import {citiesFor,travelRegions} from './travelFilters.js';
 import {searchTagCandidates} from './homeSearchIntent.js';
 
@@ -20,7 +21,7 @@ function sessionId(){
 
 export async function interpretNaturalSearch(query,{filters,catalog,token,signal,candidateTags:providedCandidateTags}={}){
  const text=String(query||'').trim();
- if(!text||[...text].length>50)throw Error('검색어는 1~50자로 입력해 주세요.');
+ const validation=validateSearchQuery(text);if(!validation.valid)throw Error(validation.message);
  const cities=[...new Set(travelRegions.flatMap(region=>citiesFor(catalog||[],region)))];
  const normalized=text.normalize('NFKC').replace(/\s+/g,'');
  const candidateTags=[...new Set((providedCandidateTags||searchTagCandidates(text)).filter(tag=>typeof tag==='string'))].slice(0,160);

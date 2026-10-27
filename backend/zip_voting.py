@@ -65,6 +65,25 @@ def revote(poll,poll_id,round):
  next['candidates']=[c for c in next['candidates'] if c['id'] in leaders];next['round']+=1;next['votes']={};next['status']='active';next.pop('winnerId',None)
  return next
 
+def restart_poll(poll,members,user,poll_id,round):
+ if not poll or poll['id']!=poll_id or poll['round']!=round:raise VoteError(409,'투표가 변경되었습니다. 최신 투표를 확인해 주세요.')
+ eligible=list(dict.fromkeys(members))
+ if user not in eligible:raise VoteError(403,'현재 방 멤버만 투표를 다시 시작할 수 있습니다.')
+ next=deepcopy(poll);counts,_=results(next)
+ next['history']=(next.get('history',[])+[{'round':next['round'],'counts':counts}])[-10:]
+ next['round']+=1;next['eligible']=eligible;next['votes']={};next['status']='active'
+ for key in ('winnerId','appliedAt','appliedBy'):next.pop(key,None)
+ next['restartedBy']=user;next['restartedAt']=datetime.now(timezone.utc).isoformat()
+ return next
+
+def withdraw_vote(poll,user,poll_id,round):
+ if not poll or poll['id']!=poll_id or poll['round']!=round:raise VoteError(409,'투표가 변경되었습니다. 최신 투표를 확인해 주세요.')
+ if poll.get('appliedAt'):raise VoteError(409,'이미 최종 일정에 적용한 투표는 변경할 수 없습니다.')
+ if user not in poll['eligible']:raise VoteError(403,'이번 투표 대상 멤버만 다시 투표할 수 있습니다.')
+ if user not in poll['votes']:raise VoteError(409,'아직 투표하지 않았습니다. 코스를 선택해 주세요.')
+ next=deepcopy(poll);next['votes'].pop(user);next['status']='active';next.pop('winnerId',None)
+ return next
+
 def public_poll(poll,user):
  if not poll:return None
  counts,leaders=results(poll)

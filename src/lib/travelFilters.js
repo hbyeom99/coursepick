@@ -1,3 +1,4 @@
+import administrativeRegions from '../data/visitRegions.json';
 import { coursePeriod } from './homeFeed.js';
 
 const provinces = {
@@ -28,7 +29,11 @@ export function areaMatches(place, filters) {
   return (wanted === '전체' || area.region === wanted) && (!city || area.city === city);
 }
 export function citiesFor(places, region) {
-  return [...new Set([...(region === '광주' ? ['동구','서구','남구','북구','광산구'] : []), ...places.map(placeArea).filter(area => area.region === region && area.city).map(area => area.city)])].sort((a, b) => a.localeCompare(b, 'ko'));
+  const canonical=aliases.get(region)||region;
+  const province=administrativeRegions.provinces.find(item=>aliases.get(item.name)===canonical);
+  const districts=administrativeRegions.districts.filter(item=>item.province===province?.id).map(item=>item.name.split(' ')[0]);
+  const existing=places.map(placeArea).filter(area=>area.region===canonical&&area.city).map(area=>area.city);
+  return [...new Set([...districts,...existing,...(canonical==='세종'?['세종시']:[])])].sort((a,b)=>a.localeCompare(b,'ko'));
 }
 export function companionsMatch(place, filters) {
   return (!filters.infant || place?.companionInfo?.infantAllowed === true) && (!filters.pet || place?.companionInfo?.petAllowed === true);

@@ -1,3 +1,4 @@
+from search_query_validation import validate_search_query
 """Gemini-backed parser for free-form travel search text only."""
 import hashlib
 import json
@@ -138,7 +139,7 @@ def interpret_search(
     authorization: str | None = Header(default=None),
     x_search_session: str | None = Header(default=None),
 ):
-    text = body.query.strip()
+    text = validate_search_query(body.query)
     if not text or len(text) > 50:
         raise HTTPException(422, "검색어는 1~50자로 입력해 주세요.", headers=NO_STORE)
     if body.region not in ["전체", *REGIONS] or body.period not in PERIODS or body.transport not in TRANSPORTS:

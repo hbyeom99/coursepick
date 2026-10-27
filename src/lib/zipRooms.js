@@ -1,12 +1,15 @@
+import {validTravelTaste} from './travelJournalValidation.js';
 export const zipAxes = [
-  {id:'planning',name:'계획성',left:'계획',right:'즉흥',leftCode:'P',rightCode:'S',reverse:true},
+  {id:'planning',name:'계획성',left:'즉흥',right:'계획',leftCode:'P',rightCode:'J'},
   {id:'experience',name:'경험 취향',left:'휴식',right:'활동',leftCode:'R',rightCode:'A'},
   {id:'exploration',name:'탐색 성향',left:'익숙함',right:'발견',leftCode:'F',rightCode:'D'},
   {id:'spending',name:'지출 성향',left:'절약',right:'소비',leftCode:'S',rightCode:'M'},
 ];
 
+export function roomMembersWithPersonalTaste(members,memberId,personalTaste){return members.map(m=>m.id===memberId?{...m,taste:personalTaste!=null&&validTravelTaste(personalTaste)?personalTaste:null}:m);}
+
 export function roomTasteTotals(members) {
-  const submitted = members.filter(member => zipAxes.every(axis => Number.isFinite(member.taste?.[axis.id]) && member.taste[axis.id] >= 0 && member.taste[axis.id] <= 100));
+  const submitted = members.filter(member => member.taste!=null&&validTravelTaste(member.taste));
   const totals = Object.fromEntries(zipAxes.map(axis => [axis.id, submitted.reduce((total,member) => total + member.taste[axis.id],0)]));
   const maximum = submitted.length * 100;
   const code=maximum ? zipAxes.map(a=>{const high=totals[a.id]>=maximum/2;return a.reverse?(high?a.leftCode:a.rightCode):(high?a.rightCode:a.leftCode);}).join('') : '—';

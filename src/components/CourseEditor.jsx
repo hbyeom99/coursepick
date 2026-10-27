@@ -2,7 +2,7 @@ import React,{useRef} from 'react';
 // One editor page for ordinary courses and editorial visit adapters.
 export default function CourseEditor({draft,onChange,onSubmit,onBack,backLabel='이전 페이지로 돌아가기',Icon,map,headerAction,itineraryActions,children,tagCandidates=[],selectedTags=[],onToggleTag,error,busy=false,description,managementActions}){
  const limit=useRef(Math.max(30,draft.name.length)).current;
- return <form id="course-editor-form" className="editor" onSubmit={onSubmit}>
+ return <form id="course-editor-form" className={`editor${draft.isExistingCourse?' is-existing-course':''}`} onSubmit={onSubmit}>
  <header className="editor-top"><button type="button" className="icon-button" aria-label={backLabel} disabled={busy} onClick={onBack}><Icon name="back"/></button><h1>{draft.isExistingCourse?'코스 수정하기':'코스 만들기'}</h1>{headerAction}<button type="submit" className="pill primary" disabled={busy}>{busy?'저장 중…':'저장'}</button></header>
  {map}
  <div className="editor-title-field"><label className="field-label" htmlFor="course-title"><Icon name="flag" size={14}/>코스 제목</label><div className="course-title-input-wrap"><input id="course-title" className="field" maxLength={limit} aria-invalid={Boolean(error)} aria-describedby={error?'course-title-count course-title-error':'course-title-count'} placeholder="코스 제목을 입력해주세요" value={draft.name} onChange={e=>onChange(v=>({...v,name:e.target.value}))}/><span id="course-title-count" className="char-count">{draft.name.length}/{limit}</span></div>{error&&<p id="course-title-error" className="form-error" role="alert">{error}</p>}</div>

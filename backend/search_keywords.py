@@ -1,3 +1,4 @@
+from search_query_validation import validate_search_query
 import json
 import os
 import unicodedata
@@ -49,7 +50,8 @@ def popular_search_keywords():
 
 @router.post("/record")
 def record_search_keyword(body: SearchKeyword):
-    keyword = _ALLOWED.get(_key(body.keyword.strip()))
+    text = validate_search_query(body.keyword,max_length=80)
+    keyword = _ALLOWED.get(_key(text))
     if not keyword:
         raise HTTPException(status_code=422, detail="허용된 검색 키워드만 집계할 수 있습니다.")
     try:

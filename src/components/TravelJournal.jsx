@@ -7,8 +7,8 @@ import {courseDay,courseDayCount} from '../lib/courseDays.js';
 function VisitMapLoader({stats}){
  const [MapComponent,setMapComponent]=useState(null),[loadError,setLoadError]=useState(''),[attempt,setAttempt]=useState(0);
  useEffect(()=>{let active=true;setMapComponent(null);setLoadError('');import('./VisitMap.jsx').then(module=>{if(active)setMapComponent(()=>module.VisitMap);}).catch(error=>{if(active){console.error('방문 지도 모듈을 불러오지 못했습니다.',error);setLoadError(error instanceof Error?error.message:String(error));}});return()=>{active=false;};},[attempt]);
- if(loadError)return <section className="visit-archive visit-svg-layout" aria-label="나의 여행 지도"><h2 className="visit-map-title">나의 여행 지도</h2><p role="alert" className="visit-map-load-status">지도를 불러오지 못했습니다. 다시 시도해 주세요.</p><details className="visit-map-error-details"><summary>오류 상세</summary><code>{loadError}</code></details><button type="button" className="visit-map-retry" onClick={()=>setAttempt(value=>value+1)}>다시 시도</button></section>;
- if(!MapComponent)return <section className="visit-archive visit-svg-layout" aria-label="나의 여행 지도"><h2 className="visit-map-title">나의 여행 지도</h2><p role="status" className="visit-map-load-status">전국 지도를 불러오는 중…</p></section>;
+ if(loadError)return <section className="visit-archive visit-svg-layout" aria-label="나의 여행 지도"><p role="alert" className="visit-map-load-status">지도를 불러오지 못했습니다. 다시 시도해 주세요.</p><details className="visit-map-error-details"><summary>오류 상세</summary><code>{loadError}</code></details><button type="button" className="visit-map-retry" onClick={()=>setAttempt(value=>value+1)}>다시 시도</button></section>;
+ if(!MapComponent)return <section className="visit-archive visit-svg-layout" aria-label="나의 여행 지도"><p role="status" className="visit-map-load-status">전국 지도를 불러오는 중…</p></section>;
  return <MapComponent stats={stats}/>;
 }
 export default function TravelJournal({courses,journals,catalog,onSave,onDelete,onUnlike,onOpen,CoursePhoto,requireMember,onRecap,accountId,initialCourse,onInitialCourseHandled,initialView='journal',hideTabs=false}){

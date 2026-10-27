@@ -1,10 +1,12 @@
 import { normalizeTag, scoreTags } from './exploreTags.js';
 import { searchCandidates } from './searchKeyboard.js';
+import { interpretHomeSearch } from './homeSearchIntent.js';
 const synonymGroups = [['빵집','빵','베이커리','브레드'],['카페','커피','카페거리'],['와인','와인바'],['맥주','수제맥주','브루어리','브루잉','양조장','펍','비어','beer','brewery'],['전통주','양조장','막걸리','주캉스'],['사진','포토','포토존'],['캠핑','야영','글램핑']];
 const clean = value => normalizeTag(String(value || '')).toLowerCase();
 export function courseImageCandidates(course, catalog, query) {
  const fallback=course.imagePlaceId || course.stopIds?.[0];
- const keywords=searchCandidates(query || '').filter(Boolean);
+ const parsed=query?.trim()?interpretHomeSearch(query):null;
+ const keywords=[...new Set([...searchCandidates(query || ''),...(parsed?.allowed?[parsed.query,...(parsed.terms||[]),...(parsed.mappedTags||[])]:[])].filter(Boolean))];
 
  const terms=[...new Set(keywords.flatMap(word=>[word,...(synonymGroups.find(group=>group.includes(word))||[])]))];
  const groups=new Set(scoreTags(terms));
@@ -16,7 +18,7 @@ export function courseImageCandidates(course, catalog, query) {
   const direct=value=>keywords.some(term=>clean(value).includes(clean(term)));
   const exactName=keywords.some(term=>clean(p.name)===clean(term));
   const exactTag=(p.tags||[]).some(tag=>keywords.some(term=>clean(tag)===clean(term)));
-  const score=exactName?1000:direct(p.name)?900:exactTag?800:(p.tags||[]).some(direct)?700:direct(p.category)?600:matches(p.name)?500:(p.tags||[]).some(matches)?400:matches(p.category)?300:direct(p.description)?200:matches(p.description)?100:scoreTags(p.tags||[]).some(t=>groups.has(t))?10:0;
+  const score=exactName?1000:direct(p.name)?900:exactTag?800:(p.tags||[]).some(direct)?700:direct(p.categoryPath)?650:direct(p.category)?600:matches(p.name)?500:(p.tags||[]).some(matches)?400:matches(p.categoryPath)?350:matches(p.category)?300:direct(p.description)?200:matches(p.description)?100:scoreTags(p.tags||[]).some(t=>groups.has(t))?10:0;
   return {id,score,rank:score>0?0:3,index};
  }).filter(Boolean).sort((a,b)=>b.score-a.score||Number(b.id===fallback)-Number(a.id===fallback)||a.index-b.index);
  const ranked = candidates.filter(p=>p.rank<3);

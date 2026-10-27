@@ -1,3 +1,4 @@
+from search_query_validation import validate_search_query
 from allowed_place_tags import classify_allowed_tags
 """Request-scoped Kakao results: no database, disk, response cache or logging."""
 import json
@@ -28,7 +29,7 @@ class PlaceSearch(BaseModel):
     longitude: float | None = None
 
 def search_parameters(body):
-    query = body.query.strip()
+    query = validate_search_query(body.query,max_length=80)
     if not query:
         raise HTTPException(422, '검색어를 입력해 주세요.', headers=NO_STORE)
     region = body.region.strip()
@@ -99,6 +100,7 @@ def lookup_places(body: PlaceSearch):
 
 @router.post('/api/kakao/places/search')
 def search_places(body: PlaceSearch,request: IncomingRequest=None):
+    validate_search_query(body.query,max_length=80)
     admit_request(request)
     return JSONResponse(lookup_places(body), headers=NO_STORE)
 
@@ -109,6 +111,7 @@ class PlaceReferences(BaseModel):
 def resolve_references(body: PlaceReferences,request: IncomingRequest=None):
     try:refs=validate_kakao_refs(body.refs)
     except ValueError:raise HTTPException(422,'장소 ID와 검색 조건을 확인해 주세요.',headers=NO_STORE) from None
+    for ref in refs:validate_search_query(ref['query'],max_length=80)
     # Per-request deduplication only; search results are never persisted.
     groups={}
     for ref in refs:groups.setdefault((ref['query'],ref['category'],ref['page']),[]).append(ref)

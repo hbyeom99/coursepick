@@ -94,7 +94,7 @@ export default function MapPanel({ place, places: suppliedPlaces, routePlaces, s
       const candidate = Boolean(routePlaces) && routeIndex < 0;
       const number = id === accommodationId ? '숙' : showRoute && routeIndex >= 0 ? markerNumbers?.get(id) ?? routeIndex + 1 : null;
       const isLodging = id === accommodationId || places.find(place=>place.id===id)?.category === '숙소';
-      const fill = candidate ? (selected ? '#075EAA' : '#258BE8') : isLodging ? '#4285F4' : selected ? '#5736C4' : '#7554F7';
+      const fill = candidate ? (selected ? '#075EAA' : '#258BE8') : isLodging ? '#4285F4' : selected ? '#5736C4' : '#8F5CFB';
       const center = isLodging ? '<path d="M9 17L18 9L27 17M11 16V27H25V16M16 27V20H20V27" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' : candidate && places.find(p=>p.id===id)?.category==='카페' ? '<text x="18" y="24" text-anchor="middle" font-size="19">☕</text>' : number === null ? '<circle cx="18" cy="18" r="7" fill="white"/>' : '<text x="18" y="24" text-anchor="middle" font-family="Noto Sans KR, sans-serif" font-size="17" font-weight="700" fill="white">' + number + '</text>';
       const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="36" height="46" viewBox="0 0 36 46"><path fill="' + fill + '" stroke="white" stroke-width="2" d="M18 45C14 36 1 27 1 18a17 17 0 1 1 34 0c0 9-13 18-17 27Z"/>' + center + '</svg>';
       const image = new maps.MarkerImage('data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg), new maps.Size(36, 46), { offset: new maps.Point(18, 46) });
@@ -114,7 +114,7 @@ export default function MapPanel({ place, places: suppliedPlaces, routePlaces, s
     const maps = window.kakao.maps;
     if (route.some(place => !Number.isFinite(place.latitude) || !Number.isFinite(place.longitude) || Math.abs(place.latitude) > 90 || Math.abs(place.longitude) > 180)) return;
     const paths = roadPaths?.length ? roadPaths : [route];
-    const lines = paths.map(points => new maps.Polyline({ map: mapRef.current, path: points.map(place => new maps.LatLng(place.latitude, place.longitude)), strokeWeight: 4, strokeColor: '#7554F7', strokeOpacity: 0.85, strokeStyle: roadPaths?.length ? 'solid' : 'dash' }));
+    const lines = paths.map(points => new maps.Polyline({ map: mapRef.current, path: points.map(place => new maps.LatLng(place.latitude, place.longitude)), strokeWeight: 4, strokeColor: '#8F5CFB', strokeOpacity: 0.85, strokeStyle: roadPaths?.length ? 'solid' : 'dash' }));
     return () => lines.forEach(line => line.setMap(null));
   }, [route, status, mapRevision, showRoute, roadPaths]);
   function moveToCurrentLocation() {
@@ -135,6 +135,6 @@ export default function MapPanel({ place, places: suppliedPlaces, routePlaces, s
     <div ref={container} style={{ position: 'absolute', inset: 0, visibility: status === 'success' ? 'visible' : 'hidden' }} />
     <button type="button" className="map-current-location" aria-label="현재 위치로 이동" title={`현재 위치로 이동 · ${demoLocation.address}`} disabled={status !== 'success'} onClick={moveToCurrentLocation}/>
     {status !== 'success' && children}
-    {key && status !== 'success' && <span className="map-note" role={status === 'error' ? 'alert' : 'status'} style={{ zIndex: 2, top: 10, bottom: 'auto' }}>{status === 'success' ? (selectedPlace ? selectedPlace.name + (showRoute ? (roadPaths?.length ? ' · 자동차 도로 경로' : ' · 일정 순서 · 직선 연결') : ' · 선택한 장소') : '장소 ' + markerCount + '곳 · Marker를 선택해 주세요.') : status === 'error' ? message : 'Kakao 지도를 불러오는 중입니다.'}</span>}
+    {status !== 'success' && <span className="map-note" role={status === 'error' ? 'alert' : 'status'} style={{ zIndex: 2, top: 10, bottom: 'auto' }}>{status === 'success' ? (selectedPlace ? selectedPlace.name + (showRoute ? (roadPaths?.length ? ' · 자동차 도로 경로' : ' · 일정 순서 · 직선 연결') : ' · 선택한 장소') : '장소 ' + markerCount + '곳 · Marker를 선택해 주세요.') : status === 'unconfigured' ? '지도 연결이 설정되지 않았습니다.' : status === 'error' ? message : 'Kakao 지도를 불러오는 중입니다.'}</span>}
   </section>;
 }

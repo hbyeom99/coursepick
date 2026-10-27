@@ -29,6 +29,17 @@ def validate_journals(value):
         if photos is not None and (not isinstance(photos,list) or len(photos)>20 or any(not isinstance(p,str) or not 1<=len(p)<=300 for p in photos) or len(set(photos))!=len(photos)):raise ValueError()
         if stop_days is not None and (not isinstance(stop_days,dict) or any(not isinstance(key,str) or not 1<=len(key)<=200 or type(value) is not int or not 1<=value<=31 for key,value in stop_days.items())):raise ValueError()
         seen.add(cid);record={'courseId':cid,'title':title.strip(),'body':body.strip(),'visitedAt':day,'placeIds':places}
+        if 'reviews' in j:
+            reviews=j['reviews']
+            if not isinstance(reviews,dict) or len(reviews)>100:raise ValueError()
+            clean={}
+            for pid,review in reviews.items():
+                if pid not in places or not isinstance(review,dict):raise ValueError()
+                rating=review.get('rating');text=review.get('body');images=review.get('photoIds')
+                if type(rating) is not int or not 0<=rating<=5 or not isinstance(text,str) or len(text)>5000:raise ValueError()
+                if not isinstance(images,list) or len(images)>20 or any(not isinstance(p,str) or not 1<=len(p)<=300 for p in images) or len(set(images))!=len(images):raise ValueError()
+                clean[pid]={'rating':rating,'body':text.strip(),'photoIds':images}
+            record['reviews']=clean
         if photos is not None:record['photoIds']=photos
         if stop_days is not None:record['stopDays']=stop_days
         result.append(record)

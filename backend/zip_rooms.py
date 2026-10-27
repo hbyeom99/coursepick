@@ -10,10 +10,11 @@ from datetime import date, datetime, timezone
 from uuid import UUID
 from fastapi import APIRouter, Header, HTTPException
 from pydantic import BaseModel, Field
-from member_accounts import member, db
+from member_accounts import member, db, config
+from zip_invite_code import room_invite_code
 
 from zip_settlement import ExpenseError,validate_expense,settlement
-from zip_voting import VoteError,start_poll,cast_vote,revote,public_poll,winning_schedule
+from zip_voting import VoteError,start_poll,cast_vote,revote,restart_poll,withdraw_vote,public_poll,winning_schedule
 
 router=APIRouter(prefix='/api/zip')
 AXES=('planning','experience','exploration','spending')
@@ -61,7 +62,12 @@ def serialize(client,room,user_id=None):
  people=[]
  for m in members:
   name,photo=profile_summary(client,m['user_id'])
-  people.append({'id':m['user_id'],'name':name,'photo':photo,'taste':m.get('taste'),'keywords':m.get('keywords') or []})
+  saved=execute(client.table('member_data').select('value').eq('user_id',m['user_id']).eq('data_key','coursepick.travelTaste.v1').limit(1))
+  candidate=saved[0].get('value') if saved else None
+  from travel_journal_validation import validate_travel_taste
+  try:taste=validate_travel_taste(candidate)
+  except ValueError:taste=None
+  people.append({'id':m['user_id'],'name':name,'photo':photo,'taste':taste,'keywords':m.get('keywords') or []})
  image=''
  if room.get('image_path'):
   try:image=client.storage.from_('member-avatars').create_signed_url(room['image_path'],3600)['signedURL']
@@ -208,6 +214,7 @@ class ShareInput(BaseModel):
 @router.post('/rooms/{room_id}/invites')
 def invite(room_id:str,body:ShareInput,authorization:str|None=Header(None)):
  user=member(authorization);client=db();room=room_for(client,room_id,user)
+ if not body.userId:return room_invite_code(client,execute,room['id'],str(user.id),config()[1])
  token=secrets.token_urlsafe(32)
  value={'room_id':room['id'],'created_by':str(user.id),'token_hash':hashlib.sha256(token.encode()).hexdigest()}
  if body.userId:
@@ -223,7 +230,10 @@ class JoinInput(BaseModel):
 
 def invited_room(client,body,user):
  query=client.table('zip_room_invites').select('*').gt('expires_at',datetime.now(timezone.utc).isoformat())
- if body.token:query=query.eq('token_hash',hashlib.sha256(body.token.encode()).hexdigest())
+ if body.token:
+  token=body.token.strip()
+  if re.fullmatch(r'[A-Za-z0-9]{6}',token):token=token.upper()
+  query=query.eq('token_hash',hashlib.sha256(token.encode()).hexdigest())
  elif body.inviteId and user is not None:query=query.eq('id',uid(body.inviteId)).eq('recipient_id',str(user.id))
  else:raise HTTPException(422,'초대 정보를 확인해 주세요.')
  rows=execute(query.limit(1))
@@ -280,6 +290,32 @@ def create_poll(room_id:str,body:PollStart,authorization:str|None=Header(None)):
 def vote_poll(room_id:str,body:PollAction,authorization:str|None=Header(None)):
  user=member(authorization);client=db();room=room_for(client,room_id,user);check_poll_revision(room,body.revision);payload=dict(room.get('payload') or {})
  try:payload['poll']=cast_vote(payload.get('poll'),str(user.id),body.courseId,body.pollId,body.round)
+ except VoteError as e:raise HTTPException(e.status,str(e)) from None
+ return poll_write(client,room,body.revision,payload,user)
+
+@router.post('/rooms/{room_id}/poll/restart')
+def restart_room_poll(room_id:str,body:PollAction,authorization:str|None=Header(None)):
+ user=member(authorization);client=db();room=room_for(client,room_id,user);check_poll_revision(room,body.revision)
+ payload=dict(room.get('payload') or {})
+ members=execute(client.table('zip_room_members').select('user_id').eq('room_id',room['id']))
+ try:payload['poll']=restart_poll(payload.get('poll'),[m['user_id'] for m in members],str(user.id),body.pollId,body.round)
+ except VoteError as e:raise HTTPException(e.status,str(e)) from None
+ return poll_write(client,room,body.revision,payload,user)
+
+@router.post('/rooms/{room_id}/poll/reset-candidates')
+def reset_poll_candidates(room_id:str,body:PollAction,authorization:str|None=Header(None)):
+ user=member(authorization);client=db();room=room_for(client,room_id,user);check_poll_revision(room,body.revision)
+ payload=dict(room.get('payload') or {})
+ members=execute(client.table('zip_room_members').select('user_id').eq('room_id',room['id']))
+ try:restart_poll(payload.get('poll'),[m['user_id'] for m in members],str(user.id),body.pollId,body.round)
+ except VoteError as e:raise HTTPException(e.status,str(e)) from None
+ payload.pop('poll',None)
+ return poll_write(client,room,body.revision,payload,user)
+
+@router.post('/rooms/{room_id}/poll/reselect')
+def reselect_poll(room_id:str,body:PollAction,authorization:str|None=Header(None)):
+ user=member(authorization);client=db();room=room_for(client,room_id,user);check_poll_revision(room,body.revision);payload=dict(room.get('payload') or {})
+ try:payload['poll']=withdraw_vote(payload.get('poll'),str(user.id),body.pollId,body.round)
  except VoteError as e:raise HTTPException(e.status,str(e)) from None
  return poll_write(client,room,body.revision,payload,user)
 
