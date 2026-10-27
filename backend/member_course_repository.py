@@ -40,4 +40,23 @@ def public_snapshot(client):
         item.update(author=authors[owner], authorId=owner, isPublic=True,
                     source='member-public', isDemo=False, theme='사용자 코스')
         result.append(item)
+    from editorial_copy_validation import validate_editorial_copies
+    offset = 0
+    while True:
+        rows = (client.table('member_data').select('user_id,value').eq('data_key','coursepick.editorialCopies.v1').contains('value','[{"isPublic":true}]').order('user_id').range(offset,offset+199).execute().data)
+        for row in rows:
+            for value in row.get('value') or []:
+                if not isinstance(value,dict) or value.get('isPublic') is not True:continue
+                try:course=validate_editorial_copies([value])[0]
+                except ValueError:continue
+                owner=str(row['user_id'])
+                if owner not in authors:
+                    user=client.auth.admin.get_user_by_id(owner).user
+                    name=(user.user_metadata or {}).get('nickname') if user else None
+                    authors[owner]=name.strip()[:20] if isinstance(name,str) and name.strip() else '여행자'
+                course.pop('stopDetails',None)
+                course.update(author=authors[owner],authorId=owner,isPublic=True,source='member-public',isDemo=False,theme='사용자 코스')
+                result.append(course)
+        if len(rows)<200:break
+        offset+=len(rows)
     return sorted(result, key=lambda c: (c['authorId'], c['id']))

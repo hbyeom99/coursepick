@@ -14,7 +14,7 @@ def validate_editorial_copies(value):
             if not isinstance(item.get(key),str) or not item[key].strip() or len(item[key])>limit:raise ValueError()
         if not item['id'].startswith('editorial-copy-') or item['id'] in seen:raise ValueError()
         seen.add(item['id'])
-        if item.get('isPublic') is not False or item.get('transport') not in ('도보','자동차','대중교통'):raise ValueError()
+        if type(item.get('isPublic')) is not bool or item.get('transport') not in ('도보','자동차','대중교통'):raise ValueError()
         days=item.get('durationDays')
         if type(days) is not int or not 1<=days<=31:raise ValueError()
         if not isinstance(item.get('description',''),str) or len(item.get('description',''))>20000:raise ValueError()
@@ -54,7 +54,7 @@ def validate_editorial_copies(value):
         notices=item.get('editorialNotices',[])
         if not isinstance(notices,list) or len(notices)>100 or any(not isinstance(t,str) or len(t)>2000 for t in notices):raise ValueError()
         copy={key:deepcopy(item[key]) for key in ('id','originalCourseId','name','region','transport','durationDays')}
-        copy.update(description=item.get('description',''),tags=tags,representativeTags=representative,editorialVisits=clean,editorialNotices=notices,stopIds=list(dict.fromkeys(v['place_id'] for v in clean if v.get('place_id'))),imagePlaceId=None,isPublic=False,source='editorial-copy',author='나')
+        copy.update(description=item.get('description',''),tags=tags,representativeTags=representative,editorialVisits=clean,editorialNotices=notices,stopIds=list(dict.fromkeys(v['place_id'] for v in clean if v.get('place_id'))),imagePlaceId=None,isPublic=item['isPublic'],source='editorial-copy',author='나')
         if 'stopDetails' in item:
             copy['stopDetails'] = validate_stop_details(item['stopDetails'], {'v:' + v['visit_id'] for v in clean})
         result.append(copy)

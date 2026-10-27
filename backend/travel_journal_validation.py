@@ -29,6 +29,9 @@ def validate_journals(value):
         if photos is not None and (not isinstance(photos,list) or len(photos)>20 or any(not isinstance(p,str) or not 1<=len(p)<=300 for p in photos) or len(set(photos))!=len(photos)):raise ValueError()
         if stop_days is not None and (not isinstance(stop_days,dict) or any(not isinstance(key,str) or not 1<=len(key)<=200 or type(value) is not int or not 1<=value<=31 for key,value in stop_days.items())):raise ValueError()
         seen.add(cid);record={'courseId':cid,'title':title.strip(),'body':body.strip(),'visitedAt':day,'placeIds':places}
+        if 'isPublic' in j:
+            if type(j['isPublic']) is not bool:raise ValueError()
+            record['isPublic']=j['isPublic']
         if 'reviews' in j:
             reviews=j['reviews']
             if not isinstance(reviews,dict) or len(reviews)>100:raise ValueError()

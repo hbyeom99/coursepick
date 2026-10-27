@@ -20,7 +20,7 @@ def validate_expense(value,members,days,old=None):
  if not isinstance(participants,list) or not participants or len(participants)>100 or any(not isinstance(p,str) or p not in people for p in participants) or len(set(participants))!=len(participants) or payer not in participants:raise ExpenseError(422,'결제자를 포함한 정산 참여 인원을 선택해 주세요.')
  if category not in CATEGORIES or not isinstance(note,str) or len(note)>500:raise ExpenseError(422,'지출 분류와 메모를 확인해 주세요.')
  if place is not None:
-  scheduled={p for d in days for p in d.get('stopIds',[])}
+  scheduled={p for d in days for p in d.get('stopIds',[])}|{'k:'+ref['placeId'] for d in days for ref in d.get('kakaoPlaceRefs',[])}
   if not isinstance(place,str) or (place not in scheduled and place!=(old or {}).get('placeId')):raise ExpenseError(422,'방의 여행 장소를 선택하거나 기타 지출로 등록해 주세요.')
  # Keep a stable server-owned member order for 1-won remainders.
  ids=[pid for pid in people if pid in participants]

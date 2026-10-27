@@ -194,7 +194,7 @@ def save(body: Value, authorization: str | None = Header(None)):
         try: body.value = validate_travel_taste(body.value)
         except ValueError: raise HTTPException(422, '성향은 각 축에 0~100 정수로 입력해 주세요.') from None
 
-    if body.key == 'coursepick.myCourses.v1':
+    if body.key in ('coursepick.myCourses.v1','coursepick.editorialCopies.v1'):
         public_course_cache.clear()
     return {'ok': True}
 class Photo(BaseModel):

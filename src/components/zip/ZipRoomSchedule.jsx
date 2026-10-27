@@ -14,8 +14,8 @@ export default function ZipRoomSchedule({room,onPatch,placeOf,places,canEdit,onS
  const dragRef=useRef(null),ignoreClick=useRef(false);
  const [dragTarget,setDragTarget]=useState(null);
  const [selectedPlace,setSelectedPlace]=useState(null);
- const [dayIndex,setDayIndex]=useState(0),[picker,setPicker]=useState(false),[query,setQuery]=useState(''),[title,setTitle]=useState(room.scheduleTitle||''),[ordering,setOrdering]=useState(null),[timePlace,setTimePlace]=useState(null),[time,setTime]=useState(''),[minutes,setMinutes]=useState('');
- useEffect(()=>setTitle(room.scheduleTitle||''),[room.scheduleTitle]);
+ const [dayIndex,setDayIndex]=useState(0),[picker,setPicker]=useState(false),[query,setQuery]=useState(''),[title,setTitle]=useState(room.name||''),[ordering,setOrdering]=useState(null),[timePlace,setTimePlace]=useState(null),[time,setTime]=useState(''),[minutes,setMinutes]=useState('');
+ useEffect(()=>setTitle(room.name||''),[room.id,room.name]);
  const days=room.days,activeDayIndex=Math.min(dayIndex,days.length-1),day=days[activeDayIndex];
  useEffect(()=>setDayIndex(i=>Math.min(i,days.length-1)),[days.length]);
  const viewDetails={...(day?.stopDetails||{}),...Object.fromEntries((day?.stopIds||[]).map(id=>['n:'+id,{...(day?.stopDetails?.['n:'+id]||{}),...(day?.timings?.[id]||{})}]))};

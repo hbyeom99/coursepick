@@ -1,3 +1,4 @@
+import {reelWheelSteps} from '../lib/reelWheel.js';
 import React,{useLayoutEffect,useRef,useState} from 'react';
 import CourseVisualCard from './CourseVisualCard.jsx';
 import CourseCardMeta from './CourseCardMeta.jsx';
@@ -23,6 +24,25 @@ export default function HomeEditorialReel({courses=[],onOpen,Icon,error,onRetry}
   initialId.current=list[0].id;
   const initial=(circular?list.length:0)+Math.min(2,list.length-1);scroll.current.scrollTop=initial*STEP;setPosition(initial);
  },[list[0]?.id]);
+ useLayoutEffect(()=>{
+  const element=scroll.current;if(!element||list.length<2)return;
+  let timer,amount=0;
+  const finish=()=>{
+   const steps=reelWheelSteps(amount);amount=0;
+   if(!steps)return;
+   const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+   element.scrollTo({top:Math.max(0,Math.min((items.length-1)*STEP,(Math.round(element.scrollTop/STEP)+steps)*STEP)),behavior:reduced?'instant':'smooth'});
+  };
+  const wheel=event=>{
+   if(event.ctrlKey||Math.abs(event.deltaX)>Math.abs(event.deltaY))return;
+   event.preventDefault();
+   const delta=event.deltaY*(event.deltaMode===1?16:event.deltaMode===2?element.clientHeight:1);
+   if(amount&&Math.sign(amount)!==Math.sign(delta)){clearTimeout(timer);finish();}
+   amount+=delta;clearTimeout(timer);timer=setTimeout(finish,100);
+  };
+  element.addEventListener('wheel',wheel,{passive:false});
+  return()=>{clearTimeout(timer);element.removeEventListener('wheel',wheel);};
+ },[list.length]);
  function moved(){
   cancelAnimationFrame(frame.current);frame.current=requestAnimationFrame(()=>{
    const element=scroll.current;if(!element)return;

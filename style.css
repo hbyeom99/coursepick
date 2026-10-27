@@ -3830,3 +3830,34 @@ svg text{font-size:13.33px}
 .zip-svg-confirm button:focus-visible{opacity:1!important;outline:2px solid #fff;background:#8F5CFB;color:#fff}
 
 .app-shell .zip-join-confirm>button{font-size:17px}
+
+.app-shell.view-create .editor-itinerary>.section-title>.itinerary-add-button{font-size:14px}
+.app-shell.view-create .personal-day-tabs>button strong{font-size:18px}
+
+.jc-place-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}.jc-place-tags>span{font-size:15px;color:#8F5CFB;background:#f1eaff;padding:2px 5px;border-radius:4px}
+.jc-save-shade{position:fixed;inset:0;z-index:2800;background:#0005;display:grid;place-items:center;padding:16px}
+.jc-save-dialog{width:390px;max-width:100%;border-radius:20px;background:#fff;padding:32px 24px 28px;color:#292a30}
+.jc-save-dialog>header{display:flex;align-items:center;justify-content:space-between;gap:8px}.jc-save-dialog h2{font-size:20px;margin:0}.jc-save-dialog>header button{border:0;background:none;font-size:24px;color:#9296a3;padding:0}
+.jc-save-dialog>p{font-size:13px;line-height:1.6;color:#9296a3;margin:20px 0}.jc-save-summary{background:#f7f7f9;border-radius:14px;padding:16px}.jc-save-summary>strong{display:block;font-size:16px}.jc-save-summary>small{display:block;font-size:12px;color:#9296a3;margin-top:6px}
+.jc-save-actions{display:flex;gap:10px;margin-top:20px}.jc-save-actions>button{flex:1;min-height:50px;border:0;border-radius:10px;font-size:14px;font-weight:700;color:#8F5CFB;background:#f1eaff}.jc-save-actions>button+button{background:#8F5CFB;color:#fff}.jc-save-dialog>footer{font-size:11px;color:#9296a3;text-align:center;margin-top:20px}
+
+/* Prevent the save dialog's intrinsic width from expanding the mobile grid. */
+.jc-save-shade{box-sizing:border-box;width:100%;min-width:0;grid-template-columns:minmax(0,1fr);overflow:hidden}
+.jc-save-dialog{box-sizing:border-box;width:min(390px,100%);min-width:0;max-width:100%;max-height:calc(100% - 32px);overflow-y:auto;overflow-x:hidden;justify-self:center}
+.jc-save-dialog>header,.jc-save-summary,.jc-save-actions{min-width:0}
+.jc-save-summary>strong{overflow-wrap:anywhere}
+.jc-save-actions>button{min-width:0;padding:10px 6px;white-space:normal}
+
+/* Every course/journal save confirmation is an edge-to-edge bottom sheet. */
+.modal-backdrop:has(.course-save-choice-modal),
+.journal-modal-shade:has(.course-save-choice-modal),
+.jc-save-shade{display:flex;align-items:flex-end;justify-content:center;padding:0;gap:0;background:#0009}
+.app-shell .course-save-choice-modal,.course-save-choice-modal,.jc-save-dialog{box-sizing:border-box;width:100%;max-width:100%;min-width:0;margin:0;border-radius:22px 22px 0 0;padding:48px 24px max(60px,env(safe-area-inset-bottom));max-height:85%;overflow-y:auto;overflow-x:hidden;background:#fff}
+.course-save-choice-modal>header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 16px;padding:0}
+.course-save-choice-modal>header h2,.jc-save-dialog h2{font-size:20px;font-weight:700;line-height:1.5;margin:0}
+.course-save-choice-modal>header button{border:0;background:transparent;color:#9295A3;font-size:24px;padding:0}
+.jc-save-dialog{align-self:flex-end}
+
+/* Compact day buttons in course editing, with a larger fixed label. */
+.app-shell.view-create .personal-day-tabs>.course-day-scroll>button{flex:0 0 90px;width:90px;min-width:90px;max-width:90px;height:44px;min-height:44px;padding:6px 10px}
+.app-shell.view-create .personal-day-tabs>.course-day-scroll>button>strong{font-size:21px;line-height:1.2}

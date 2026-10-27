@@ -16,7 +16,7 @@ export default function CourseLibrary({ initialContentFilter='all', reportPanel,
  const {publicCourses,privateCourses}=courseLibraryLists(authored,savedIds,courses);
  const privateOwnedCourses=authored.filter(course=>course.isPublic===false);
  const allCourses=publicCourses;
- const visibleScope=course=>tab==='bookmarked'?course.isPublic===false:course.isPublic!==false;
+ const visibleScope=course=>{const record=journals.find(j=>j.courseId===course.id);const visible=record?.isPublic??course.isPublic;return tab==='bookmarked'?visible===false:visible!==false;};
  const journalIds=new Set(journalCourseIds);
  const journalCourses=[...new Map([...likedCourses,...courses.filter(course=>journalIds.has(course.id)),...authored.filter(course=>journalIds.has(course.id))].map(course=>[course.id,course])).values()];
  const ownedScope=(tab==='bookmarked'?privateOwnedCourses:publicCourses).filter(visibleScope);

@@ -335,7 +335,7 @@ def apply_poll(room_id:str,body:PollAction,authorization:str|None=Header(None)):
  from member_course_validation import known_places
  ids=sorted({p for d in days for p in d['stopIds']})
  if not set(ids).issubset(known_places(client,ids)):raise HTTPException(422,'선택한 코스의 장소 정보를 다시 확인해 주세요.')
- payload['title']=title;payload['days']=days;payload['traitFacts']=next(c for c in poll['candidates'] if c['id']==poll['winnerId']).get('traitFacts',{});payload['poll']={**poll,'appliedAt':datetime.now(timezone.utc).isoformat(),'appliedBy':str(user.id)}
+ payload['title']=room['name'];payload['days']=days;payload['traitFacts']=next(c for c in poll['candidates'] if c['id']==poll['winnerId']).get('traitFacts',{});payload['poll']={**poll,'appliedAt':datetime.now(timezone.utc).isoformat(),'appliedBy':str(user.id)}
  return poll_write(client,room,body.revision,payload,user,{'end_date':days[-1]['date']})
 
 
@@ -354,6 +354,8 @@ def expense_value(client,room,body,old,user):
  except ExpenseError as e:raise HTTPException(e.status,str(e)) from None
  if value['placeId']:
   if old and old.get('placeId')==value['placeId']:value['placeName']=old.get('placeName','')
+  elif value['placeId'].startswith('k:'):
+   value['placeName']='' # Resolve provider names at display time; persist only the schedule reference.
   else:
    places=execute(client.table('places').select('id,name').eq('id',value['placeId']).limit(1))
    if not places:raise HTTPException(422,'장소 정보를 확인할 수 없습니다. 기타 지출로 등록해 주세요.')
