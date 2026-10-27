@@ -3860,4 +3860,13 @@ svg text{font-size:13.33px}
 
 /* Compact day buttons in course editing, with a larger fixed label. */
 .app-shell.view-create .personal-day-tabs>.course-day-scroll>button{flex:0 0 90px;width:90px;min-width:90px;max-width:90px;height:44px;min-height:44px;padding:6px 10px}
-.app-shell.view-create .personal-day-tabs>.course-day-scroll>button>strong{font-size:21px;line-height:1.2}
+.app-shell.view-create .personal-day-tabs>.course-day-scroll>button>strong{font-size:19px;line-height:1.2}
+
+/* Save sheets cover the bottom navigation across every editor. */
+.app-shell:has(.course-save-choice-modal)>.bottom-nav,
+.app-shell:has(.jc-save-dialog)>.bottom-nav,
+.app-shell:has(.course-save-choice-modal)>.device-home-indicator,
+.app-shell:has(.jc-save-dialog)>.device-home-indicator{visibility:hidden;pointer-events:none}
+.modal-backdrop:has(.course-save-choice-modal),
+.journal-modal-shade:has(.course-save-choice-modal),
+.jc-save-shade{z-index:5000;bottom:0}
