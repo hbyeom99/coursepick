@@ -18,7 +18,7 @@ export function generateHomeKeywordCourses(native,live,filters,taste={},interest
  const nativeIds=new Set(native.map(p=>p.id));
  // Keep provider records separate; eligibility and scoring do not use source priority.
  const eligible=[...native,...live.map(kakaoCandidate)].filter(p=>(p.category!=='숙소'||['호캉스','주캉스','카라반','리조트'].includes(rule.key))&&Number.isFinite(p.latitude)&&Number.isFinite(p.longitude)&&homeRegionMatch(p,rule,filters)&&homePlaceEligible(p,rule)&&(!rule.priceSensitive||/무료전시|무료체험/.test(rule.key)||confirmedPlaceCost(p)!==null)&&companionsMatch(p,filters)&&seasonEligibility(p,date).eligible);
- const profile=keywordTasteProfile(taste,context,eligible),scores=new Map(eligible.map(p=>[p.id,placeTasteScore(p,profile)*4+(p.tags||[]).filter(t=>interests.includes(t)).length*.25])),score=p=>scores.get(p.id)||0;
+ const profile=keywordTasteProfile(taste,context,eligible),tasteScores=new Map(eligible.map(p=>[p.id,placeTasteScore(p,profile)*4])),tasteValues=[...tasteScores.values()],keywordWeight=context.prioritizeInterests?(tasteValues.length?Math.max(...tasteValues)-Math.min(...tasteValues)+1:1):.25,scores=new Map(eligible.map(p=>[p.id,tasteScores.get(p.id)+(p.tags||[]).filter(t=>interests.includes(t)).length*keywordWeight])),score=p=>scores.get(p.id)||0;
  const pool=dedupeRecommendationPlaces(eligible,score);
  const costs=pool.map(confirmedPlaceCost).filter(v=>v!==null).sort((a,b)=>a-b),cheap=costs[Math.floor(Math.max(0,costs.length-1)*.35)]??0;
  const matched=new Set(pool.filter(p=>homeAnchorMatch(p,rule)).map(p=>p.id));

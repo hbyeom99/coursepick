@@ -55,15 +55,19 @@ export default function MemberGate(){
  }
  async function signup(email,password,nickname){const result=await memberRequest('signup',{email,password,nickname});await login(email,password);return result;}
  async function logout(){
-  try{await memberRequest('logout',{},account.access_token);}
+  const token=account?.access_token;
+  try{if(token)await memberRequest('logout',{},token);}
   finally{rememberRefresh('');setAccount(null);setBrowsing(true);}
  }
+ function openLogin(){setLoginQuestion(false);setBrowsing(false);}
+ const authVisible=!browsing;
+ useEffect(()=>{if(!authVisible)return;const frame=requestAnimationFrame(()=>{document.querySelector('.view-welcome')?.scrollTo(0,0);document.getElementById('welcome-email')?.focus({preventScroll:true});});return()=>cancelAnimationFrame(frame);},[authVisible]);
  if(restoreError&&!account)return <div className="app-shell view-welcome"><div role="alert" style={{padding:32,textAlign:'center'}}><p>{restoreError}</p><button type="button" className="welcome-primary" onClick={()=>{restoreRequest.current=null;setRestoreError('');setRestoring(true);setRestoreAttempt(v=>v+1);}}>다시 연결하기</button></div></div>;
  if(restoring)return <div className="app-shell view-welcome"><div role="status" style={{padding:32,textAlign:'center'}}>로그인 상태를 확인하고 있어요.</div></div>;
- const authVisible=!browsing;
- return <MemberProvider account={account || {userId:'guest',nickname:'방문자',values:{},isGuest:true}} onLogin={options=>{if(options?.direct)setBrowsing(false);else setLoginQuestion(true);}} onLogout={logout}>
+
+ return <MemberProvider account={account || {userId:'guest',nickname:'방문자',values:{},isGuest:true}} onLogin={options=>{if(options?.direct)openLogin();else setLoginQuestion(true);}} onLogout={logout}>
  <div className="member-app-surface" hidden={authVisible} style={authVisible?{display:'none'}:undefined}><App onboardingRequired={needsTasteOnboarding(account)} onOnboardingComplete={()=>setAccount(current=>current?{...current,values:{...current.values,[TASTE_ONBOARDING_KEY]:{completed:true,version:1}}}:current)}/></div>
  {authVisible&&<div className="app-shell view-welcome"><WelcomeFlow initialPhase="login" onLogin={login} onSignup={signup} recovery={Boolean(recoveryToken)} onRecover={email=>memberRequest('recover',{email})} onResetPassword={async password=>{await memberRequest('reset-password',{password},recoveryToken);rememberRefresh('');setRecoveryToken('');}} onHome={()=>setBrowsing(true)} canBrowse/></div>}
- {loginQuestion&&<ZipModal title="로그인하시겠습니까?" onClose={()=>setLoginQuestion(false)}><p>회원 기능은 로그인 후 이용할 수 있어요. 작성 중인 내용은 그대로 유지됩니다.</p><div className="guest-login-actions"><button type="button" className="zip-primary" onClick={()=>{setLoginQuestion(false);setBrowsing(false);}}>네</button><button type="button" className="zip-secondary" onClick={()=>setLoginQuestion(false)}>아니오</button></div></ZipModal>}
+ {loginQuestion&&<ZipModal title="로그인하시겠습니까?" onClose={()=>setLoginQuestion(false)}><p>회원 기능은 로그인 후 이용할 수 있어요. 작성 중인 내용은 그대로 유지됩니다.</p><div className="guest-login-actions"><button type="button" className="zip-primary" onClick={openLogin}>네</button><button type="button" className="zip-secondary" onClick={()=>setLoginQuestion(false)}>아니오</button></div></ZipModal>}
  </MemberProvider>;
 }
