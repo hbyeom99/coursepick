@@ -67,8 +67,8 @@ export default function ZipFeature({onWriteJournal,onSaveTaste,savedPlaceIds=[],
   const stats=roomTasteTotals(room?.members||[]),region=placeArea({region:room?.region||''}).region;
   return {catalog:places,live:[],filters:{query:region,region,city:'전체',category:'전체',theme:'전체',transport:'전체',period:'전체',people:'전체',hours:'전체'},taste:Object.fromEntries(['planning','experience','exploration','spending'].map(axis=>[axis,stats.submitted?stats.totals[axis]/stats.submitted:null])),interests:common,context:{knownPlaceIds:[],knownTags:common,knownCategories:[],prioritizeInterests:true}};
  },[places,room?.region,groupSignature]);
- const roomGeneration=useCourseGeneration('ai',roomGenerationPayload,Boolean(searchDataReady&&room&&!hidden&&tab==='recommendations'&&allowedHomeQuery(roomGenerationPayload.filters.query)&&recommended.filter(isAI).length<5));
- const roomAiCourses=room?rankRoomCourses([...new Map([...recommended.filter(isAI),...roomGeneration.courses].map(c=>[c.id,c])).values()]):[];
+ const roomGeneration=useCourseGeneration('ai',roomGenerationPayload,Boolean(searchDataReady&&room&&!hidden&&tab==='recommendations'&&allowedHomeQuery(roomGenerationPayload.filters.query)));
+ const roomAiCourses=room?rankRoomCourses(roomGeneration.courses):[];
 
  async function pollAction(action,extra={}){return run(async()=>{const result=await request('rooms/'+roomId+'/poll'+(action?'/'+action:''),{revision:room.revision,...(room.poll?{pollId:room.poll.id,round:room.poll.round}:{}),...extra},'POST');store(result);if(action==='apply'){setTab('schedule');setNotice('투표 1위 코스를 최종 일정에 적용했어요.');}return result;});}
  async function saveExpense(expense,editing){return run(async()=>{const result=await request('rooms/'+roomId+'/expenses'+(editing?'/'+expense.id:''),{revision:room.revision,expense},editing?'PUT':'POST');store(result);return result;});}

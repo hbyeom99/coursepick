@@ -19,6 +19,8 @@ from kakao_place_photo import router as kakao_photo_router
 app.include_router(kakao_photo_router)
 app.include_router(search_keywords_router)
 app.include_router(gemini_search_router)
+from ai_course_generation import router as ai_course_router
+app.include_router(ai_course_router)
 
 app.add_middleware(
     CORSMiddleware,

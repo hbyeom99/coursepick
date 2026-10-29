@@ -500,13 +500,7 @@ export default function App({onboardingRequired=false,onOnboardingComplete}={}) 
   const recommendedSearchResults = useMemo(() => {
     if(!homeRule.allowed)return [];
     if (!keyword) return results.filter(c => recommendedSearchIds.has(c.id)).slice(0,6);
-    if(keywordGeneratedCourses.length)return keywordGeneratedCourses;
-    const candidates=results.filter(c=>recommendedSearchIds.has(c.id)).map(course=>{
-      const stops=(course.stopIds||[]).map(placeOf).filter(Boolean);
-      const ids=[...(course.stopIds||[]),...(course.kakaoPlaceRefs||[]).map(ref=>`k:${ref.placeId}`),...(course.googlePlaceRefs||[]).map(ref=>`g:${ref.placeId}`)];
-      return {course,anchor:stops.find(place=>homeAnchorMatch(place,homeRule))?.id||course.imagePlaceId||ids[0]||course.id,ids,region:course.region||'',kind:course.source||course.generationMethod||'existing',score:score(course)};
-    });
-    return selectDiverseCourses(candidates,{limit:6});
+    return keywordGeneratedCourses;
   }, [keyword,keywordGeneratedCourses,results,recommendedSearchIds,homeRule]);
   const existingUserSearchResults = useMemo(() => rankUserCourses(results.filter(c=>!recommendedSearchIds.has(c.id)),filters.query,c=>courseTraitAffinity(courseAssessments.get(c.id)||evaluateCourseTraits(c,catalogById,traitContext),taste),c=>(c.editorialVisits?c.editorialVisits.map(v=>catalogById.get(v.place_id)):c.stopIds.map(id=>catalogById.get(id))).filter(Boolean),filters.searchTags||[]),[results,recommendedSearchIds,filters.query,filters.searchTags,courseAssessments,catalogById,traitContext,taste]);
   const personaPayload=useMemo(()=>({catalog,filters,existing:existingUserSearchResults,ai:keywordGeneratedCourses,live:homeLive.key===homeLookupKey?homeLive.places:[]}),[catalog,filters,existingUserSearchResults,keywordGeneratedCourses,homeLive.places,homeLive.key,homeLookupKey]);
